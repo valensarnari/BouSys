@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+header {
+  position: relative;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+.top-title h1 {
+  width: 75%;
+  font-family: "Playfair Display", serif;
+  color: black;
+  background-color: white;
+  animation: changeColor 4s infinite alternate;
+}
+.video-first {
+  margin: auto;
+  width: 80%;
+  height: auto;
+}
+.carousel-first {
+  margin: auto;
+  width: 80%;
+  height: auto;
+}
+.card {
+  margin: 30px;
+}
+.text_entry {
+  text-align: justify;
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  width: 50%;
+  left: 25%;
+}
+.services-card h3 {
+  text-align: center;
+}
+.flags {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 20%;
+  position: relative;
+  top: 0px;
+  box-sizing: border-box;
+  background-size: cover;
+}
+.flags img {
+  width: 90px;
+  height: 40px;
+  object-fit: contain;
+}
+.flags:hover {
+  cursor: pointer;
+}
+.top-title {
+  display: flex;
+  flex-direction: row;
+}
+
+@keyframes changeColor {
+  0% {
+    background-color: black;
+    color: white;
+  }
+  100% {
+    background-color: white;
+    color: black;
+  }
+}
