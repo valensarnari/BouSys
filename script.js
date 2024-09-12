@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
   flagsElement.addEventListener("click", (e) => {
+    console.log("inglés");
     changeLanguage(e.target.parentElement.dataset.language);
   });
   /*flags.ES*/
@@ -39,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
   flagsElement_es.addEventListener("click", (e) => {
+    console.log("español");
     changeLanguage_es(e.target.parentElement.dataset.language);
   });
 }); /*end line*/
