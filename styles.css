@@ -4,6 +4,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
 /*-----------------*/
 header {
   position: relative;
@@ -18,6 +21,25 @@ header {
   color: black;
   background-color: white;
   animation: changeColor 4s infinite alternate;
+}
+.myMenu {
+  position: sticky;
+  top: 0px;
+  z-index: 5;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px) saturate(150%) contrast(80%) brightness(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%) contrast(80%)
+    brightness(120%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-family: "Merriweather Sans";
+  font-style: italic;
+  font-weight: bolder;
+}
+.nav-link.active {
+  color: white !important;
+}
+.nav-link {
+  color: black !important;
 }
 .video-first {
   margin: auto;
@@ -84,5 +106,12 @@ header {
   100% {
     background-color: white;
     color: black;
+  }
+}
+@media (max-width: 630px) {
+  .text_entry {
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-size: 15px;
   }
 }
