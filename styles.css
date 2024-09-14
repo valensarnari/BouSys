@@ -1,5 +1,10 @@
+/*---------fonts----------------*/
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Meddon&display=swap");
+
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+/*-----------------*/
 header {
   position: relative;
   width: 100%;
@@ -28,12 +33,17 @@ header {
   margin: 30px;
 }
 .text_entry {
-  text-align: justify;
   position: relative;
   margin-top: 50px;
   margin-bottom: 30px;
   width: 50%;
   left: 25%;
+  font-family: "Meddon", cursive;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 28px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  text-align: justify;
 }
 .services-card h3 {
   text-align: center;
@@ -44,17 +54,17 @@ header {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-  width: 10%;
+  width: 70px;
   position: relative;
   top: 0px;
   box-sizing: border-box;
   background-size: cover;
-  border: solid black;
   z-index: 10;
 }
-.flags img {
-  width: 90px;
-  height: 40px;
+.flags_item,
+.flags_item_es img {
+  width: 26px;
+  /*height: 40px;*/
   object-fit: contain;
   cursor: pointer;
 }
@@ -65,7 +75,7 @@ header {
   display: flex;
   flex-direction: row;
 }
-
+/*----------------pseudo - class-----------------*/
 @keyframes changeColor {
   0% {
     background-color: black;

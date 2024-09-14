@@ -1,5 +1,12 @@
 {
     "presentacion":{
         "texto":"Welcome to Hotel Continental, where elegance and comfort meet. Enjoy our first-class facilities and exceptional service in the heart of the city. Your satisfaction is our priority."
-    }
+    },
+    "nav":{
+    "login":"Login",
+    "services":"Services",
+    "receptions":"Receptions",
+    "recommendations":"Recommendations"
+}
+
 }
