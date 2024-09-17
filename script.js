@@ -1,3 +1,4 @@
+/*----------------------------TRANSLATOR---------------------------------*/
 document.addEventListener("DOMContentLoaded", () => {
   const elements = document.querySelectorAll(".hidden");
   const observer = new IntersectionObserver((entries) => {
@@ -41,4 +42,4 @@ document.addEventListener("DOMContentLoaded", () => {
   flagsElement_es.addEventListener("click", (e) => {
     changeLanguage_es(e.target.parentElement.dataset.language);
   });
-}); /*end line*/
+}); /*-----------------------------------------end line---------------------------*/
