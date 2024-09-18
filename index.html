@@ -12,10 +12,11 @@
 </head>
 
 <body class="container-fluid">
+    <!-------------------------------------------------------Titulo top------------------------------>
     <header class="row top-title">
         <h1>C o n t i n e n t a l&nbsp&nbsp&nbsp&nbsp&nbsp H o t e l</h1>
     </header>
-    <!----MENÚ-->
+    <!---------------------------------------------MENÚ------------------------------------------------------------->
     <ul class="nav nav-pills myMenu">
         <div class="flags">
             <div id="flags" class="flags_item" data-language="en"><img src="../icons/gb.svg"></div>
@@ -34,7 +35,7 @@
             <a class="nav-link" href="#" data-section="nav" data-value="recommendations">Recomendaciones</a>
         </li>
     </ul>
-    <!---texto 1-->
+    <!------------------------------------texto 1------------------------------------------------------------------>
     <div class="row text_entry" data-section="presentacion" data-value="texto">
         <p>Bienvenido al Hotel Continental, donde la elegancia y el confort se unen. Disfruta de nuestras
             instalaciones de primera clase y un servicio excepcional en el corazón de la ciudad. Tu satisfacción
@@ -42,7 +43,7 @@
             nuestra prioridad.</p>
     </div>
 
-    <!---IMAGEN O VIDEO PRINCIPAL-->
+    <!-----------------------------------------IMAGEN O VIDEO PRINCIPAL--------------------------------------------->
     <div class="row ratio ratio-16x9 video-first">
         <video src="../video/video_pool.mp4" autoplay muted loop></video>
     </div>
@@ -52,7 +53,7 @@
             ipsa officiis libero a illum necessitatibus suscipit. Fugit nesciunt hic omnis ex aperiam sequi nam natus?
         </p>
     </div>
-    <!----CARROUSEL-->
+    <!----------------------------------------------CARROUSEL--------------------------------------------------->
     <div class="row ">
         <div id="carouselExampleCaptions" class="carousel slide " data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -100,7 +101,7 @@
             ipsa officiis libero a illum necessitatibus suscipit. Fugit nesciunt hic omnis ex aperiam sequi nam natus?
         </p>
     </div>
-    <!--CARDS HABITACIONES-->
+    <!-----------------------------------------CARDS HABITACIONES----------------------------------------------------->
     <div class="row services-card">
         <h3>Nuestros servicios.</h3>
         <div class="card" style="width: 14rem;">
@@ -141,7 +142,7 @@
         </div>
 
     </div>
-    <!---reservation-->
+    <!-----------------------------------------reservation--------------------------------------------------------->
     <div class="row reservation">
         <h3>RESERVACIONES. DISPONIBILIDAD.</h3>
         <form>
@@ -162,7 +163,33 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-    <!--- slider con marcar-->
+    <!--------------------------------------------------Intersection Observer------------------------------->
+    <div class="container-fluid observer">
+        <section class="hidden" id="imagen01">
+            <h1>Lorem ipsum dolor sit amet.</h1>
+
+            <img src="../images/room/bathroom.jpg">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet debitis iure odio
+                inventore
+                cum non! Eaque aut nihil velit optio quis iusto quibusdam vel laborum, laudantium exercitationem
+                incidunt quaerat voluptatum a mollitia tempore praesentium voluptatibus. Maxime autem numquam
+                fugiat!</p>
+        </section>
+        <div class="hidden" id="imagen02"><img src="../images/room/room-2.jpg">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias adipisci at aut quo, dolor fugiat
+                officia rerum nihil impedit numquam consectetur quis vero aperiam. Dolore hic voluptatem
+                accusantium
+                qui repellat dicta deserunt impedit sit porro temporibus fuga magnam dolorem possimus,
+                cupiditate
+                molestias quia ipsam perferendis enim minus. Earum natus nulla saepe suscipit libero provident
+                consectetur explicabo maiores facere voluptatum odit, consequuntur labore assumenda atque sequi
+                minus porro deleniti placeat. Ut ab iste eaque consequatur odit odio atque ipsam reiciendis,
+                fuga
+                placeat aperiam voluptatibus quo modi dolorem temporibus dolor eveniet saepe voluptas rerum
+                distinctio aspernatur! Tempore hic inventore animi! Quos, explicabo.</p>
+        </div>
+    </div>
+    <!-------------------------------- slider con marcas---------------------------------------------->
     <div class="row justify-content slider">
         <h3>Las marcas que nos acompañan</h3>
         <div class="col slide-track">
@@ -174,7 +201,7 @@
 
         </div>
     </div>
-    <!---footer-->
+    <!-------------------------------------footer----------------------------------------------------->
     <footer class="bg-dark text-white pt-4">
         <div class="container">
             <div class="row">

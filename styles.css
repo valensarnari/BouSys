@@ -32,7 +32,7 @@ header {
     brightness(120%);
   border: 1px solid rgba(255, 255, 255, 0.3);
   font-family: "Merriweather Sans";
-  font-style: italic;
+  font-style: normal;
   font-weight: bolder;
 }
 .nav-link.active {
@@ -103,10 +103,8 @@ header {
   height: 300px;
   margin: auto;
   overflow: visible;
-  border: solid black 1px;
 }
 .slider .slide-track {
-  border: solid red 1px;
   width: 90vw;
   height: 200px;
   display: flex;
@@ -117,7 +115,6 @@ header {
   -webkit-animation: scroll 13s linear infinite;
 }
 .slider .slide {
-  border: solid green 1px;
   width: 200px;
   height: fit-content;
   margin: 0 20px;
@@ -125,6 +122,28 @@ header {
 
 .slider .slide img {
   width: 100%;
+}
+/*-----------------------int observer------------------*/
+.hidden {
+  margin-top: 10px;
+}
+.hidden p {
+  margin-bottom: 30px;
+}
+.hidden img {
+  width: 500px;
+  height: 300px;
+  object-fit: contain;
+}
+.hidden {
+  opacity: 0;
+  transform: scale(0.8);
+
+  transition: all 3s ease-out;
+}
+.mostrar {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /*----------------pseudo - class-----------------*/

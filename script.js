@@ -43,3 +43,18 @@ document.addEventListener("DOMContentLoaded", () => {
     changeLanguage_es(e.target.parentElement.dataset.language);
   });
 }); /*-----------------------------------------end line---------------------------*/
+/*------------------Intersection Observer-------------- */
+document.addEventListener("DOMContentLoaded", () => {
+  const elements = document.querySelectorAll(".hidden");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("mostrar");
+      } else {
+        entry.target.classList.remove("mostrar");
+      }
+    });
+  });
+
+  elements.forEach((element) => observer.observe(element));
+});
