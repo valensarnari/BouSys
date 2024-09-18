@@ -32,7 +32,7 @@ header {
     brightness(120%);
   border: 1px solid rgba(255, 255, 255, 0.3);
   font-family: "Merriweather Sans";
-  font-style: italic;
+  font-style: normal;
   font-weight: bolder;
 }
 .nav-link.active {
@@ -97,7 +97,66 @@ header {
   display: flex;
   flex-direction: row;
 }
+.slider {
+  position: relative;
+  width: 90vw;
+  height: 300px;
+  margin: auto;
+  overflow: hidden;
+}
+.slider .slide-track {
+  width: 90vw;
+  height: 200px;
+  display: flex;
+  position: absolute;
+  left: 100%;
+  top: 40px;
+  animation: scroll 13s linear infinite;
+  -webkit-animation: scroll 13s linear infinite;
+}
+.slider .slide {
+  width: 200px;
+  height: fit-content;
+  margin: 0 20px;
+}
+
+.slider .slide img {
+  width: 100%;
+}
+/*-----------------------int observer------------------*/
+.hidden {
+  margin-top: 10px;
+}
+.hidden p {
+  margin-bottom: 30px;
+}
+.hidden img {
+  width: 500px;
+  height: 300px;
+  object-fit: contain;
+}
+.hidden {
+  opacity: 0;
+  transform: scale(0.8);
+
+  transition: all 3s ease-out;
+}
+.mostrar {
+  opacity: 1;
+  transform: scale(1);
+}
+
 /*----------------pseudo - class-----------------*/
+@keyframes scroll {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
 @keyframes changeColor {
   0% {
     background-color: black;
@@ -109,6 +168,7 @@ header {
   }
 }
 @media (max-width: 630px) {
+  /*Samsung S20*/
   .text_entry {
     flex-wrap: wrap;
     flex-direction: column;
