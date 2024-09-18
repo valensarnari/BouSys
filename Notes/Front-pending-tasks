@@ -1,0 +1,21 @@
+- determinar si es necesario otro archivo en la pág o mejor scroll infinito/ one-page.
+- agregar textos (luego al json de su idioma) => repartir las imágenes y videos.
+- agregar img al carousel/ al intersection observer
+- Modificar el input para reservas, ver qué datos se piden.
+- cambiar icono coca-cola del slider. Mejorar la transición.
+- mejorar el footer.
+- agregarle texo tipo card al video.
+- falta la sección calificaciones, recomendaciones.
+
+- se podría agregar una ventana al cargar web informando que el hotel
+  fue seleccionado como los mejores.... bla bla.
+  con librería popover de bootstrap, al load.
+  Después la librería sirve para los mensajes de correcto o incorrecto
+  ingreso y esas cosas.
+
+- definir modelado lado recepcio y gerente.
+- Recordar que no es bien visto por la profe, tampoco por Ingerto:
+  hacer 4 botones que digan abm esto, abm otro. Tiene que ir todo
+  en una de forma fluida, no 1 por archivo.
+- definir modelado cliente ya registrado. Se podría hacer otra
+  diferente para los vips.
