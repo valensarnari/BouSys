@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   elements.forEach((element) => observer.observe(element));
-  /*flags.UK*/
+  /*------------------------------------flags.UK-----------------------------------*/
   const flagsElement = document.getElementById("flags");
   const textsToChange = document.querySelectorAll("[data-section]");
   const changeLanguage = async (language) => {
