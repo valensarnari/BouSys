@@ -1,4 +1,4 @@
-/*---------fonts----------------*/
+/*------------------------------------fonts----------------*/
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Meddon&display=swap");
 
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
@@ -7,69 +7,29 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
-/*-----------------*/
+@import url("https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap");
+
+/*--------------------------------------Header--------------------*/
 header {
   position: relative;
   width: 100%;
+  height: auto;
   display: flex;
   text-align: center;
   align-items: center;
+  left: 10px;
 }
 .top-title h1 {
-  width: 100%;
   font-family: "Playfair Display", serif;
   color: black;
   background-color: white;
   animation: changeColor 4s infinite alternate;
 }
-.myMenu {
-  position: sticky;
-  top: 0px;
-  z-index: 5;
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px) saturate(150%) contrast(80%) brightness(120%);
-  -webkit-backdrop-filter: blur(10px) saturate(150%) contrast(80%)
-    brightness(120%);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  font-family: "Merriweather Sans";
-  font-style: normal;
-  font-weight: bolder;
+.top-title {
+  display: flex;
+  flex-direction: row;
 }
-.nav-link.active {
-  color: white !important;
-}
-.nav-link {
-  color: black !important;
-}
-.video-first {
-  margin: auto;
-  width: 80%;
-  height: auto;
-}
-.carousel-first {
-  margin: auto;
-  width: 80%;
-  height: auto;
-}
-.card {
-  margin: 30px;
-}
-.text_entry {
-  position: relative;
-  margin-top: 50px;
-  margin-bottom: 30px;
-  width: 50%;
-  left: 25%;
-  font-family: "Meddon", cursive;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 28px;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  text-align: justify;
-}
-.services-card h3 {
-  text-align: center;
-}
+/*--------------------------------------FLAGS----------------------------------*/
 .flags {
   position: relative;
   display: flex;
@@ -93,10 +53,65 @@ header {
 /*.flags:hover {
   cursor: pointer;
 }*/
-.top-title {
-  display: flex;
-  flex-direction: row;
+/*-------------------------------------------------------menu----------------------------------*/
+.myMenu {
+  position: sticky;
+  top: 0px;
+  z-index: 5;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px) saturate(150%) contrast(80%) brightness(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%) contrast(80%)
+    brightness(120%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-family: "Merriweather Sans";
+  font-style: normal;
+  font-weight: bolder;
 }
+.nav-link.active {
+  color: white !important;
+}
+.nav-link {
+  color: black !important;
+}
+.menu-reservations {
+  left: 0px;
+}
+/*--------------------------------pool video-----------------------------------------------------*/
+.video-first {
+  margin: auto;
+  width: 100%;
+  height: auto;
+}
+/*-------------------------------text entry-----------------------------*/
+.text_entry {
+  position: relative;
+  margin-top: -150px;
+  margin-bottom: 30px;
+  width: 80%;
+  left: 10%;
+  font-family: "GFS Didot", serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 28px;
+  color: white;
+  text-align: justify;
+  z-index: 1;
+}
+/*--------------------------carousel--------------------------*/
+.carousel-first {
+  margin: auto;
+  width: auto;
+  height: 530px;
+  margin-bottom: 10px;
+}
+.carousel-first img {
+  height: 530px;
+}
+/*---------------------------------------------------------------------*/
+.card {
+  margin: 30px;
+}
+/*-------------------------------------------slider--------------------------------------------*/
 .slider {
   position: relative;
   width: 90vw;
