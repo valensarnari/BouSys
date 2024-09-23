@@ -10,6 +10,7 @@ CREATE TABLE Cliente (
     Nacionalidad TEXT NOT NULL,
     Sexo TEXT NOT NULL,
     Email TEXT NOT NULL,
+    Telefono TEXT NOT NULL,
     Contrasena TEXT NOT NULL,
     Fecha_Registro DATETIME NOT NULL,
     Puntos INT NOT NULL DEFAULT 0
