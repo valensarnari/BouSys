@@ -1,0 +1,77 @@
+CREATE DATABASE IF NOT EXISTS Hotel;
+USE Hotel;
+
+CREATE TABLE Cliente (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre TEXT NOT NULL,
+    Apellido TEXT NOT NULL,
+    Fecha_Nacimiento DATE NOT NULL,
+    Documento INT NOT NULL,
+    Nacionalidad TEXT NOT NULL,
+    Sexo TEXT NOT NULL,
+    Email TEXT NOT NULL,
+    Telefono TEXT NOT NULL,
+    Contrasena TEXT NOT NULL,
+    Fecha_Registro DATETIME NOT NULL,
+    Puntos INT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE Reserva_Total (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ID_Cliente INT NOT NULL,
+    Estado TEXT NOT NULL,
+    Fecha_Inicio DATE NOT NULL,
+    Fecha_Fin DATE NOT NULL,
+    Check_In DATETIME NOT NULL,
+    Check_Out DATETIME NOT NULL,
+    Fecha_Reserva DATETIME NOT NULL,
+    Valor_Total DECIMAL NOT NULL,
+    FOREIGN KEY (ID_Cliente) REFERENCES Cliente(id)
+);
+
+CREATE TABLE Pago (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    Fecha_Pago DATETIME NOT NULL,
+    Medio_De_Pago TEXT NOT NULL,
+    Descuento DECIMAL NOT NULL,
+    Aumento DECIMAL NOT NULL,
+    Total DECIMAL NOT NULL,
+    ID_Reserva INT NOT NULL,
+    FOREIGN KEY (ID_Reserva) REFERENCES Reserva_Total(id)
+);
+
+CREATE TABLE Habitacion (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    Numero_Habitacion INT NOT NULL,
+    Precio_Por_Noche DECIMAL NOT NULL,
+    Estado TEXT NOT NULL,
+    Puntos INT NOT NULL,
+    Cantidad_Adultos_Maximo INT NOT NULL,
+    Cantidad_Ninos_Maximo INT NOT NULL
+);
+
+CREATE TABLE Usuario_empleados (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre TEXT NOT NULL,
+    Email TEXT NOT NULL,
+    Contrasena TEXT NOT NULL,
+    Jerarquia TEXT NOT NULL
+);
+
+CREATE TABLE Calificaciones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    Calificacion INT NOT NULL,
+    Comentario LONGTEXT NOT NULL,
+    ID_Reserva INT NOT NULL,
+    FOREIGN KEY (ID_Reserva) REFERENCES Reserva_Total(id)
+);
+
+CREATE TABLE Reserva_Habitacion (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ID_Reserva INT NOT NULL,
+    ID_Habitacion INT NOT NULL,
+    Cantidad_Adultos INT NOT NULL,
+    Cantidad_Ninos INT NOT NULL,
+    FOREIGN KEY (ID_Reserva) REFERENCES Reserva_Total(id),
+    FOREIGN KEY (ID_Habitacion) REFERENCES Habitacion(id)
+);
