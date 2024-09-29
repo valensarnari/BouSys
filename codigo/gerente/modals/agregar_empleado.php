@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="actions/insertar.php" method="POST">
+                <form action="actions/insertar_empleado.php" method="POST">
                     <div class="mb-3">
                         <label class="form-label">Nombre:</label>
                         <input class="form-control" type="text" name="nombre" id="nombre">
