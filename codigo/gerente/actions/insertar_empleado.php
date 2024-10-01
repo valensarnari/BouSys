@@ -4,7 +4,7 @@ include ('../../conexion.php');
 
 $nombre = $_POST['nombre'];
 $email = $_POST['email'];
-$contrasena = $_POST['contrasena'];
+$contrasena = password_hash($_POST['contrasena'], PASSWORD_DEFAULT);
 $rol = $_POST['rol'];
 
 $insert = "INSERT INTO `usuario_empleados` (`Nombre`, `Email`, `Contrasena`, `Jerarquia`) VALUES ('$nombre', '$email', '$contrasena', '$rol');";

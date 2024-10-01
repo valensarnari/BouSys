@@ -5,7 +5,7 @@ include ('../../conexion.php');
 $id = $_POST['id'];
 $nombre = $_POST['nombre'];
 $email = $_POST['email'];
-$contrasena = $_POST['contrasena'];
+$contrasena = password_hash($_POST['contrasena'], PASSWORD_DEFAULT);
 $rol = $_POST['rol'];
 
 $update = "UPDATE `usuario_empleados` SET `Nombre` = '$nombre', `Email` = '$email', `Contrasena` = '$contrasena', `Jerarquia` = '$rol' WHERE `usuario_empleados`.`id` = $id";
