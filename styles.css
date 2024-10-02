@@ -18,6 +18,7 @@ header {
   text-align: center;
   align-items: center;
   left: 10px;
+  margin-bottom: 0%;
 }
 .top-title h1 {
   font-family: "Playfair Display", serif;
@@ -71,10 +72,24 @@ header {
   color: white !important;
 }
 .nav-link {
-  color: black !important;
+  color: black;
 }
 .menu-reservations {
   left: 0px;
+}
+/*---------------------------------------MENU PAGES-----------------------------------*/
+.menuPages {
+  margin-top: 0%;
+  position: sticky;
+  top: 0px;
+  z-index: 5;
+  background-color: rgb(235, 235, 202);
+  font-family: "Merriweather Sans";
+  font-style: normal;
+  font-weight: bolder;
+}
+.nav-link.disabled {
+  color: rgb(148, 144, 144);
 }
 /*----------------------------------reservations------------------------------------*/
 nav-link right {
@@ -171,7 +186,7 @@ nav-link right {
   opacity: 1;
   transform: scale(1);
 }
-
+/*--------------------------------------------------------------------------------------*/
 /*----------------pseudo - class-----------------*/
 @keyframes scroll {
   0% {
