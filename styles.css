@@ -165,7 +165,7 @@ nav-link right {
   width: 100%;
 }
 /*-----------------------int observer------------------*/
-.hidden {
+/*.hidden {
   margin-top: 10px;
 }
 .hidden p {
@@ -175,7 +175,7 @@ nav-link right {
   width: 500px;
   height: 300px;
   object-fit: contain;
-}
+}*/
 .hidden {
   opacity: 0;
   transform: scale(0.8);
@@ -186,6 +186,73 @@ nav-link right {
   opacity: 1;
   transform: scale(1);
 }
+/*----------------------------------- TXT SUBRAYADO MEDIDA HAB SIMPLE VER LEFT RIGHT PARA LAS OTRAS  -------------------------------------------*/
+.subrayado {
+  display: inline-block;
+  position: relative;
+}
+.subrayado::before,
+.subrayado::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  background: black;
+  top: 50%;
+  width: 100px; /* Ajusta el ancho del subrayado */
+}
+.subrayado::before {
+  left: 400px; /* Ajusta la posición del subrayado antes de la palabra */
+}
+.subrayado::after {
+  right: 400px; /* Ajusta la posición del subrayado después de la palabra */
+}
+.room-title {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  font-family: "GFS Didot", serif;
+  font-size: 25px;
+}
+.room-title.subrayado::before {
+  left: 103px;
+}
+.room-title.subrayado::after {
+  right: 103px;
+}
+/*-------------------------------  TXT ABOVE VIDEO------------------------------------------------------*/
+.txt-room-1 {
+  position: relative;
+  margin-top: -300px;
+  margin-bottom: 30px;
+  width: 80%;
+  left: 10%;
+  font-family: "GFS Didot", serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 28px;
+  color: white;
+  text-align: justify;
+  z-index: 1;
+}
+/*---------------------------------------R O O M   DESCRIPTION-------------------------*/
+.room-description {
+  width: 75%;
+  margin-top: 30px;
+  margin-left: 15%;
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
+  font-style: normal;
+}
+/*-------------------------video service room----------------------------------------------*/
+.video-container-service-room {
+  max-width: 600px; /* Ajusta el ancho máximo del video */
+  margin: auto; /* Centra el video horizontalmente */
+}
+/*---------------------container photos------------------------------------------*/
+
 /*--------------------------------------------------------------------------------------*/
 /*----------------pseudo - class-----------------*/
 @keyframes scroll {
