@@ -250,8 +250,11 @@ nav-link right {
   max-width: 600px; /* Ajusta el ancho máximo del video */
   margin: auto; /* Centra el video horizontalmente */
 }
-/*---------------------container photos------------------------------------------*/
-
+/*---------------------txt. opinions------------------------------------------*/
+.txt-opinions {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+}
 /*--------------------------------------------------------------------------------------*/
 /*----------------pseudo - class-----------------*/
 @keyframes scroll {
