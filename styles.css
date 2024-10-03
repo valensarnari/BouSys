@@ -165,17 +165,6 @@ nav-link right {
   width: 100%;
 }
 /*-----------------------int observer------------------*/
-/*.hidden {
-  margin-top: 10px;
-}
-.hidden p {
-  margin-bottom: 30px;
-}
-.hidden img {
-  width: 500px;
-  height: 300px;
-  object-fit: contain;
-}*/
 .hidden {
   opacity: 0;
   transform: scale(0.8);
@@ -206,6 +195,7 @@ nav-link right {
 .subrayado::after {
   right: 400px; /* Ajusta la posición del subrayado después de la palabra */
 }
+/*--------------------------------------room title------------------------*/
 .room-title {
   position: relative;
   width: 100%;
@@ -241,6 +231,15 @@ nav-link right {
 .room-description {
   width: 75%;
   margin-top: 30px;
+  margin-left: 15%;
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
+  font-style: normal;
+}
+/*---------------------------------------Resto   DESCRIPTION-------------------------*/
+.resto-description {
+  width: 75%;
+  margin-top: 0px;
   margin-left: 15%;
   font-family: "Poppins", sans-serif;
   font-weight: bolder;
