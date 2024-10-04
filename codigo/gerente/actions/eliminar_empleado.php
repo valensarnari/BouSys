@@ -4,7 +4,7 @@ include ('../../conexion.php');
 
 $id = $_POST['id'];
 
-$delete = "DELETE FROM `usuario_empleados` WHERE `id` = $id;";
+$delete = "UPDATE `usuario_empleados` SET `Activo` = 0 WHERE `id` = $id;";
 $query = mysqli_query($conexion, $delete);
 
 if(!$query) {

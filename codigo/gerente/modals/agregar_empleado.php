@@ -28,8 +28,8 @@
                         </select>
                     </div>
                     <div class="my-3">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         <input class="btn btn-primary my-1" type="submit" value="Guardar">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     </div>
                 </form>
             </div>
