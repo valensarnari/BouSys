@@ -27,7 +27,7 @@ include("../conexion.php");
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
-                        <a href="../index.html" class="nav-link align-middle px-0">
+                        <a href="../../" class="nav-link align-middle px-0">
                             <span class="ms-1 d-none d-sm-inline">
                                 <i class="fa-solid fa-house"></i> Volver a inicio
                             </span>
@@ -44,6 +44,13 @@ include("../conexion.php");
                         <a href="listado_clientes.php" class="nav-link align-middle px-0">
                             <span class="ms-1 d-none d-sm-inline">
                                 <i class="fa-solid fa-address-book"></i> Gestión de clientes
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reporte.php" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">
+                                <i class="fa-solid fa-chart-simple"></i> Reporte de ocupación
                             </span>
                         </a>
                     </li>
@@ -79,12 +86,12 @@ include("../conexion.php");
                         <tbody>
                             <?php
                             // Parámetro de paginación
-                            $por_pagina = 1; // Número de registros por página
+                            $por_pagina = 10; // Número de registros por página
                             $pagina_actual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
                             $offset = ($pagina_actual - 1) * $por_pagina;
 
                             // Consulta SQL con LIMIT y OFFSET
-                            $select = "SELECT id, Nombre, Email, Contrasena, Jerarquia FROM usuario_empleados ORDER BY id DESC LIMIT $por_pagina OFFSET $offset;";
+                            $select = "SELECT id, Nombre, Email, Contrasena, Jerarquia FROM usuario_empleados WHERE Activo = 1 ORDER BY id DESC LIMIT $por_pagina OFFSET $offset;";
                             $query = mysqli_query($conexion, $select);
 
                             // Mostrar resultados en la tabla
