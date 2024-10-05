@@ -1,14 +1,37 @@
+<!--------------------------------------- MERCADO PAGO --------------------------------------->
+<?php
+    require __DIR__.'/vendor/autoload.php';
+    $access_token = 'TEST-5873219368709518-100511-fddcbcfa14ab02bac2c5c8f75823d22f-1433164475';
+    MercadoPago\SDK::setAccessToken($access_token);
+    $preference = new MercadoPago\Preference();
+
+    $preference->back_urls = array(
+        "success" => "http://localhost/BouSys/index.html",
+        "failure" => "http://localhost/BouSys/index.html",
+        "pending" => "http://localhost/BouSys/index.html"
+    );
+    
+    $productos=[];
+    $item= new MercadoPago\Item();
+    $item->title = 'NOMBRE HABITACION';
+    $item->description = 'DESCRIPCION HABITACION';
+    $item->quantity = 1;
+    $item->unit_price = 1000;
+    array_push($productos, $item);
+
+    $preference->items = $productos;
+    $preference->save();
+?>
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="../styles.css" rel="stylesheet">
-    <script src="../script.js"></script>
-    <title>Receptions</title>
+    <script src="../script.js"></script> 
+    <title>Reservas</title>
 </head>
 
 <body class="container-fluid">
@@ -67,6 +90,7 @@
                 <label class="row room-description" for="datetime">Selecciona fecha y hora:</label>
                 <input class="row room-description" type="datetime-local" id="datetime" name="datetime">
             </form>
+            <div class="cho-container"></div>
         </div>
 
 
@@ -105,6 +129,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    
+    <!--------------------------- script mercado pago --------------------------->
+    
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script>
+        const mp = new MercadoPago('TEST-57ec9be1-bb4b-461d-8b3d-7e1dd72a76f9', {
+            locale: 'es-AR'
+        });
+        const checkout = mp.checkout({
+            preference: {
+                id: '<?php echo $preference->id; ?>',
+            },
+            render: {
+                container: '.cho-container',
+                label: 'Pagar',
+            },
+        });
+    </script>
+
 </body>
 
 </html>
