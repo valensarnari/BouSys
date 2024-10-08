@@ -236,6 +236,30 @@ nav-link right {
   font-weight: bolder;
   font-style: normal;
 }
+/*------------------------------------------GALLERY------------------------------------*/
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, auto);
+  gap: 10px;
+  padding: 20px;
+}
+.grid-item {
+  width: 100%;
+  height: auto;
+}
+.grid-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.grid-item:first-child {
+  grid-row: span 2;
+}
+.grid-item:nth-last-child(2),
+.grid-item:last-child {
+  grid-row: 3;
+}
 /*---------------------------------------Resto   DESCRIPTION-------------------------*/
 .resto-description {
   width: 75%;
