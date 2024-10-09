@@ -5,24 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
      rel="stylesheet"
-     href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
-   />
+     href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"></link>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
  
-    <title>Document</title>
+    <title>Registrarse</title>
 </head>
 <body>
-    <form id="loginClientes">
+    <form action="loginClientes.php" method="post">
 
         
             <input type="text" name="nombre" placeholder="Nombre" class="input">
 
             <input type="text" name="apellido" placeholder="Apellido" class="input">
 
-            <input type="date" name="fecha_nacimiento" class="input">
-
             <input type="text" name="documento" placeholder="Documento" class="input">
-
 
             <select name="nacionalidad" class="input">
                 <option value="AF">Afganistán</option>
@@ -267,19 +263,22 @@
                 <option value="/">Prefiero no especificar</option>
             </select>
 
-            <input id="phone" type="tel" name="phone" />    
+            <input type="date" name="nacimiento" class="input">
 
-            <input type="email" name="mail" placeholder="Email" class="input">
+            <input type="email" name="email" placeholder="Email" class="input">
 
-            <input type="password" name="contraseña" placeholder="Contraseña" class="input">
+            <input id="phone" type="tel" name="telefono" />    
 
-            <input type="submit" value="Registrarse" class="btn custom-btn btn-form">
+            <input type="password" name="contrasena" placeholder="Contraseña" class="input">
 
-            <div id="respuesta"></div>   
+            <input type="submit" value="Registrarse">
 
-    </form>
-
-    <script>
+     </form>
+  
+     <div id="respuesta"></div>   
+  
+<!--
+  <script>
         $(document).ready(function(){
             $('#loginClientes').on('submit', function(event) {
                 event.preventDefault();
@@ -288,8 +287,11 @@
 
                 $.ajax({
             type: 'POST',
-            url: 'loginClientes.php', // Ruta al archivo PHP que procesará los datos
+            url: 'loginCliente.php', // Ruta al archivo PHP que procesará los datos
             data: formData,
+            success: function(response) {  // Función que ejecuta si la solicitud es exitosa
+                $('#respuesta').text(response).css('display', 'block');  // Muestra la respuesta en el elemento con id 'respuesta'
+            },
                     error: function(xhr, status, error) {
                         $('#respuesta').text('Error en la solicitud: ' + error).css('display', 'block');
                     }
@@ -297,7 +299,7 @@
             });
         });
     </script>
-
+-->
 </body>
 <script>
     const phoneInputField = document.querySelector("#phone");
