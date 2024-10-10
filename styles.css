@@ -169,7 +169,7 @@ nav-link right {
   opacity: 0;
   transform: scale(0.8);
 
-  transition: all 3s ease-out;
+  transition: all 2s ease-out;
 }
 .mostrar {
   opacity: 1;
@@ -211,6 +211,9 @@ nav-link right {
 }
 .room-title.subrayado::after {
   right: 103px;
+}
+.room-cards {
+  margin-top: 37px;
 }
 /*-------------------------------  TXT ABOVE VIDEO------------------------------------------------------*/
 .txt-room-1 {
