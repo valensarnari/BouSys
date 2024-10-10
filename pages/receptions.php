@@ -32,6 +32,7 @@ $preference->save();
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="../styles.css" rel="stylesheet">
     <script src="../script.js"></script>
+    <link rel="icon" type="image/svg+xml" href="icons/calendar-check.svg">
     <title>Reservas</title>
 </head>
 
