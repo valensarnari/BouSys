@@ -18,6 +18,7 @@ header {
   text-align: center;
   align-items: center;
   left: 10px;
+  margin-bottom: 0%;
 }
 .top-title h1 {
   font-family: "Playfair Display", serif;
@@ -71,10 +72,24 @@ header {
   color: white !important;
 }
 .nav-link {
-  color: black !important;
+  color: black;
 }
 .menu-reservations {
   left: 0px;
+}
+/*---------------------------------------MENU PAGES-----------------------------------*/
+.menuPages {
+  margin-top: 0%;
+  position: sticky;
+  top: 0px;
+  z-index: 5;
+  background-color: rgb(235, 235, 202);
+  font-family: "Merriweather Sans";
+  font-style: normal;
+  font-weight: bolder;
+}
+.nav-link.disabled {
+  color: rgb(148, 144, 144);
 }
 /*----------------------------------reservations------------------------------------*/
 nav-link right {
@@ -151,27 +166,123 @@ nav-link right {
 }
 /*-----------------------int observer------------------*/
 .hidden {
-  margin-top: 10px;
-}
-.hidden p {
-  margin-bottom: 30px;
-}
-.hidden img {
-  width: 500px;
-  height: 300px;
-  object-fit: contain;
-}
-.hidden {
   opacity: 0;
   transform: scale(0.8);
 
-  transition: all 3s ease-out;
+  transition: all 2s ease-out;
 }
 .mostrar {
   opacity: 1;
   transform: scale(1);
 }
-
+/*----------------------------------- TXT SUBRAYADO MEDIDA HAB SIMPLE VER LEFT RIGHT PARA LAS OTRAS  -------------------------------------------*/
+.subrayado {
+  display: inline-block;
+  position: relative;
+}
+.subrayado::before,
+.subrayado::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  background: black;
+  top: 50%;
+  width: 100px; /* Ajusta el ancho del subrayado */
+}
+.subrayado::before {
+  left: 400px; /* Ajusta la posición del subrayado antes de la palabra */
+}
+.subrayado::after {
+  right: 400px; /* Ajusta la posición del subrayado después de la palabra */
+}
+/*--------------------------------------room title------------------------*/
+.room-title {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  font-family: "GFS Didot", serif;
+  font-size: 25px;
+}
+.room-title.subrayado::before {
+  left: 103px;
+}
+.room-title.subrayado::after {
+  right: 103px;
+}
+.room-cards {
+  margin-top: 37px;
+}
+/*-------------------------------  TXT ABOVE VIDEO------------------------------------------------------*/
+.txt-room-1 {
+  position: relative;
+  margin-top: -300px;
+  margin-bottom: 30px;
+  width: 80%;
+  left: 10%;
+  font-family: "GFS Didot", serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 28px;
+  color: white;
+  text-align: justify;
+  z-index: 1;
+}
+/*---------------------------------------R O O M   DESCRIPTION-------------------------*/
+.room-description {
+  width: 75%;
+  margin-top: 30px;
+  margin-left: 15%;
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
+  font-style: normal;
+}
+/*------------------------------------------GALLERY------------------------------------*/
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, auto);
+  gap: 10px;
+  padding: 20px;
+}
+.grid-item {
+  width: 100%;
+  height: auto;
+}
+.grid-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.grid-item:first-child {
+  grid-row: span 2;
+}
+.grid-item:nth-last-child(2),
+.grid-item:last-child {
+  grid-row: 3;
+}
+/*---------------------------------------Resto   DESCRIPTION-------------------------*/
+.resto-description {
+  width: 75%;
+  margin-top: 0px;
+  margin-left: 15%;
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
+  font-style: normal;
+}
+/*-------------------------video service room----------------------------------------------*/
+.video-container-service-room {
+  max-width: 600px; /* Ajusta el ancho máximo del video */
+  margin: auto; /* Centra el video horizontalmente */
+}
+/*---------------------txt. opinions------------------------------------------*/
+.txt-opinions {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+}
+/*--------------------------------------------------------------------------------------*/
 /*----------------pseudo - class-----------------*/
 @keyframes scroll {
   0% {

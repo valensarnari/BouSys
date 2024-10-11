@@ -8,6 +8,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="styles.css" rel="stylesheet">
     <script src="script.js"></script>
+    <link rel="icon" type="image/svg+xml" href="icons/suitcase.png">
     <title>Home</title>
 </head>
 
@@ -29,7 +30,7 @@
             </div>
             <div class="carousel-inner carousel-first">
                 <div class="carousel-item active">
-                    <img src="../images/pool-2.jpg" class="d-block w-100" alt="...">
+                    <img src="images/pool-2.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Relax...</h5>
                         <p>Disfruta de nuestra espectacular piscina en el Hotel Continental, ideal para relajarte y
@@ -37,7 +38,7 @@
                     </div>
                 </div>
                 <div class="carousel-item ">
-                    <img src="../images/mujer_ventana.jpg" class="d-block w-100" alt="...">
+                    <img src="images/mujer_ventana.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Comodidad</h5>
                         <p>Disfruta de la máxima comodidad en el Hotel Continental, donde cada detalle está diseñado
@@ -45,7 +46,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="../images/pileta_cielo.jpg" class="d-block w-100" alt="...">
+                    <img src="images/pileta_cielo.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Noche...</h5>
                         <p>Sumérgete en la vibrante noche porteña en el Hotel Continental, donde la energía de Buenos
@@ -71,31 +72,40 @@
     <!---------------------------------------------MENÚ------------------------------------------------------------->
     <ul class="nav nav-pills myMenu">
         <div class="flags">
-            <div id="flags" class="flags_item" data-language="en"><img src="../icons/gb.svg"></div>
-            <div id="flag-es" class="flags_item_es" data-language="es"><img src="../icons/es.svg"></div>
+            <div id="flags" class="flags_item" data-language="en"><img src="icons/gb.svg"></div>
+            <div id="flag-es" class="flags_item_es" data-language="es"><img src="icons/es.svg"></div>
         </div>
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" data-section="nav" data-value="login">Ingreso</a>
+            <a class="nav-link active" aria-current="page" href="../codigo/cliente/loginClientes.html"
+                data-section="nav" data-value="login">Ingreso</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" data-section="nav" data-value="services">Servicios</a>
+            <a class="nav-link" href="pages/services.html" data-section="nav" data-value="services">Servicios</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" data-section="nav" data-value="recommendations">Calificaciones</a>
+            <a class="nav-link" href="pages/rooms.html" data-section="nav" data-value="rooms">Habitaciones</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" data-section="nav" data-value="events">Eventos</a>
+            <a class="nav-link" href="pages/recommendations.html" data-section="nav"
+                data-value="recommendations">Recomendaciones</a>
         </li>
-
+        <li class="nav-item ">
+            <a class="nav-link right" href="codigo/cliente/loginClientes.html">
+                <p data-section="nav" data-value="signup">Registrarse</p>
+            </a>
+        </li>
         <li class="nav-item ms-auto">
-            <a class="nav-link right" href="#">
+            <img src="../icons/calendar-check.svg"></a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link right" href="pages/receptions.php">
                 <p data-section="nav" data-value="receptions">Reservas</p>
             </a>
         </li>
     </ul>
     <!-----------------------------------------IMAGEN O VIDEO PRINCIPAL--------------------------------------------->
     <div class="row ratio ratio-16x9 video-first">
-        <video src="../video/video_pool.mp4" autoplay muted loop></video>
+        <video src="video/video_pool.mp4" autoplay muted loop></video>
     </div>
     <!------------------------------------texto 1------------------------------------------------------------------>
     <div class="row text_entry" data-section="presentacion" data-value="texto">
@@ -110,7 +120,7 @@
         <!-----------------------------------------Images + texts side by side----------------------------------------------------->
         <div class="row hidden">
             <div class="col">
-                <img src="../images/hotel-corner.jpg" class="card-img-top" alt="...">
+                <img src="images/hotel-corner.jpg" class="img-fluid" alt="...">
             </div>
 
             <div class="col align-self-center texts" data-section="Home" data-value="first">
@@ -127,14 +137,14 @@
                     internacionales en un ambiente sofisticado.</p>
             </div>
             <div class="col">
-                <img src="../images/bar_resto/resto_1.jpg" class="card-img-top" alt="...">
+                <img src="images/bar_resto/resto_1.jpg" class="img-fluid" alt="...">
             </div>
 
         </div>
 
         <div class="row hidden">
             <div class="col">
-                <img src="../images/luggage-passport.jpg" class="card-img-top" alt="...">
+                <img src="images/luggage-passport.jpg" class="img-fluid" alt="...">
             </div>
 
             <div class="col align-self-center texts" data-section="Home" data-value="third">
@@ -149,11 +159,11 @@
     <!-------------------------------- slider con marcas---------------------------------------------->
     <div class="row justify-content slider">
         <div class="col slide-track">
-            <div class="slide"><img src="../images/supplier/coca-cola.png" alt=""></div>
-            <div class="slide"><img src="../images/supplier/don-perignon.png" alt=""></div>
-            <div class="slide"><img src="../images/supplier/perrier.png" alt=""></div>
-            <div class="slide"><img src="../images/supplier/SFERRA_logo.jpg" alt=""></div>
-            <div class="slide"><img src="../images/supplier/versace.png" alt=""></div>
+            <div class="slide"><img src="images/supplier/coca-cola-logo-5.svg" alt=""></div>
+            <div class="slide"><img src="images/supplier/don-perignon.png" alt=""></div>
+            <div class="slide"><img src="images/supplier/perrier.png" alt=""></div>
+            <div class="slide"><img src="images/supplier/SFERRA_logo.jpg" alt=""></div>
+            <div class="slide"><img src="images/supplier/versace.png" alt=""></div>
 
         </div>
     </div>
