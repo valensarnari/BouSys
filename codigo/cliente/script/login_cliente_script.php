@@ -28,10 +28,10 @@ else
 
     if($stmt->execute())
     {
-        header("Location: ../listado_clientes.php");
+        echo 'Registro exitoso';
     }
     else{
-        echo "No se pudo insertar";
+        echo "Error";
     }
      $stmt->close();
 
