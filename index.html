@@ -171,33 +171,44 @@
     <footer class="bg-dark text-white pt-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <h5>Sobre Nosotros</h5>
-                    <p>Información sobre la empresa.</p>
+                <div class="col-md-6">
+                    <h5>Formulario de contacto</h5>
                 </div>
-                <div class="col-md-4">
-                    <h5>Enlaces</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Inicio</a></li>
-                        <li><a href="#" class="text-white">Servicios</a></li>
-                        <li><a href="#" class="text-white">Contacto</a></li>
-                    </ul>
+                <div class="col-md-6 whapp">
+                    <img src="../icons/whapp.png" alt="Quiero sumarme a la comunidad del hotel!!!"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
                 </div>
-                <div class="col-md-4">
-                    <h5>Contacto</h5>
-                    <p>Email: info@ejemplo.com</p>
-                    <p>Teléfono: +123 456 7890</p>
-                </div>
-            </div>
-            <div class="text-center py-3">
-                © 2024 Tu Empresa. Todos los derechos reservados.
             </div>
         </div>
+
     </footer>
+    <!--------------------------modal whapp------------->
+    <!-- Button trigger modal 
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+    </button>-->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Whapp Community</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="images/QrHotel.png" class="img-fluid">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <!---bootstrap js --->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 </body>
