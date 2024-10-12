@@ -8,6 +8,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="../styles.css" rel="stylesheet">
     <script src="../script.js"></script>
+    <link rel="icon" type="image/svg+xml" href="../icons/bed.png">
     <title>Suites</title>
 </head>
 
@@ -38,10 +39,18 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="../pages/recommendations.html" data-section="nav"
-                data-value="recommendations">Calificaciones</a>
+                data-value="recommendations">Recomendaciones</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link right" href="codigo/cliente/loginClientes.html">
+                <p data-section="nav" data-value="signup">Registrarse</p>
+            </a>
         </li>
         <li class="nav-item ms-auto">
-            <a class="nav-link right" href="../pages/receptions.html">
+            <img src="../icons/calendar-check.svg"></a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link right" href="pages/receptions.php">
                 <p data-section="nav" data-value="receptions">Reservas</p>
             </a>
         </li>
@@ -52,20 +61,21 @@
     </div>
     <!----------------------------- text above video -------------------------------------------------------->
     <div class="row txt-room-1">
-        <p>El Hotel Continental te ofrece diferentes tipos de habitaciones adecuadas a tus necesidades. Desde suites de
+        <p data-section="rooms" data-value="video-txt">El Hotel Continental te ofrece diferentes tipos de habitaciones
+            adecuadas a tus necesidades. Desde suites de
             lujo con vistas panorámicas hasta habitaciones estándar cómodas y funcionales, encontrarás la opción
             perfecta para tu estancia. Cada habitación está equipada con todas las comodidades modernas para garantizar
             una experiencia confortable y placentera. ¡Esperamos que disfrutes de tu estancia!</p>
     </div>
     <!--------------------------------------  CARDS  ------------------------------------------->
-    <div class="row align-items-center">
+    <div class="row align-items-end room-cards">
         <div class="col-md-4">
             <div class="card" style="width: 23rem;">
                 <img src="../images/room/room_1.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Simple</h5>
 
-                    <a href="#room-1" class="btn btn-primary">Saber más...</a>
+                    <a href="#room-1" class="btn btn-primary" data-section="rooms" data-value="more">Saber más...</a>
                 </div>
             </div>
         </div>
@@ -74,9 +84,9 @@
             <div class="card" style="width: 23rem;">
                 <img src="../images/room/room-6.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Completa</h5>
+                    <h5 class="card-title" data-section="rooms" data-value="complete">Completa</h5>
 
-                    <a href="#room-2" class="btn btn-primary">Saber más...</a>
+                    <a href="#room-2" class="btn btn-primary" data-section="rooms" data-value="more">Saber más...</a>
                 </div>
             </div>
         </div>
@@ -85,9 +95,9 @@
             <div class="card" style="width: 23rem;">
                 <img src="../images/room/room-romantic.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Lujosa</h5>
+                    <h5 class="card-title" data-section="rooms" data-value="luxurious">Lujosa</h5>
 
-                    <a href="#room-3" class="btn btn-primary">Saber más...</a>
+                    <a href="#room-3" class="btn btn-primary" data-section="rooms" data-value="more">Saber más...</a>
                 </div>
             </div>
         </div>
@@ -112,7 +122,7 @@
                 wifi gratuito y desayuno incluido. Perfecta para una estancia práctica y confortable.</p>
         </div>
 
-        <div class="row hidden">
+        <!--- <div class="row hidden">
             <div class="col-6 "><img src="../images/room/room-12.jpg" alt="" class="img-fluid"></div>
             <div class=" col-6 ">
                 <img src=" ../images/room/room_girl_luggage.jpg" alt="" class="img-fluid"><br><br>
@@ -122,7 +132,29 @@
         <div class=" row align-items-end hidden">
             <div class="col-6 "><img src="../images/room/room-4.jpg" alt="" class="img-fluid"></div>
             <div class="col-6 "><img src="../images/room/room-8.jpg" alt="" class="img-fluid"></div>
-        </div><br><br>
+        </div><br><br>--->
+        <div class="row hidden">
+            <div class="gallery">
+                <div class="grid-item">
+                    <img class="img-fluid" src="../images/room/room-12.jpg">
+                </div>
+                <div class="grid-item">
+                    <img class="img-fluid" src="../images/room/room_girl_luggage.jpg">
+                </div>
+                <div class="grid-item">
+                    <img class="img-fluid" src="../images/room/room-5.jpg">
+                </div>
+                <div class="grid-item">
+                    <img class="img-fluid" src="../images/room/room-4.jpg">
+                </div>
+                <div class="grid-item">
+                    <img class="img-fluid" src="../images/room/room-8.jpg">
+                </div>
+
+
+            </div>
+
+        </div>
         <!--------------------------------- ROOM TITLE COMPLETA  ------------------------------------------->
         <div class="row align-items-center room-title">
             <span class="subrayado" id="room-2">HABITACIÓN COMPLETA</span>

@@ -1,3 +1,27 @@
+<!--------------------------------------- MERCADO PAGO --------------------------------------->
+<?php
+require __DIR__ . '/vendor/autoload.php';
+$access_token = 'TEST-5873219368709518-100511-fddcbcfa14ab02bac2c5c8f75823d22f-1433164475';
+MercadoPago\SDK::setAccessToken($access_token);
+$preference = new MercadoPago\Preference();
+
+$preference->back_urls = array(
+    "success" => "http://localhost/hotel/index.html",
+    "failure" => "http://localhost/hotel/index.html",
+    "pending" => "http://localhost/hotel/index.html"
+);
+
+$productos = [];
+$item = new MercadoPago\Item();
+$item->title = 'NOMBRE HABITACION';
+$item->description = 'DESCRIPCION HABITACION';
+$item->quantity = 1;
+$item->unit_price = 1000;
+array_push($productos, $item);
+
+$preference->items = $productos;
+$preference->save();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -8,7 +32,8 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="../styles.css" rel="stylesheet">
     <script src="../script.js"></script>
-    <title>Receptions</title>
+    <link rel="icon" type="image/svg+xml" href="icons/calendar-check.svg">
+    <title>Reservas</title>
 </head>
 
 <body class="container-fluid">
@@ -37,13 +62,21 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="../pages/recommendations.html" data-section="nav"
-                data-value="recommendations">Calificaciones</a>
+                data-value="recommendations">Recomendaciones</a>
         </li>
-        <li class="nav-item ms-auto">
-            <a class="nav-link right disabled" href="#" href="#" tabindex="-1" aria-disabled="true">
-                <p data-section="nav" data-value="receptions">Reservas</p>
+        <li class="nav-item ">
+            <a class="nav-link right" href="codigo/cliente/loginClientes.html">
+                <p data-section="nav" data-value="signup">Registrarse</p>
             </a>
         </li>
+        <li class="nav-item ms-auto">
+            <img src="../icons/calendar-check.svg"></a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link right" href="pages/receptions.php">
+                <p data-section="nav" data-value="receptions">Reservas</p>
+            </a>
+        </li>>
     </ul>
     <!-----------------------------------------IMAGEN O VIDEO PRINCIPAL--------------------------------------------->
     <div class="row room-description">
@@ -67,6 +100,7 @@
                 <label class="row room-description" for="datetime">Selecciona fecha y hora:</label>
                 <input class="row room-description" type="datetime-local" id="datetime" name="datetime">
             </form>
+            <div class="cho-container"></div>
         </div>
 
 
@@ -105,6 +139,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+
+    <!--------------------------- script mercado pago --------------------------->
+
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script>
+        const mp = new MercadoPago('TEST-57ec9be1-bb4b-461d-8b3d-7e1dd72a76f9', {
+            locale: 'es-AR'
+        });
+        const checkout = mp.checkout({
+            preference: {
+                id: '<?php echo $preference->id; ?>',
+            },
+            render: {
+                container: '.cho-container',
+                label: 'Pagar',
+            },
+        });
+    </script>
+
 </body>
 
 </html>

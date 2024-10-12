@@ -1,6 +1,8 @@
 <?php
 include("modals/agregar_cliente.php");
 include("../conexion.php");
+include ('../validacion_gerente.php');
+validarGerente('listado_clientes.php');
 ?>
 
 <!doctype html>
@@ -44,6 +46,13 @@ include("../conexion.php");
                         <a href="listado_clientes.php" class="nav-link align-middle px-0">
                             <span class="ms-1 d-none d-sm-inline">
                                 <i class="fa-solid fa-address-book"></i> Gestión de clientes
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="listado_habitaciones.php" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">
+                                <i class="fa-solid fa-hotel"></i> Gestión de habitaciones
                             </span>
                         </a>
                     </li>

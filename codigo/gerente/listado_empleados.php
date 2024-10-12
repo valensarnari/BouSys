@@ -48,6 +48,13 @@ include("../conexion.php");
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="listado_habitaciones.php" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">
+                                <i class="fa-solid fa-hotel"></i> Gestión de habitaciones
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="reporte.php" class="nav-link align-middle px-0">
                             <span class="ms-1 d-none d-sm-inline">
                                 <i class="fa-solid fa-chart-simple"></i> Reporte de ocupación

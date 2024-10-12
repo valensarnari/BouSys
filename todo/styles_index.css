@@ -1,0 +1,187 @@
+/* Reset de márgenes y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #E7F0DC;
+}
+
+/* Estilos para la barra de navegación */
+nav {
+    background-color: #597445; /* Verde oscuro */
+    color: white;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+nav .menu-icon {
+    display: none;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+nav .nav-links {
+    list-style: none;
+    display: flex;
+}
+
+nav .nav-links li {
+    margin-left: 1em;
+}
+
+nav .nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 0.5em 1em;
+    transition: background-color 0.3s;
+}
+
+nav .nav-links li a:hover {
+    background-color: #729762; /* Verde grisáceo */
+}
+
+/* Estilos para el encabezado */
+header {
+    background: url('imagenes/fondo.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 10em 0;
+}
+
+header h1 {
+    font-size: 2.5em;
+    text-shadow: 15px 15px 20px rgba(0, 0, 0, 0.5); /* Aumenta la profundidad de la sombra */
+    font-weight: 700;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-top: 0.5em;
+    text-shadow: 15px 15px 20px rgba(0, 0, 0, 0.5); /* Aumenta la profundidad de la sombra */
+    font-weight: 700;
+}
+
+/* Estilos para la sección de búsqueda */
+.busqueda {
+    text-align: center;
+    margin: 2em 0;
+}
+
+.busqueda .opciones {
+    margin-bottom: 1em;
+}
+
+.busqueda .opciones .tab {
+    background-color: #597445;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.busqueda .opciones .tab:hover {
+    background-color: #729762;
+}
+
+.busqueda .filtros select,
+.busqueda .filtros input[type="text"] {
+    padding: 0.5em;
+    margin: 0.5em;
+}
+
+.busqueda .filtros button {
+    background-color: #597445;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.busqueda .filtros button:hover {
+    background-color: #729762;
+}
+
+/* Estilos para las propiedades */
+.propiedades {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.propiedades .propiedad {
+    text-align: center;
+    margin: 2em 0;
+}
+
+.propiedades .propiedad img {
+    max-width: 100%;
+    height: auto;
+}
+
+.navigation {
+    margin-top: 1em;
+}
+
+.navigation button {
+    background-color: #597445;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.navigation button:hover {
+    background-color: #729762;
+}
+
+/* Estilos para el pie de página */
+footer {
+    background-color: #597445;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    margin-top: 2.5em;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    nav .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        display: none;
+    }
+
+    nav .nav-links.active {
+        display: flex;
+    }
+
+    nav .menu-icon {
+        display: block;
+    }
+
+    nav .nav-links li {
+        margin-left: 0;
+        margin-bottom: 1em;
+    }
+}
