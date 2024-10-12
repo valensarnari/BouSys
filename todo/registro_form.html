@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="styles_registro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+
+    <!-- Barra de navegación -->
+    <nav>
+        <div class="logo"><a href="index.php">Cieri Propiedades</a></div>
+        <ul>
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="propiedades.php">Propiedades</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="registro_form.html">Iniciar Sesión</a></li>
+            
+        </ul>
+    </nav>
+
+
+
+
+
+
+
+    <div class="container">
+        <div class="form-content">
+            <h1 id="title">Registro</h1>
+            <form action="registro.php" method="post">
+                <div class="input-group">
+                    <div id="nameInput" class="input-field">
+                        <i class="fa-solid fa-user"></i>
+                        <input name="nombre_completo" type="text" placeholder="Nombre">
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input name="email" type="email" placeholder="Correo">
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <input name="password" type="password" placeholder="Contraseña">
+                    </div>
+                    <p>Olvidaste tu contraseña <a href="#">Click Aquí</a></p>
+                </div>
+                <div class="btn-field">
+                    
+                    <button id="signUp" type="submit">Registro</button>
+                    
+                    <a href="login_form.html"><button   id="signIn" type="button" class="disable"  >Login</button></a>
+                    
+                    
+                  
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="js/script_registro.js"></script>
+    
+    	
+  <!-- Pie de página -->
+  <footer>
+    <p>Cieri Propiedades &copy; 2024</p>
+</footer>
+
+
+</body>
+
+</html>
+
