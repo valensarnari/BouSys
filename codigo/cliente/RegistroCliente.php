@@ -5,7 +5,7 @@ if (!$conexion) {
     die("Error en la conexión: " . mysqli_connect_error());
 }
 ?>
-
+<!---------------   html        --------------------->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +20,7 @@ if (!$conexion) {
 </head>
 
 <body>
-    <form action="#" method="post">
+    <form action="" method="post">
 
 
         <input type="text" name="nombre" placeholder="Nombre" class="input">
@@ -280,7 +280,7 @@ if (!$conexion) {
 
         <input type="password" name="contrasena" placeholder="Contraseña" class="input">
 
-        <input type="submit" value="Registrarse">
+        <input type="submit" value="Registrarse" name="registrarse">
 
     </form>
 
@@ -319,24 +319,29 @@ if (!$conexion) {
 </script>
 
 </html>
+<!---------- PHP --------------->
 <?php
-$nombre = $_POST['nombre'];
-$apellido = $_POST['apellido'];
-$documento = $_POST['documento'];
-$nacionalidad = $_POST['nacionalidad'];
-$sexo = $_POST['sexo'];
-$nacimiento = $_POST['nacimiento'];
-$email = $_POST['email'];
-$telefono = $_POST['telefono'];
-$contrasena = password_hash($_POST['contrasena'], PASSWORD_DEFAULT);
 
-$insert = "INSERT INTO `cliente` (`Nombre`, `Apellido`, `Fecha_Nacimiento`, `Documento`, `Nacionalidad`, `Sexo`, `Email`, `Telefono`, `Contrasena`, `Fecha_Registro`) VALUES ('$nombre', '$apellido', '$nacimiento', '$documento', '$nacionalidad', '$sexo', '$email', '$telefono', '$contrasena', NOW());";
-$query = mysqli_query($conexion, $insert);
+if (isset($_POST['registrarse'])) {
 
-if (!$query) {
-    echo ("No se pudo insertar.");
-} else {
-    echo ("Insertado correctamente.");
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $documento = $_POST['documento'];
+    $nacionalidad = $_POST['nacionalidad'];
+    $sexo = $_POST['sexo'];
+    $nacimiento = $_POST['nacimiento'];
+    $email = $_POST['email'];
+    $telefono = $_POST['telefono'];
+    $contrasena = password_hash($_POST['contrasena'], PASSWORD_DEFAULT);
 
+    $insert = "INSERT INTO `cliente` (`Nombre`, `Apellido`, `Fecha_Nacimiento`, `Documento`, `Nacionalidad`, `Sexo`, `Email`, `Telefono`, `Contrasena`, `Fecha_Registro`) VALUES ('$nombre', '$apellido', '$nacimiento', '$documento', '$nacionalidad', '$sexo', '$email', '$telefono', '$contrasena', NOW());";
+    $query = mysqli_query($conexion, $insert);
+
+    if (!$query) {
+        echo ("No se pudo insertar.");
+    } else {
+        echo ("Insertado correctamente.");
+
+    }
 }
 ?>
