@@ -1,28 +1,11 @@
 <?php
+include('../conexion.php');
 
-$conexion = mysqli_connect("localhost", "root", "", "hotel")
-    or die('no se pudo conectar al servidor');
-
-$nombre = $_POST['nombre'];
-$apellido = $_POST['apellido'];
-$documento = $_POST['documento'];
-$nacionalidad = $_POST['nacionalidad'];
-$sexo = $_POST['sexo'];
-$nacimiento = $_POST['nacimiento'];
-$email = $_POST['email'];
-$telefono = $_POST['telefono'];
-$contrasena = password_hash($_POST['contrasena'], PASSWORD_DEFAULT);
-
-$insert = "INSERT INTO `cliente` (`Nombre`, `Apellido`, `Fecha_Nacimiento`, `Documento`, `Nacionalidad`, `Sexo`, `Email`, `Telefono`, `Contrasena`, `Fecha_Registro`) VALUES ('$nombre', '$apellido', '$nacimiento', '$documento', '$nacionalidad', '$sexo', '$email', '$telefono', '$contrasena', NOW());";
-$query = mysqli_query($conexion, $insert);
-
-if (!$query) {
-    echo ("No se pudo insertar.");
-} else {
-    echo ("Insertado correctamente.");
-
+if (!$conexion) {
+    die("Error en la conexión: " . mysqli_connect_error());
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -336,3 +319,24 @@ if (!$query) {
 </script>
 
 </html>
+<?php
+$nombre = $_POST['nombre'];
+$apellido = $_POST['apellido'];
+$documento = $_POST['documento'];
+$nacionalidad = $_POST['nacionalidad'];
+$sexo = $_POST['sexo'];
+$nacimiento = $_POST['nacimiento'];
+$email = $_POST['email'];
+$telefono = $_POST['telefono'];
+$contrasena = password_hash($_POST['contrasena'], PASSWORD_DEFAULT);
+
+$insert = "INSERT INTO `cliente` (`Nombre`, `Apellido`, `Fecha_Nacimiento`, `Documento`, `Nacionalidad`, `Sexo`, `Email`, `Telefono`, `Contrasena`, `Fecha_Registro`) VALUES ('$nombre', '$apellido', '$nacimiento', '$documento', '$nacionalidad', '$sexo', '$email', '$telefono', '$contrasena', NOW());";
+$query = mysqli_query($conexion, $insert);
+
+if (!$query) {
+    echo ("No se pudo insertar.");
+} else {
+    echo ("Insertado correctamente.");
+
+}
+?>
