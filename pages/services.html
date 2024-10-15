@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="../styles.css" rel="stylesheet">
+    <script src="../script.js"></script>
+    <title>Services</title>
+</head>
+
+<body class="container-fluid">
+    <script>
+        document.title = "\uD83E\uDDF3 Services";
+    </script>
+    <!-------------------------------------------------------Titulo top------------------------------>
+    <header class="row top-title">
+        <h1>C o n t i n e n t a l&nbsp&nbsp&nbsp&nbsp&nbsp H o t e l</h1>
+    </header>
+    <!---------------------------------------------MENÚ------------------------------------------------------------->
+    <ul class="nav nav-pills menuPages">
+        <div class="flags">
+            <div id="flags" class="flags_item" data-language="en"><img src="../icons/gb.svg"></div>
+            <div id="flag-es" class="flags_item_es" data-language="es"><img src="../icons/es.svg"></div>
+        </div>
+        <li class="nav-item">
+            <button type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#ingresar">
+                Ingreso
+            </button>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="../index.php" data-section="nav"
+                data-value="home">Inicio</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="../pages/services.html" tabindex="-1" aria-disabled="true" data-section="nav"
+                data-value="services">Servicios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="../pages/rooms.html" data-section="nav" data-value="rooms">Habitaciones</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../pages/recommendations.html" data-section="nav"
+                data-value="recommendations">Recomendaciones</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link right" href="codigo/cliente/RegistroCliente.php">
+                <p data-section="nav" data-value="signup">Registrarse</p>
+            </a>
+        </li>
+        <li class="nav-item ms-auto">
+            <img src="../icons/calendar-check.svg"></a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link right" href="receptions.php">
+                <p data-section="nav" data-value="receptions">Reservas</p>
+            </a>
+        </li>
+    </ul><br>
+    <!-------------------------------------------Center title-------------------------------------------------------------------->
+    <div class="row align-items-center room-title">
+        <span class="subrayado" id="room-3" data-section="services" data-value="title-1">Nuestros servicios...</span>
+    </div>
+    <!--------------------------------------  CARDS  ------------------------------------------->
+    <div class="row align-items-center">
+        <div class="col-md-4">
+            <div class="card" style="width: 23rem;">
+                <img src="../images/garage/cars.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Garage</h5>
+                    <a href="#garage" class="btn btn-primary">Saber más...</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div class="card" style="width: 23rem;">
+                <img src="../images/services/baby-cot-1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Baby</h5>
+                    <a href="#baby" class="btn btn-primary">Saber más...</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4 ">
+            <div class="card" style="width: 23rem;">
+                <img src="../images/services/laundry-0.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Laundry</h5>
+
+                    <a href="#laundry" class="btn btn-primary">Saber más...</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-start">
+        <div class="col-md-6">
+            <div class="card" style="width: 23rem;">
+                <img src="../images/spa/spa_1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Spa</h5>
+
+                    <a href="#spa" class="btn btn-primary">Saber más...</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card" style="width: 23rem;">
+                <img src="../images/bar_resto/bar_1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Restorant</h5>
+
+                    <a href="#resto" class="btn btn-primary">Saber más...</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-------------------------------------------Resto title-------------------------------------------------------------------->
+    <div class="row align-items-center room-title">
+        <span class="subrayado" id="resto" id="resto">RESTORANT</span>
+    </div>
+    <!-----------------------------V I D E O-------------------------------------------->
+    <div class="row ratio ratio-16x9 video-first">
+        <video src="../video/video-resto.mp4" autoplay muted loop></video>
+    </div>
+    <!----------------------------------- Intersection Observer ------------------------------------------------------------>
+    <div class="container-fluid observer">
+        <!-----------------------------garage horizontal card-------------------------------------------->
+        <div class="card mb-3" style="width: 100%">
+            <div class="row g-0">
+                <div class="col-md-4 hidden">
+                    <img src="../images/bar_resto/bar_2.jpg" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Gastronomía.</h5>
+                        <p class="card-text resto-description">
+                            El Continental Hotel se enorgullece de albergar un restaurante y bar de renombre, conocido
+                            por
+                            ser el escenario de eventos importantes y celebraciones exclusivas. Su gastronomía
+                            excepcional
+                            ha sido reconocida con estrellas Michelin, destacándose por su creatividad y calidad. Los
+                            huéspedes y visitantes pueden disfrutar de una experiencia culinaria inigualable, donde cada
+                            plato es una obra de arte que refleja la pasión y el talento de nuestros chefs
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-------------------------------------------Garage title-------------------------------------------------------------------->
+        <div class="row align-items-center room-title">
+            <span class="subrayado" id="garage" id="resto">GARAGE</span>
+        </div>
+        <!-----------------------------garage horizontal card-------------------------------------------->
+        <div class="card mb-3" style="width: 100%">
+            <div class="row g-0">
+                <div class="col-md-4 hidden">
+                    <img src="../images/garage/garage_2.jpg" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Vehículos</h5>
+                        <p class="card-text resto-description">
+                            El Continental Hotel ofrece un servicio de garaje y guardería de coches de primera clase,
+                            garantizando la máxima seguridad y comodidad para sus huéspedes. Con seguridad privada las
+                            24
+                            horas, nuestros clientes pueden estar tranquilos sabiendo que sus vehículos están protegidos
+                            en
+                            todo momento. Además, nuestro equipo de valet parking se encarga de estacionar y cuidar cada
+                            coche con la mayor atención y profesionalismo, asegurando una experiencia sin preocupaciones
+                            desde el momento de la llegada hasta la salida.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-------------------------------------------Spa title-------------------------------------------------------------------->
+        <div class="row align-items-center room-title">
+            <span class="subrayado" id="spa">SPA</span>
+        </div><br>
+        <div class="row align-self-center">
+            <div class="col">
+                <p class="resto-description">Sumérgete en un oasis de tranquilidad en el spa del Continental Hotel.
+                    Disfruta
+                    de tratamientos
+                    rejuvenecedores, masajes terapéuticos y una variedad de servicios diseñados para revitalizar tu
+                    cuerpo y
+                    mente. Nuestro spa ofrece un ambiente sereno y lujoso, perfecto para relajarte y escapar del estrés
+                    diario.
+
+                </p>
+            </div>
+            <div class="col hidden">
+                <img src="../images/spa/spa_2.jpg" class="img-fluid">
+            </div>
+        </div>
+        <!-----------------------------baby horizontal card-------------------------------------------->
+        <div class="card mb-3" style="width: 100%" id="baby">
+            <div class="row g-0">
+                <div class="col-md-4 hidden">
+                    <img src="../images/services/baby-cot.jpg" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Servicio gratuito de cuna.</h5>
+                        <p class="card-text resto-description">
+                            En el Continental Hotel, nos preocupamos por el bienestar de toda tu familia. Por eso,
+                            ofrecemos
+                            un servicio gratuito de cuna para nuestros huéspedes con bebés. Disfruta de una estancia
+                            cómoda
+                            y sin preocupaciones, sabiendo que tu pequeño descansará plácidamente en una cuna segura y
+                            confortable, proporcionada sin costo adicional
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-----------------------------laundry horizontal card-------------------------------------------->
+        <div class="card mb-3" style="width: 100%" id="laundry">
+            <div class="row g-0">
+                <div class="col-md-4 hidden">
+                    <img src="../images/services/laundry-1.jpg" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Laundry</h5>
+                        <p class="card-text resto-description">Mantén tu ropa impecable con nuestro servicio de
+                            lavandería
+                            del Continental
+                            Hotel. Ofrecemos un servicio eficiente y de alta calidad para todos nuestros huéspedes.
+                            Aunque
+                            este servicio tiene un costo adicional, es completamente gratuito para nuestros clientes
+                            top,
+                            asegurando que disfruten de la máxima comodidad y atención durante su estancia.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+    <!-------------------------------------footer----------------------------------------------------->
+    <footer class="bg-dark text-white pt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Sobre Nosotros</h5>
+                    <p>Información sobre la empresa.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Inicio</a></li>
+                        <li><a href="#" class="text-white">Servicios</a></li>
+                        <li><a href="#" class="text-white">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contacto</h5>
+                    <p>Email: info@ejemplo.com</p>
+                    <p>Teléfono: +123 456 7890</p>
+                </div>
+            </div>
+            <div class="text-center py-3">
+                © 2024 Tu Empresa. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+
+    <!---bootstrap js --->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
