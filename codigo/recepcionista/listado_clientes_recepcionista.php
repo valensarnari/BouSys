@@ -1,5 +1,5 @@
 <?php
-include("modals/agregar_empleado.php");
+include("modals/agregar_cliente.php");
 include("../conexion.php");
 ?>
 
@@ -15,54 +15,54 @@ include("../conexion.php");
     <!---bootstrap css --->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Lista de empleados</title>
+    <title>Lista de clientes</title>
 </head>
 
 <body>
     <div class="d-flex">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <!--direccionar -->
                     <span class="fs-5 d-none d-sm-inline">BouSys</span>
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
-                        <a href="../../" class="nav-link align-middle px-0">
+                        <a href="../../" class="nav-link align-middle px-0"> <!--cambiar -->
                             <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-house"></i> Volver a inicio
+                                <i class="fa-solid fa-house"></i> Volver a inicio 
                             </span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="listado_empleados.php" class="nav-link align-middle px-0">
+                        <a href="habitaciones.php" class="nav-link align-middle px-0"> <!--cambiar -->
                             <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-user"></i> Gestión de empleados
+                                <i class="fa-solid fa-user"></i> Habitaciones
                             </span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="listado_clientes.php" class="nav-link align-middle px-0">
+                        <a href="listado_clientes_recepcionista.php" class="nav-link align-middle px-0">
                             <span class="ms-1 d-none d-sm-inline">
                                 <i class="fa-solid fa-address-book"></i> Gestión de clientes
                             </span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="reporte.php" class="nav-link align-middle px-0">
+                        <a href="reservas.php" class="nav-link align-middle px-0"> <!--cambiar -->
                             <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-chart-simple"></i> Reporte de ocupación
+                                <i class="fa-solid fa-chart-simple"></i> Reservas
                             </span>
                         </a>
                     </li>
                 </ul>
                 <hr>
                 <div class="dropdown pb-4">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"  
+                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"> <!--direccionar  -->
                         <span class="d-none d-sm-inline mx-1">nombreperfil</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li> <!--direccionar-->
                     </ul>
                 </div>
             </div>
@@ -70,7 +70,7 @@ include("../conexion.php");
         <div class="container my-5">
             <!-- Activa modal de agregar -->
             <button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#agregar">
-                Agregar empleado <i class="fa-solid fa-user-plus"></i>
+                Agregar cliente <i class="fa-solid fa-user-plus"></i>
             </button>
             <div class="row">
                 <div class="table-responsive">
@@ -78,8 +78,10 @@ include("../conexion.php");
                         <thead class="table-dark">
                             <tr>
                                 <td scope="col">Nombre</td>
-                                <td scope="col">Mail</td>
-                                <td scope="col">Rol</td>
+                                <td scope="col">Apellido</td>
+                                <td scope="col">Email</td>
+                                <td scope="col">Nacionalidad</td>
+                                <td scope="col">Sexo</td>
                                 <td scope="col">Opciones</td>
                             </tr>
                         </thead>
@@ -91,8 +93,13 @@ include("../conexion.php");
                             $offset = ($pagina_actual - 1) * $por_pagina;
 
                             // Consulta SQL con LIMIT y OFFSET
-                            $select = "SELECT id, Nombre, Email, Contrasena, Jerarquia FROM usuario_empleados WHERE Activo = 1 ORDER BY id DESC LIMIT $por_pagina OFFSET $offset;";
+                            $select = "SELECT * FROM cliente WHERE Activo = 1 ORDER BY id DESC LIMIT $por_pagina OFFSET $offset;";
                             $query = mysqli_query($conexion, $select);
+
+                                // Verificar si la consulta falló
+                                if (!$query) {
+                                die("Error en la consulta SQL: " . mysqli_error($conexion));
+                                }
 
                             // Mostrar resultados en la tabla
                             while ($resultado = mysqli_fetch_array($query)) {
@@ -105,14 +112,20 @@ include("../conexion.php");
                                         <?php echo $resultado['2'] ?>
                                     </td>
                                     <td scope="row">
-                                        <?php
-                                        if ($resultado['4'] == 0)
-                                            echo "Gerente";
-                                        else
-                                            echo "Recepcionista";
-                                        ?>
+                                        <?php echo $resultado['7'] ?>
                                     </td>
                                     <td scope="row">
+                                        <?php echo $resultado['5'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['6'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <!-- Activa modal de ver detalle -->
+                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                            data-bs-target="#detalle<?php echo $resultado['0'] ?>">
+                                            <i class="fa-solid fa-address-card"></i>
+                                        </button>
                                         <!-- Activa modal de editar -->
                                         <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                             data-bs-target="#editar<?php echo $resultado['0'] ?>">
@@ -126,20 +139,21 @@ include("../conexion.php");
                                     </td>
                                 </tr>
                                 <?php
-                                include("modals/eliminar_empleado.php");
-                                include("modals/editar_empleado.php");
+                                include("modals/detalle_cliente.php");
+                                include("modals/editar_cliente.php");
+                                include("modals/eliminar_cliente.php");
                             }
                             ?>
                         </tbody>
                     </table>
 
                     <?php
-                    // Contar el número total de empleados
-                    $result_total = mysqli_query($conexion, "SELECT COUNT(*) as total FROM usuario_empleados");
-                    $total_empleados = mysqli_fetch_assoc($result_total)['total'];
+                    // Contar el número total de clientes
+                    $result_total = mysqli_query($conexion, "SELECT COUNT(*) as total FROM cliente");
+                    $total_clientes = mysqli_fetch_assoc($result_total)['total'];
 
                     // Calcular el total de páginas
-                    $total_paginas = ceil($total_empleados / $por_pagina);
+                    $total_paginas = ceil($total_clientes / $por_pagina);
                     ?>
 
                     <!-- Navegación de paginación -->
@@ -176,5 +190,9 @@ include("../conexion.php");
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+
+   
+
+
 
 </html>

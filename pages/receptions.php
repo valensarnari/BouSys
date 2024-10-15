@@ -32,7 +32,6 @@ $preference->save();
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="../styles.css" rel="stylesheet">
     <script src="../script.js"></script>
-    <link rel="icon" type="image/svg+xml" href="icons/calendar-check.svg">
     <title>Reservas</title>
 </head>
 
@@ -62,21 +61,13 @@ $preference->save();
         </li>
         <li class="nav-item">
             <a class="nav-link" href="../pages/recommendations.html" data-section="nav"
-                data-value="recommendations">Recomendaciones</a>
-        </li>
-        <li class="nav-item ">
-            <a class="nav-link right" href="codigo/cliente/loginClientes.html">
-                <p data-section="nav" data-value="signup">Registrarse</p>
-            </a>
+                data-value="recommendations">Calificaciones</a>
         </li>
         <li class="nav-item ms-auto">
-            <img src="../icons/calendar-check.svg"></a>
-        </li>
-        <li class="nav-item ">
-            <a class="nav-link right" href="pages/receptions.php">
+            <a class="nav-link right disabled" href="#" href="#" tabindex="-1" aria-disabled="true">
                 <p data-section="nav" data-value="receptions">Reservas</p>
             </a>
-        </li>>
+        </li>
     </ul>
     <!-----------------------------------------IMAGEN O VIDEO PRINCIPAL--------------------------------------------->
     <div class="row room-description">

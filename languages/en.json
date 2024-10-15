@@ -3,27 +3,17 @@
         "texto":"Welcome to Hotel Continental, where elegance and comfort meet. Enjoy our first-class facilities and exceptional service in the heart of the city. Your satisfaction is our priority."
     },
     "nav":{
-    "login":"Sign In",
+    "login":"Login",
     "services":"Services",
     "receptions":"Receptions",
     "recommendations":"Recommendations",
     "rooms":"Rooms",
-    "home":"Home",
-    "signup":"Sign Up"
+    "home":"Home"
 },
 "Home":{
     "first":"Discover luxury in the heart of Buenos Aires. Hotel Continental offers elegance, comfort, and an unbeatable location near the main tourist attractions. Book your stay today!",
     "second":"Located in the vibrant center of Buenos Aires, Hotel Continental invites you to enjoy an unforgettable stay. Its restaurant stands out for its high quality, combining local and international flavors in a sophisticated atmosphere.",
     "third":"Additionally, our check-in process is quick and efficient, ensuring you start your experience without delays"
-},
-"services":{
-    "title-1":"Our services..."
-},
-"rooms":{
-    "video-txt":"The Continental Hotel offers you different types of rooms tailored to your needs. From luxury suites with panoramic views to comfortable and functional standard rooms, you will find the perfect option for your stay. Each room is equipped with all modern amenities to ensure a comfortable and pleasant experience. We hope you enjoy your stay! ",
-    "more":"More...",
-    "complete":"Complete",
-    "luxurious":"Luxurious"
 }
 
 }

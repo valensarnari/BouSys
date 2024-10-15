@@ -869,17 +869,17 @@
         },
         {
             "name": "mercadopago/dx-php",
-            "version": "2.1.0",
-            "version_normalized": "2.1.0.0",
+            "version": "2.0.0",
+            "version_normalized": "2.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mercadopago/sdk-php.git",
-                "reference": "0428df445eff7f2722228176a756cef418baa48c"
+                "reference": "83d9d35a002376b0a825967b96c20151bf49c061"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mercadopago/sdk-php/zipball/0428df445eff7f2722228176a756cef418baa48c",
-                "reference": "0428df445eff7f2722228176a756cef418baa48c",
+                "url": "https://api.github.com/repos/mercadopago/sdk-php/zipball/83d9d35a002376b0a825967b96c20151bf49c061",
+                "reference": "83d9d35a002376b0a825967b96c20151bf49c061",
                 "shasum": ""
             },
             "require": {
@@ -889,7 +889,6 @@
             },
             "require-dev": {
                 "doctrine/orm": "~2.3",
-                "phpdocumentor/phpdocumentor": "^2.0",
                 "phpmd/phpmd": "@stable",
                 "phpunit/phpunit": "^5",
                 "sebastian/phpcpd": "*",
@@ -897,7 +896,7 @@
                 "symfony/yaml": "~2.5",
                 "vlucas/phpdotenv": "^2.5"
             },
-            "time": "2020-07-01T19:48:00+00:00",
+            "time": "2020-04-06T17:33:16+00:00",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -927,10 +926,9 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Mercado Pago PHP SDK",
             "homepage": "https://github.com/mercadopago/dx-php",
             "support": {
-                "source": "https://github.com/mercadopago/sdk-php/tree/2.1.0"
+                "source": "https://github.com/mercadopago/sdk-php/tree/2.0.0"
             },
             "install-path": "../mercadopago/dx-php"
         },
