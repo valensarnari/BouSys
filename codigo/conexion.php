@@ -1,8 +1,7 @@
 <?php
 
-$conexion = mysqli_connect("localhost:3306", "root", "", "hotel");
+$conexion = mysqli_connect("localhost", "root", "", "hotel");
 
 if (!$conexion)
     echo "Error de conexión";
 
-?>

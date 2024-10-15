@@ -1,25 +1,49 @@
 <?php
 
-$conexion = mysqli_connect("localhost", "root", "", "hotel") 
-or die('no se pudo conectar al servidor');
+$conexion = new mysqli("localhost:3307", "root", "", "hotel");
 
 $nombre = $_POST['nombre'];
 $apellido = $_POST['apellido'];
+$fecha_nacimiento = $_POST['fecha_nacimiento'];
 $documento = $_POST['documento'];
 $nacionalidad = $_POST['nacionalidad'];
 $sexo = $_POST['sexo'];
-$nacimiento = $_POST['nacimiento'];
-$email = $_POST['email'];
-$telefono = $_POST['telefono'];
-$contrasena = password_hash($_POST['contrasena'], PASSWORD_DEFAULT);
+$telefono = $_POST['phone'];
+$mail = $_POST['mail'];
+$constraseña = password_hash($_POST['contraseña'], PASSWORD_DEFAULT);
 
-$insert = "INSERT INTO `cliente` (`Nombre`, `Apellido`, `Fecha_Nacimiento`, `Documento`, `Nacionalidad`, `Sexo`, `Email`, `Telefono`, `Contrasena`, `Fecha_Registro`) VALUES ('$nombre', '$apellido', '$nacimiento', '$documento', '$nacionalidad', '$sexo', '$email', '$telefono', '$contrasena', NOW());";
-$query = mysqli_query($conexion, $insert);
+$consulta_existencia = mysqli_query(
+    $conexion,
+    "SELECT * FROM clientes where documento ='$documento' OR mail = '$mail'"
+);
 
-if(!$query) {
-    echo ("No se pudo insertar.");
+if (mysqli_num_rows($consulta_existencia) > 0) {
+    echo "El usuario ya esta registrado";
+} else {
+    $sql = "INSERT INTO clientes(nombre, apellido, fecha_nacimiento, documento, nacionalidad,
+    sexo, telefono, mail, contraseña) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param(
+        "sssssssss",
+        $nombre,
+        $apellido,
+        $fecha_nacimiento,
+        $documento,
+        $nacionalidad,
+        $sexo,
+        $telefono,
+        $mail,
+        $constraseña
+    );
+
+    if ($stmt->execute()) {
+        echo 'Registro exitoso';
+    } else {
+        echo "Error";
+    }
+    $stmt->close();
 }
-else {
-    echo ("Insertado correctamente.");
 
-}
+$conexion->close();
+
+?>
