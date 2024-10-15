@@ -1,5 +1,7 @@
 <?php
 include("../conexion.php");
+include ('../validacion_gerente.php');
+validarGerente('reporte.php');
 
 // Chequear si se selecciono un mes (si no, usa el mes actual)
 if (isset($_GET['mes']) && !empty($_GET['mes'])) {
@@ -88,7 +90,7 @@ $num_rows = mysqli_num_rows($query);
 
 <body>
     <div class="d-flex">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                 <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <span class="fs-5 d-none d-sm-inline">BouSys</span>
@@ -134,10 +136,10 @@ $num_rows = mysqli_num_rows($query);
                 <div class="dropdown pb-4">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                         id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-1">nombreperfil</span>
+                        <span class="d-none d-sm-inline mx-1"><?php echo $_SESSION['Nombre']; ?></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                        <li><a class="dropdown-item" href="../cerrar_conexion.php">Cerrar sesión</a></li>
                     </ul>
                 </div>
             </div>

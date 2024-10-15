@@ -13,7 +13,7 @@
             // Si ya está en la página de destino, no se hace nada (ya pasó la validación)
         }else{
             // Si no tiene la jerarquía correcta, redirigir a la página de inicio
-                header("Location: ../../index.html");
+                header("Location: ../../index.php");
 
             }       
     }
