@@ -1,3 +1,7 @@
+<?php
+include("codigo/sigin.php");
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -75,8 +79,11 @@
             <div id="flag-es" class="flags_item_es" data-language="es"><img src="icons/es.svg"></div>
         </div>
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" data-section="nav"
-                data-value="login">Ingreso</a><!---clientes ya reg, recepcio, gerente -->
+            <button type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#ingresar">
+                Ingreso
+            </button>
+            <!-- <a class="nav-link active" aria-current="page" href="codigo/sigin.php" data-section="nav"
+                data-value="login">Ingreso</a>-clientes ya reg, recepcio, gerente -->
         </li>
         <li class="nav-item">
             <a class="nav-link" href="pages/services.html" data-section="nav" data-value="services">Servicios</a>

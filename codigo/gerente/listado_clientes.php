@@ -1,7 +1,7 @@
 <?php
 include("modals/agregar_cliente.php");
 include("../conexion.php");
-include ('../validacion_gerente.php');
+include('../validacion_gerente.php');
 validarGerente('listado_clientes.php');
 ?>
 
@@ -17,6 +17,26 @@ validarGerente('listado_clientes.php');
     <!---bootstrap css --->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!---para buscar cliente --->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // detecta cambios en el campo de busqueda
+            $("#buscador").on("keyup", function () {
+                var valorBusqueda = $(this).val();
+
+                $.ajax({
+                    url: "buscar_cliente.php", // nuevo archivo para la busqwueda
+                    type: "POST",
+                    data: { consulta: valorBusqueda },
+                    success: function (data) {
+                        // reemplaza contenido de la tabla
+                        $("tbody").html(data);
+                    }
+                });
+            });
+        });
+    </script>
     <title>Lista de clientes</title>
 </head>
 
@@ -68,19 +88,29 @@ validarGerente('listado_clientes.php');
                 <div class="dropdown pb-4">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                         id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-1">nombreperfil</span>
+                        <span class="d-none d-sm-inline mx-1">
+                            <?php echo $_SESSION['Nombre']; ?>
+                        </span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                        <li><a class="dropdown-item" href="../cerrar_conexion.php">Cerrar sesión</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="container my-5">
-            <!-- Activa modal de agregar -->
-            <button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#agregar">
-                Agregar cliente <i class="fa-solid fa-user-plus"></i>
-            </button>
+            <div class="row my-3">
+                <div class="col">
+                    <!-- Activa modal de agregar -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregar">
+                        Agregar cliente <i class="fa-solid fa-user-plus"></i>
+                    </button>
+                </div>
+                <div class="col">
+                    <input type="text" id="buscador" class="form-control"
+                        placeholder="Buscar cliente por apellido...">
+                </div>
+            </div>
             <div class="row">
                 <div class="table-responsive">
                     <table class="table table-striped">
