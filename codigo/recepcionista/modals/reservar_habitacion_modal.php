@@ -28,6 +28,8 @@ include 'actions/obtener_habitacion.php';
                     <label for="ninos">Número de niños:</label>
                     <input type="number" id="ninos" name="ninos" class="form-control"><br>
 
+                        <!-- FALTA AGREGAR LA CUNA, FALTA AGREGAR LA CUNA NO OLVIDARSE NO OLVIDARSE NO OLVIDARSE -->
+
                      <!-- Selección de habitaciones dinámicas filtradas -->
                      <label for="habitaciones">Habitaciones Disponibles:</label>
                     <div id="habitaciones">
