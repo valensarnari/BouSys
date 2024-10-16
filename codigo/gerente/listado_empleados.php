@@ -1,8 +1,7 @@
 <?php
 include("modals/agregar_empleado.php");
 include("../conexion.php");
-include ('../validacion_gerente.php');
-validarGerente('listado_empleados.php');
+include("../registro_login/validacion_sesion.php");
 ?>
 
 <!doctype html>

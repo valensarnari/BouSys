@@ -1,3 +1,6 @@
+<?php
+include("../registro_login/validacion_sesion.php");
+?>
 <!-- Modal -->
 <div class="modal fade" id="agregar" tabindex="-1" aria-labelledby="agregarLabel" aria-hidden="true">
     <div class="modal-dialog">

@@ -1,32 +1,8 @@
 <?php
 include("../conexion.php");
 include("../registro_login/validacion_sesion.php");
-
-// Chequear si se selecciono un mes (si no, usa el mes actual)
-if (isset($_GET['mes']) && !empty($_GET['mes'])) {
-    $mes = $_GET['mes'];
-} else {
-    // Si no se selecciona ningun mes, agarra el mes actual
-    $mes = date('Y-m');
-}
-
-// Pasar el valor del mes a formato 'Y-m'
-$año_mes = date('Y-m', strtotime($mes));
-
-$sql = "SELECT h.Numero_Habitacion, rt.Fecha_Inicio, rt.Fecha_Fin
-        FROM reserva_habitacion rh 
-        JOIN reserva_total rt ON rh.ID_Reserva = rt.id 
-        JOIN habitacion h ON h.id = rh.ID_Habitacion
-        WHERE DATE_FORMAT(rt.Fecha_Inicio, '%Y-%m') = '$año_mes'
-        OR DATE_FORMAT(rt.Fecha_Fin, '%Y-%m') = '$año_mes';";
-
-$query = mysqli_query($conexion, $sql);
-
-// Esto es para chequear que si no hay resultados, no muestre el grafico
-$query = mysqli_query($conexion, $sql);
-$num_rows = mysqli_num_rows($query);
-
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -40,7 +16,7 @@ $num_rows = mysqli_num_rows($query);
     <!---bootstrap css --->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Reporte de ocupación</title>
+    <title>Panel Gerente</title>
     <!---graficos --->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -55,25 +31,7 @@ $num_rows = mysqli_num_rows($query);
             dataTable.addColumn({ type: 'date', id: 'Inicio' });
             dataTable.addColumn({ type: 'date', id: 'Final' });
             dataTable.addRows([
-            <?php
-
-            $primeraFila = true; // Variable para manejar la ultima coma
-            while ($resultado = mysqli_fetch_array($query)) {
-
-                $fecha_inicio = date('Y, m-1, d', strtotime($resultado['1']));
-                $fecha_final = date('Y, m-1, d', strtotime($resultado['2']));
-
-                // Chequear si no es la primera fila para añadir coma
-                if (!$primeraFila) {
-                    echo ",";
-                }
-
-                $primeraFila = false; // Marcar que ya procesamos la primera fila
             
-                ?> ['<?php echo $resultado['0'] ?>', new Date(<?php echo $fecha_inicio; ?>), new Date(<?php echo $fecha_final; ?>)] <?php
-
-            }
-            ?>
         ]);
 
             var options = {
@@ -90,7 +48,7 @@ $num_rows = mysqli_num_rows($query);
 <body>
     <div class="d-flex">
     <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                 <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <span class="fs-5 d-none d-sm-inline">BouSys</span>
                 </a>
@@ -143,38 +101,7 @@ $num_rows = mysqli_num_rows($query);
                 </div>
             </div>
         </div>
-        <div class="container my-5">
-            <div class="row my-2 rounded" style="background-color: #F3F3F3;">
-                <div class="col p-3">
-                    <label class="form-label">Buscar por mes:</label>
-                    <div class="col-2">
-                        <form method="GET" action="reporte.php">
-                            <input class="form-control" type="month" name="mes" id="mes"
-                                value="<?php echo isset($_GET['mes']) ? $_GET['mes'] : date('Y-m'); ?>">
-                            <input class="btn btn-primary my-2" type="submit" value="Buscar">
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="row my-2 rounded" style="background-color: #F3F3F3;">
-                <div class="col p-4">
-                    <?php
-                    // Chequeo de si hay resultados
-                    if ($num_rows > 0) {
-                        ?>
-                        <div id="reporte"></div>
-                        <?php
-                    } else
-                    {
-                        ?>
-                        <p>No hay reservas en el mes seleccionado</p>
-                        <?php
-                    }
-                    ?>
-                    
-                </div>
-            </div>
-        </div>
+      
     </div>
 </body>
 

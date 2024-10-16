@@ -48,7 +48,9 @@ $preference->save();
             <div id="flag-es" class="flags_item_es" data-language="es"><img src="../icons/es.svg"></div>
         </div>
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" data-section="nav" data-value="login">Ingreso</a>
+        <button type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#ingresar">
+                Ingreso
+            </button>
         </li>
         <li class="nav-item">
             <a class="nav-link " aria-current="page" href="../index.html" data-section="nav"
@@ -65,7 +67,7 @@ $preference->save();
                 data-value="recommendations">Recomendaciones</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link right" href="codigo/cliente/loginClientes.html">
+            <a class="nav-link right" href="codigo/cliente/RegistroCliente.php">
                 <p data-section="nav" data-value="signup">Registrarse</p>
             </a>
         </li>
