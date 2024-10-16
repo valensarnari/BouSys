@@ -17,7 +17,7 @@ include("../registro_login/validacion_sesion.php");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Panel Gerente</title>
-    <!---graficos --->
+    <!---graficos --
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load("current", { packages: ["timeline"] });
@@ -31,8 +31,8 @@ include("../registro_login/validacion_sesion.php");
             dataTable.addColumn({ type: 'date', id: 'Inicio' });
             dataTable.addColumn({ type: 'date', id: 'Final' });
             dataTable.addRows([
-            
-        ]);
+
+            ]);
 
             var options = {
                 timeline: { colorByRowLabel: true },
@@ -42,13 +42,13 @@ include("../registro_login/validacion_sesion.php");
             chart.draw(dataTable, options);
         }
 
-    </script>
+    </script>-->
 </head>
 
 <body>
     <div class="d-flex">
-    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                 <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <span class="fs-5 d-none d-sm-inline">BouSys</span>
                 </a>
@@ -93,7 +93,9 @@ include("../registro_login/validacion_sesion.php");
                 <div class="dropdown pb-4">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                         id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-1"><?php echo $_SESSION['Nombre']; ?></span>
+                        <span class="d-none d-sm-inline mx-1">
+                            <?php echo 'aqui error var session Nombre'/*$_SESSION['Nombre'];*/ ?>
+                        </span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                         <li><a class="dropdown-item" href="../cerrar_conexion.php">Cerrar sesión</a></li>
@@ -101,7 +103,7 @@ include("../registro_login/validacion_sesion.php");
                 </div>
             </div>
         </div>
-      
+
     </div>
 </body>
 
