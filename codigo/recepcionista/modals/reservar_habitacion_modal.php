@@ -1,6 +1,7 @@
 <?php
 // Incluir el archivo que obtiene las habitaciones
 include 'actions/obtener_habitacion.php';
+include("../registro_login/validacion_sesion.php");
 ?>
 
 <div class="modal fade" id="reservarModal" tabindex="-1" aria-labelledby="reservarModalLabel" aria-hidden="true">

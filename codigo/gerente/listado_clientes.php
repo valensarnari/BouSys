@@ -1,8 +1,8 @@
 <?php
 include("modals/agregar_cliente.php");
 include("../conexion.php");
-//include('../validacion_gerente.php');
-//validarGerente('listado_clientes.php');
+include("../registro_login/validacion_sesion.php");
+
 ?>
 
 <!doctype html>

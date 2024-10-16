@@ -1,9 +1,11 @@
 <?php
 $conexion = mysqli_connect("localhost", "root", "", "hotel"); 
+include("../registro_login/validacion_sesion.php");
 //puse la conexion manual porque me tiraba error de direccionamiento, corregir y poner la direccion a conexion.php gio
 if (!$conexion)
     echo "Error de conexión";
 
+    
 $salida = "";
 
 if (isset($_POST['consulta'])) {

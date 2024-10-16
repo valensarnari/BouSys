@@ -1,5 +1,5 @@
 <?php
-include("codigo/sigin.php");
+include("../registro_login/validacion_sesion.php");
 ?>
 
 <!doctype html>
@@ -100,6 +100,13 @@ include("codigo/sigin.php");
                 <p data-section="nav" data-value="signup">Registrarse</p>
             </a>
         </li>
+
+        <li class="nav-item ">
+            <a class="nav-link right" href="../registro_login/cerrar_sesion.php">
+                <p data-section="nav" data-value="signup">cerrar sesion</p>
+            </a>
+        </li>
+
         <li class="nav-item ms-auto">
             <img src="../icons/calendar-check.svg"></a>
         </li>
