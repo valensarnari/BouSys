@@ -1,3 +1,4 @@
+
 <!-- Modal -->
 <div class="modal fade" id="detalle<?php echo $resultado['0'] ?>" tabindex="-1" aria-labelledby="detalleLabel"
     aria-hidden="true">

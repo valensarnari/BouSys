@@ -1,3 +1,4 @@
+
 <div class="modal fade" id="checkinCheckoutModal" tabindex="-1" aria-labelledby="checkinCheckoutModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

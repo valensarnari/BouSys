@@ -1,3 +1,7 @@
+<?php
+include("../registro_login/validacion_sesion.php");
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -75,8 +79,11 @@
             <div id="flag-es" class="flags_item_es" data-language="es"><img src="icons/es.svg"></div>
         </div>
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="../codigo/cliente/loginClientes.html"
-                data-section="nav" data-value="login">Ingreso</a>
+            <button type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#ingresar">
+                Ingreso
+            </button>
+            <!-- <a class="nav-link active" aria-current="page" href="codigo/sigin.php" data-section="nav"
+                data-value="login">Ingreso</a>-clientes ya reg, recepcio, gerente -->
         </li>
         <li class="nav-item">
             <a class="nav-link" href="pages/services.html" data-section="nav" data-value="services">Servicios</a>
@@ -86,9 +93,24 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="pages/recommendations.html" data-section="nav"
-                data-value="recommendations">Calificaciones</a>
+                data-value="recommendations">Recomendaciones</a>
         </li>
+        <li class="nav-item ">
+            <a class="nav-link right" href="codigo/registro_login/panel_registro_login.php">
+                <p data-section="nav" data-value="signup">Registrarse</p>
+            </a>
+        </li>
+
+        <li class="nav-item ">
+            <a class="nav-link right" href="../registro_login/cerrar_sesion.php">
+                <p data-section="nav" data-value="signup">cerrar sesion</p>
+            </a>
+        </li>
+
         <li class="nav-item ms-auto">
+            <img src="../icons/calendar-check.svg"></a>
+        </li>
+        <li class="nav-item ">
             <a class="nav-link right" href="pages/receptions.php">
                 <p data-section="nav" data-value="receptions">Reservas</p>
             </a>
@@ -162,33 +184,44 @@
     <footer class="bg-dark text-white pt-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <h5>Sobre Nosotros</h5>
-                    <p>Información sobre la empresa.</p>
+                <div class="col-md-6">
+                    <h5>Formulario de contacto</h5>
                 </div>
-                <div class="col-md-4">
-                    <h5>Enlaces</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Inicio</a></li>
-                        <li><a href="#" class="text-white">Servicios</a></li>
-                        <li><a href="#" class="text-white">Contacto</a></li>
-                    </ul>
+                <div class="col-md-6 whapp">
+                    <img src="../icons/whapp.png" alt="Quiero sumarme a la comunidad del hotel!!!"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
                 </div>
-                <div class="col-md-4">
-                    <h5>Contacto</h5>
-                    <p>Email: info@ejemplo.com</p>
-                    <p>Teléfono: +123 456 7890</p>
-                </div>
-            </div>
-            <div class="text-center py-3">
-                © 2024 Tu Empresa. Todos los derechos reservados.
             </div>
         </div>
+
     </footer>
+    <!--------------------------modal whapp------------->
+    <!-- Button trigger modal 
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+    </button>-->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Whapp Community</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="images/QrHotel.png" class="img-fluid">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <!---bootstrap js --->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 </body>

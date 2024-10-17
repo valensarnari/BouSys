@@ -1,3 +1,4 @@
+
 <!-- Modal -->
 <div class="modal fade" id="editar<?php echo $resultado['0'] ?>" tabindex="-1" aria-labelledby="editarLabel"
     aria-hidden="true">

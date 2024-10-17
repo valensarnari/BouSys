@@ -1,6 +1,4 @@
-<?php
-include("codigo/sigin.php");
-?>
+
 
 <!doctype html>
 <html lang="en">
@@ -96,8 +94,13 @@ include("codigo/sigin.php");
                 data-value="recommendations">Recomendaciones</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link right" href="codigo/cliente/RegistroCliente.php"><!---ingreso por primera vez -->
+            <a class="nav-link right" href="codigo/registro_login/panel_registro_login.php">
                 <p data-section="nav" data-value="signup">Registrarse</p>
+            </a>
+        </li>
+        <li class="nav-item "></li>
+            <a class="nav-link right" href="pages/contacto.html">
+                <p data-section="nav" data-value="signup">Contacto</p>
             </a>
         </li>
         <li class="nav-item ms-auto">

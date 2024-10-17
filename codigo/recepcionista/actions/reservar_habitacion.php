@@ -14,6 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $valor_total = $_POST['valor_total'];
     $habitaciones = isset($_POST['habitaciones']) ? $_POST['habitaciones'] : []; // Array de habitaciones seleccionadas
 
+     // Variables para adultos y niños
+     $cantidad_adultos = $_POST['adultos'];
+     $cantidad_ninos = $_POST['ninos'];
+
     // Verificar si hay habitaciones seleccionadas
     if (empty($habitaciones)) {
         echo "Error: No se seleccionaron habitaciones.";
@@ -38,10 +42,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Insertar habitaciones en la tabla reserva_habitacion
         foreach ($habitaciones as $habitacion) {
             // Manejo del checkbox de cuna
+            //falta lo de cuna en el modal de reservas, no olvidarse de ponerlo, y tambien ponerlo ahi en la query_habitacion 
             $cuna = isset($habitacion['cuna']) ? 1 : 0;
 
-            $query_habitacion = "INSERT INTO reserva_habitacion (ID_Reserva, ID_Habitacion, Cantidad_Adultos, Cantidad_Ninos, Cuna) 
-                                 VALUES ('$id_reserva_total', '{$habitacion['id']}', '{$habitacion['adultos']}', '{$habitacion['ninos']}', '$cuna')";
+            $query_habitacion = "INSERT INTO reserva_habitacion (ID_Reserva, ID_Habitacion, Cantidad_Adultos, Cantidad_Ninos) 
+                     VALUES ('$id_reserva_total', '{$habitacion['id']}', '$cantidad_adultos', '$cantidad_ninos')";
+
 
             if (!mysqli_query($conexion, $query_habitacion)) {
                 throw new Exception("Error al insertar habitación: " . mysqli_error($conexion));
@@ -50,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Confirmar la transacción
         mysqli_commit($conexion);
-        echo "Reserva creada con éxito!";
+        header("Location: ../reservas.php");
     } catch (Exception $e) {
         // Revertir los cambios si algo falla
         mysqli_rollback($conexion);

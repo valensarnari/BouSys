@@ -1,19 +1,20 @@
 <?php
 
-include ('../../conexion.php'); // Asegúrate de que la ruta sea correcta
+include ('../../conexion.php');
 
-$numero_habitacion = $_POST['numero_habitacion'];
-$nuevo_estado = $_POST['nuevo_estado'];
+$id = $_POST['id'];
+$nombre = $_POST['nombre'];
+$apellido = $_POST['apellido'];
+$email = $_POST['email'];
+$telefono = $_POST['telefono'];
+$contrasena = password_hash($_POST['contrasena'], PASSWORD_DEFAULT);
 
-// Consulta para actualizar el estado de la habitación
-$update = "UPDATE habitacion SET Estado = '$nuevo_estado' WHERE Numero_Habitacion = $numero_habitacion";
+$update = "UPDATE `cliente` SET `Nombre` = '$nombre', `Apellido` = '$apellido', `Email` = '$email', `Telefono` = '$telefono', `Contrasena` = '$contrasena' WHERE `cliente`.`id` = $id";
 $query = mysqli_query($conexion, $update);
 
-if (!$query) {
-    echo "No se pudo actualizar el estado.";
-} else {
-    header("Location: ../habitaciones.php"); // Redirigir a habitaciones.php
-    exit(); // Terminar la ejecución después de la redirección
+if(!$query) {
+    echo ("No se pudo editar.");
 }
-
-?>
+else {
+    header("Location: ../listado_clientes_recepcionista.php");
+}

@@ -2,6 +2,7 @@
 
 include ('../../conexion.php');
 
+
 $numero = $_POST['numero'];
 $tipo = $_POST['tipo'];
 $precio = $_POST['precio'];
