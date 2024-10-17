@@ -84,6 +84,7 @@ include("../registro_login/validacion_sesion.php");
                             </span>
                         </a>
                     </li>
+                    
                 </ul>
                 <hr>
                 <!--arreglar -->

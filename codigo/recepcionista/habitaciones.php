@@ -1,6 +1,7 @@
 <?php
 
 include("../conexion.php");
+include("../registro_login/validacion_sesion.php");
 ?>
 
 <!doctype html>
@@ -51,6 +52,13 @@ include("../conexion.php");
                         <a href="reservas.php" class="nav-link align-middle px-0"> <!--cambiar -->
                             <span class="ms-1 d-none d-sm-inline">
                                 <i class="fa-solid fa-chart-simple"></i> Reservas
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../registro_login/cerrar_sesion.php" class="nav-link align-middle px-0"> <!--cambiar -->
+                            <span class="ms-1 d-none d-sm-inline">
+                                <i class="fa-solid fa-chart-simple"></i> cerrar sesion
                             </span>
                         </a>
                     </li>

@@ -1,7 +1,7 @@
 <?php
 
 include ('../../conexion.php');
-include("../registro_login/validacion_sesion.php");
+
 
 $numero = $_POST['numero'];
 $tipo = $_POST['tipo'];

@@ -1,6 +1,7 @@
 <?php
 include("../conexion.php");
 
+
 $salida = "";
 
 if (isset($_POST['consulta'])) {

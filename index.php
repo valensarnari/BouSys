@@ -1,6 +1,4 @@
-<?php
-include("codigo/sigin.php");
-?>
+
 
 <!doctype html>
 <html lang="en">

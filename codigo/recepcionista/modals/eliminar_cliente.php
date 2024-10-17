@@ -1,3 +1,4 @@
+
 <!-- Modal -->
 <div class="modal fade" id="eliminar<?php echo $resultado['0'] ?>" tabindex="-1" aria-labelledby="eliminarLabel" aria-hidden="true">
     <div class="modal-dialog">
