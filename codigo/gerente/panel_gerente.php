@@ -88,6 +88,13 @@ include("../registro_login/validacion_sesion.php");
                             </span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="../registro_login/cerrar_sesion.php" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">
+                                <i class="fa-solid fa-chart-simple"></i> Cerrar sesion
+                            </span>
+                        </a>
+                    </li>
                 </ul>
                 <hr>
                 <div class="dropdown pb-4">
@@ -95,9 +102,7 @@ include("../registro_login/validacion_sesion.php");
                         id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="d-none d-sm-inline mx-1"><?php echo $_SESSION['Nombre']; ?></span>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="../cerrar_conexion.php">Cerrar sesión</a></li>
-                    </ul>
+                    
                 </div>
             </div>
         </div>
