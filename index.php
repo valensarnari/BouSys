@@ -98,6 +98,11 @@
                 <p data-section="nav" data-value="signup">Registrarse</p>
             </a>
         </li>
+        <li class="nav-item "></li>
+            <a class="nav-link right" href="pages/contacto.html">
+                <p data-section="nav" data-value="signup">Contacto</p>
+            </a>
+        </li>
         <li class="nav-item ms-auto">
             <img src="../icons/calendar-check.svg"></a>
         </li>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="../styles.css" rel="stylesheet">
+    <script src="../script.js"></script>
+    <link rel="icon" type="image/svg+xml" href="../icons/suitcase.png">
+    <title>Opinions</title>
+</head>
+
+<body class="container-fluid">
+    <!-------------------------------------------------------Titulo top------------------------------>
+    <header class="row top-title">
+        <h1>C o n t i n e n t a l&nbsp&nbsp&nbsp&nbsp&nbsp H o t e l</h1>
+    </header>
+    <!---------------------------------------------MENÚ------------------------------------------------------------->
+    <ul class="nav nav-pills menuPages">
+        <div class="flags">
+            <div id="flags" class="flags_item" data-language="en"><img src="../icons/gb.svg"></div>
+            <div id="flag-es" class="flags_item_es" data-language="es"><img src="../icons/es.svg"></div>
+        </div>
+        <li class="nav-item">
+            <button type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#ingresar">
+                Ingreso
+            </button>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="../index.php" data-section="nav"
+                data-value="home">Inicio</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../pages/services.html" data-section="nav" data-value="services">Servicios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../pages/rooms.html" data-section="nav" data-value="rooms">Habitaciones</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../pages/recommendations.html" data-section="nav"
+                data-value="recommendations">Recomendaciones</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link right" href="../codigo/registro_login/panel_registro_login.php">
+                <p data-section="nav" data-value="signup">Registrarse</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="contacto.html" tabindex="-1" aria-disabled="true" data-section="nav"
+                data-value="services">Contacto</a>
+        </li>
+        <li class="nav-item ms-auto">
+            <img src="../icons/calendar-check.svg"></a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link right" href="receptions.php">
+                <p data-section="nav" data-value="receptions">Reservas</p>
+            </a>
+        </li>
+    </ul>
+    <div class="contenedor-contacto">
+        <div class="informacion-contacto">
+            <h2>Información de Contacto</h2>
+            <ul>
+                <li><strong>Dirección:</strong> Calle Ficticia 123, Ciudad Imaginaria, País de Nunca Jamás</li>
+                <li><strong>Teléfono:</strong> +34 123 456 789</li>
+                <li><strong>Email:</strong> info@empresaficticia.com</li>
+                <li><strong>Horario de atención:</strong> Lunes a Viernes, 9:00 - 18:00</li>
+            </ul>
+        </div>
+        <div class="formulario-contacto">
+            <h2>Formulario de Contacto</h2>
+            <form action="#" method="post">
+                <div>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div>
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="asunto">Asunto:</label>
+                    <input type="text" id="asunto" name="asunto" required>
+                </div>
+                <div>
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                </div>
+                <div>
+                    <button type="submit">Enviar mensaje</button>
+                </div>
+            </form>
+        </div>
+    </div>
+        <!-------------------------------------footer----------------------------------------------------->
+        <footer class="bg-dark text-white pt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Sobre Nosotros</h5>
+                        <p>Información sobre la empresa.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Enlaces</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">Inicio</a></li>
+                            <li><a href="#" class="text-white">Servicios</a></li>
+                            <li><a href="#" class="text-white">Contacto</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Contacto</h5>
+                        <p>Email: info@ejemplo.com</p>
+                        <p>Teléfono: +123 456 7890</p>
+                    </div>
+                </div>
+                <div class="text-center py-3">
+                    © 2024 Tu Empresa. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+</body>
+</html>
