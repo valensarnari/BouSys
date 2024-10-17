@@ -71,6 +71,11 @@ $preference->save();
                 <p data-section="nav" data-value="signup">Registrarse</p>
             </a>
         </li>
+        <li class="nav-item ">
+            <a class="nav-link right" href="contacto.html">
+                <p data-section="nav" data-value="signup">Contacto</p>
+            </a>
+        </li>
         <li class="nav-item ms-auto">
             <img src="../icons/calendar-check.svg"></a>
         </li>
