@@ -7,8 +7,6 @@ if (!$conexion) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Imprimir todos los datos enviados por el formulario
-    print_r($_POST); // Esto te mostrará si todos los campos, incluyendo 'contrasena', están siendo recibidos.
 
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
@@ -27,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
     
-    // Continúa con el proceso...
+   
 
 
     $jerarquia = 2; // Cliente por defecto
