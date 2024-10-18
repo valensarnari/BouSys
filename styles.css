@@ -295,8 +295,19 @@ nav-link right {
   animation: spin 3s infinite linear;
   transform-style: preserve-3d;
 }
-/*--------------------------------------------------------------------------------------*/
+/*------------------------------------------INDEX--------------------------------------------*/
+.contenedor-index {
+  margin-top: 4.5rem;
+}
+/*------------------------------------------PAGE RECOMMENDATIONS--------------------------------------------*/
+.recomendaciones {
+  margin-top: 2rem;
+  margin-left: 0.1rem;
+}
 
+.recomendaciones div img {
+  margin-left: 4rem;
+}
 /*------------------------------------PAGE CONTACATO--------------------------------------------------*/
 .contenedor-contacto {
   display: flex;

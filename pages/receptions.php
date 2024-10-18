@@ -66,11 +66,6 @@ $preference->save();
             <a class="nav-link" href="../pages/recommendations.html" data-section="nav"
                 data-value="recommendations">Recomendaciones</a>
         </li>
-        <li class="nav-item ">
-            <a class="nav-link right" href="../codigo/registro_login/panel_registro_login.php">
-                <p data-section="nav" data-value="signup">Registrarse</p>
-            </a>
-        </li>
         <li class="nav-item "></li>
             <a class="nav-link right" href="contacto.html">
                 <p data-section="nav" data-value="signup">Contacto</p>
