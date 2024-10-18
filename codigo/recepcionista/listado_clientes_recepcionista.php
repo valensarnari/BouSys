@@ -1,6 +1,7 @@
 <?php
 include("modals/agregar_cliente.php");
 include("../conexion.php");
+include("../registro_login/validacion_sesion.php");
 ?>
 
 <!doctype html>
@@ -16,62 +17,91 @@ include("../conexion.php");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Lista de clientes</title>
+    <!---para buscar cliente --->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // detecta cambios en el campo de busqueda
+            $("#buscador").on("keyup", function () {
+                var valorBusqueda = $(this).val();
+
+                $.ajax({
+                    url: "buscar_cliente.php", // nuevo archivo para la busqwueda
+                    type: "POST",
+                    data: { consulta: valorBusqueda },
+                    success: function (data) {
+                        // reemplaza contenido de la tabla
+                        $("tbody").html(data);
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>
     <div class="d-flex">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <!--direccionar -->
+                <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <span class="fs-5 d-none d-sm-inline">BouSys</span>
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
-                        <a href="../../" class="nav-link align-middle px-0"> <!--cambiar -->
+                        <a href="../../" class="nav-link align-middle px-0">
                             <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-house"></i> Volver a inicio 
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="habitaciones.php" class="nav-link align-middle px-0"> <!--cambiar -->
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-user"></i> Habitaciones
+                                <i class="fa-solid fa-house"></i> Volver a inicio
                             </span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="listado_clientes_recepcionista.php" class="nav-link align-middle px-0">
                             <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-address-book"></i> Gestión de clientes
+                                <i class="fa-solid fa-user"></i> Gestión de clientes
                             </span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="reservas.php" class="nav-link align-middle px-0"> <!--cambiar -->
+                        <a href="habitaciones.php" class="nav-link align-middle px-0">
                             <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-chart-simple"></i> Reservas
+                                <i class="fa-solid fa-hotel"></i> Gestión de habitaciones
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reservas.php" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">
+                                <i class="fa-solid fa-book"></i> Reservas
                             </span>
                         </a>
                     </li>
                 </ul>
                 <hr>
                 <div class="dropdown pb-4">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"  
-                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"> <!--direccionar  -->
-                        <span class="d-none d-sm-inline mx-1">nombreperfil</span>
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="d-none d-sm-inline mx-1">
+                            <?php echo $_SESSION['usuario_nombre']; ?>
+                        </span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li> <!--direccionar-->
+                        <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php">Cerrar sesión</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="container my-5">
-            <!-- Activa modal de agregar -->
-            <button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#agregar">
-                Agregar cliente <i class="fa-solid fa-user-plus"></i>
-            </button>
+            <div class="row my-3">
+                <div class="col">
+                    <!-- Activa modal de agregar -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregar">
+                        Agregar cliente <i class="fa-solid fa-user-plus"></i>
+                    </button>
+                </div>
+                <div class="col">
+                    <input type="text" id="buscador" class="form-control" placeholder="Buscar cliente por apellido...">
+                </div>
+            </div>
             <div class="row">
                 <div class="table-responsive">
                     <table class="table table-striped">
@@ -96,10 +126,10 @@ include("../conexion.php");
                             $select = "SELECT * FROM cliente WHERE Activo = 1 ORDER BY id DESC LIMIT $por_pagina OFFSET $offset;";
                             $query = mysqli_query($conexion, $select);
 
-                                // Verificar si la consulta falló
-                                if (!$query) {
+                            // Verificar si la consulta falló
+                            if (!$query) {
                                 die("Error en la consulta SQL: " . mysqli_error($conexion));
-                                }
+                            }
 
                             // Mostrar resultados en la tabla
                             while ($resultado = mysqli_fetch_array($query)) {
@@ -191,7 +221,7 @@ include("../conexion.php");
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 
-   
+
 
 
 

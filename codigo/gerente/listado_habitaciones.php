@@ -21,8 +21,8 @@ include("../registro_login/validacion_sesion.php");
 
 <body>
     <div class="d-flex">
-    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                 <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <span class="fs-5 d-none d-sm-inline">BouSys</span>
                 </a>
@@ -67,16 +67,13 @@ include("../registro_login/validacion_sesion.php");
                 <div class="dropdown pb-4">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                         id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-1"><?php echo $_SESSION['Nombre']; ?></span>
+                        <span class="d-none d-sm-inline mx-1">
+                            <?php echo $_SESSION['usuario_nombre']; ?>
+                        </span>
                     </a>
-                    <li class="nav-item">
-                        <a href="../registro_login/cerrar_sesion.php" class="nav-link align-middle px-0">
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-chart-simple"></i> Cerrar sesion
-                            </span>
-                        </a>
-                    </li>
-                   
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php">Cerrar sesión</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -125,7 +122,7 @@ include("../registro_login/validacion_sesion.php");
                                         else if ($resultado['2'] == 1)
                                             echo "Doble";
                                         else
-                                            echo "Suite";   
+                                            echo "Suite";
                                         ?>
                                     </td>
                                     <td scope="row">
