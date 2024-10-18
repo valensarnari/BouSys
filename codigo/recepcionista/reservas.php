@@ -73,17 +73,118 @@ include("../registro_login/validacion_sesion.php");
 
         <!-- Visualizar reservas (siempre visible) -->
         <div class="container my-4">
-            <h2>Reservas Actuales</h2>
+            <h2 class="mb-3">Reservas Actuales</h2>
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-success my-2" data-bs-toggle="modal"
+                        data-bs-target="#reservarModal">
+                        Reservar Habitación
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="table-dark">
+                            <tr>
+                                <td scope="col">Cliente</td>
+                                <td scope="col">Estado</td>
+                                <td scope="col">Inicio</td>
+                                <td scope="col">Fin</td>
+                                <td scope="col">Check-In</td>
+                                <td scope="col">Check-Out</td>
+                                <td scope="col">Valor total</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            // paginacion
+                            $por_pagina = 10; // num de registros por pagina
+                            $pagina_actual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
+                            $offset = ($pagina_actual - 1) * $por_pagina;
 
-            <div id="reservas-list">
-                <?php include('actions/visualizar_reserva.php'); ?>
+                            // Consulta SQL con LIMIT y OFFSET
+                            $select = "SELECT rt.id, c.id, rt.Estado, rt.Fecha_Inicio, rt.Fecha_Fin, rt.Check_In, rt.Check_Out, rt.Valor_Total, c.Nombre, c.Apellido
+                                        FROM reserva_total rt JOIN cliente c ON rt.ID_Cliente = c.id
+                                        ORDER BY rt.id DESC LIMIT $por_pagina OFFSET $offset;";
+
+                            $query = mysqli_query($conexion, $select);
+
+                            // Verificar si la consulta falló
+                            if (!$query) {
+                                die("Error en la consulta SQL: " . mysqli_error($conexion));
+                            }
+
+                            // Mostrar resultados en la tabla
+                            while ($resultado = mysqli_fetch_array($query)) {
+                                ?>
+                                <tr>
+                                    <td scope="row">
+                                        <?php echo $resultado['8'] . " " . $resultado['9'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['2'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['3'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['4'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['5'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['6'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['7'] ?>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+
+                    <?php
+                    // Contar el número total de reservas
+                    $result_total = mysqli_query($conexion, "SELECT COUNT(*) as total FROM reserva_total");
+                    $total_reservas = mysqli_fetch_assoc($result_total)['total'];
+
+                    // Calcular el total de páginas
+                    $total_paginas = ceil($total_reservas / $por_pagina);
+                    ?>
+
+                    <!-- Navegación de paginación -->
+                    <nav>
+                        <ul class="pagination d-flex justify-content-center">
+                            <?php if ($pagina_actual > 1): ?>
+                                <li class="page-item">
+                                    <a class="page-link" href="?pagina=<?php echo $pagina_actual - 1; ?>">Anterior</a>
+                                </li>
+                            <?php endif; ?>
+
+                            <?php for ($i = 1; $i <= $total_paginas; $i++): ?>
+                                <li class="page-item <?php if ($i == $pagina_actual)
+                                    echo 'active'; ?>">
+                                    <a class="page-link" href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                </li>
+                            <?php endfor; ?>
+
+                            <?php if ($pagina_actual < $total_paginas): ?>
+                                <li class="page-item">
+                                    <a class="page-link" href="?pagina=<?php echo $pagina_actual + 1; ?>">Siguiente</a>
+                                </li>
+                            <?php endif; ?>
+                        </ul>
+                    </nav>
+                </div>
+
             </div>
 
             <!-- Botones para abrir modales -->
             <div class="mt-4">
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reservarModal">
-                    Reservar Habitación
-                </button>
                 <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modificarModal">
                     Modificar Reserva
                 </button>
@@ -97,20 +198,11 @@ include("../registro_login/validacion_sesion.php");
             </div>
         </div>
 
-
-
         <!-- Incluir los modales -->
         <?php include('modals/reservar_habitacion_modal.php'); ?>
         <?php include('modals/modificar_habitacion_modal.php'); ?>
         <?php include('modals/cancelar_reserva_modal.php'); ?>
         <?php include('modals/check_in_check_out_modal.php'); ?>
-
-
-        <div>
-
-            <?php include('actions/visualizar_checkin_checkout.php'); ?>
-
-        </div>
 
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

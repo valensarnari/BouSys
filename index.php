@@ -1,3 +1,7 @@
+<?php
+include("cerrar_conexion.php");
+?>
+
 <!doctype html>
 <html lang="en">
 
