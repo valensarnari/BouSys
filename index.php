@@ -29,7 +29,7 @@
             </div>
             <div class="carousel-inner carousel-first">
                 <div class="carousel-item active">
-                    <img src="images/pool-2.jpg" class="d-block w-100" alt="...">
+                    <img src="images/pileta-dia.jfif" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Relax...</h5>
                         <p>Disfruta de nuestra espectacular piscina en el Hotel Continental, ideal para relajarte y
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="carousel-item ">
-                    <img src="images/mujer_ventana.jpg" class="d-block w-100" alt="...">
+                    <img src="images/habitaciones-hotel.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Comodidad</h5>
                         <p>Disfruta de la máxima comodidad en el Hotel Continental, donde cada detalle está diseñado
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="images/pileta_cielo.jpg" class="d-block w-100" alt="...">
+                    <img src="images/pileta-noche.jfif" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Noche...</h5>
                         <p>Sumérgete en la vibrante noche porteña en el Hotel Continental, donde la energía de Buenos
@@ -115,7 +115,7 @@
     </div>
 
     <!--------------------------------------------------Intersection Observer------------------------------->
-    <div class="container-fluid observer">
+    <div  class="container-fluid observer contenedor-index">
         <!-----------------------------------------Images + texts side by side----------------------------------------------------->
         <div class="row hidden">
             <div class="col">
@@ -170,16 +170,29 @@
     <footer class="bg-dark text-white pt-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <h5>Formulario de contacto</h5>
+                <div class="col-md-4">
+                    <h5>Sobre Nosotros</h5>
+                    <p>Información sobre la empresa.</p>
                 </div>
-                <div class="col-md-6 whapp">
+                <div class="col-md-4">
+                    <h5>Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#index.php" class="text-white">Inicio</a></li>
+                        <li><a href="pages/rooms.html" class="text-white">Habitaciones</a></li>
+                        <li><a href="pages/services.html" class="text-white">Servicios</a></li>
+                        <li><a href="pages/recommendations.html" class="text-white">Recomendaciones</a></li>
+                        <li><a href="pages/contacto.html" class="text-white">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 whapp">
                     <img src="../icons/whapp.png" alt="Quiero sumarme a la comunidad del hotel!!!"
                         data-bs-toggle="modal" data-bs-target="#exampleModal">
                 </div>
             </div>
+            <div class="text-center py-3">
+                © 2024 Tu Empresa. Todos los derechos reservados.
+            </div>
         </div>
-
     </footer>
     <!--------------------------modal whapp------------->
     <!-- Button trigger modal 
