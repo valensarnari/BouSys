@@ -89,10 +89,12 @@ include("../registro_login/validacion_sesion.php");
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                         id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="d-none d-sm-inline mx-1">
-                            <?php echo $_SESSION['Nombre']; ?>
+                            <?php echo $_SESSION['usuario_nombre']; ?>
                         </span>
                     </a>
-                    
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php">Cerrar sesión</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
