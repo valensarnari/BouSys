@@ -123,36 +123,41 @@ include("cerrar_conexion.php");
         <!-----------------------------------------Images + texts side by side----------------------------------------------------->
         <div class="row hidden">
             <div class="col">
-                <img src="images/hotel-corner.jpg" class="img-fluid" alt="...">
+                <img src="images/hotel-exterior.jpg" class="img-fluid" alt="...">
             </div>
 
             <div class="col align-self-center texts" data-section="Home" data-value="first">
-                <p>Descubre el lujo en el corazón de Buenos Aires. El Hotel Continental ofrece elegancia, comodidad y
-                    una ubicación inmejorable cerca de los principales atractivos turísticos. ¡Reserva tu estancia hoy
+                <p>En el Hotel Continental vas a descubrir el lujo en el corazón palpitante de Buenos Aires. Nuestra ubicación privilegiada te coloca a pasos
+                    de los principales atractivos turisticos, tiendas de moda y restaurantes gourmet de la ciudad. Te ofrecemos habitaciones elegantemente 
+                    decoradas, servicios de primera clase y una atención personalizada que hará de tu estancia una experiencia inolvidable. ¡Reserva tu estancia hoy
                     mismo!</p>
             </div>
         </div>
 
         <div class="row hidden">
             <div class="col align-self-center texts" data-section="Home" data-value="second">
-                <p>Ubicado en el vibrante centro de Buenos Aires, el Hotel Continental te invita a disfrutar de una
-                    estancia inolvidable. Su restaurante destaca por su alta calidad, combinando sabores locales e
-                    internacionales en un ambiente sofisticado.</p>
+                <p>Sumérgete en una experiencia gastronómica excepcional en nuestro aclamado restaurante. Nuestro equipo de cocina fusionan 
+                    magistralmente los sabores tradicionales argentinos con técnicas culinarias internacionales de vanguardia. Desde los jugosos 
+                    cortes de carne argentina hasta delicados platos de inspiración mediterránea, cada bocado es una celebración de sabores. 
+                    Acompaña tu comida con una selección de los mejores vinos de nuestras bodegas, cuidadosamente elegidos para complementar 
+                    cada plato. El ambiente sofisticado y acogedor, con vistas panorámicas de la ciudad, crea el escenario perfecto para 
+                    cenas románticas, reuniones de negocios o celebraciones especiales.</p>
             </div>
             <div class="col">
-                <img src="images/bar_resto/resto_1.jpg" class="img-fluid" alt="...">
+                <img src="images/bar_resto/restaurant.jpg" class="img-fluid" alt="...">
             </div>
 
         </div>
 
         <div class="row hidden">
             <div class="col">
-                <img src="images/luggage-passport.jpg" class="img-fluid" alt="...">
+                <img src="images/check-in.jpg" class="img-fluid" alt="...">
             </div>
 
             <div class="col align-self-center texts" data-section="Home" data-value="third">
-                <p>Además, nuestro proceso de check-in es rápido y eficiente, asegurando que comiences tu experiencia
-                    sin demoras</p>
+                <p>En el Hotel Continental, entendemos que tu tiempo es valioso. Por eso, nuestro proceso de check-in es rápido, eficiente 
+                    y sin complicaciones. Utilizamos la última tecnología para agilizar el proceso, permitiendote acceder a tu habitación
+                    en cuestión de minutos, asegurando que comiences tu experiencia sin demoras</p>
             </div>
         </div>
     </div>

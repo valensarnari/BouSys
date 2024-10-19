@@ -187,16 +187,17 @@ nav-link right {
   height: 2px;
   background: black;
   top: 50%;
-  width: 100px; /* Ajusta el ancho del subrayado */
+  width: 100px; 
 }
 .subrayado::before {
-  left: 400px; /* Ajusta la posición del subrayado antes de la palabra */
+  left: 400px;
 }
 .subrayado::after {
-  right: 400px; /* Ajusta la posición del subrayado después de la palabra */
+  right: 400px; 
 }
-/*--------------------------------------room title------------------------*/
+/*--------------------------------------PAGE ROOM------------------------*/
 .room-title {
+  margin-top: 5rem;
   position: relative;
   width: 100%;
   height: auto;
@@ -206,15 +207,39 @@ nav-link right {
   font-family: "GFS Didot", serif;
   font-size: 25px;
 }
-.room-title.subrayado::before {
-  left: 103px;
-}
-.room-title.subrayado::after {
-  right: 103px;
+.room-cards {
+  margin-top: 7.5rem;
 }
 .room-cards {
-  margin-top: 37px;
+    padding: 2rem 0;
 }
+
+.room-cards .card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    height: 100%;
+}
+
+.room-cards .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.room-cards .card-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.room-cards .card-title {
+    margin-bottom: 1rem;
+}
+
+.room-cards .btn {
+    margin-top: 1rem;
+    align-self: flex-start;
+}
+
 /*-------------------------------  TXT ABOVE VIDEO------------------------------------------------------*/
 .txt-room-1 {
   position: relative;
@@ -378,6 +403,51 @@ h2 {
 
 .formulario-contacto button:hover {
   background-color: #5c5c4f;
+}
+/*------------------------------------PAGE SERVICE--------------------------------------------------*/
+.services-container {
+    padding: 2rem 0;
+}
+
+.services-container .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.services-container .col {
+    flex: 0 0 calc(33.333% - 1rem);
+    margin: 0.5rem;
+    max-width: calc(33.333% - 1rem);
+}
+
+.services-container .col:nth-child(4),
+.services-container .col:nth-child(5) {
+    flex: 0 0 calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
+}
+
+.services-container .card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    height: 100%;
+}
+
+.services-container .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.services-container .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.services-container .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.services-container .btn {
+    margin-top: auto;
 }
 
 /*----------------pseudo - class-----------------*/
