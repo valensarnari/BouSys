@@ -17,6 +17,83 @@ include("../registro_login/validacion_sesion.php");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Lista de clientes</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        .container {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .form-control {
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .form-control::placeholder {
+            color: #888;
+        }
+
+        .table {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        .table-dark {
+            background-color: #1e1e1e;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .table-striped tbody tr:nth-of-type(even) {
+            background-color: #2a2a2a;
+        }
+
+        .table tbody tr td {
+            color: #e0e0e0 !important;
+        }
+
+        .btn-success,
+        .btn-warning,
+        .btn-danger,
+        .btn-info {
+            background-color: #03dac6;
+            border-color: #03dac6;
+            color: #121212;
+        }
+
+        .btn-success:hover,
+        .btn-warning:hover,
+        .btn-danger:hover,
+        .btn-info:hover {
+            background-color: #018786;
+            border-color: #018786;
+        }
+
+        .pagination .page-link {
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+    </style>
 </head>
 
 <body>
@@ -51,7 +128,14 @@ include("../registro_login/validacion_sesion.php");
                     <li class="nav-item">
                         <a href="reservas.php" class="nav-link align-middle px-0">
                             <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-book"></i> Reservas
+                                <i class="fa-solid fa-book"></i> Gestión de reservas
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="nueva_reserva.php" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">
+                                <i class="fa-solid fa-plus"></i> Nueva reserva
                             </span>
                         </a>
                     </li>
@@ -74,14 +158,6 @@ include("../registro_login/validacion_sesion.php");
         <!-- Visualizar reservas (siempre visible) -->
         <div class="container my-4">
             <h2 class="mb-3">Reservas Actuales</h2>
-            <div class="row">
-                <div class="col">
-                    <button type="button" class="btn btn-success my-2" data-bs-toggle="modal"
-                        data-bs-target="#reservarModal">
-                        Reservar Habitación
-                    </button>
-                </div>
-            </div>
             <div class="row">
                 <div class="table-responsive">
                     <table class="table table-striped">
@@ -199,14 +275,9 @@ include("../registro_login/validacion_sesion.php");
         </div>
 
         <!-- Incluir los modales -->
-        <?php include('modals/reservar_habitacion_modal.php'); ?>
         <?php include('modals/modificar_habitacion_modal.php'); ?>
         <?php include('modals/cancelar_reserva_modal.php'); ?>
         <?php include('modals/check_in_check_out_modal.php'); ?>
-
-        <!-- Bootstrap JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
 
     </div>
 </body>

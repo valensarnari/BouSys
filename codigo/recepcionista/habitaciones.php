@@ -17,6 +17,73 @@ include("../registro_login/validacion_sesion.php");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Lista de clientes</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        .container {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        h2,
+        h4 {
+            color: #007bff;
+        }
+
+        .form-control,
+        .form-select {
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .form-control::placeholder,
+        .form-select::placeholder {
+            color: #888;
+        }
+
+        .table {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        .table-dark {
+            background-color: #1e1e1e;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .table-striped tbody tr:nth-of-type(even) {
+            background-color: #2a2a2a;
+        }
+
+        .table tbody tr td {
+            color: #e0e0e0 !important;
+        }
+
+        .btn-primary {
+            background-color: #03dac6;
+            border-color: #03dac6;
+            color: #121212;
+        }
+
+        .btn-primary:hover {
+            background-color: #018786;
+            border-color: #018786;
+        }
+
+        .bg-light {
+            background-color: #2a2a2a !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -51,7 +118,14 @@ include("../registro_login/validacion_sesion.php");
                     <li class="nav-item">
                         <a href="reservas.php" class="nav-link align-middle px-0">
                             <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-book"></i> Reservas
+                                <i class="fa-solid fa-book"></i> Gestión de reservas
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="nueva_reserva.php" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">
+                                <i class="fa-solid fa-plus"></i> Nueva reserva
                             </span>
                         </a>
                     </li>
@@ -74,6 +148,7 @@ include("../registro_login/validacion_sesion.php");
         <div class="container my-5">
             <div class="row">
                 <div class="col">
+                    <h2>Listado de Habitaciones</h2>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead class="table-dark">
@@ -131,41 +206,43 @@ include("../registro_login/validacion_sesion.php");
                     </div>
                 </div>
             </div>
-            <div class="col-3 p-3 bg-light rounded">
-                <h4>Cambiar estado de habitación</h4>
-                <!-- Formulario para cambiar el estado de una habitación -->
-                <form action="actions/modificar_estado_habitacion.php" method="post">
-                    <div class="my-3">
-                        <label for="numero_habitacion" class="form-label">Seleccionar habitación:</label>
-                        <select class="form-select" name="numero_habitacion" required>
-                            <?php
-                            $select = "SELECT Numero_Habitacion FROM habitacion WHERE Activo = 1";
-                            $query = mysqli_query($conexion, $select);
-
-                            if (!$query)
-                                die("Error en la consulta SQL: " . mysqli_error($conexion));
-
-                            // Mostrar resultados en la tabla
-                            while ($resultado = mysqli_fetch_array($query)) {
-                                ?>
-                                <option value="<?php echo $resultado[0]; ?>"><?php echo $resultado[0]; ?></option>
+            <div class="row mt-4">
+                <div class="col-md-6 offset-md-3 p-3 bg-light rounded">
+                    <h4>Cambiar estado de habitación</h4>
+                    <!-- Formulario para cambiar el estado de una habitación -->
+                    <form action="actions/modificar_estado_habitacion.php" method="post">
+                        <div class="mb-3">
+                            <label for="numero_habitacion" class="form-label">Seleccionar habitación:</label>
+                            <select class="form-select" name="numero_habitacion" required>
                                 <?php
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="mb-4">
-                        <label for="nuevo_estado" class="form-label">Seleccionar nuevo estado:</label>
-                        <select class="form-select" name="nuevo_estado" required>
-                            <option value="Disponible">Disponible</option>
-                            <option value="Ocupada">Ocupado</option>
-                            <option value="Mantenimiento">Mantenimiento</option>
-                        </select>
-                    </div>
-                    <div class="mb-3 d-flex justify-content-center">
-                        <input type="submit" class="btn btn-primary" value="Actualizar Estado">
-                    </div>
-                </form>
+                                $select = "SELECT Numero_Habitacion FROM habitacion WHERE Activo = 1";
+                                $query = mysqli_query($conexion, $select);
+
+                                if (!$query)
+                                    die("Error en la consulta SQL: " . mysqli_error($conexion));
+
+                                // Mostrar resultados en la tabla
+                                while ($resultado = mysqli_fetch_array($query)) {
+                                    ?>
+                                    <option value="<?php echo $resultado[0]; ?>"><?php echo $resultado[0]; ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nuevo_estado" class="form-label">Seleccionar nuevo estado:</label>
+                            <select class="form-select" name="nuevo_estado" required>
+                                <option value="Disponible">Disponible</option>
+                                <option value="Ocupada">Ocupado</option>
+                                <option value="Mantenimiento">Mantenimiento</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 d-flex justify-content-center">
+                            <input type="submit" class="btn btn-primary" value="Actualizar Estado">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 
