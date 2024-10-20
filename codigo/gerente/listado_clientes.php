@@ -107,8 +107,7 @@ include("../registro_login/validacion_sesion.php");
                     </button>
                 </div>
                 <div class="col">
-                    <input type="text" id="buscador" class="form-control"
-                        placeholder="Buscar cliente por apellido...">
+                    <input type="text" id="buscador" class="form-control" placeholder="Buscar cliente por apellido...">
                 </div>
             </div>
             <div class="row">
@@ -152,7 +151,7 @@ include("../registro_login/validacion_sesion.php");
                                         <?php echo $resultado['5'] ?>
                                     </td>
                                     <td scope="row">
-                                        <?php echo $resultado['6'] ?>
+                                        <?php echo $resultado['11'] ?>
                                     </td>
                                     <td scope="row">
                                         <!-- Activa modal de ver detalle -->
