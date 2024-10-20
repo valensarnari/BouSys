@@ -151,7 +151,7 @@ include("../registro_login/validacion_sesion.php");
                                         <?php echo $resultado['5'] ?>
                                     </td>
                                     <td scope="row">
-                                        <?php echo $resultado['11'] ?>
+                                        <?php echo $resultado['6'] ?>
                                     </td>
                                     <td scope="row">
                                         <!-- Activa modal de ver detalle -->
