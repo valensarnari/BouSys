@@ -1,6 +1,7 @@
 <?php
 
 include("../conexion.php");
+include("../registro_login/validacion_sesion.php");
 ?>
 
 <!doctype html>
@@ -22,96 +23,189 @@ include("../conexion.php");
     <div class="d-flex">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <!--direccionar -->
+                <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <span class="fs-5 d-none d-sm-inline">BouSys</span>
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
-                        <a href="../../" class="nav-link align-middle px-0"> <!--cambiar -->
+                        <a href="../../" class="nav-link align-middle px-0">
                             <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-house"></i> Volver a inicio 
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="habitaciones.php" class="nav-link align-middle px-0"> <!--cambiar -->
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-user"></i> Habitaciones
+                                <i class="fa-solid fa-house"></i> Volver a inicio
                             </span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="listado_clientes_recepcionista.php" class="nav-link align-middle px-0">
                             <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-address-book"></i> Gestión de clientes
+                                <i class="fa-solid fa-user"></i> Gestión de clientes
                             </span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="reservas.php" class="nav-link align-middle px-0"> <!--cambiar -->
+                        <a href="habitaciones.php" class="nav-link align-middle px-0">
                             <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-chart-simple"></i> Reservas
+                                <i class="fa-solid fa-hotel"></i> Gestión de habitaciones
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reservas.php" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">
+                                <i class="fa-solid fa-book"></i> Reservas
                             </span>
                         </a>
                     </li>
                 </ul>
                 <hr>
                 <div class="dropdown pb-4">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"  
-                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"> <!--direccionar  -->
-                        <span class="d-none d-sm-inline mx-1">nombreperfil</span>
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="d-none d-sm-inline mx-1">
+                            <?php echo $_SESSION['usuario_nombre']; ?>
+                        </span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li> <!--direccionar-->
+                        <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php">Cerrar sesión</a></li>
                     </ul>
                 </div>
             </div>
         </div>
 
+        <!-- Visualizar reservas (siempre visible) -->
+        <div class="container my-4">
+            <h2 class="mb-3">Reservas Actuales</h2>
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-success my-2" data-bs-toggle="modal"
+                        data-bs-target="#reservarModal">
+                        Reservar Habitación
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="table-dark">
+                            <tr>
+                                <td scope="col">Cliente</td>
+                                <td scope="col">Estado</td>
+                                <td scope="col">Inicio</td>
+                                <td scope="col">Fin</td>
+                                <td scope="col">Check-In</td>
+                                <td scope="col">Check-Out</td>
+                                <td scope="col">Valor total</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            // paginacion
+                            $por_pagina = 10; // num de registros por pagina
+                            $pagina_actual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
+                            $offset = ($pagina_actual - 1) * $por_pagina;
 
+                            // Consulta SQL con LIMIT y OFFSET
+                            $select = "SELECT rt.id, c.id, rt.Estado, rt.Fecha_Inicio, rt.Fecha_Fin, rt.Check_In, rt.Check_Out, rt.Valor_Total, c.Nombre, c.Apellido
+                                        FROM reserva_total rt JOIN cliente c ON rt.ID_Cliente = c.id
+                                        ORDER BY rt.id DESC LIMIT $por_pagina OFFSET $offset;";
 
-    <!-- Visualizar reservas (siempre visible) -->
-    <div class="container my-4">
-        <h2>Reservas Actuales</h2>
+                            $query = mysqli_query($conexion, $select);
 
-        <div id="reservas-list">
-            <?php include('actions/visualizar_reserva.php'); ?>
+                            // Verificar si la consulta falló
+                            if (!$query) {
+                                die("Error en la consulta SQL: " . mysqli_error($conexion));
+                            }
+
+                            // Mostrar resultados en la tabla
+                            while ($resultado = mysqli_fetch_array($query)) {
+                                ?>
+                                <tr>
+                                    <td scope="row">
+                                        <?php echo $resultado['8'] . " " . $resultado['9'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['2'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['3'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['4'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['5'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['6'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['7'] ?>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+
+                    <?php
+                    // Contar el número total de reservas
+                    $result_total = mysqli_query($conexion, "SELECT COUNT(*) as total FROM reserva_total");
+                    $total_reservas = mysqli_fetch_assoc($result_total)['total'];
+
+                    // Calcular el total de páginas
+                    $total_paginas = ceil($total_reservas / $por_pagina);
+                    ?>
+
+                    <!-- Navegación de paginación -->
+                    <nav>
+                        <ul class="pagination d-flex justify-content-center">
+                            <?php if ($pagina_actual > 1): ?>
+                                <li class="page-item">
+                                    <a class="page-link" href="?pagina=<?php echo $pagina_actual - 1; ?>">Anterior</a>
+                                </li>
+                            <?php endif; ?>
+
+                            <?php for ($i = 1; $i <= $total_paginas; $i++): ?>
+                                <li class="page-item <?php if ($i == $pagina_actual)
+                                    echo 'active'; ?>">
+                                    <a class="page-link" href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                </li>
+                            <?php endfor; ?>
+
+                            <?php if ($pagina_actual < $total_paginas): ?>
+                                <li class="page-item">
+                                    <a class="page-link" href="?pagina=<?php echo $pagina_actual + 1; ?>">Siguiente</a>
+                                </li>
+                            <?php endif; ?>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+
+            <!-- Botones para abrir modales -->
+            <div class="mt-4">
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modificarModal">
+                    Modificar Reserva
+                </button>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cancelarModal">
+                    Cancelar Reserva
+                </button>
+                <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                    data-bs-target="#checkinCheckoutModal">
+                    Check-in / Check-out
+                </button>
+            </div>
         </div>
 
-        <!-- Botones para abrir modales -->
-        <div class="mt-4">
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reservarModal">
-                Reservar Habitación
-            </button>
-            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modificarModal">
-                Modificar Reserva
-            </button>
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cancelarModal">
-                Cancelar Reserva
-            </button>
-            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#checkinCheckoutModal">
-                Check-in / Check-out
-            </button>
-        </div>
-    </div>
+        <!-- Incluir los modales -->
+        <?php include('modals/reservar_habitacion_modal.php'); ?>
+        <?php include('modals/modificar_habitacion_modal.php'); ?>
+        <?php include('modals/cancelar_reserva_modal.php'); ?>
+        <?php include('modals/check_in_check_out_modal.php'); ?>
 
-
-
-    <!-- Incluir los modales -->
-    <?php include('modals/reservar_habitacion_modal.php'); ?>
-    <?php include('modals/modificar_habitacion_modal.php'); ?>
-    <?php include('modals/cancelar_reserva_modal.php'); ?>
-    <?php include('modals/check_in_check_out_modal.php'); ?>
-
-
-    <div>
-
-    <?php include('actions/visualizar_checkin_checkout.php'); ?>
-    
-    </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 
     </div>
@@ -122,7 +216,7 @@ include("../conexion.php");
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 
-   
+
 
 
 

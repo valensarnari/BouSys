@@ -1,5 +1,6 @@
 <?php
 include("../conexion.php");
+include("../registro_login/validacion_sesion.php");
 
 // Chequear si se selecciono un mes (si no, usa el mes actual)
 if (isset($_GET['mes']) && !empty($_GET['mes'])) {
@@ -116,6 +117,13 @@ $num_rows = mysqli_num_rows($query);
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="listado_habitaciones.php" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">
+                                <i class="fa-solid fa-hotel"></i> Gestión de habitaciones
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="reporte.php" class="nav-link align-middle px-0">
                             <span class="ms-1 d-none d-sm-inline">
                                 <i class="fa-solid fa-chart-simple"></i> Reporte de ocupación
@@ -127,10 +135,12 @@ $num_rows = mysqli_num_rows($query);
                 <div class="dropdown pb-4">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                         id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-1">nombreperfil</span>
+                        <span class="d-none d-sm-inline mx-1">
+                            <?php echo $_SESSION['usuario_nombre']; ?>
+                        </span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                        <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php">Cerrar sesión</a></li>
                     </ul>
                 </div>
             </div>
@@ -154,16 +164,15 @@ $num_rows = mysqli_num_rows($query);
                     // Chequeo de si hay resultados
                     if ($num_rows > 0) {
                         ?>
-                        <div id="reporte"></div>
-                        <?php
-                    } else
-                    {
+                    <div id="reporte"></div>
+                    <?php
+                    } else {
                         ?>
-                        <p>No hay reservas en el mes seleccionado</p>
-                        <?php
+                    <p>No hay reservas en el mes seleccionado</p>
+                    <?php
                     }
                     ?>
-                    
+
                 </div>
             </div>
         </div>

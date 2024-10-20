@@ -8,6 +8,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="../styles.css" rel="stylesheet">
     <script src="../script.js"></script>
+    <link rel="icon" type="image/svg+xml" href="../icons/suitcase.png">
     <title>Opinions</title>
 </head>
 
@@ -23,10 +24,12 @@
             <div id="flag-es" class="flags_item_es" data-language="es"><img src="../icons/es.svg"></div>
         </div>
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" data-section="nav" data-value="login">Ingreso</a>
+            <button type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#ingresar">
+                Ingreso
+            </button>
         </li>
         <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="../index.html" data-section="nav"
+            <a class="nav-link " aria-current="page" href="../index.php" data-section="nav"
                 data-value="home">Inicio</a>
         </li>
         <li class="nav-item">
@@ -38,10 +41,23 @@
         <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true" data-section="nav"
                 data-value="recommendations">
-                Calificaciones</a>
+                Recomendaciones</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link right" href="../codigo/registro_login/panel_registro_login.php">
+                <p data-section="nav" data-value="signup">Registrarse</p>
+            </a>
+        </li>
+        <li class="nav-item "></li>
+            <a class="nav-link right" href="contacto.html">
+                <p data-section="nav" data-value="signup">Contacto</p>
+            </a>
         </li>
         <li class="nav-item ms-auto">
-            <a class="nav-link right " href="receptions.php">
+            <img src="../icons/calendar-check.svg"></a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link right" href="receptions.php">
                 <p data-section="nav" data-value="receptions">Reservas</p>
             </a>
         </li>

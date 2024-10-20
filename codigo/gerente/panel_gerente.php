@@ -17,7 +17,7 @@ include("../registro_login/validacion_sesion.php");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Panel Gerente</title>
-    <!---graficos --
+    <!---graficos --->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load("current", { packages: ["timeline"] });
@@ -42,7 +42,7 @@ include("../registro_login/validacion_sesion.php");
             chart.draw(dataTable, options);
         }
 
-    </script>-->
+    </script>
 </head>
 
 <body>
@@ -94,17 +94,15 @@ include("../registro_login/validacion_sesion.php");
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                         id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="d-none d-sm-inline mx-1">
-                            <?php echo 'aqui error var session Nombre'/*$_SESSION['Nombre'];*/ ?>
+                            <?php echo $_SESSION['usuario_nombre']; ?>
                         </span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="../cerrar_conexion.php">Cerrar sesión</a></li>
+                        <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php">Cerrar sesión</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-
-    </div>
 </body>
 
 <!---bootstrap js --->

@@ -12,6 +12,9 @@
 </head>
 
 <body class="container-fluid">
+    <script>
+        document.title = "\uD83E\uDDF3 Services";
+    </script>
     <!-------------------------------------------------------Titulo top------------------------------>
     <header class="row top-title">
         <h1>C o n t i n e n t a l&nbsp&nbsp&nbsp&nbsp&nbsp H o t e l</h1>
@@ -23,14 +26,16 @@
             <div id="flag-es" class="flags_item_es" data-language="es"><img src="../icons/es.svg"></div>
         </div>
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" data-section="nav" data-value="login">Ingreso</a>
+            <button type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#ingresar">
+                Ingreso
+            </button>
         </li>
         <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="../index.html" data-section="nav"
+            <a class="nav-link " aria-current="page" href="../index.php" data-section="nav"
                 data-value="home">Inicio</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true" data-section="nav"
+            <a class="nav-link disabled" href="../pages/services.html" tabindex="-1" aria-disabled="true" data-section="nav"
                 data-value="services">Servicios</a>
         </li>
         <li class="nav-item">
@@ -38,17 +43,30 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="../pages/recommendations.html" data-section="nav"
-                data-value="recommendations">Calificaciones</a>
+                data-value="recommendations">Recomendaciones</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link right" href="../codigo/registro_login/panel_registro_login.php">
+                <p data-section="nav" data-value="signup">Registrarse</p>
+            </a>
+        </li>
+        <li class="nav-item "></li>
+            <a class="nav-link right" href="contacto.html">
+                <p data-section="nav" data-value="signup">Contacto</p>
+            </a>
         </li>
         <li class="nav-item ms-auto">
-            <a class="nav-link right" href="../pages/receptions.php">
+            <img src="../icons/calendar-check.svg"></a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link right" href="receptions.php">
                 <p data-section="nav" data-value="receptions">Reservas</p>
             </a>
         </li>
     </ul><br>
     <!-------------------------------------------Center title-------------------------------------------------------------------->
     <div class="row align-items-center room-title">
-        <span class="subrayado" id="room-3">Nuestros servicios...</span>
+        <span class="subrayado" id="room-3" data-section="services" data-value="title-1">Nuestros servicios...</span>
     </div>
     <!--------------------------------------  CARDS  ------------------------------------------->
     <div class="row align-items-center">

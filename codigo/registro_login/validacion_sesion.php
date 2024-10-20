@@ -1,5 +1,8 @@
 <?php
-session_start();
+// Verificar si la sesión no está ya iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start(); // Iniciar sesión solo si no está activa
+}
 
 // Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION['usuario_id'])) {
@@ -16,14 +19,14 @@ $current_file = basename($_SERVER['PHP_SELF']);
 
 // Definir las rutas permitidas según la jerarquía del usuario
 $allowed_routes = [
-    0 => ['panel_gerente.php'], // Gerente
-    1 => ['panel_recepcionista.php'], // Recepcionista
+    0 => ['panel_gerente.php', 'listado_clientes.php', 'listado_empleados.php', 'listado_habitaciones.php', 'reporte.php'], // Gerente
+    1 => ['panel_recepcionista.php', 'habitaciones.php', 'listado_clientes_recepcionista.php', 'reservas.php'], // Recepcionista
     2 => ['panel_cliente.php'] // Cliente
 ];
 
 // Verificar si el usuario tiene acceso a la página actual
-if (!in_array($current_file, $allowed_routes[$jerarquia])) {
-    // Si no tiene acceso, redirigirlo a su panel correspondiente
+if (!isset($allowed_routes[$jerarquia]) || !in_array($current_file, $allowed_routes[$jerarquia])) {
+    // Si no tiene acceso o la jerarquía no es válida, redirigir a la página correspondiente
     switch ($jerarquia) {
         case 0: // Gerente
             header("Location: ../gerente/panel_gerente.php");
@@ -36,7 +39,7 @@ if (!in_array($current_file, $allowed_routes[$jerarquia])) {
             break;
         default:
             // Si no se reconoce la jerarquía, redirigir al login
-            header("Location: ../panel_registro_login.php");
+            header("Location: ../registro_login/panel_registro_login.php");
             break;
     }
     exit; // Detener la ejecución del script

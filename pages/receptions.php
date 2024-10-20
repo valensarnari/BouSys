@@ -32,6 +32,7 @@ $preference->save();
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="../styles.css" rel="stylesheet">
     <script src="../script.js"></script>
+    <link rel="icon" type="image/svg+xml" href="icons/calendar-check.svg">
     <title>Reservas</title>
 </head>
 
@@ -47,7 +48,9 @@ $preference->save();
             <div id="flag-es" class="flags_item_es" data-language="es"><img src="../icons/es.svg"></div>
         </div>
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" data-section="nav" data-value="login">Ingreso</a>
+        <button type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#ingresar">
+                Ingreso
+            </button>
         </li>
         <li class="nav-item">
             <a class="nav-link " aria-current="page" href="../index.html" data-section="nav"
@@ -61,13 +64,26 @@ $preference->save();
         </li>
         <li class="nav-item">
             <a class="nav-link" href="../pages/recommendations.html" data-section="nav"
-                data-value="recommendations">Calificaciones</a>
+                data-value="recommendations">Recomendaciones</a>
         </li>
-        <li class="nav-item ms-auto">
-            <a class="nav-link right disabled" href="#" href="#" tabindex="-1" aria-disabled="true">
-                <p data-section="nav" data-value="receptions">Reservas</p>
+        <li class="nav-item ">
+            <a class="nav-link right" href="../codigo/registro_login/panel_registro_login.php">
+                <p data-section="nav" data-value="signup">Registrarse</p>
             </a>
         </li>
+        <li class="nav-item "></li>
+            <a class="nav-link right" href="contacto.html">
+                <p data-section="nav" data-value="signup">Contacto</p>
+            </a>
+        </li>
+        <li class="nav-item ms-auto">
+            <img src="../icons/calendar-check.svg"></a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link right" href="pages/receptions.php">
+                <p data-section="nav" data-value="receptions">Reservas</p>
+            </a>
+        </li>>
     </ul>
     <!-----------------------------------------IMAGEN O VIDEO PRINCIPAL--------------------------------------------->
     <div class="row room-description">

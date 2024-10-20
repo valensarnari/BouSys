@@ -1,5 +1,6 @@
 <?php
 include("../conexion.php");
+include("../registro_login/validacion_sesion.php");
 ?>
 
 
@@ -15,7 +16,7 @@ include("../conexion.php");
     <!---bootstrap css --->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Recepcionista</title>
+    <title>Panel Recepcionista</title>
     <!---graficos --->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -30,8 +31,8 @@ include("../conexion.php");
             dataTable.addColumn({ type: 'date', id: 'Inicio' });
             dataTable.addColumn({ type: 'date', id: 'Final' });
             dataTable.addRows([
-            
-        ]);
+
+            ]);
 
             var options = {
                 timeline: { colorByRowLabel: true },
@@ -48,7 +49,7 @@ include("../conexion.php");
     <div class="d-flex">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <!--direccionar inicio -->
+                <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <span class="fs-5 d-none d-sm-inline">BouSys</span>
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
@@ -59,45 +60,43 @@ include("../conexion.php");
                             </span>
                         </a>
                     </li>
-                    <!--cambiar -->
-                    <li class="nav-item">
-                        <a href="habitaciones.php" class="nav-link align-middle px-0">
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-user"></i> Habitaciones
-                            </span>
-                        </a>
-                    </li>
-                    <!--cambiar -->
                     <li class="nav-item">
                         <a href="listado_clientes_recepcionista.php" class="nav-link align-middle px-0">
                             <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-address-book"></i> Gestión de clientes
+                                <i class="fa-solid fa-user"></i> Gestión de clientes
                             </span>
                         </a>
                     </li>
-                    <!--cambiar -->
+                    <li class="nav-item">
+                        <a href="habitaciones.php" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">
+                                <i class="fa-solid fa-hotel"></i> Gestión de habitaciones
+                            </span>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="reservas.php" class="nav-link align-middle px-0">
                             <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-chart-simple"></i> Reservas
+                                <i class="fa-solid fa-book"></i> Reservas
                             </span>
                         </a>
                     </li>
                 </ul>
                 <hr>
-                <!--arreglar -->
                 <div class="dropdown pb-4">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                         id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-1">nombreperfil</span>
+                        <span class="d-none d-sm-inline mx-1">
+                            <?php echo $_SESSION['usuario_nombre']; ?>
+                        </span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                        <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php">Cerrar sesión</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-      
+
     </div>
 </body>
 

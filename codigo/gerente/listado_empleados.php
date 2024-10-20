@@ -1,6 +1,7 @@
 <?php
 include("modals/agregar_empleado.php");
 include("../conexion.php");
+include("../registro_login/validacion_sesion.php");
 ?>
 
 <!doctype html>
@@ -48,6 +49,13 @@ include("../conexion.php");
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="listado_habitaciones.php" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">
+                                <i class="fa-solid fa-hotel"></i> Gestión de habitaciones
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="reporte.php" class="nav-link align-middle px-0">
                             <span class="ms-1 d-none d-sm-inline">
                                 <i class="fa-solid fa-chart-simple"></i> Reporte de ocupación
@@ -59,10 +67,12 @@ include("../conexion.php");
                 <div class="dropdown pb-4">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                         id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-1">nombreperfil</span>
+                        <span class="d-none d-sm-inline mx-1">
+                            <?php echo $_SESSION['usuario_nombre']; ?>
+                        </span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                        <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php">Cerrar sesión</a></li>
                     </ul>
                 </div>
             </div>

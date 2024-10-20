@@ -1,5 +1,5 @@
 <?php
-include("codigo/sigin.php");
+include("cerrar_conexion.php");
 ?>
 
 <!doctype html>
@@ -79,11 +79,8 @@ include("codigo/sigin.php");
             <div id="flag-es" class="flags_item_es" data-language="es"><img src="icons/es.svg"></div>
         </div>
         <li class="nav-item">
-            <button type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#ingresar">
-                Ingreso
-            </button>
-            <!-- <a class="nav-link active" aria-current="page" href="codigo/sigin.php" data-section="nav"
-                data-value="login">Ingreso</a>-clientes ya reg, recepcio, gerente -->
+            <a class="nav-link active" aria-current="page" href="codigo/registro_login/panel_registro_login.php"
+                data-section="nav" data-value="login">Ingreso</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="pages/services.html" data-section="nav" data-value="services">Servicios</a>
@@ -95,10 +92,10 @@ include("codigo/sigin.php");
             <a class="nav-link" href="pages/recommendations.html" data-section="nav"
                 data-value="recommendations">Recomendaciones</a>
         </li>
-        <li class="nav-item ">
-            <a class="nav-link right" href="codigo/registro_login/panel_registro_login.php">
-                <p data-section="nav" data-value="signup">Registrarse</p>
-            </a>
+        <li class="nav-item "></li>
+        <a class="nav-link right" href="pages/contacto.html">
+            <p data-section="nav" data-value="signup">Contacto</p>
+        </a>
         </li>
         <li class="nav-item ms-auto">
             <img src="../icons/calendar-check.svg"></a>
