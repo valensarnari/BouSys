@@ -1,7 +1,6 @@
 <?php
 
 include("../conexion.php");
-include("../registro_login/validacion_sesion.php");
 ?>
 
 <!doctype html>

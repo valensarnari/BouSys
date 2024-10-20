@@ -5,8 +5,8 @@ if (!$conexion) {
     echo "Error de conexión";
 }
 
-// Consulta para obtener habitaciones disponibles con cantidad máxima de adultos y niños
-$query_habitaciones = "SELECT id, Numero_Habitacion, Tipo, Precio_Por_Noche, Cantidad_Adultos_Maximo, Cantidad_Ninos_Maximo 
+// Consulta para obtener habitaciones disponibles
+$query_habitaciones = "SELECT id, Numero_Habitacion, Tipo, Precio_Por_Noche 
                        FROM habitacion 
                        WHERE Estado = 'Disponible' AND Activo = 1";
 $result_habitaciones = mysqli_query($conexion, $query_habitaciones);

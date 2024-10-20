@@ -1,6 +1,5 @@
 <?php
 include("../conexion.php");
-include("../registro_login/validacion_sesion.php");
 ?>
 
 
@@ -16,7 +15,7 @@ include("../registro_login/validacion_sesion.php");
     <!---bootstrap css --->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Panel Recepcionista</title>
+    <title>Recepcionista</title>
     <!---graficos --->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">

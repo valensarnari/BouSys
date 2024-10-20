@@ -1,6 +1,5 @@
 <?php
 include ('../../conexion.php');
-include("../registro_login/validacion_sesion.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $reserva_id = $_POST['reserva_id'];
