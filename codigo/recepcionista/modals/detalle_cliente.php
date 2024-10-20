@@ -1,3 +1,30 @@
+<style>
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+    .modal-content {
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+    }
+    .modal-header {
+        border-bottom: 1px solid #333;
+    }
+    .modal-title {
+        color: #007bff;
+    }
+    .btn-close {
+        color: #e0e0e0;
+    }
+    .form-label {
+        color: #03dac6;
+    }
+    .form-control:disabled {
+        background-color: #2a2a2a;
+        color: #e0e0e0;
+        border-color: #444;
+    }
+</style>
 
 <!-- Modal -->
 <div class="modal fade" id="detalle<?php echo $resultado['0'] ?>" tabindex="-1" aria-labelledby="detalleLabel"
@@ -10,10 +37,12 @@
             </div>
             <div class="modal-body">
                 <div class="row mb-3">
-                    <div class="col-md-6"><label class="form-label">Nombre:</label>
+                    <div class="col-md-6">
+                        <label class="form-label">Nombre:</label>
                         <input disabled class="form-control" type="text" value="<?php echo $resultado['1'] ?>">
                     </div>
-                    <div class="col-md-6"><label class="form-label">Apellido:</label>
+                    <div class="col-md-6">
+                        <label class="form-label">Apellido:</label>
                         <input disabled class="form-control" type="text" value="<?php echo $resultado['2'] ?>">
                     </div>
                 </div>
@@ -26,10 +55,12 @@
                     <input disabled class="form-control" type="text" value="<?php echo $resultado['5'] ?>">
                 </div>
                 <div class="row mb-3">
-                    <div class="col-md-6"><label class="form-label">Sexo:</label>
+                    <div class="col-md-6">
+                        <label class="form-label">Sexo:</label>
                         <input disabled class="form-control" type="text" value="<?php echo $resultado['6'] ?>">
                     </div>
-                    <div class="col-md-6"><label class="form-label">Fecha de nacimiento:</label>
+                    <div class="col-md-6">
+                        <label class="form-label">Fecha de nacimiento:</label>
                         <input disabled class="form-control" type="date" value="<?php echo $resultado['3'] ?>">
                     </div>
                 </div>

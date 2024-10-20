@@ -1,5 +1,4 @@
 <?php
-include("modals/agregar_cliente.php");
 include("../conexion.php");
 include("../registro_login/validacion_sesion.php");
 ?>
@@ -37,85 +36,6 @@ include("../registro_login/validacion_sesion.php");
             });
         });
     </script>
-    <style>
-        body {
-            background-color: #121212;
-            color: #e0e0e0;
-        }
-
-        .container {
-            background-color: #1e1e1e;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        h2 {
-            color: #007bff;
-        }
-
-        .form-control {
-            background-color: #2a2a2a;
-            border-color: #444;
-            color: #e0e0e0;
-        }
-
-        .form-control::placeholder {
-            color: #888;
-        }
-
-        .table {
-            background-color: #2a2a2a;
-            color: #e0e0e0;
-        }
-
-        .table-dark {
-            background-color: #1e1e1e;
-        }
-
-        .table-striped tbody tr:nth-of-type(odd) {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .table-striped tbody tr:nth-of-type(even) {
-            background-color: #2a2a2a;
-        }
-
-        .table tbody tr td {
-            color: #e0e0e0 !important;
-        }
-
-        .btn-success,
-        .btn-warning,
-        .btn-danger {
-            background-color: #03dac6;
-            border-color: #03dac6;
-            color: #121212;
-        }
-
-        .btn-success:hover,
-        .btn-warning:hover,
-        .btn-danger:hover {
-            background-color: #018786;
-            border-color: #018786;
-        }
-
-        .pagination .page-link {
-            background-color: #2a2a2a;
-            border-color: #444;
-            color: #e0e0e0;
-        }
-
-        .pagination .page-item.active .page-link {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-
-        .dropdown-menu-dark {
-            background-color: #2a2a2a;
-        }
-    </style>
 </head>
 
 <body>
@@ -179,10 +99,7 @@ include("../registro_login/validacion_sesion.php");
         <div class="container my-5">
             <div class="row my-3">
                 <div class="col">
-                    <!-- Activa modal de agregar -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregar">
-                        Agregar cliente <i class="fa-solid fa-user-plus"></i>
-                    </button>
+                    <h2>Seleccionar el cliente</h2>
                 </div>
                 <div class="col">
                     <input type="text" id="buscador" class="form-control" placeholder="Buscar cliente por apellido...">
@@ -220,44 +137,43 @@ include("../registro_login/validacion_sesion.php");
                             // Mostrar resultados en la tabla
                             while ($resultado = mysqli_fetch_array($query)) {
                                 ?>
-                                <tr>
-                                    <td scope="row">
-                                        <?php echo $resultado['1'] ?>
-                                    </td>
-                                    <td scope="row">
-                                        <?php echo $resultado['2'] ?>
-                                    </td>
-                                    <td scope="row">
-                                        <?php echo $resultado['7'] ?>
-                                    </td>
-                                    <td scope="row">
-                                        <?php echo $resultado['5'] ?>
-                                    </td>
-                                    <td scope="row">
-                                        <?php echo $resultado['6'] ?>
-                                    </td>
-                                    <td scope="row">
-                                        <!-- Activa modal de ver detalle -->
-                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#detalle<?php echo $resultado['0'] ?>">
-                                            <i class="fa-solid fa-address-card"></i>
-                                        </button>
-                                        <!-- Activa modal de editar -->
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                            data-bs-target="#editar<?php echo $resultado['0'] ?>">
-                                            <i class="fa-solid fa-pen"></i>
-                                        </button>
-                                        <!-- Activa modal de eliminar -->
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#eliminar<?php echo $resultado['0'] ?>">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
+                            <tr>
+                                <td scope="row">
+                                    <?php echo $resultado['1'] ?>
+                                </td>
+                                <td scope="row">
+                                    <?php echo $resultado['2'] ?>
+                                </td>
+                                <td scope="row">
+                                    <?php echo $resultado['7'] ?>
+                                </td>
+                                <td scope="row">
+                                    <?php echo $resultado['5'] ?>
+                                </td>
+                                <td scope="row">
+                                    <?php echo $resultado['6'] ?>
+                                </td>
+                                <td scope="row">
+                                    <!-- Activa modal de ver detalle -->
+                                        <div class="d-inline-block">
+                                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                data-bs-target="#detalle<?php echo $resultado['0'] ?>">
+                                                <i class="fa-solid fa-address-card"></i>
+                                            </button>
+                                        </div>
+                                        <div class="d-inline-block">
+                                            <form action="reserva/primera.php" method="POST">
+                                                <input type="hidden" name="reserva_id"
+                                                    value="<?php echo $resultado['0'] ?>">
+                                                <button type="submit" class="btn btn-warning">
+                                                    <i class="fa-solid fa-book"></i>
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                                 <?php
                                 include("modals/detalle_cliente.php");
-                                include("modals/editar_cliente.php");
-                                include("modals/eliminar_cliente.php");
                             }
                             ?>
                         </tbody>
@@ -306,5 +222,64 @@ include("../registro_login/validacion_sesion.php");
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+
+<style>
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+    .container {
+        background-color: #1e1e1e;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+    h2 {
+        color: #007bff;
+    }
+    .form-control {
+        background-color: #2a2a2a;
+        border-color: #444;
+        color: #e0e0e0;
+    }
+    .form-control::placeholder {
+        color: #888;
+    }
+    .table {
+        background-color: #2a2a2a;
+        color: #e0e0e0;
+    }
+    .table-dark {
+        background-color: #1e1e1e;
+    }
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+    .table-striped tbody tr:nth-of-type(even) {
+        background-color: #2a2a2a;
+    }
+    .table tbody tr td {
+        color: #e0e0e0 !important;
+    }
+    .btn-success, .btn-warning {
+        background-color: #03dac6;
+        border-color: #03dac6;
+        color: #121212;
+    }
+    .btn-success:hover, .btn-warning:hover {
+        background-color: #018786;
+        border-color: #018786;
+    }
+    .pagination .page-link {
+        background-color: #2a2a2a;
+        border-color: #444;
+        color: #e0e0e0;
+    }
+    .pagination .page-item.active .page-link {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+</style>
 
 </html>
