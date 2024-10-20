@@ -18,8 +18,8 @@ $salida = "";
             </div>
             <div class="modal-body">
                 <form action="actions/modificar_reserva.php" method="POST">
-                    <!---  <label for="reserva_id">ID Reserva:</label>
-                    <input type="text" id="reserva_id" name="reserva_id" class="form-control" required><br>
+                    <label for="reserva_id">ID Reserva:</label>
+                    <!---   <input type="text" id="reserva_id" name="reserva_id" class="form-control" required><br>
 --->
                     <?php
                     // Consulta para obtener los ID de reservas
