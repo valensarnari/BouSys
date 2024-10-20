@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles_registro_login.css">
 </head>
+
 <body>
 
     <!-- Contenedor para el Registro -->
@@ -33,7 +34,7 @@
                 <i class="fas fa-globe"></i>
                 <input type="text" id="nacionalidad" name="nacionalidad" placeholder="Nacionalidad" required>
                 <label for="nacionalidad">Nacionalidad</label>
-            </div>
+            </div><br>
             <div class="input-group">
                 <i class="fas fa-venus-mars"></i>
                 <select id="sexo" name="sexo" required>
@@ -43,7 +44,7 @@
                     <option value="Otro">Otro</option>
                 </select>
                 <label for="sexo">Sexo</label>
-            </div>
+            </div><br>
             <div class="input-group">
                 <i class="fas fa-calendar"></i>
                 <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
@@ -100,4 +101,5 @@
     <script src="script_registro_login.js"></script>
 
 </body>
+
 </html>
