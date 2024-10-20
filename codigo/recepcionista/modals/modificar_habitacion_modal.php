@@ -18,8 +18,8 @@ $salida = "";
             </div>
             <div class="modal-body">
                 <form action="actions/modificar_reserva.php" method="POST">
-                    <label for="reserva_id">ID Reserva:</label>
-                    <!---   <input type="text" id="reserva_id" name="reserva_id" class="form-control" required><br>
+                    <label for="_reserva_id">ID Reserva:</label>
+                    <!---     <input type="text" id="reserva_id" name="reserva_id" class="form-control" required><br>
 --->
                     <?php
                     // Consulta para obtener los ID de reservas
@@ -27,7 +27,6 @@ $salida = "";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
-                        echo '<label for="reserva_id">ID Reserva:</label>';
                         echo '<select id="reserva_id" name="reserva_id" class="form-control" required>';
                         while ($row = $result->fetch_assoc()) {
                             echo '<option value="' . $row["id_reserva"] . '">' . $row["id_reserva"] . '</option>';
