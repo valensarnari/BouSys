@@ -102,7 +102,9 @@ include("../registro_login/validacion_sesion.php");
                     </ul>
                 </div>
             </div>
+
         </div>
+    </div>
 </body>
 
 <!---bootstrap js --->
