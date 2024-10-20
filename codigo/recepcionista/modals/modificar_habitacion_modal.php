@@ -19,8 +19,8 @@ $salida = "";
             <div class="modal-body">
                 <form action="actions/modificar_reserva.php" method="POST">
                     <label for="_reserva_id">ID Reserva:</label>
-                    <!---     <input type="text" id="reserva_id" name="reserva_id" class="form-control" required><br>
---->
+                    <input type="text" id="reserva_id" name="reserva_id" class="form-control" required><br>
+
                     <?php
                     // Consulta para obtener los ID de reservas
                     $sql = "SELECT id FROM reserva_habitacion WHERE 1";
