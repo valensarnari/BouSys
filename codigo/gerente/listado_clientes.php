@@ -38,6 +38,142 @@ include("../registro_login/validacion_sesion.php");
         });
     </script>
     <title>Lista de clientes</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        .container {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .form-control {
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .form-control::placeholder {
+            color: #888;
+        }
+
+        .table {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        .table-dark {
+            background-color: #1e1e1e;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .table-striped tbody tr:nth-of-type(even) {
+            background-color: #2a2a2a;
+        }
+
+        .table tbody tr td {
+            color: #e0e0e0 !important;
+        }
+
+        .btn-success,
+        .btn-warning {
+            background-color: #03dac6;
+            border-color: #03dac6;
+            color: #121212;
+        }
+
+        .btn-success:hover,
+        .btn-warning:hover,
+        .btn-danger:hover {
+            background-color: #018786;
+            border-color: #018786;
+        }
+
+        .pagination .page-link {
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .dropdown-menu-dark {
+            background-color: #2a2a2a;
+        }
+
+        /* Estilos para los modales */
+        .modal-content {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #444;
+        }
+
+        .modal-footer {
+            border-top: 1px solid #444;
+        }
+
+        .modal-title {
+            color: #007bff;
+        }
+
+        .close {
+            color: #e0e0e0;
+        }
+
+        .modal .form-control {
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .modal .form-control::placeholder {
+            color: #888;
+        }
+
+        .modal .form-select {
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .modal .btn-secondary {
+            background-color: #444;
+            border-color: #444;
+        }
+
+        .modal .btn-secondary:hover {
+            background-color: #555;
+            border-color: #555;
+        }
+
+        .modal .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .modal .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
 </head>
 
 <body>
@@ -164,17 +300,11 @@ include("../registro_login/validacion_sesion.php");
                                             data-bs-target="#editar<?php echo $resultado['0'] ?>">
                                             <i class="fa-solid fa-pen"></i>
                                         </button>
-                                        <!-- Activa modal de eliminar -->
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#eliminar<?php echo $resultado['0'] ?>">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
                                     </td>
                                 </tr>
                                 <?php
                                 include("modals/detalle_cliente.php");
                                 include("modals/editar_cliente.php");
-                                include("modals/eliminar_cliente.php");
                             }
                             ?>
                         </tbody>
