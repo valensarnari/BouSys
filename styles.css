@@ -308,6 +308,9 @@ nav-link right {
   line-height: 1.6;
 }
 /*-----------------------------------W H A P P -----------------------------------------------------*/
+.whapp {
+  border: none;
+}
 .whapp img:hover {
   cursor: pointer;
 }

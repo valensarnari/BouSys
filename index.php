@@ -98,7 +98,7 @@ include("cerrar_conexion.php");
         </a>
         </li>
         <li class="nav-item ms-auto">
-            <img src="../icons/calendar-check.svg"></a>
+            <img src="icons/calendar-check.svg"></a>
         </li>
         <li class="nav-item ">
             <a class="nav-link right" href="pages/receptions.php">
@@ -214,12 +214,6 @@ include("cerrar_conexion.php");
         </div>
     </footer>
     <!--------------------------modal whapp------------->
-    <!-- Button trigger modal 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Launch demo modal
-    </button>-->
-
-    <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
