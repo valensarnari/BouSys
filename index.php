@@ -33,7 +33,7 @@ include("cerrar_conexion.php");
             </div>
             <div class="carousel-inner carousel-first">
                 <div class="carousel-item active">
-                    <img src="images/pool-2.jpg" class="d-block w-100" alt="...">
+                    <img src="images/pileta-dia.jfif" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Relax...</h5>
                         <p>Disfruta de nuestra espectacular piscina en el Hotel Continental, ideal para relajarte y
@@ -41,7 +41,7 @@ include("cerrar_conexion.php");
                     </div>
                 </div>
                 <div class="carousel-item ">
-                    <img src="images/mujer_ventana.jpg" class="d-block w-100" alt="...">
+                    <img src="images/habitaciones-hotel.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Comodidad</h5>
                         <p>Disfruta de la máxima comodidad en el Hotel Continental, donde cada detalle está diseñado
@@ -49,7 +49,7 @@ include("cerrar_conexion.php");
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="images/pileta_cielo.jpg" class="d-block w-100" alt="...">
+                    <img src="images/pileta-noche.jfif" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Noche...</h5>
                         <p>Sumérgete en la vibrante noche porteña en el Hotel Continental, donde la energía de Buenos
@@ -119,40 +119,45 @@ include("cerrar_conexion.php");
     </div>
 
     <!--------------------------------------------------Intersection Observer------------------------------->
-    <div class="container-fluid observer">
+    <div  class="container-fluid observer contenedor-index">
         <!-----------------------------------------Images + texts side by side----------------------------------------------------->
         <div class="row hidden">
             <div class="col">
-                <img src="images/hotel-corner.jpg" class="img-fluid" alt="...">
+                <img src="images/hotel-exterior.jpg" class="img-fluid" alt="...">
             </div>
 
             <div class="col align-self-center texts" data-section="Home" data-value="first">
-                <p>Descubre el lujo en el corazón de Buenos Aires. El Hotel Continental ofrece elegancia, comodidad y
-                    una ubicación inmejorable cerca de los principales atractivos turísticos. ¡Reserva tu estancia hoy
+                <p>En el Hotel Continental vas a descubrir el lujo en el corazón palpitante de Buenos Aires. Nuestra ubicación privilegiada te coloca a pasos
+                    de los principales atractivos turisticos, tiendas de moda y restaurantes gourmet de la ciudad. Te ofrecemos habitaciones elegantemente 
+                    decoradas, servicios de primera clase y una atención personalizada que hará de tu estancia una experiencia inolvidable. ¡Reserva tu estancia hoy
                     mismo!</p>
             </div>
         </div>
 
         <div class="row hidden">
             <div class="col align-self-center texts" data-section="Home" data-value="second">
-                <p>Ubicado en el vibrante centro de Buenos Aires, el Hotel Continental te invita a disfrutar de una
-                    estancia inolvidable. Su restaurante destaca por su alta calidad, combinando sabores locales e
-                    internacionales en un ambiente sofisticado.</p>
+                <p>Sumérgete en una experiencia gastronómica excepcional en nuestro aclamado restaurante. Nuestro equipo de cocina fusionan 
+                    magistralmente los sabores tradicionales argentinos con técnicas culinarias internacionales de vanguardia. Desde los jugosos 
+                    cortes de carne argentina hasta delicados platos de inspiración mediterránea, cada bocado es una celebración de sabores. 
+                    Acompaña tu comida con una selección de los mejores vinos de nuestras bodegas, cuidadosamente elegidos para complementar 
+                    cada plato. El ambiente sofisticado y acogedor, con vistas panorámicas de la ciudad, crea el escenario perfecto para 
+                    cenas románticas, reuniones de negocios o celebraciones especiales.</p>
             </div>
             <div class="col">
-                <img src="images/bar_resto/resto_1.jpg" class="img-fluid" alt="...">
+                <img src="images/bar_resto/restaurant.jpg" class="img-fluid" alt="...">
             </div>
 
         </div>
 
         <div class="row hidden">
             <div class="col">
-                <img src="images/luggage-passport.jpg" class="img-fluid" alt="...">
+                <img src="images/check-in.jpg" class="img-fluid" alt="...">
             </div>
 
             <div class="col align-self-center texts" data-section="Home" data-value="third">
-                <p>Además, nuestro proceso de check-in es rápido y eficiente, asegurando que comiences tu experiencia
-                    sin demoras</p>
+                <p>En el Hotel Continental, entendemos que tu tiempo es valioso. Por eso, nuestro proceso de check-in es rápido, eficiente 
+                    y sin complicaciones. Utilizamos la última tecnología para agilizar el proceso, permitiendote acceder a tu habitación
+                    en cuestión de minutos, asegurando que comiences tu experiencia sin demoras</p>
             </div>
         </div>
     </div>
@@ -174,16 +179,29 @@ include("cerrar_conexion.php");
     <footer class="bg-dark text-white pt-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <h5>Formulario de contacto</h5>
+                <div class="col-md-4">
+                    <h5>Sobre Nosotros</h5>
+                    <p>Información sobre la empresa.</p>
                 </div>
-                <div class="col-md-6 whapp">
+                <div class="col-md-4">
+                    <h5>Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#index.php" class="text-white">Inicio</a></li>
+                        <li><a href="pages/rooms.html" class="text-white">Habitaciones</a></li>
+                        <li><a href="pages/services.html" class="text-white">Servicios</a></li>
+                        <li><a href="pages/recommendations.html" class="text-white">Recomendaciones</a></li>
+                        <li><a href="pages/contacto.html" class="text-white">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 whapp">
                     <img src="../icons/whapp.png" alt="Quiero sumarme a la comunidad del hotel!!!"
                         data-bs-toggle="modal" data-bs-target="#exampleModal">
                 </div>
             </div>
+            <div class="text-center py-3">
+                © 2024 Tu Empresa. Todos los derechos reservados.
+            </div>
         </div>
-
     </footer>
     <!--------------------------modal whapp------------->
     <!-- Button trigger modal 
