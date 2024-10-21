@@ -119,7 +119,7 @@ include("cerrar_conexion.php");
     </div>
 
     <!--------------------------------------------------Intersection Observer------------------------------->
-    <div  class="container-fluid observer contenedor-index">
+    <div class="container-fluid observer contenedor-index">
         <!-----------------------------------------Images + texts side by side----------------------------------------------------->
         <div class="row hidden">
             <div class="col">
@@ -127,20 +127,28 @@ include("cerrar_conexion.php");
             </div>
 
             <div class="col align-self-center texts" data-section="Home" data-value="first">
-                <p>En el Hotel Continental vas a descubrir el lujo en el corazón palpitante de Buenos Aires. Nuestra ubicación privilegiada te coloca a pasos
-                    de los principales atractivos turisticos, tiendas de moda y restaurantes gourmet de la ciudad. Te ofrecemos habitaciones elegantemente 
-                    decoradas, servicios de primera clase y una atención personalizada que hará de tu estancia una experiencia inolvidable. ¡Reserva tu estancia hoy
+                <p>En el Hotel Continental vas a descubrir el lujo en el corazón palpitante de Buenos Aires. Nuestra
+                    ubicación privilegiada te coloca a pasos
+                    de los principales atractivos turisticos, tiendas de moda y restaurantes gourmet de la ciudad. Te
+                    ofrecemos habitaciones elegantemente
+                    decoradas, servicios de primera clase y una atención personalizada que hará de tu estancia una
+                    experiencia inolvidable. ¡Reserva tu estancia hoy
                     mismo!</p>
             </div>
         </div>
 
         <div class="row hidden">
             <div class="col align-self-center texts" data-section="Home" data-value="second">
-                <p>Sumérgete en una experiencia gastronómica excepcional en nuestro aclamado restaurante. Nuestro equipo de cocina fusionan 
-                    magistralmente los sabores tradicionales argentinos con técnicas culinarias internacionales de vanguardia. Desde los jugosos 
-                    cortes de carne argentina hasta delicados platos de inspiración mediterránea, cada bocado es una celebración de sabores. 
-                    Acompaña tu comida con una selección de los mejores vinos de nuestras bodegas, cuidadosamente elegidos para complementar 
-                    cada plato. El ambiente sofisticado y acogedor, con vistas panorámicas de la ciudad, crea el escenario perfecto para 
+                <p>Sumérgete en una experiencia gastronómica excepcional en nuestro aclamado restaurante. Nuestro equipo
+                    de cocina fusionan
+                    magistralmente los sabores tradicionales argentinos con técnicas culinarias internacionales de
+                    vanguardia. Desde los jugosos
+                    cortes de carne argentina hasta delicados platos de inspiración mediterránea, cada bocado es una
+                    celebración de sabores.
+                    Acompaña tu comida con una selección de los mejores vinos de nuestras bodegas, cuidadosamente
+                    elegidos para complementar
+                    cada plato. El ambiente sofisticado y acogedor, con vistas panorámicas de la ciudad, crea el
+                    escenario perfecto para
                     cenas románticas, reuniones de negocios o celebraciones especiales.</p>
             </div>
             <div class="col">
@@ -155,8 +163,10 @@ include("cerrar_conexion.php");
             </div>
 
             <div class="col align-self-center texts" data-section="Home" data-value="third">
-                <p>En el Hotel Continental, entendemos que tu tiempo es valioso. Por eso, nuestro proceso de check-in es rápido, eficiente 
-                    y sin complicaciones. Utilizamos la última tecnología para agilizar el proceso, permitiendote acceder a tu habitación
+                <p>En el Hotel Continental, entendemos que tu tiempo es valioso. Por eso, nuestro proceso de check-in es
+                    rápido, eficiente
+                    y sin complicaciones. Utilizamos la última tecnología para agilizar el proceso, permitiendote
+                    acceder a tu habitación
                     en cuestión de minutos, asegurando que comiences tu experiencia sin demoras</p>
             </div>
         </div>
@@ -194,8 +204,8 @@ include("cerrar_conexion.php");
                     </ul>
                 </div>
                 <div class="col-md-4 whapp">
-                    <img src="../icons/whapp.png" alt="Quiero sumarme a la comunidad del hotel!!!"
-                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <img src="icons/whapp.png" alt="Quiero sumarme a la comunidad del hotel!!!" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
                 </div>
             </div>
             <div class="text-center py-3">

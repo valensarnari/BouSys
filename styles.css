@@ -187,13 +187,13 @@ nav-link right {
   height: 2px;
   background: black;
   top: 50%;
-  width: 100px; 
+  width: 100px;
 }
 .subrayado::before {
   left: 400px;
 }
 .subrayado::after {
-  right: 400px; 
+  right: 400px;
 }
 /*--------------------------------------PAGE ROOM------------------------*/
 .room-title {
@@ -211,33 +211,33 @@ nav-link right {
   margin-top: 7.5rem;
 }
 .room-cards {
-    padding: 2rem 0;
+  padding: 2rem 0;
 }
 
 .room-cards .card {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    height: 100%;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  height: 100%;
 }
 
 .room-cards .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .room-cards .card-body {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .room-cards .card-title {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .room-cards .btn {
-    margin-top: 1rem;
-    align-self: flex-start;
+  margin-top: 1rem;
+  align-self: flex-start;
 }
 
 /*-------------------------------  TXT ABOVE VIDEO------------------------------------------------------*/
@@ -308,9 +308,6 @@ nav-link right {
   line-height: 1.6;
 }
 /*-----------------------------------W H A P P -----------------------------------------------------*/
-.whapp {
-  border: solid white;
-}
 .whapp img:hover {
   cursor: pointer;
 }
@@ -341,10 +338,11 @@ nav-link right {
   margin: 1rem auto;
   padding: 2rem;
   background-color: #ffffff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.informacion-contacto, .formulario-contacto {
+.informacion-contacto,
+.formulario-contacto {
   margin-bottom: 2rem;
 }
 
@@ -406,48 +404,48 @@ h2 {
 }
 /*------------------------------------PAGE SERVICE--------------------------------------------------*/
 .services-container {
-    padding: 2rem 0;
+  padding: 2rem 0;
 }
 
 .services-container .row {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .services-container .col {
-    flex: 0 0 calc(33.333% - 1rem);
-    margin: 0.5rem;
-    max-width: calc(33.333% - 1rem);
+  flex: 0 0 calc(33.333% - 1rem);
+  margin: 0.5rem;
+  max-width: calc(33.333% - 1rem);
 }
 
 .services-container .col:nth-child(4),
 .services-container .col:nth-child(5) {
-    flex: 0 0 calc(50% - 1rem);
-    max-width: calc(50% - 1rem);
+  flex: 0 0 calc(50% - 1rem);
+  max-width: calc(50% - 1rem);
 }
 
 .services-container .card {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    height: 100%;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  height: 100%;
 }
 
 .services-container .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .services-container .card-img-top {
-    height: 200px;
-    object-fit: cover;
+  height: 200px;
+  object-fit: cover;
 }
 
 .services-container .card-body {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .services-container .btn {
-    margin-top: auto;
+  margin-top: auto;
 }
 
 /*----------------pseudo - class-----------------*/
