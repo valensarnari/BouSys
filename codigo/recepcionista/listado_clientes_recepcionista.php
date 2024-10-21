@@ -87,8 +87,7 @@ include("../registro_login/validacion_sesion.php");
         }
 
         .btn-success,
-        .btn-warning,
-        .btn-danger {
+        .btn-warning {
             background-color: #03dac6;
             border-color: #03dac6;
             color: #121212;
@@ -247,17 +246,11 @@ include("../registro_login/validacion_sesion.php");
                                             data-bs-target="#editar<?php echo $resultado['0'] ?>">
                                             <i class="fa-solid fa-pen"></i>
                                         </button>
-                                        <!-- Activa modal de eliminar -->
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#eliminar<?php echo $resultado['0'] ?>">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
                                     </td>
                                 </tr>
                                 <?php
                                 include("modals/detalle_cliente.php");
                                 include("modals/editar_cliente.php");
-                                include("modals/eliminar_cliente.php");
                             }
                             ?>
                         </tbody>

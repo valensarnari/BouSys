@@ -136,7 +136,7 @@ include("../../registro_login/validacion_sesion.php");
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="../nueva_reserva.php" class="nav-link align-middle px-0">
+                        <a href="../../nueva_reserva.php" class="nav-link align-middle px-0">
                             <span class="ms-1 d-none d-sm-inline">
                                 <i class="fa-solid fa-plus"></i> Nueva reserva
                             </span>
