@@ -179,6 +179,7 @@ include("cerrar_conexion.php");
         <div class="col slide-track">
             <div class="slide"><img src="images/supplier/coca-cola-logo-5.svg" alt=""></div>
             <div class="slide"><img src="images/supplier/don-perignon.png" alt=""></div>
+            <div class="slide"><img src="images/supplier/logo_bousys.png" alt=""></div>
             <div class="slide"><img src="images/supplier/perrier.png" alt=""></div>
             <div class="slide"><img src="images/supplier/SFERRA_logo.jpg" alt=""></div>
             <div class="slide"><img src="images/supplier/versace.png" alt=""></div>
