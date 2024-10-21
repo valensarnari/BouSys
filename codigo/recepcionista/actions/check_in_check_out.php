@@ -15,8 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_query($conexion, $query)) {
         echo ucfirst($accion) . " realizado con éxito!";
+        header("Location: ../reservas.php");
     } else {
         echo "Error al realizar " . ucfirst($accion) . ": " . mysqli_error($conexion);
+        header("Location: ../reservas.php");
     }
 }
 ?>

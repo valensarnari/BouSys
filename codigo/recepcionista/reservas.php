@@ -16,7 +16,7 @@ include("../registro_login/validacion_sesion.php");
     <!---bootstrap css --->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Lista de clientes</title>
+    <title>Lista de reservas</title>
     <style>
         body {
             background-color: #121212;
@@ -67,9 +67,7 @@ include("../registro_login/validacion_sesion.php");
         }
 
         .btn-success,
-        .btn-warning,
-        .btn-danger,
-        .btn-info {
+        .btn-warning {
             background-color: #03dac6;
             border-color: #03dac6;
             color: #121212;
@@ -77,8 +75,7 @@ include("../registro_login/validacion_sesion.php");
 
         .btn-success:hover,
         .btn-warning:hover,
-        .btn-danger:hover,
-        .btn-info:hover {
+        .btn-danger:hover {
             background-color: #018786;
             border-color: #018786;
         }
@@ -92,6 +89,48 @@ include("../registro_login/validacion_sesion.php");
         .pagination .page-item.active .page-link {
             background-color: #007bff;
             border-color: #007bff;
+        }
+
+        .dropdown-menu-dark {
+            background-color: #2a2a2a;
+        }
+
+        /* Estilos para los modales */
+        .modal-content {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        .modal-header {
+            border-bottom-color: #444;
+        }
+
+        .modal-footer {
+            border-top-color: #444;
+        }
+
+        .close {
+            color: #e0e0e0;
+        }
+
+        .modal .form-control {
+            background-color: #1e1e1e;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .modal .form-control:focus {
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        .modal .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .modal .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
         }
     </style>
 </head>
@@ -170,6 +209,7 @@ include("../registro_login/validacion_sesion.php");
                                 <td scope="col">Check-In</td>
                                 <td scope="col">Check-Out</td>
                                 <td scope="col">Valor total</td>
+                                <td scope="col">Opciones</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -216,8 +256,20 @@ include("../registro_login/validacion_sesion.php");
                                     <td scope="row">
                                         <?php echo $resultado['7'] ?>
                                     </td>
+                                    <td scope="row">
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                            data-bs-target="#modificar<?php echo $resultado['0'] ?>">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                            data-bs-target="#check_in<?php echo $resultado['0'] ?>">
+                                            <i class="fa-solid fa-check"></i>
+                                        </button>
+                                    </td>
                                 </tr>
                                 <?php
+                                include("modals/modificar_habitacion_modal.php");
+                                include("modals/check_in_check_out_modal.php");
                             }
                             ?>
                         </tbody>
@@ -258,27 +310,7 @@ include("../registro_login/validacion_sesion.php");
                 </div>
 
             </div>
-
-            <!-- Botones para abrir modales -->
-            <div class="mt-4">
-                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modificarModal">
-                    Modificar Reserva
-                </button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cancelarModal">
-                    Cancelar Reserva
-                </button>
-                <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                    data-bs-target="#checkinCheckoutModal">
-                    Check-in / Check-out
-                </button>
-            </div>
         </div>
-
-        <!-- Incluir los modales -->
-        <?php include('modals/modificar_habitacion_modal.php'); ?>
-        <?php include('modals/cancelar_reserva_modal.php'); ?>
-        <?php include('modals/check_in_check_out_modal.php'); ?>
-
     </div>
 </body>
 

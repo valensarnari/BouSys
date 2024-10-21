@@ -26,6 +26,7 @@ $_POST["reserva_ninos"] == "" ? $reserva_ninos = "0" : $reserva_ninos = $_POST["
             background-color: #121212;
             color: #e0e0e0;
         }
+
         .container {
             background-color: #1e1e1e;
             border-radius: 10px;
@@ -35,32 +36,39 @@ $_POST["reserva_ninos"] == "" ? $reserva_ninos = "0" : $reserva_ninos = $_POST["
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             max-width: 600px;
         }
+
         h2 {
             color: #007bff;
         }
+
         .form-label {
             color: #e0e0e0;
         }
+
         .form-control {
             background-color: #2a2a2a;
             border-color: #444;
             color: #e0e0e0;
         }
+
         .form-control:focus {
             background-color: #3d3d3d;
             border-color: #007bff;
             color: #e0e0e0;
             box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
         }
+
         .btn-primary {
             background-color: #03dac6;
             border-color: #03dac6;
             color: #121212;
         }
+
         .btn-primary:hover {
             background-color: #018786;
             border-color: #018786;
         }
+
         hr {
             border-color: #444;
         }
@@ -120,7 +128,8 @@ $_POST["reserva_ninos"] == "" ? $reserva_ninos = "0" : $reserva_ninos = $_POST["
                         </span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php">Cerrar sesión</a></li>
+                        <li><a class="dropdown-item" href="../../registro_login/cerrar_sesion.php">Cerrar sesión</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -132,14 +141,12 @@ $_POST["reserva_ninos"] == "" ? $reserva_ninos = "0" : $reserva_ninos = $_POST["
             <form action="tercera.php" method="POST">
                 <div class="my-4">
                     <label for="fecha_inicio" class="form-label">Fecha de inicio:</label>
-                    <input type="date" id="reserva_fecha_inicio" name="reserva_fecha_inicio"
-                        class="form-control" required
-                        min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>">
+                    <input type="date" id="reserva_fecha_inicio" name="reserva_fecha_inicio" class="form-control"
+                        required min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>">
                 </div>
                 <div class="mb-3">
                     <label for="fecha_fin" class="form-label">Fecha de fin:</label>
-                    <input type="date" id="reserva_fecha_fin" name="reserva_fecha_fin" class="form-control"
-                        required>
+                    <input type="date" id="reserva_fecha_fin" name="reserva_fecha_fin" class="form-control" required>
                 </div>
                 <div class="d-flex justify-content-end align-items-end mt-4">
                     <input type="hidden" name="reserva_id" value="<?php echo $reserva_id; ?>">
@@ -158,11 +165,11 @@ $_POST["reserva_ninos"] == "" ? $reserva_ninos = "0" : $reserva_ninos = $_POST["
         crossorigin="anonymous"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var fechaInicio = document.getElementById('reserva_fecha_inicio');
             var fechaFin = document.getElementById('reserva_fecha_fin');
 
-            fechaInicio.addEventListener('change', function() {
+            fechaInicio.addEventListener('change', function () {
                 fechaFin.min = fechaInicio.value;
                 if (fechaFin.value && fechaFin.value < fechaInicio.value) {
                     fechaFin.value = fechaInicio.value;
