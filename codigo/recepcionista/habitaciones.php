@@ -16,7 +16,7 @@ include("../registro_login/validacion_sesion.php");
     <!---bootstrap css --->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Lista de clientes</title>
+    <title>Lista de habitaciones</title>
     <style>
         body {
             background-color: #121212;
@@ -149,6 +149,37 @@ include("../registro_login/validacion_sesion.php");
             <div class="row">
                 <div class="col">
                     <h2>Listado de Habitaciones</h2>
+                    
+                    <!-- Formulario de filtros -->
+                    <form method="GET" class="mb-4">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label for="fecha_inicio" class="form-label">Fecha de inicio:</label>
+                                <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="fecha_fin" class="form-label">Fecha de fin:</label>
+                                <input type="date" class="form-control" id="fecha_fin" name="fecha_fin">
+                            </div>
+                            <div class="col-md-2">
+                                <label for="estado" class="form-label">Estado:</label>
+                                <select class="form-select" id="estado" name="estado">
+                                    <option value="">Todos</option>
+                                    <option value="Disponible">Disponible</option>
+                                    <option value="Ocupada">Ocupada</option>
+                                    <option value="Mantenimiento">Mantenimiento</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="precio_max" class="form-label">Precio máximo:</label>
+                                <input type="number" class="form-control" id="precio_max" name="precio_max" min="0">
+                            </div>
+                            <div class="col-md-2 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+                            </div>
+                        </div>
+                    </form>
+
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead class="table-dark">
@@ -164,7 +195,28 @@ include("../registro_login/validacion_sesion.php");
                             </thead>
                             <tbody>
                                 <?php
+                                // Construir la consulta SQL con los filtros
                                 $select = "SELECT Numero_Habitacion, Tipo, Estado, Precio_Por_Noche, Puntos, Cantidad_Adultos_Maximo, Cantidad_Ninos_Maximo FROM habitacion WHERE Activo = 1";
+
+                                // Aplicar filtros si están presentes
+                                if (!empty($_GET['fecha_inicio']) && !empty($_GET['fecha_fin'])) {
+                                    $fecha_inicio = mysqli_real_escape_string($conexion, $_GET['fecha_inicio']);
+                                    $fecha_fin = mysqli_real_escape_string($conexion, $_GET['fecha_fin']);
+                                    $select .= " AND Numero_Habitacion NOT IN (SELECT Numero_Habitacion FROM reserva WHERE ('$fecha_inicio' BETWEEN Fecha_Inicio AND Fecha_Fin) OR ('$fecha_fin' BETWEEN Fecha_Inicio AND Fecha_Fin) OR (Fecha_Inicio BETWEEN '$fecha_inicio' AND '$fecha_fin'))";
+                                }
+
+                                if (!empty($_GET['estado'])) {
+                                    $estado = mysqli_real_escape_string($conexion, $_GET['estado']);
+                                    $select .= " AND Estado = '$estado'";
+                                }
+
+                                if (!empty($_GET['precio_max'])) {
+                                    $precio_max = mysqli_real_escape_string($conexion, $_GET['precio_max']);
+                                    $select .= " AND Precio_Por_Noche <= $precio_max";
+                                }
+
+                                $select .= " ORDER BY Numero_Habitacion ASC";
+
                                 $query = mysqli_query($conexion, $select);
 
                                 // Verificar si la consulta falló

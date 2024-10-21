@@ -13,14 +13,20 @@ $sql = "SELECT h.id, h.Numero_Habitacion, h.Cantidad_Adultos_Maximo, h.Cantidad_
         FROM habitacion h
         LEFT JOIN reserva_habitacion rh ON h.id = rh.ID_Habitacion
         LEFT JOIN reserva_total rt ON rh.ID_Reserva = rt.id
-        WHERE (rt.Fecha_Inicio IS NULL 
-        OR rt.Fecha_Fin IS NULL 
-        OR rt.Fecha_Inicio NOT BETWEEN ? AND ?
-        OR rt.Fecha_Fin NOT BETWEEN ? AND ?)
+        WHERE NOT EXISTS (
+            SELECT 1
+            FROM reserva_total rt2
+            WHERE rt2.id = rh.ID_Reserva
+            AND (
+                (rt2.Fecha_Inicio < ? AND rt2.Fecha_Fin > ?)
+                OR (rt2.Fecha_Inicio BETWEEN ? AND ?)
+                OR (rt2.Fecha_Fin BETWEEN ? AND ?)
+            )
+        )
         GROUP BY h.id";
 
 $stmt = $conexion->prepare($sql);
-$stmt->bind_param("ssss", $reserva_fecha_inicio, $reserva_fecha_fin, $reserva_fecha_inicio, $reserva_fecha_fin);
+$stmt->bind_param("ssssss", $reserva_fecha_fin, $reserva_fecha_inicio, $reserva_fecha_inicio, $reserva_fecha_fin, $reserva_fecha_inicio, $reserva_fecha_fin);
 $stmt->execute();
 $resultado = $stmt->get_result();
 

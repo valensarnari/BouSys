@@ -197,6 +197,40 @@ include("../registro_login/validacion_sesion.php");
         <!-- Visualizar reservas (siempre visible) -->
         <div class="container my-4">
             <h2 class="mb-3">Reservas Actuales</h2>
+            <hr>
+            <!-- Formulario de filtrado -->
+            <form method="GET" class="mb-4">
+                <div class="row g-3 align-items-end">
+                    <div class="col-md-2">
+                        <label for="fecha_inicio" class="form-label">Fecha de inicio</label>
+                        <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="fecha_fin" class="form-label">Fecha de fin</label>
+                        <input type="date" class="form-control" id="fecha_fin" name="fecha_fin">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="estado" class="form-label">Estado</label>
+                        <select class="form-control" id="estado" name="estado">
+                            <option value="">Todos los estados</option>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="Confirmada">Confirmada</option>
+                            <option value="Cancelada">Cancelada</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="valor_minimo" class="form-label">Valor mínimo</label>
+                        <input type="number" class="form-control" id="valor_minimo" name="valor_minimo">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-secondary w-100" onclick="limpiarFiltros()">Borrar filtros</button>
+                    </div>
+                </div>
+            </form>
+            <hr>
             <div class="row">
                 <div class="table-responsive">
                     <table class="table table-striped">
@@ -219,12 +253,67 @@ include("../registro_login/validacion_sesion.php");
                             $pagina_actual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
                             $offset = ($pagina_actual - 1) * $por_pagina;
 
-                            // Consulta SQL con LIMIT y OFFSET
-                            $select = "SELECT rt.id, c.id, rt.Estado, rt.Fecha_Inicio, rt.Fecha_Fin, rt.Check_In, rt.Check_Out, rt.Valor_Total, c.Nombre, c.Apellido
-                                        FROM reserva_total rt JOIN cliente c ON rt.ID_Cliente = c.id
-                                        ORDER BY rt.id DESC LIMIT $por_pagina OFFSET $offset;";
+                            // Construir la consulta SQL con los filtros
+                            $where = [];
+                            $params = [];
+                            $types = "";
 
-                            $query = mysqli_query($conexion, $select);
+                            if (!empty($_GET['fecha_inicio'])) {
+                                $where[] = "rt.Fecha_Inicio >= ?";
+                                $params[] = $_GET['fecha_inicio'];
+                                $types .= "s";
+                            }
+                            if (!empty($_GET['fecha_fin'])) {
+                                $where[] = "rt.Fecha_Fin <= ?";
+                                $params[] = $_GET['fecha_fin'];
+                                $types .= "s";
+                            }
+                            if (!empty($_GET['estado'])) {
+                                $where[] = "rt.Estado = ?";
+                                $params[] = $_GET['estado'];
+                                $types .= "s";
+                            }
+                            if (!empty($_GET['valor_minimo'])) {
+                                $where[] = "rt.Valor_Total >= ?";
+                                $params[] = $_GET['valor_minimo'];
+                                $types .= "d";
+                            }
+
+                            $sql_where = "";
+                            if (!empty($where)) {
+                                $sql_where = "WHERE " . implode(" AND ", $where);
+                            }
+
+                            // Contar el número total de reservas con los filtros aplicados
+                            $sql_count = "SELECT COUNT(*) as total FROM reserva_total rt JOIN cliente c ON rt.ID_Cliente = c.id $sql_where";
+                            $stmt_count = mysqli_prepare($conexion, $sql_count);
+                            if (!empty($params)) {
+                                mysqli_stmt_bind_param($stmt_count, $types, ...$params);
+                            }
+                            mysqli_stmt_execute($stmt_count);
+                            $result_total = mysqli_stmt_get_result($stmt_count);
+                            $total_reservas = mysqli_fetch_assoc($result_total)['total'];
+
+                            // Calcular el total de páginas
+                            $total_paginas = ceil($total_reservas / $por_pagina);
+
+                            // Consulta SQL con LIMIT, OFFSET y filtros
+                            $sql = "SELECT rt.id, c.id, rt.Estado, rt.Fecha_Inicio, rt.Fecha_Fin, rt.Check_In, rt.Check_Out, rt.Valor_Total, c.Nombre, c.Apellido
+                                    FROM reserva_total rt JOIN cliente c ON rt.ID_Cliente = c.id
+                                    $sql_where
+                                    ORDER BY rt.id DESC LIMIT ? OFFSET ?";
+
+                            $stmt = mysqli_prepare($conexion, $sql);
+                            if (!empty($params)) {
+                                $types .= "ii";
+                                $params[] = $por_pagina;
+                                $params[] = $offset;
+                                mysqli_stmt_bind_param($stmt, $types, ...$params);
+                            } else {
+                                mysqli_stmt_bind_param($stmt, "ii", $por_pagina, $offset);
+                            }
+                            mysqli_stmt_execute($stmt);
+                            $query = mysqli_stmt_get_result($stmt);
 
                             // Verificar si la consulta falló
                             if (!$query) {
@@ -275,15 +364,6 @@ include("../registro_login/validacion_sesion.php");
                         </tbody>
                     </table>
 
-                    <?php
-                    // Contar el número total de reservas
-                    $result_total = mysqli_query($conexion, "SELECT COUNT(*) as total FROM reserva_total");
-                    $total_reservas = mysqli_fetch_assoc($result_total)['total'];
-
-                    // Calcular el total de páginas
-                    $total_paginas = ceil($total_reservas / $por_pagina);
-                    ?>
-
                     <!-- Navegación de paginación -->
                     <nav>
                         <ul class="pagination d-flex justify-content-center">
@@ -308,10 +388,20 @@ include("../registro_login/validacion_sesion.php");
                         </ul>
                     </nav>
                 </div>
-
             </div>
         </div>
     </div>
+
+    <script>
+    function limpiarFiltros() {
+        document.getElementById('fecha_inicio').value = '';
+        document.getElementById('fecha_fin').value = '';
+        document.getElementById('estado').value = '';
+        document.getElementById('valor_minimo').value = '';
+        // Enviar el formulario para recargar la página sin filtros
+        document.querySelector('form').submit();
+    }
+    </script>
 </body>
 
 <!---bootstrap js --->
