@@ -97,6 +97,10 @@ include("cerrar_conexion.php");
             <p data-section="nav" data-value="signup">Contacto</p>
         </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="pages/perfil.php" data-section="nav"
+                data-value="perfil">Perfil</a>
+        </li>
         <li class="nav-item ms-auto">
             <img src="icons/calendar-check.svg"></a>
         </li>
