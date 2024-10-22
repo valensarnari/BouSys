@@ -12,6 +12,7 @@ $reserva_cochera = isset($_POST['reserva_cochera']) ? $_POST['reserva_cochera'] 
 $sql_cliente = "SELECT nombre, apellido FROM cliente WHERE id = $reserva_id";
 $resultado_cliente = mysqli_query($conexion, $sql_cliente);
 $cliente = mysqli_fetch_assoc($resultado_cliente);
+echo $cliente['puntos'];
 
 $habitaciones_seleccionadas = isset($_POST['habitaciones']) ? $_POST['habitaciones'] : [];
 $habitaciones_adultos = isset($_POST['habitaciones_adultos']) ? $_POST['habitaciones_adultos'] : [];
@@ -43,8 +44,8 @@ foreach ($habitaciones_seleccionadas as $hab_id) {
     if ($hab) {
         $valor_total += $hab['Precio_Por_Noche'] * $num_noches;
     }
-    $puntos = $cliente['Puntos'];
-echo $puntos + 'puntos';
+
+
     
     
     mysqli_stmt_close($stmt);
