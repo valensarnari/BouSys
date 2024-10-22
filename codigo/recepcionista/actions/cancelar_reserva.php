@@ -11,7 +11,7 @@ $query = "UPDATE reserva_total SET Estado = 'Cancelada' WHERE id = $reserva_id";
 $consulta_id_cte = "SELECT id_cliente from reserva_total where reserva_total.id = $reserva_id";
 $res_con = mysqli_query($conexion, $consulta_id_cte);
 $fila_id_cte = mysqli_fetch_assoc($res_con);
-echo 'id cte= ' + $fila_id_cte['id'];
+var_dump($fila_id_cte);
 //-------------------sacarle los puntos al clientes------------------------------------------//
 //------------------dato id habitación-----------------------------//
 //$consulta_rsv_habitacion = "SELECT 'id_habitacion' from 'reserva_habitacion r' WHERE $reserva_id = 'r.ID_Reserva'";
