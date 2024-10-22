@@ -56,8 +56,8 @@ if ($puntos_cliente >= 300 && $puntos_cliente <= 999) {
     $descuento = 0; // No hay descuento para menos de 300 puntos
 }
 $valor_con_descuento = $valor_total - ($valor_total * $descuento);
-echo'VALOR TOTAL ='+ $valor_total;
-echo 'VALOR CON DESCUENTO=' + $valor_con_descuento;
+echo'VALOR TOTAL ='. $valor_total;
+echo 'VALOR CON DESCUENTO=' . $valor_con_descuento;
 echo "El descuento es: " . ($descuento * 100) ;
 
     mysqli_stmt_close($stmt);
