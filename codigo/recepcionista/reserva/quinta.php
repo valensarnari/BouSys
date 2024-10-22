@@ -43,6 +43,9 @@ foreach ($habitaciones_seleccionadas as $hab_id) {
     if ($hab) {
         $valor_total += $hab['Precio_Por_Noche'] * $num_noches;
     }
+    $puntos = $cliente['Puntos'];
+echo $puntos + 'puntos';
+    
     
     mysqli_stmt_close($stmt);
 }
