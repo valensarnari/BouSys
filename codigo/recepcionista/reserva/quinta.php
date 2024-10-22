@@ -12,7 +12,8 @@ $reserva_cochera = isset($_POST['reserva_cochera']) ? $_POST['reserva_cochera'] 
 $sql_cliente = "SELECT nombre, apellido , puntos FROM cliente WHERE id = $reserva_id";
 $resultado_cliente = mysqli_query($conexion, $sql_cliente);
 $cliente = mysqli_fetch_assoc($resultado_cliente);
-var_dump($cliente) ;
+$puntos_cliente = $cliente['puntos'];
+echo $puntos;
 
 $habitaciones_seleccionadas = isset($_POST['habitaciones']) ? $_POST['habitaciones'] : [];
 $habitaciones_adultos = isset($_POST['habitaciones_adultos']) ? $_POST['habitaciones_adultos'] : [];
