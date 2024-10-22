@@ -11,12 +11,13 @@ $query = "UPDATE reserva_total SET Estado = 'Cancelada' WHERE id = $reserva_id";
 $consulta_id_cte = "SELECT id_cliente from reserva_total where reserva_total.id = $reserva_id";
 $res_con = mysqli_query($conexion, $consulta_id_cte);
 $fila_id_cte = mysqli_fetch_assoc($res_con);
-//var_dump($fila_id_cte);
+$fila_id_cte = intval($fila_id_cte);
+var_dump($fila_id_cte);
 //-------------------ver puntaje actual cliente------------------------------------------//
 $cliente_puntos = "SELECT puntos FROM cliente WHERE id = $fila_id_cte";
 $res_ptos_cte = mysqli_query($conexion, $cliente_puntos);
 $fila_ptos_cte = mysqli_fetch_assoc($res_ptos_cte);
-var_dump($fila_ptos_cte);
+//var_dump($fila_ptos_cte);
 //------------------dato id habitación-----------------------------//
 //$consulta_rsv_habitacion = "SELECT 'id_habitacion' from 'reserva_habitacion r' WHERE $reserva_id = 'r.ID_Reserva'";
 //$res = mysqli_query($conexion, $consulta_rsv_habitacion);
