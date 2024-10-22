@@ -13,7 +13,7 @@ $sql_cliente = "SELECT nombre, apellido , puntos FROM cliente WHERE id = $reserv
 $resultado_cliente = mysqli_query($conexion, $sql_cliente);
 $cliente = mysqli_fetch_assoc($resultado_cliente);
 $puntos_cliente = $cliente['puntos'];/*SACO LOS PUNTOS*/ 
-echo 'PUNTOS = '+$puntos_cliente;
+echo 'PUNTOS = '. $puntos_cliente;
 
 $habitaciones_seleccionadas = isset($_POST['habitaciones']) ? $_POST['habitaciones'] : [];
 $habitaciones_adultos = isset($_POST['habitaciones_adultos']) ? $_POST['habitaciones_adultos'] : [];
