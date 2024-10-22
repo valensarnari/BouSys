@@ -11,8 +11,8 @@ $query = "UPDATE reserva_total SET Estado = 'Cancelada' WHERE id == $reserva_id"
 $sql1 = "SELECT h.Puntos
         FROM reserva_habitacion rh
         JOIN habitacion h ON rh.ID_Habitacion = h.id
-        WHERE rh.ID_Reserva = $id_reserva";
-$result1 = $conn->query($sql1);
+        WHERE rh.ID_Reserva = $reserva_id";
+$result1 = $conexion->query($sql1);
 
 if ($result1->num_rows > 0) {
     $row1 = $result1->fetch_assoc();
@@ -23,8 +23,8 @@ if ($result1->num_rows > 0) {
 }
 //Dato puntos del cliente-----------------
 
-$sql2 = "SELECT ID_Cliente FROM reserva_total WHERE id = $id_reserva";
-$result2 = $conn->query($sql2);
+$sql2 = "SELECT ID_Cliente FROM reserva_total WHERE id = $reserva_id";
+$result2 = $conexion->query($sql2);
 
 if ($result2->num_rows > 0) {
     $row2 = $result2->fetch_assoc();
@@ -37,14 +37,14 @@ if ($result2->num_rows > 0) {
 
 if ($id_cliente !== null) {
     $sql3 = "UPDATE cliente SET Puntos = Puntos - $habitacion_puntos WHERE id = $id_cliente";
-    if ($conn->query($sql3) === TRUE) {
+    if ($conexion->query($sql3) === TRUE) {
         echo "Puntos actualizados correctamente.";
     } else {
-        echo "Error al actualizar los puntos: " . $conn->error;
+        echo "Error al actualizar los puntos: " . $conexion->error;
     }
 }
 
-$conn->close();
+$conexion->close();
 
 
 
