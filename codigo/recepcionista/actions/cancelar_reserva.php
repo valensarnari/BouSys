@@ -24,11 +24,11 @@ echo 'id cte= ' . $fila_id_cte;
 //----------------------------------------------------
 //$cliente_resta="UPDATE 'cliente' SET 'Puntos'= 'Puntos'- $fila_id_habitacion['Puntos'] WHERE cliente.id = ";
 
-
+/*
 if (mysqli_query($conexion, $query)) {
     header("Location: ../reservas.php");
 } else {
     echo "Error al cancelar la reserva: " . mysqli_error($conexion);
-}
+}*/
 //}
 ?>
