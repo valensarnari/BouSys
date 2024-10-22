@@ -46,11 +46,11 @@ foreach ($habitaciones_seleccionadas as $hab_id) {
         $valor_total += $hab['Precio_Por_Noche'] * $num_noches;
     }
 /*----------CONDICIONAL PARA IMPLEMENTAR DESCUENTOS POR PUNTOS--------------------*/ 
-if ($puntos >= 300 && $puntos <= 999) {
+if ($puntos_cliente >= 300 && $puntos_cliente <= 999) {
     $descuento = 0.1;
-} elseif ($puntos >= 1000 && $puntos <= 1999) {
+} elseif ($puntos_cliente >= 1000 && $puntos_cliente <= 1999) {
     $descuento = 0.15;
-} elseif ($puntos >= 2000) {
+} elseif ($puntos_cliente >= 2000) {
     $descuento = 0.2;
 } else {
     $descuento = 0; // No hay descuento para menos de 300 puntos
