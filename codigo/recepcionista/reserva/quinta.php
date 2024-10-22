@@ -8,10 +8,12 @@ $_POST["reserva_ninos"] == "" ? $reserva_ninos = "0" : $reserva_ninos = $_POST["
 $reserva_fecha_inicio = $_POST["reserva_fecha_inicio"];
 $reserva_fecha_fin = $_POST["reserva_fecha_fin"];
 $reserva_cochera = isset($_POST['reserva_cochera']) ? $_POST['reserva_cochera'] : null;
-
-$sql_cliente = "SELECT nombre, apellido FROM cliente WHERE id = $reserva_id";
+/*SACO LOS CAMPOS DE CLIENTE*/
+$sql_cliente = "SELECT nombre, apellido , puntos FROM cliente WHERE id = $reserva_id";
 $resultado_cliente = mysqli_query($conexion, $sql_cliente);
 $cliente = mysqli_fetch_assoc($resultado_cliente);
+$puntos_cliente = $cliente['puntos'];/*SACO LOS PUNTOS*/ 
+echo 'PUNTOS = '. $puntos_cliente;
 
 $habitaciones_seleccionadas = isset($_POST['habitaciones']) ? $_POST['habitaciones'] : [];
 $habitaciones_adultos = isset($_POST['habitaciones_adultos']) ? $_POST['habitaciones_adultos'] : [];
@@ -43,7 +45,21 @@ foreach ($habitaciones_seleccionadas as $hab_id) {
     if ($hab) {
         $valor_total += $hab['Precio_Por_Noche'] * $num_noches;
     }
-    
+/*----------CONDICIONAL PARA IMPLEMENTAR DESCUENTOS POR PUNTOS--------------------*/ 
+if ($puntos_cliente >= 300 && $puntos_cliente <= 999) {
+    $descuento = 0.1;
+} elseif ($puntos_cliente >= 1000 && $puntos_cliente <= 1999) {
+    $descuento = 0.15;
+} elseif ($puntos_cliente >= 2000) {
+    $descuento = 0.2;
+} else {
+    $descuento = 0; // No hay descuento para menos de 300 puntos
+}
+$valor_con_descuento = $valor_total - ($valor_total * $descuento);
+echo'VALOR TOTAL ='. $valor_total;
+echo 'VALOR CON DESCUENTO=' . $valor_con_descuento;
+echo "El descuento es: " . ($descuento * 100) ;
+
     mysqli_stmt_close($stmt);
 }
 
