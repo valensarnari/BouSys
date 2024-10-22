@@ -4,7 +4,7 @@ include('../../conexion.php');
 
 //if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //$reserva_id = $_POST['reserva_id'];
-$reserva_id = intval(13);
+$reserva_id = 13;
 // Cambiar el estado de la reserva a 'Cancelada'
 $query = "UPDATE reserva_total SET Estado = 'Cancelada' WHERE id == $reserva_id";
 //---------------------tomo dato id cliente-------------------//
