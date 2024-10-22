@@ -4,11 +4,11 @@ include('../../conexion.php');
 
 //if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //$reserva_id = $_POST['reserva_id'];
-$reserva_id = 13;
+$reserva_id = intval(13);
 // Cambiar el estado de la reserva a 'Cancelada'
-$query = "UPDATE reserva_total SET Estado = 'Cancelada' WHERE id = $reserva_id";
+$query = "UPDATE reserva_total SET Estado = 'Cancelada' WHERE id == $reserva_id";
 //---------------------tomo dato id cliente-------------------//
-$consulta_id_cte = "SELECT id_cliente from reserva_total where reserva_total.id = $reserva_id";
+$consulta_id_cte = "SELECT id_cliente from reserva_total where reserva_total.id == $reserva_id";
 $res_con = mysqli_query($conexion, $consulta_id_cte);
 $fila_id_cte = mysqli_fetch_assoc($res_con);
 //$fila_id_cte = intval($fila_id_cte);
