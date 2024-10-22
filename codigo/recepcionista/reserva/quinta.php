@@ -9,7 +9,7 @@ $reserva_fecha_inicio = $_POST["reserva_fecha_inicio"];
 $reserva_fecha_fin = $_POST["reserva_fecha_fin"];
 $reserva_cochera = isset($_POST['reserva_cochera']) ? $_POST['reserva_cochera'] : null;
 
-$sql_cliente = "SELECT nombre, apellido FROM cliente WHERE id = $reserva_id";
+$sql_cliente = "SELECT nombre, apellido , puntos FROM cliente WHERE id = $reserva_id";
 $resultado_cliente = mysqli_query($conexion, $sql_cliente);
 $cliente = mysqli_fetch_assoc($resultado_cliente);
 var_dump($cliente) ;
