@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $reserva_id = $_POST['reserva_id'];
 
     // Cambiar el estado de la reserva a 'Cancelada'
-    $query = "UPDATE 'reserva_total' SET 'Estado' = 'Cancelada' WHERE id = '$reserva_id'";
+    $query = "UPDATE reserva_total SET Estado = 'Cancelada' WHERE id = $reserva_id";
     //---------------------tomo dato id cliente-------------------//
     $consulta_id_cte = "SELECT id_cliente from reserva_total where reserva_total.id = $reserva_id";
     $res_con = mysqli_query($conexion, $consulta_id_cte);
