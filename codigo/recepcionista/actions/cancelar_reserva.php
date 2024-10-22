@@ -6,12 +6,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $reserva_id = $_POST['reserva_id'];
 
     // Cambiar el estado de la reserva a 'Cancelada'
+    $query = "UPDATE reserva_total SET Estado = 'Cancelada' WHERE id = '$reserva_id'";
+    // Cambiar el estado de la reserva a 'Cancelada'
     $query = "UPDATE reserva_total SET Estado = 'Cancelada' WHERE id == $reserva_id";
     // Obtener los puntos de la habitación
     $sql1 = "SELECT h.Puntos
-        FROM reserva_habitacion rh
-        JOIN habitacion h ON rh.ID_Habitacion = h.id
-        WHERE rh.ID_Reserva = $reserva_id";
+            FROM reserva_habitacion rh
+            JOIN habitacion h ON rh.ID_Habitacion = h.id
+            WHERE rh.ID_Reserva = $reserva_id";
     $result1 = $conexion->query($sql1);
 
     if ($result1->num_rows > 0) {
@@ -44,10 +46,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-
     if (mysqli_query($conexion, $query)) {
         header("Location: ../reservas.php");
     } else {
         echo "Error al cancelar la reserva: " . mysqli_error($conexion);
     }
 }
+?>
