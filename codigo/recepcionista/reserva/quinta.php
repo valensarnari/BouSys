@@ -53,7 +53,7 @@ if ($puntos_cliente >= 300 && $puntos_cliente <= 999) {
 } elseif ($puntos_cliente >= 2000) {
     $descuento = 0.2;
 } else {
-    $descuento = 0; // No hay descuento para menos de 300 puntos
+    $descuento = 0; // no hay descuento para menos de 300 puntos
 }
 $valor_con_descuento = $valor_total - ($valor_total * $descuento);
 echo'VALOR TOTAL ='. $valor_total;
