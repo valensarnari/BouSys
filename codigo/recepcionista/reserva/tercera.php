@@ -9,24 +9,52 @@ isset($_POST["reserva_cuna"]) && $_POST["reserva_cuna"] != null ? $reserva_cuna 
 $reserva_fecha_inicio = $_POST["reserva_fecha_inicio"];
 $reserva_fecha_fin = $_POST["reserva_fecha_fin"];
 
-$sql = "SELECT h.id, h.Numero_Habitacion, h.Cantidad_Adultos_Maximo, h.Cantidad_Ninos_Maximo
+$sql = "SELECT DISTINCT h.id, h.Numero_Habitacion, h.Cantidad_Adultos_Maximo, h.Cantidad_Ninos_Maximo
         FROM habitacion h
         LEFT JOIN reserva_habitacion rh ON h.id = rh.ID_Habitacion
         LEFT JOIN reserva_total rt ON rh.ID_Reserva = rt.id
-        WHERE NOT EXISTS (
-            SELECT 1
-            FROM reserva_total rt2
-            WHERE rt2.id = rh.ID_Reserva
-            AND (
-                (rt2.Fecha_Inicio < ? AND rt2.Fecha_Fin > ?)
-                OR (rt2.Fecha_Inicio BETWEEN ? AND ?)
-                OR (rt2.Fecha_Fin BETWEEN ? AND ?)
+        WHERE h.Estado = 'Disponible'
+        AND (
+            rt.id IS NULL
+            OR (rt.Estado = 'Cancelada' AND NOT EXISTS (
+                SELECT 1
+                FROM reserva_total rt2
+                JOIN reserva_habitacion rh2 ON rt2.id = rh2.ID_Reserva
+                WHERE rh2.ID_Habitacion = h.id
+                AND rt2.Estado != 'Cancelada'
+                AND (
+                    (rt2.Fecha_Inicio <= ? AND rt2.Fecha_Fin >= ?)
+                    OR (rt2.Fecha_Inicio BETWEEN ? AND ?)
+                    OR (rt2.Fecha_Fin BETWEEN ? AND ?)
+                    OR (? BETWEEN rt2.Fecha_Inicio AND rt2.Fecha_Fin)
+                )
+            ))
+            OR NOT EXISTS (
+                SELECT 1
+                FROM reserva_total rt3
+                JOIN reserva_habitacion rh3 ON rt3.id = rh3.ID_Reserva
+                WHERE rh3.ID_Habitacion = h.id
+                AND rt3.Estado != 'Cancelada'
+                AND (
+                    (rt3.Fecha_Inicio <= ? AND rt3.Fecha_Fin >= ?)
+                    OR (rt3.Fecha_Inicio BETWEEN ? AND ?)
+                    OR (rt3.Fecha_Fin BETWEEN ? AND ?)
+                    OR (? BETWEEN rt3.Fecha_Inicio AND rt3.Fecha_Fin)
+                )
             )
-        )
-        GROUP BY h.id";
+        )";
 
 $stmt = $conexion->prepare($sql);
-$stmt->bind_param("ssssss", $reserva_fecha_fin, $reserva_fecha_inicio, $reserva_fecha_inicio, $reserva_fecha_fin, $reserva_fecha_inicio, $reserva_fecha_fin);
+$stmt->bind_param("ssssssssssssss", 
+    $reserva_fecha_inicio, $reserva_fecha_fin, 
+    $reserva_fecha_inicio, $reserva_fecha_fin, 
+    $reserva_fecha_inicio, $reserva_fecha_fin,
+    $reserva_fecha_inicio,
+    $reserva_fecha_inicio, $reserva_fecha_fin, 
+    $reserva_fecha_inicio, $reserva_fecha_fin, 
+    $reserva_fecha_inicio, $reserva_fecha_fin,
+    $reserva_fecha_inicio
+);
 $stmt->execute();
 $resultado = $stmt->get_result();
 

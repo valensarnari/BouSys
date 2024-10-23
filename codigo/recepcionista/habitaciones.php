@@ -147,39 +147,9 @@ include("../registro_login/validacion_sesion.php");
         <!--tabla, obviamente hay que ponerle forma y todo con css , probando funcionalidad gio-->
         <div class="container my-5">
             <div class="row">
-                <div class="col">
+                <div class="col-md-6">
                     <h2>Listado de Habitaciones</h2>
-                    
-                    <!-- Formulario de filtros -->
-                    <form method="GET" class="mb-4">
-                        <div class="row g-3">
-                            <div class="col-md-3">
-                                <label for="fecha_inicio" class="form-label">Fecha de inicio:</label>
-                                <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="fecha_fin" class="form-label">Fecha de fin:</label>
-                                <input type="date" class="form-control" id="fecha_fin" name="fecha_fin">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="estado" class="form-label">Estado:</label>
-                                <select class="form-select" id="estado" name="estado">
-                                    <option value="">Todos</option>
-                                    <option value="Disponible">Disponible</option>
-                                    <option value="Ocupada">Ocupada</option>
-                                    <option value="Mantenimiento">Mantenimiento</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2">
-                                <label for="precio_max" class="form-label">Precio máximo:</label>
-                                <input type="number" class="form-control" id="precio_max" name="precio_max" min="0">
-                            </div>
-                            <div class="col-md-2 d-flex align-items-end">
-                                <button type="submit" class="btn btn-primary w-100">Filtrar</button>
-                            </div>
-                        </div>
-                    </form>
-
+                    <hr>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead class="table-dark">
@@ -195,62 +165,54 @@ include("../registro_login/validacion_sesion.php");
                             </thead>
                             <tbody>
                                 <?php
-                                // Construir la consulta SQL con los filtros
-                                $select = "SELECT Numero_Habitacion, Tipo, Estado, Precio_Por_Noche, Puntos, Cantidad_Adultos_Maximo, Cantidad_Ninos_Maximo FROM habitacion WHERE Activo = 1";
-
-                                // Aplicar filtros si están presentes
-                                if (!empty($_GET['fecha_inicio']) && !empty($_GET['fecha_fin'])) {
-                                    $fecha_inicio = mysqli_real_escape_string($conexion, $_GET['fecha_inicio']);
-                                    $fecha_fin = mysqli_real_escape_string($conexion, $_GET['fecha_fin']);
-                                    $select .= " AND Numero_Habitacion NOT IN (SELECT Numero_Habitacion FROM reserva WHERE ('$fecha_inicio' BETWEEN Fecha_Inicio AND Fecha_Fin) OR ('$fecha_fin' BETWEEN Fecha_Inicio AND Fecha_Fin) OR (Fecha_Inicio BETWEEN '$fecha_inicio' AND '$fecha_fin'))";
-                                }
-
-                                if (!empty($_GET['estado'])) {
-                                    $estado = mysqli_real_escape_string($conexion, $_GET['estado']);
-                                    $select .= " AND Estado = '$estado'";
-                                }
-
-                                if (!empty($_GET['precio_max'])) {
-                                    $precio_max = mysqli_real_escape_string($conexion, $_GET['precio_max']);
-                                    $select .= " AND Precio_Por_Noche <= $precio_max";
-                                }
-
-                                $select .= " ORDER BY Numero_Habitacion ASC";
-
+                                $select = "SELECT Numero_Habitacion, Tipo, Estado, Precio_Por_Noche, Puntos, Cantidad_Adultos_Maximo, Cantidad_Ninos_Maximo FROM habitacion WHERE Activo = 1 ORDER BY Numero_Habitacion ASC";
                                 $query = mysqli_query($conexion, $select);
-
-                                // Verificar si la consulta falló
                                 if (!$query) {
                                     die("Error en la consulta SQL: " . mysqli_error($conexion));
                                 }
-
-                                // Mostrar resultados en la tabla
                                 while ($resultado = mysqli_fetch_array($query)) {
                                     ?>
                                     <tr>
-                                        <td scope="row">
-                                            <?php echo $resultado['0'] ?>
-                                        </td>
-                                        <td scope="row">
-                                            <?php echo $resultado['1'] ?>
-                                        </td>
-                                        <td scope="row">
-                                            <?php echo $resultado['2'] ?>
-                                        </td>
-                                        <td scope="row">
-                                            <?php echo $resultado['3'] ?>
-                                        </td>
-                                        <td scope="row">
-                                            <?php echo $resultado['4'] ?>
-                                        </td>
-                                        <td scope="row">
-                                            <?php echo $resultado['5'] ?>
-                                        </td>
-                                        <td scope="row">
-                                            <?php echo $resultado['6'] ?>
-                                        </td>
+                                        <td scope="row"><?php echo $resultado['0'] ?></td>
+                                        <td scope="row"><?php echo $resultado['1'] ?></td>
+                                        <td scope="row"><?php echo $resultado['2'] ?></td>
+                                        <td scope="row"><?php echo $resultado['3'] ?></td>
+                                        <td scope="row"><?php echo $resultado['4'] ?></td>
+                                        <td scope="row"><?php echo $resultado['5'] ?></td>
+                                        <td scope="row"><?php echo $resultado['6'] ?></td>
                                     </tr>
-                                    <?php
+                                <?php
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h2>Listado de Cocheras</h2>
+                    <hr>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead class="table-dark">
+                                <tr>
+                                    <td scope="col">Número de cochera</td>
+                                    <td scope="col">Estado</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $select_cocheras = "SELECT Numero_Cochera, Estado FROM cochera ORDER BY Numero_Cochera ASC";
+                                $query_cocheras = mysqli_query($conexion, $select_cocheras);
+                                if (!$query_cocheras) {
+                                    die("Error en la consulta SQL: " . mysqli_error($conexion));
+                                }
+                                while ($resultado_cochera = mysqli_fetch_array($query_cocheras)) {
+                                    ?>
+                                    <tr>
+                                        <td scope="row"><?php echo $resultado_cochera['Numero_Cochera'] ?></td>
+                                        <td scope="row"><?php echo $resultado_cochera['Estado'] ?></td>
+                                    </tr>
+                                <?php
                                 }
                                 ?>
                             </tbody>
@@ -259,41 +221,67 @@ include("../registro_login/validacion_sesion.php");
                 </div>
             </div>
             <div class="row mt-4">
-                <div class="col-md-6 offset-md-3 p-3 bg-light rounded">
-                    <h4>Cambiar estado de habitación</h4>
-                    <!-- Formulario para cambiar el estado de una habitación -->
-                    <form action="actions/modificar_estado_habitacion.php" method="post">
-                        <div class="mb-3">
-                            <label for="numero_habitacion" class="form-label">Seleccionar habitación:</label>
-                            <select class="form-select" name="numero_habitacion" required>
-                                <?php
-                                $select = "SELECT Numero_Habitacion FROM habitacion WHERE Activo = 1";
-                                $query = mysqli_query($conexion, $select);
-
-                                if (!$query)
-                                    die("Error en la consulta SQL: " . mysqli_error($conexion));
-
-                                // Mostrar resultados en la tabla
-                                while ($resultado = mysqli_fetch_array($query)) {
-                                    ?>
-                                    <option value="<?php echo $resultado[0]; ?>"><?php echo $resultado[0]; ?></option>
+                <div class="col-md-6">
+                    <div class="p-3 bg-light rounded">
+                        <h4>Cambiar estado de habitación</h4>
+                        <form action="actions/modificar_estado_habitacion.php" method="post">
+                            <div class="mb-3">
+                                <label for="numero_habitacion" class="form-label">Seleccionar habitación:</label>
+                                <select class="form-select" name="numero_habitacion" id="numero_habitacion" required>
                                     <?php
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="nuevo_estado" class="form-label">Seleccionar nuevo estado:</label>
-                            <select class="form-select" name="nuevo_estado" required>
-                                <option value="Disponible">Disponible</option>
-                                <option value="Ocupada">Ocupado</option>
-                                <option value="Mantenimiento">Mantenimiento</option>
-                            </select>
-                        </div>
-                        <div class="mb-3 d-flex justify-content-center">
-                            <input type="submit" class="btn btn-primary" value="Actualizar Estado">
-                        </div>
-                    </form>
+                                    $select = "SELECT Numero_Habitacion, Estado FROM habitacion WHERE Activo = 1 AND Estado != 'Ocupada'";
+                                    $query = mysqli_query($conexion, $select);
+                                    if (!$query)
+                                        die("Error en la consulta SQL: " . mysqli_error($conexion));
+                                    while ($resultado = mysqli_fetch_array($query)) {
+                                        echo "<option value='" . $resultado['Numero_Habitacion'] . "' data-estado='" . $resultado['Estado'] . "'>" . $resultado['Numero_Habitacion'] . " - " . $resultado['Estado'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="nuevo_estado" class="form-label">Seleccionar nuevo estado:</label>
+                                <select class="form-select" name="nuevo_estado" id="nuevo_estado" required>
+                                    <option value="Disponible">Disponible</option>
+                                    <option value="Mantenimiento">Mantenimiento</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 d-flex justify-content-center">
+                                <input type="submit" class="btn btn-primary" value="Actualizar Estado">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-light rounded">
+                        <h4>Cambiar estado de cochera</h4>
+                        <form action="actions/modificar_estado_cochera.php" method="post">
+                            <div class="mb-3">
+                                <label for="numero_cochera" class="form-label">Seleccionar cochera:</label>
+                                <select class="form-select" name="numero_cochera" id="numero_cochera" required>
+                                    <?php
+                                    $select_cocheras = "SELECT Numero_Cochera, Estado FROM cochera WHERE Estado != 'Ocupado'";
+                                    $query_cocheras = mysqli_query($conexion, $select_cocheras);
+                                    if (!$query_cocheras)
+                                        die("Error en la consulta SQL: " . mysqli_error($conexion));
+                                    while ($resultado_cochera = mysqli_fetch_array($query_cocheras)) {
+                                        echo "<option value='" . $resultado_cochera['Numero_Cochera'] . "' data-estado='" . $resultado_cochera['Estado'] . "'>" . $resultado_cochera['Numero_Cochera'] . " - " . $resultado_cochera['Estado'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="nuevo_estado_cochera" class="form-label">Seleccionar nuevo estado:</label>
+                                <select class="form-select" name="nuevo_estado_cochera" id="nuevo_estado_cochera" required>
+                                    <option value="Disponible">Disponible</option>
+                                    <option value="En mantenimiento">En mantenimiento</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 d-flex justify-content-center">
+                                <input type="submit" class="btn btn-primary" value="Actualizar Estado">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -311,8 +299,39 @@ include("../registro_login/validacion_sesion.php");
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const habitacionSelect = document.getElementById('numero_habitacion');
+    const estadoSelect = document.getElementById('nuevo_estado');
+    const cocheraSelect = document.getElementById('numero_cochera');
+    const estadoCocheraSelect = document.getElementById('nuevo_estado_cochera');
 
+    habitacionSelect.addEventListener('change', function() {
+        const estadoActual = this.options[this.selectedIndex].getAttribute('data-estado');
+        estadoSelect.innerHTML = ''; // Limpiar opciones existentes
 
+        if (estadoActual === 'Disponible') {
+            estadoSelect.add(new Option('Mantenimiento', 'Mantenimiento'));
+        } else if (estadoActual === 'Mantenimiento') {
+            estadoSelect.add(new Option('Disponible', 'Disponible'));
+        }
+    });
 
+    cocheraSelect.addEventListener('change', function() {
+        const estadoActual = this.options[this.selectedIndex].getAttribute('data-estado');
+        estadoCocheraSelect.innerHTML = ''; // Limpiar opciones existentes
+
+        if (estadoActual === 'Disponible') {
+            estadoCocheraSelect.add(new Option('En mantenimiento', 'En mantenimiento'));
+        } else if (estadoActual === 'En mantenimiento') {
+            estadoCocheraSelect.add(new Option('Disponible', 'Disponible'));
+        }
+    });
+
+    // Trigger change event on page load
+    habitacionSelect.dispatchEvent(new Event('change'));
+    cocheraSelect.dispatchEvent(new Event('change'));
+});
+</script>
 
 </html>
