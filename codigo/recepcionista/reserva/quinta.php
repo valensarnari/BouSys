@@ -12,8 +12,7 @@ $reserva_cochera = isset($_POST['reserva_cochera']) ? $_POST['reserva_cochera'] 
 $sql_cliente = "SELECT nombre, apellido , puntos FROM cliente WHERE id = $reserva_id";
 $resultado_cliente = mysqli_query($conexion, $sql_cliente);
 $cliente = mysqli_fetch_assoc($resultado_cliente);
-$puntos_cliente = $cliente['puntos'];/*SACO LOS PUNTOS*/ 
-echo 'PUNTOS = '. $puntos_cliente;
+$puntos_cliente = $cliente['puntos'];/*SACO LOS PUNTOS*/
 
 $habitaciones_seleccionadas = isset($_POST['habitaciones']) ? $_POST['habitaciones'] : [];
 $habitaciones_adultos = isset($_POST['habitaciones_adultos']) ? $_POST['habitaciones_adultos'] : [];
@@ -45,20 +44,18 @@ foreach ($habitaciones_seleccionadas as $hab_id) {
     if ($hab) {
         $valor_total += $hab['Precio_Por_Noche'] * $num_noches;
     }
-/*----------CONDICIONAL PARA IMPLEMENTAR DESCUENTOS POR PUNTOS--------------------*/ 
-if ($puntos_cliente >= 300 && $puntos_cliente <= 999) {
-    $descuento = 0.1;
-} elseif ($puntos_cliente >= 1000 && $puntos_cliente <= 1999) {
-    $descuento = 0.15;
-} elseif ($puntos_cliente >= 2000) {
-    $descuento = 0.2;
-} else {
-    $descuento = 0; // no hay descuento para menos de 300 puntos
-}
-$valor_con_descuento = $valor_total - ($valor_total * $descuento);
-echo'VALOR TOTAL ='. $valor_total;
-echo 'VALOR CON DESCUENTO=' . $valor_con_descuento;
-echo "El descuento es: " . ($descuento * 100) ;
+
+    /*----------CONDICIONAL PARA IMPLEMENTAR DESCUENTOS POR PUNTOS--------------------*/ 
+    if ($puntos_cliente >= 300 && $puntos_cliente <= 999) {
+        $descuento = 0.1;
+    } elseif ($puntos_cliente >= 1000 && $puntos_cliente <= 1999) {
+        $descuento = 0.15;
+    } elseif ($puntos_cliente >= 2000) {
+        $descuento = 0.2;
+    } else {
+        $descuento = 0; // no hay descuento para menos de 300 puntos
+    }
+    $valor_con_descuento = $valor_total - ($valor_total * $descuento);
 
     mysqli_stmt_close($stmt);
 }
@@ -251,6 +248,14 @@ $_SESSION['valor_total'] = $valor_total;
                             <span class="detail-label">Número de noches:</span>
                             <span class="detail-value"><?php echo $num_noches; ?></span>
                         </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Puntos del cliente:</span>
+                            <span class="detail-value"><?php echo $puntos_cliente; ?></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Descuento aplicado:</span>
+                            <span class="detail-value"><?php echo number_format($descuento * 100, 2); ?>%</span>
+                        </div>
                         
                         <h3 class="mt-4 mb-3">Habitaciones seleccionadas:</h3>
                         <?php foreach ($habitaciones_seleccionadas as $hab_id): ?>
@@ -298,8 +303,16 @@ $_SESSION['valor_total'] = $valor_total;
                         
                         <h3 class="mt-4 mb-3">Valor total de la reserva:</h3>
                         <div class="detail-item">
-                            <span class="detail-label">Total:</span>
-                            <span class="detail-value total-value">$<?php echo number_format($valor_total, 2); ?></span>
+                            <span class="detail-label">Subtotal:</span>
+                            <span class="detail-value">$<?php echo number_format($valor_total, 2); ?></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Descuento:</span>
+                            <span class="detail-value">$<?php echo number_format($valor_total * $descuento, 2); ?></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Total con descuento:</span>
+                            <span class="detail-value total-value">$<?php echo number_format($valor_con_descuento, 2); ?></span>
                         </div>
                     </div>
                     

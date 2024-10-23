@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-10-2024 a las 16:45:37
+-- Tiempo de generación: 23-10-2024 a las 02:11:44
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -61,6 +61,7 @@ CREATE TABLE `cliente` (
   `Contrasena` text NOT NULL,
   `Fecha_Registro` datetime NOT NULL,
   `Puntos` int(11) NOT NULL DEFAULT 0,
+  `Jerarquia` text NOT NULL DEFAULT '2',
   `Activo` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -68,10 +69,10 @@ CREATE TABLE `cliente` (
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`id`, `Nombre`, `Apellido`, `Fecha_Nacimiento`, `Documento`, `Nacionalidad`, `Sexo`, `Email`, `Telefono`, `Contrasena`, `Fecha_Registro`, `Puntos`, `Activo`) VALUES
-(3, 'Juan', 'Pérez', '1980-05-23', 12345678, 'Argentina', 'Masculino', 'juan.perez@mail.com', '123456789', '1234', '2024-10-01 12:00:00', 5100, 1),
-(4, 'Ana', 'Gómez', '1990-06-15', 87654321, 'Argentina', 'Femenino', 'ana.gomez@mail.com', '987654321', '1234', '2024-10-01 13:00:00', 2900, 1),
-(5, 'Carlos', 'López', '1975-07-20', 56789012, 'Argentina', 'Masculino', 'carlos.lopez@mail.com', '123987456', '1234', '2024-10-01 14:00:00', 50, 1);
+INSERT INTO `cliente` (`id`, `Nombre`, `Apellido`, `Fecha_Nacimiento`, `Documento`, `Nacionalidad`, `Sexo`, `Email`, `Telefono`, `Contrasena`, `Fecha_Registro`, `Puntos`, `Jerarquia`, `Activo`) VALUES
+(3, 'Juan', 'Pérez', '1980-05-23', 12345678, 'Argentina', 'Masculino', 'juan.perez@mail.com', '123456789', '$2y$10$g6Z/E7qZxhjQuSpTiBW/OOG2ciE3WcXMKcYGKKUgw5DQVhvCtiyHC', '2024-10-01 12:00:00', 22600, '2', 1),
+(4, 'Ana', 'Gómez', '1990-06-15', 87654321, 'Argentina', 'Femenino', 'ana.gomez@mail.com', '987654321', '$2y$10$vynfC6ENmGnz2WSlaQwzEOLWgaJkqMVdkTX0G/NGhI2cH3Y98fxFa', '2024-10-01 13:00:00', 14600, '2', 1),
+(5, 'Carlos', 'López', '1975-07-20', 56789012, 'Argentina', 'Masculino', 'carlos.lopez@mail.com', '123987456', '$2y$10$UByWC8JYP8R1wKR9UZrWg.XWupLkiT/.uVJAw8v66rIoaqb91o2w6', '2024-10-01 14:00:00', 15550, '2', 1);
 
 -- --------------------------------------------------------
 
@@ -91,9 +92,9 @@ CREATE TABLE `cochera` (
 
 INSERT INTO `cochera` (`id`, `Numero_Cochera`, `Estado`) VALUES
 (1, 101, 'Disponible'),
-(2, 102, 'Ocupado'),
+(2, 102, 'Disponible'),
 (3, 103, 'Disponible'),
-(4, 104, 'En mantenimiento');
+(4, 104, 'Ocupado');
 
 -- --------------------------------------------------------
 
@@ -119,10 +120,10 @@ CREATE TABLE `habitacion` (
 
 INSERT INTO `habitacion` (`id`, `Numero_Habitacion`, `Tipo`, `Precio_Por_Noche`, `Estado`, `Puntos`, `Cantidad_Adultos_Maximo`, `Cantidad_Ninos_Maximo`, `Activo`) VALUES
 (1, 201, 'Suite', 15000, 'Disponible', 500, 2, 2, 1),
-(2, 202, 'Simple', 6000, 'Ocupado', 300, 2, 1, 1),
-(3, 204, 'Doble', 9000, 'Disponible', 250, 2, 1, 1),
+(2, 202, 'Simple', 6000, 'Disponible', 300, 2, 1, 1),
+(3, 204, 'Doble', 9000, 'Ocupado', 250, 2, 1, 1),
 (4, 205, 'Doble', 8000, 'Ocupado', 150, 2, 2, 1),
-(5, 203, 'Simple', 5000, 'Disponible', 100, 1, 0, 1);
+(5, 203, 'Simple', 5000, 'Ocupado', 100, 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -159,10 +160,33 @@ INSERT INTO `pago` (`id`, `Fecha_Pago`, `Medio_De_Pago`, `Descuento`, `Aumento`,
 CREATE TABLE `reserva_cochera` (
   `id` int(11) NOT NULL,
   `ID_Reserva` int(11) NOT NULL,
-  `ID_Cochera` int(11) NOT NULL,
-  `Fecha_Inicio` date NOT NULL,
-  `Fecha_Fin` date NOT NULL
+  `ID_Cochera` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `reserva_cochera`
+--
+
+INSERT INTO `reserva_cochera` (`id`, `ID_Reserva`, `ID_Cochera`) VALUES
+(1, 1, 1),
+(2, 4, 1),
+(3, 5, 4);
+
+--
+-- Disparadores `reserva_cochera`
+--
+DELIMITER $$
+CREATE TRIGGER `actualizar_estado_cochera_insercion` AFTER INSERT ON `reserva_cochera` FOR EACH ROW BEGIN
+    UPDATE Cochera c
+    JOIN Reserva_Total rt ON rt.id = NEW.ID_Reserva
+    SET c.Estado = CASE
+        WHEN rt.Fecha_Inicio <= CURDATE() AND rt.Fecha_Fin >= CURDATE() AND rt.Estado = 'Confirmada' THEN 'Ocupado'
+        ELSE c.Estado
+    END
+    WHERE c.id = NEW.ID_Cochera;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -184,20 +208,34 @@ CREATE TABLE `reserva_habitacion` (
 --
 
 INSERT INTO `reserva_habitacion` (`id`, `ID_Reserva`, `ID_Habitacion`, `Cantidad_Adultos`, `Cantidad_Ninos`, `Cuna`) VALUES
-(3, 3, 1, 1, 1, 0),
-(4, 4, 2, 1, 1, 1),
-(11, 11, 1, 1, 1, 1),
-(12, 11, 5, 1, 0, 0);
+(1, 1, 1, 1, 1, 0),
+(2, 2, 5, 1, 0, 1),
+(3, 3, 4, 1, 0, 0),
+(4, 3, 5, 1, 0, 1),
+(5, 4, 2, 1, 0, 0),
+(6, 5, 3, 1, 0, 0);
 
 --
 -- Disparadores `reserva_habitacion`
 --
 DELIMITER $$
-CREATE TRIGGER `points` AFTER INSERT ON `reserva_habitacion` FOR EACH ROW UPDATE Cliente c
-JOIN Reserva_Total rt ON c.id = rt.ID_Cliente
-JOIN Reserva_Habitacion rh ON rt.id = rh.ID_Reserva
-JOIN Habitacion h ON rh.ID_Habitacion = h.id
-SET c.Puntos = c.Puntos + h.Puntos
+CREATE TRIGGER `points` AFTER INSERT ON `reserva_habitacion` FOR EACH ROW BEGIN
+    -- Actualizar puntos del cliente
+    UPDATE Cliente c
+    JOIN Reserva_Total rt ON c.id = rt.ID_Cliente
+    JOIN Habitacion h ON NEW.ID_Habitacion = h.id
+    SET c.Puntos = c.Puntos + h.Puntos
+    WHERE rt.id = NEW.ID_Reserva;
+
+    -- Actualizar estado de la habitación
+    UPDATE Habitacion h
+    JOIN Reserva_Total rt ON rt.id = NEW.ID_Reserva
+    SET h.Estado = CASE
+        WHEN rt.Fecha_Inicio <= CURDATE() AND rt.Fecha_Fin >= CURDATE() AND rt.Estado = 'Confirmada' THEN 'Ocupado'
+        ELSE h.Estado
+    END
+    WHERE h.id = NEW.ID_Habitacion;
+END
 $$
 DELIMITER ;
 
@@ -224,9 +262,49 @@ CREATE TABLE `reserva_total` (
 --
 
 INSERT INTO `reserva_total` (`id`, `ID_Cliente`, `Estado`, `Fecha_Inicio`, `Fecha_Fin`, `Check_In`, `Check_Out`, `Fecha_Reserva`, `Valor_Total`) VALUES
-(3, 3, 'Confirmada', '2024-10-01', '2024-10-03', '2024-10-01 12:00:00', '2024-10-03 12:00:00', '2024-09-25 10:00:00', 14000),
-(4, 4, 'Cancelada', '2024-10-05', '2024-10-07', '2024-10-05 12:00:00', '2024-10-07 12:00:00', '2024-09-28 11:00:00', 7500),
-(11, 4, 'Confirmada', '2024-10-24', '2024-10-31', '2024-10-24 11:11:40', '2024-10-31 11:11:40', '2024-10-09 16:11:38', 10000);
+(1, 5, 'Cancelada', '2024-10-25', '2024-10-30', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2024-10-21 17:37:03', 75000),
+(2, 4, 'Cancelada', '2024-10-20', '2024-10-30', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2024-10-22 20:22:18', 20000),
+(3, 5, 'Confirmada', '2024-10-20', '2024-10-26', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2024-10-22 20:37:52', 26000),
+(4, 5, 'Cancelada', '2024-10-21', '2024-10-26', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2024-10-22 20:55:38', 12000),
+(5, 5, 'Confirmada', '2024-10-22', '2024-10-26', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2024-10-22 21:05:44', 18000);
+
+--
+-- Disparadores `reserva_total`
+--
+DELIMITER $$
+CREATE TRIGGER `actualizar_estado_habitacion_modificacion` AFTER UPDATE ON `reserva_total` FOR EACH ROW BEGIN
+    IF NEW.Estado = 'Cancelada' THEN
+        -- Si la reserva se cancela, actualizar todas las habitaciones y cocheras asociadas a 'Disponible'
+        UPDATE Habitacion h
+        JOIN reserva_habitacion rh ON h.id = rh.ID_Habitacion
+        SET h.Estado = 'Disponible'
+        WHERE rh.ID_Reserva = NEW.id;
+
+        UPDATE Cochera c
+        JOIN reserva_cochera rc ON c.id = rc.ID_Cochera
+        SET c.Estado = 'Disponible'
+        WHERE rc.ID_Reserva = NEW.id;
+    ELSE
+        -- Para otros casos, actualizar el estado según las fechas y el estado de la reserva
+        UPDATE Habitacion h
+        JOIN reserva_habitacion rh ON h.id = rh.ID_Habitacion
+        SET h.Estado = CASE
+            WHEN NEW.Fecha_Inicio <= CURDATE() AND NEW.Fecha_Fin >= CURDATE() AND NEW.Estado = 'Confirmada' THEN 'Ocupado'
+            ELSE 'Disponible'
+        END
+        WHERE rh.ID_Reserva = NEW.id;
+
+        UPDATE Cochera c
+        JOIN reserva_cochera rc ON c.id = rc.ID_Cochera
+        SET c.Estado = CASE
+            WHEN NEW.Fecha_Inicio <= CURDATE() AND NEW.Fecha_Fin >= CURDATE() AND NEW.Estado = 'Confirmada' THEN 'Ocupado'
+            ELSE 'Disponible'
+        END
+        WHERE rc.ID_Reserva = NEW.id;
+    END IF;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -248,8 +326,9 @@ CREATE TABLE `usuario_empleados` (
 --
 
 INSERT INTO `usuario_empleados` (`id`, `Nombre`, `Email`, `Contrasena`, `Jerarquia`, `Activo`) VALUES
-(1, 'Gerente1', 'gerente@gerente.com', 'Gerente123', '0', 1),
-(2, 'Recepcionista1', 'recepcionista1@recepcionista.com', 'Recepcionista123', '1', 0);
+(1, 'Gerente1', 'gerente@gerente.com', '$2y$10$ORbIR19mdW6cx7cqpdLdL.rsUxzw7rJAtBmG5QlcZTX.yPYK0NdmO', '0', 1),
+(2, 'Recepcionista1', 'recepcionista1@recepcionista.com', 'Recepcionista123', '1', 0),
+(8, 'Recepcionista2', 'recepcionista@recepcionista.com', '$2y$10$KtH9LgFx.iyhYWQ/CiROK.kQm4YVlhl6f9UKj6fSE7htZKtZX0fiW', '1', 1);
 
 --
 -- Índices para tablas volcadas
@@ -330,7 +409,7 @@ ALTER TABLE `calificaciones`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `cochera`
@@ -354,25 +433,25 @@ ALTER TABLE `pago`
 -- AUTO_INCREMENT de la tabla `reserva_cochera`
 --
 ALTER TABLE `reserva_cochera`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva_habitacion`
 --
 ALTER TABLE `reserva_habitacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva_total`
 --
 ALTER TABLE `reserva_total`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_empleados`
 --
 ALTER TABLE `usuario_empleados`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
@@ -409,6 +488,36 @@ ALTER TABLE `reserva_habitacion`
 --
 ALTER TABLE `reserva_total`
   ADD CONSTRAINT `reserva_total_ibfk_1` FOREIGN KEY (`ID_Cliente`) REFERENCES `cliente` (`id`);
+
+DELIMITER $$
+--
+-- Eventos
+--
+CREATE DEFINER=`root`@`localhost` EVENT `actualizar_estado_habitaciones_diario` ON SCHEDULE EVERY 1 DAY STARTS '2024-10-23 00:01:00' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
+    -- Actualizar todas las habitaciones a 'Disponible' por defecto
+    UPDATE habitacion SET Estado = 'Disponible' WHERE Activo = 1;
+    
+    -- Actualizar a 'Ocupado' las habitaciones que tienen reservas para el día actual
+    UPDATE habitacion h
+    JOIN reserva_habitacion rh ON h.id = rh.ID_Habitacion
+    JOIN reserva_total rt ON rh.ID_Reserva = rt.id
+    SET h.Estado = 'Ocupado'
+    WHERE rt.Fecha_Inicio <= CURDATE() AND rt.Fecha_Fin >= CURDATE()
+    AND rt.Estado = 'Confirmada' AND h.Activo = 1;
+
+    -- Actualizar todas las cocheras a 'Disponible' por defecto
+    UPDATE cochera SET Estado = 'Disponible';
+    
+    -- Actualizar a 'Ocupado' las cocheras que tienen reservas para el día actual
+    UPDATE cochera c
+    JOIN reserva_cochera rc ON c.id = rc.ID_Cochera
+    JOIN reserva_total rt ON rc.ID_Reserva = rt.id
+    SET c.Estado = 'Ocupado'
+    WHERE rt.Fecha_Inicio <= CURDATE() AND rt.Fecha_Fin >= CURDATE()
+    AND rt.Estado = 'Confirmada';
+END$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

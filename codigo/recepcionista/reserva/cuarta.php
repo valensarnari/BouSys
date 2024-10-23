@@ -17,14 +17,13 @@ $sql = "SELECT c.id, c.Numero_Cochera
         FROM cochera c
         LEFT JOIN reserva_cochera rc ON c.id = rc.ID_Cochera
         LEFT JOIN reserva_total rt ON rc.ID_Reserva = rt.id
-        WHERE (rt.Fecha_Inicio IS NULL 
-        OR rt.Fecha_Fin IS NULL 
-        OR rt.Fecha_Inicio NOT BETWEEN ? AND ?
-        OR rt.Fecha_Fin NOT BETWEEN ? AND ?)
+        WHERE c.Estado = 'Disponible'
+          AND (rt.id IS NULL 
+           OR (rt.Fecha_Inicio > ? OR rt.Fecha_Fin < ?))
         GROUP BY c.id";
 
 $stmt = $conexion->prepare($sql);
-$stmt->bind_param("ssss", $reserva_fecha_inicio, $reserva_fecha_fin, $reserva_fecha_inicio, $reserva_fecha_fin);
+$stmt->bind_param("ss", $reserva_fecha_fin, $reserva_fecha_inicio);
 $stmt->execute();
 $resultado = $stmt->get_result();
 ?>

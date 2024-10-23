@@ -43,9 +43,9 @@ try {
     }
 
     if ($reserva_cochera !== null && $reserva_cochera !== '') {
-        $sql_reserva_cochera = "INSERT INTO reserva_cochera (ID_Reserva, ID_Cochera, Fecha_Inicio, Fecha_Fin) VALUES (?, ?, ?, ?)";
+        $sql_reserva_cochera = "INSERT INTO reserva_cochera (ID_Reserva, ID_Cochera) VALUES (?, ?)";
         $stmt_reserva_cochera = $conexion->prepare($sql_reserva_cochera);
-        $stmt_reserva_cochera->bind_param("iiss", $id_reserva_total, $reserva_cochera, $reserva_fecha_inicio, $reserva_fecha_fin);
+        $stmt_reserva_cochera->bind_param("ii", $id_reserva_total, $reserva_cochera);
         $stmt_reserva_cochera->execute();
     }
 

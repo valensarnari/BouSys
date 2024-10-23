@@ -28,12 +28,14 @@ include("cancelar_reserva_modal.php");
                             value="<?php echo $resultado['7'] ?>" required>
                     </div>
                     <div class="mb-3 d-flex justify-content-between">
+                        <?php if ($resultado['2'] !== 'Cancelada'): ?>
                         <div>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                 data-bs-target="#cancelar<?php echo $resultado['0'] ?>" data-bs-dismiss="modal">
                                 Cancelar
                             </button>
                         </div>
+                        <?php endif; ?>
                         <div>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver
                                 atrás</button>

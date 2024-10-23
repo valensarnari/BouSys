@@ -187,6 +187,7 @@ include("../registro_login/validacion_sesion.php");
                     <input type="text" id="buscador" class="form-control" placeholder="Buscar cliente por apellido...">
                 </div>
             </div>
+            <hr>
             <div class="row">
                 <div class="table-responsive">
                     <table class="table table-striped">
@@ -291,7 +292,7 @@ include("../registro_login/validacion_sesion.php");
                 </div>
 
             </div>
-        </div>
+        </hr>
     </div>
 </body>
 
