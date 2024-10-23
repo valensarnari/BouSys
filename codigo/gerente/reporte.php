@@ -17,8 +17,9 @@ $sql_ocupacion = "SELECT h.Numero_Habitacion, rt.Fecha_Inicio, rt.Fecha_Fin
         FROM reserva_habitacion rh 
         JOIN reserva_total rt ON rh.ID_Reserva = rt.id 
         JOIN habitacion h ON h.id = rh.ID_Habitacion
-        WHERE DATE_FORMAT(rt.Fecha_Inicio, '%Y-%m') = '$año_mes'
-        OR DATE_FORMAT(rt.Fecha_Fin, '%Y-%m') = '$año_mes';";
+        WHERE (DATE_FORMAT(rt.Fecha_Inicio, '%Y-%m') = '$año_mes'
+        OR DATE_FORMAT(rt.Fecha_Fin, '%Y-%m') = '$año_mes')
+        AND rt.Estado = 'Confirmada';";
 
 $query_ocupacion = mysqli_query($conexion, $sql_ocupacion);
 $num_rows_ocupacion = mysqli_num_rows($query_ocupacion);
@@ -29,6 +30,7 @@ $sql_tipos_habitaciones = "SELECT h.Tipo, COUNT(*) as Cantidad
         JOIN reserva_total rt ON rh.ID_Reserva = rt.id 
         JOIN habitacion h ON h.id = rh.ID_Habitacion
         WHERE DATE_FORMAT(rt.Fecha_Inicio, '%Y-%m') = '$año_mes'
+        AND rt.Estado = 'Confirmada'
         GROUP BY h.Tipo;";
 
 $query_tipos_habitaciones = mysqli_query($conexion, $sql_tipos_habitaciones);
