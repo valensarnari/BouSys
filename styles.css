@@ -91,6 +91,22 @@ header {
 .nav-link.disabled {
   color: rgb(148, 144, 144);
 }
+
+.dropdown-menu {
+  min-width: 120px;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+.nav-link .fas.fa-user {
+  margin-right: 5px;
+}
 /*----------------------------------reservations------------------------------------*/
 nav-link right {
   margin-right: 5px;

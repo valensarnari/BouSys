@@ -1,12 +1,12 @@
 <?php
-include("../codigo/conexion.php");
-
 session_start();
+include("../conexion.php");
 
 // Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION['usuario_id'])) {
     // Si no hay sesión activa, redirigir a la página de login
-    header("Location: ../codigo/registro_login/panel_registro_login.php");
+    //echo "No hay sesión activa";
+    header("Location: ../registro_login/panel_registro_login.php");
     exit();
 }
 
@@ -27,50 +27,113 @@ $user = $result->fetch_assoc();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../styles.css" rel="stylesheet">
+    <link href="../../styles.css" rel="stylesheet">
+    
+    <style>
+    .container.mt-5 {
+        max-width: 600px;
+        margin-top: 3rem !important;
+    }
+
+    .container.mt-5 h2 {
+        color: #343a40;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: 2px solid #007bff;
+    }
+
+    .card {
+        border: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .card-body {
+        padding: 2rem;
+    }
+
+    .card-title {
+        color: #343a40;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 0.5rem;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .card-body p {
+        margin-bottom: 0.75rem;
+        font-size: 1.1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e9ecef;
+        padding-bottom: 0.5rem;
+    }
+
+    .card-body p:last-child {
+        border-bottom: none;
+    }
+
+    .card-body p strong {
+        color: #495057;
+        font-weight: 600;
+        min-width: 40%;
+    }
+    </style>
 </head>
 
 <body class="container-fluid">
     <header class="row top-title">
         <h1>C o n t i n e n t a l&nbsp&nbsp&nbsp&nbsp&nbsp H o t e l</h1>
     </header>
-    <ul class="nav nav-pills myMenu">
+    <ul class="nav nav-pills menuPages">
         <div class="flags">
-            <div id="flags" class="flags_item" data-language="en"><img src="../icons/gb.svg"></div>
-            <div id="flag-es" class="flags_item_es" data-language="es"><img src="../icons/es.svg"></div>
+            <div id="flags" class="flags_item" data-language="en"><img src="../../icons/gb.svg"></div>
+            <div id="flag-es" class="flags_item_es" data-language="es"><img src="../../icons/es.svg"></div>
         </div>
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="codigo/registro_login/panel_registro_login.php"
                 data-section="nav" data-value="login">Ingreso</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="../index.php" data-section="nav"
+            <a class="nav-link " aria-current="page" href="../../index.php" data-section="nav"
                 data-value="home">Inicio</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="services.html" data-section="nav" data-value="services">Servicios</a>
+            <a class="nav-link" href="../../pages/services.html" data-section="nav" data-value="services">Servicios</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="rooms.html" data-section="nav" data-value="rooms">Habitaciones</a>
+            <a class="nav-link" href="../../pages/rooms.html" data-section="nav" data-value="rooms">Habitaciones</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="recommendations.html" data-section="nav"
+            <a class="nav-link" href="../../pages/recommendations.html" data-section="nav"
                 data-value="recommendations">Recomendaciones</a>
         </li>
         <li class="nav-item "></li>
-        <a class="nav-link right" href="contacto.html">
+        <a class="nav-link right" href="../../pages/contacto.html">
             <p data-section="nav" data-value="signup">Contacto</p>
         </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="perfil.html" tabindex="-1" aria-disabled="true" data-section="nav"
-                data-value="services">Perfil</a>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-user"></i> Perfil
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="perfil.php" data-section="nav" data-value="perfil">Mi Perfil</a></li>
+                <li><a class="dropdown-item" href="mis_reservas.php" data-section="nav" data-value="reservas">Mis Reservas</a></li>
+            </ul>
         </li>
         <li class="nav-item ms-auto">
-            <img src="../icons/calendar-check.svg"></a>
+            <img src="../../icons/calendar-check.svg"></a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link right" href="pages/receptions.php">
+            <a class="nav-link right" href="../../pages/receptions.php">
                 <p data-section="nav" data-value="receptions">Reservas</p>
             </a>
         </li>
@@ -85,11 +148,12 @@ $user = $result->fetch_assoc();
                 <p><strong>Apellido:</strong> <?php echo $user['Apellido']; ?> </p>
                 <p><strong>Puntos:</strong> <?php echo $user['Puntos']; ?> </p>
                 <p><strong>Documento:</strong> <?php echo $user['Documento']; ?> </p>
-                <p><strong>Fecha de Nacimiento:</strong> <?php echo $user['Fecha_Nacimiento']; ?> </p>
+                <p><strong>Nacimiento:</strong> <?php echo $user['Fecha_Nacimiento']; ?> </p>
                 <p><strong>Sexo:</strong> <?php echo $user['Sexo']; ?> </p>
                 <p><strong>Email:</strong> <?php echo $user['Email']; ?> </p>
                 <p><strong>Teléfono:</strong> <?php echo $user['Telefono']; ?> </p>
                 <p><strong>Fecha de Registro:</strong> <?php echo $user['Fecha_Registro']; ?> </p>
+
             </div>
         </div> 
     </div>

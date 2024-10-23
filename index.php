@@ -97,9 +97,14 @@ include("cerrar_conexion.php");
             <p data-section="nav" data-value="signup">Contacto</p>
         </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="pages/perfil.php" data-section="nav"
-                data-value="perfil">Perfil</a>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-user"></i> Perfil
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="codigo/cliente/perfil.php" data-section="nav" data-value="perfil">Mi Perfil</a></li>
+                <li><a class="dropdown-item" href="codigo/cliente/mis_reservas.php" data-section="nav" data-value="reservas">Mis Reservas</a></li>
+            </ul>
         </li>
         <li class="nav-item ms-auto">
             <img src="icons/calendar-check.svg"></a>
