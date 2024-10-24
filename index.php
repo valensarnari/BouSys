@@ -125,7 +125,7 @@ include("cerrar_conexion.php");
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link text-dark dropdown-toggle" href="#" id="languageDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false" data-section="nav" data-value="language">
                             <i class="fas fa-globe"></i> Idioma
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
@@ -137,6 +137,11 @@ include("cerrar_conexion.php");
                             <li>
                                 <div id="flag-es" class="flags_item_es dropdown-item" data-language="es"><img
                                         src="icons/es.svg" alt="Español" class="me-2" style="width: 20px;"> Español
+                                </div>
+                            </li>
+                            <li>
+                                <div id="flag-pt" class="flags_item_pt dropdown-item" data-language="pt"><img
+                                        src="icons/pt.svg" alt="Português" class="me-2" style="width: 20px;"> Português
                                 </div>
                             </li>
                         </ul>
