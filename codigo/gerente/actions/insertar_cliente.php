@@ -1,6 +1,7 @@
 <?php
 
-include ('../../conexion.php');
+$conexion = mysqli_connect("localhost", "root", "", "hotel") 
+or die('No se pudo conectar al servidor');
 
 $nombre = $_POST['nombre'];
 $apellido = $_POST['apellido'];
@@ -12,12 +13,34 @@ $email = $_POST['email'];
 $telefono = $_POST['telefono'];
 $contrasena = password_hash($_POST['contrasena'], PASSWORD_DEFAULT);
 
-$insert = "INSERT INTO `cliente` (`Nombre`, `Apellido`, `Fecha_Nacimiento`, `Documento`, `Nacionalidad`, `Sexo`, `Email`, `Telefono`, `Contrasena`, `Fecha_Registro`) VALUES ('$nombre', '$apellido', '$nacimiento', '$documento', '$nacionalidad', '$sexo', '$email', '$telefono', '$contrasena', NOW());";
-$query = mysqli_query($conexion, $insert);
+// Modificamos la consulta para usar prepared statements
+$consulta_existencia = $conexion->prepare("SELECT * FROM cliente WHERE Documento = ? OR Email = ?");
+$consulta_existencia->bind_param("ss", $documento, $email);
+$consulta_existencia->execute();
+$resultado = $consulta_existencia->get_result();
 
-if(!$query) {
-    echo ("No se pudo insertar.");
+if($resultado->num_rows > 0)
+{
+    echo "El usuario ya está registrado.";
 }
-else {
-    header("Location: ../listado_clientes.php");
+else 
+{
+    $sql = "INSERT INTO `cliente` (`Nombre`, `Apellido`, `Fecha_Nacimiento`, `Documento`, `Nacionalidad`, `Sexo`, `Email`, `Telefono`, `Contrasena`, `Fecha_Registro`) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("sssisssss", $nombre, $apellido, $nacimiento, $documento, $nacionalidad, $sexo, $email, $telefono, $contrasena);
+
+    if($stmt->execute())
+    {
+        header("Location: ../listado_clientes.php");
+        exit();
+    }
+    else{
+        echo "No se pudo insertar: " . $stmt->error;
+    }
+    $stmt->close();
 }
+
+$conexion->close();
+
+?>
