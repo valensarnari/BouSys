@@ -504,3 +504,36 @@ h2 {
     font-size: 15px;
   }
 }
+
+body {
+    padding-top: 56px; /* Ajusta este valor según la altura de tu navbar */
+}
+
+.navbar {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1030; /* Asegura que el navbar esté por encima de otros elementos */
+}
+
+.navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.9) !important; /* Fondo semi-transparente al hacer scroll */
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+body.navbar-fixed {
+    padding-top: 56px; /* Ajusta este valor según la altura de tu navbar */
+}
+
+@media (max-width: 991.98px) {
+    body.navbar-fixed {
+        padding-top: 56px; /* Ajusta para dispositivos móviles si es necesario */
+    }
+}
+
+.carousel {
+    z-index: 1; /* Asegura que el carrusel esté por debajo del navbar */
+}
+
+.carousel-container {
+    position: relative;
+    z-index: 1; /* Asegura que el contenedor del carrusel esté por debajo del navbar */
+}
