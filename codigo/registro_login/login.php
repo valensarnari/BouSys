@@ -24,10 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Si la contraseña es correcta, iniciar sesión y almacenar información de usuario en la sesión
             $_SESSION['usuario_id'] = $cliente['id'];
             $_SESSION['usuario_nombre'] = $cliente['Nombre'];
-            $_SESSION['usuario_jerarquia'] = $cliente['jerarquia']; // 'jerarquia' en minúscula
+            $_SESSION['usuario_jerarquia'] = $cliente['Jerarquia']; // 'jerarquia' en minúscula
 
             // Redirigir según la jerarquía del usuario
-            switch ($cliente['jerarquia']) {
+            switch ($cliente['Jerarquia']) {
                 case 0: // Gerente
                     header("Location: ../gerente/panel_gerente.php");
                     break;
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     header("Location: ../recepcionista/panel_recepcionista.php");
                     break;
                 case 2: // Cliente
-                    header("Location: ../cliente/panel_cliente.php");
+                    header("Location: ../cliente/perfil.php");
                     break;
                 default:
                     header("Location: panel_registro_login.php");
