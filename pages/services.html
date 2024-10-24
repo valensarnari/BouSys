@@ -9,6 +9,56 @@
     <link href="../styles.css" rel="stylesheet">
     <script src="../script.js"></script>
     <title>Services</title>
+
+    <style>
+        .observer {
+            padding: 2rem 0;
+        }
+        
+        .card-services {
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .card-services:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .card-services .col-md-4 {
+            overflow: hidden;
+        }
+
+        .card-services img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .card-services:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .resto-description {
+            font-family: "Poppins", sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+        .description {
+            font-family: "Merriweather", serif;
+            font-size: 1.1rem;
+            color: #2c3e50;
+        }
+    </style>
+
 </head>
 
 <body class="container-fluid">
@@ -95,7 +145,7 @@
             </div>
             <div class="col">
                 <div class="card h-100">
-                    <img src="../images/services/laundry-0.jpg" class="card-img-top" alt="Laundry">
+                    <img src="../images/services/laundry-1.jpg" class="card-img-top" alt="Laundry">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">Laundry</h5>
                         <a href="#laundry" class="btn btn-primary mt-auto">Saber más...</a>
@@ -122,63 +172,57 @@
             </div>
         </div>
     </div>
-    <!-------------------------------------------Resto title-------------------------------------------------------------------->
-    <div class="row align-items-center room-title">
-        <span class="subrayado" id="resto" id="resto">RESTORANT</span>
-    </div>
     <!-----------------------------V I D E O-------------------------------------------->
     <div class="row ratio ratio-16x9 video-first">
         <video src="../video/video-resto.mp4" autoplay muted loop></video>
     </div>
     <!----------------------------------- Intersection Observer ------------------------------------------------------------>
     <div class="container-fluid observer">
-        <!-----------------------------garage horizontal card-------------------------------------------->
-        <div class="card mb-3" style="width: 100%">
+        <!-------------------------------------------Resto title-------------------------------------------------------------------->
+        <div class="row align-items-center room-title">
+            <span class="subrayado" id="resto" id="resto">RESTORANT</span>
+        </div>
+        <br>
+        <div class="card-services mb-3" style="width: 100%">
             <div class="row g-0">
                 <div class="col-md-4 hidden">
-                    <img src="../images/bar_resto/bar_2.jpg" class="img-fluid rounded-start" alt="...">
+                    <img src="../images/bar_resto/restaurant-service.jpg" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">Gastronomía.</h5>
-                        <p class="card-text resto-description">
+                        <p class="card-text resto-description description">
                             El Continental Hotel se enorgullece de albergar un restaurante y bar de renombre, conocido
-                            por
-                            ser el escenario de eventos importantes y celebraciones exclusivas. Su gastronomía
-                            excepcional
-                            ha sido reconocida con estrellas Michelin, destacándose por su creatividad y calidad. Los
-                            huéspedes y visitantes pueden disfrutar de una experiencia culinaria inigualable, donde cada
-                            plato es una obra de arte que refleja la pasión y el talento de nuestros chefs
+                            por ser el escenario de eventos importantes y celebraciones exclusivas. <br> 
+                            Su gastronomía excepcional ha sido reconocida con estrellas Michelin, destacándose 
+                            por su creatividad y calidad. Los huéspedes y visitantes pueden disfrutar de una experiencia 
+                            culinaria inigualable, donde cada plato es una obra de arte que refleja la pasión y el talento de nuestros chefs.
                         </p>
-
+                        
                     </div>
                 </div>
             </div>
         </div>
         <!-------------------------------------------Garage title-------------------------------------------------------------------->
         <div class="row align-items-center room-title">
-            <span class="subrayado" id="garage" id="resto">GARAGE</span>
+            <span class="subrayado" id="garage">GARAGE</span>
         </div>
+        <br>
         <!-----------------------------garage horizontal card-------------------------------------------->
-        <div class="card mb-3" style="width: 100%">
+        <div class="card-services mb-3" style="width: 100%">
             <div class="row g-0">
                 <div class="col-md-4 hidden">
-                    <img src="../images/garage/garage_2.jpg" class="img-fluid rounded-start" alt="...">
+                    <img src="../images/garage/garage-services.jpg" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">Vehículos</h5>
-                        <p class="card-text resto-description">
+                        <p class="card-text resto-description description">
                             El Continental Hotel ofrece un servicio de garaje y guardería de coches de primera clase,
-                            garantizando la máxima seguridad y comodidad para sus huéspedes. Con seguridad privada las
-                            24
-                            horas, nuestros clientes pueden estar tranquilos sabiendo que sus vehículos están protegidos
-                            en
-                            todo momento. Además, nuestro equipo de valet parking se encarga de estacionar y cuidar cada
-                            coche con la mayor atención y profesionalismo, asegurando una experiencia sin preocupaciones
-                            desde el momento de la llegada hasta la salida.
+                            garantizando la máxima seguridad y trasnquilidad para sus huéspedes, gracias a nuestra 
+                            seguridad privada las 24 horas, nuestros clientes pueden estar tranquilos sabiendo 
+                            que sus vehículos están protegidos en todo momento. Además, nuestro equipo de valet parking 
+                            se encarga de estacionar y cuidar cada coche con la mayor atención y profesionalismo, asegurando 
+                            una experiencia sin preocupaciones desde el momento de la llegada hasta la salida.
                         </p>
-
                     </div>
                 </div>
             </div>
@@ -187,69 +231,78 @@
         <!-------------------------------------------Spa title-------------------------------------------------------------------->
         <div class="row align-items-center room-title">
             <span class="subrayado" id="spa">SPA</span>
-        </div><br>
-        <div class="row align-self-center">
-            <div class="col">
-                <p class="resto-description">Sumérgete en un oasis de tranquilidad en el spa del Continental Hotel.
-                    Disfruta
-                    de tratamientos
-                    rejuvenecedores, masajes terapéuticos y una variedad de servicios diseñados para revitalizar tu
-                    cuerpo y
-                    mente. Nuestro spa ofrece un ambiente sereno y lujoso, perfecto para relajarte y escapar del estrés
-                    diario.
-
-                </p>
-            </div>
-            <div class="col hidden">
-                <img src="../images/spa/spa_2.jpg" class="img-fluid">
+        </div>
+        <br>
+        <div class="card-services mb-3" style="width: 100%">
+            <div class="row g-0">
+                <div class="col-md-4 hidden">
+                    <img src="../images/spa/spa-service.jpg" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <p class="card-text resto-description description">
+                            Sumérgete en un oasis de tranquilidad en el spa del Continental Hotel. 
+                            Disfruta de tratamientos rejuvenecedores, masajes terapéuticos y una 
+                            variedad de servicios diseñados para revitalizar tu cuerpo y mente. 
+                            Nuestro SPA ofrece un ambiente sereno y lujoso, perfecto para relajarte 
+                            y escapar del estrés diario. Buscamos que pases un momento de relax y relajación, 
+                            para que puedas disfrutar de una estancia cómoda y sin preocupaciones. <br>
+                            Tu salud y bienestar son nuestra prioridad.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-----------------------------baby horizontal card-------------------------------------------->
-        <div class="card mb-3" style="width: 100%" id="baby">
+        <br>
+    </div>
+    <!-----------------------------baby horizontal card-------------------------------------------->
+        <div class="row align-items-center room-title">
+            <span class="subrayado" id="cuna">CUNA</span>
+        </div>
+        <br>
+        <div class="card-services mb-3" style="width: 100%" id="baby">
             <div class="row g-0">
                 <div class="col-md-4 hidden">
                     <img src="../images/services/baby-cot.jpg" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">Servicio gratuito de cuna.</h5>
-                        <p class="card-text resto-description">
-                            En el Continental Hotel, nos preocupamos por el bienestar de toda tu familia. Por eso,
-                            ofrecemos
-                            un servicio gratuito de cuna para nuestros huéspedes con bebés. Disfruta de una estancia
-                            cómoda
-                            y sin preocupaciones, sabiendo que tu pequeño descansará plácidamente en una cuna segura y
-                            confortable, proporcionada sin costo adicional
+                        <p class="card-text resto-description description">
+                            En el Continental Hotel, nos preocupamos por el bienestar de toda tu familia. <br>
+                            Por eso, ofrecemos un servicio gratuito de cuna para nuestros huéspedes con bebés. 
+                            Disfruta de una estancia en donde no tendrás que dormir con tu bebé en la misma cama, 
+                            sino que tu pequeño descansará plácidamente en una cuna segura y confortable, proporcionada sin costo adicional
                         </p>
-
+                        
                     </div>
                 </div>
             </div>
         </div>
         <br>
         <!-----------------------------laundry horizontal card-------------------------------------------->
-        <div class="card mb-3" style="width: 100%" id="laundry">
+        <div class="row align-items-center room-title">
+            <span class="subrayado" id="laundry">LAUNDRY</span>
+        </div>
+        <br>
+        <div class="card-services mb-3" style="width: 100%" id="laundry">
             <div class="row g-0">
                 <div class="col-md-4 hidden">
-                    <img src="../images/services/laundry-1.jpg" class="img-fluid rounded-start" alt="...">
+                    <img src="../images/services/laundry-service.jpg" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">Laundry</h5>
-                        <p class="card-text resto-description">Mantén tu ropa impecable con nuestro servicio de
-                            lavandería
-                            del Continental
-                            Hotel. Ofrecemos un servicio eficiente y de alta calidad para todos nuestros huéspedes.
-                            Aunque
-                            este servicio tiene un costo adicional, es completamente gratuito para nuestros clientes
-                            top,
-                            asegurando que disfruten de la máxima comodidad y atención durante su estancia.</p>
-
+                        <p class="card-text resto-description description">
+                            Mantén tu ropa impecable con nuestro servicio de lavandería del Continental Hotel. <br> 
+                            Ofrecemos un servicio eficiente y de alta calidad para todos nuestros huéspedes.
+                            Aunque este servicio tiene un costo adicional, es completamente gratuito para nuestros clientes
+                            top, asegurando que disfruten de la máxima comodidad y atención durante su estancia. <br>
+                            Ya no tendrás que preocuparte por lavar tu ropa y sacar las manchas difíciles, ya que nosotros nos encargamos de ello.
+                        </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <br>
+            <br>
     </div>
     <!-------------------------------------footer----------------------------------------------------->
     <footer class="bg-dark text-white pt-4">
@@ -278,12 +331,12 @@
             </div>
         </div>
     </footer>
-
-
+    
+    
     <!---bootstrap js --->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-</body>
-
-</html>
+    </body>
+    
+    </html>
