@@ -35,7 +35,7 @@ $user = $result->fetch_assoc();
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
     <link href="../../styles.css" rel="stylesheet">
-
+    <link rel="icon" type="image/svg+xml" href="../../icons/perfil-png.png" />
     <style>
         .container.mt-5 {
             max-width: 600px;
@@ -100,25 +100,23 @@ $user = $result->fetch_assoc();
 
         .nav-link {
             color: #007bff;
-            /* Azul oscuro para el texto */
         }
 
         .nav-link:hover {
             background-color: #b2ebf2;
-            /* Azul más claro al pasar el ratón */
         }
 
         .custom-navbar {
-            background-color: #E6F3FF; /* Celeste claro */
+            background-color: #E6F3FF;
         }
 
         .custom-navbar .nav-link {
-            color: #333333; /* Letra más oscura */
-            font-weight: 500; /* Un poco más gruesa que normal, pero no bold */
+            color: #333333;
+            font-weight: 500; 
         }
 
         .custom-navbar .nav-link:hover {
-            color: #0056b3; /* Color más oscuro al pasar el mouse */
+            color: #0056b3; 
         }
 
         .custom-navbar .dropdown-menu {

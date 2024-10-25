@@ -1,26 +1,17 @@
 <?php
+include ('../conexion.php');
+//include("../registro_login/validacion_sesion.php");
 
-//NO FUNCIONA TODAVIA!!!!!!!!!!!
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $reserva_id = $_POST['reserva_id'];
 
-$conexion = mysqli_connect("localhost", "root", "", "hotel"); 
-// Verificar si la conexión fue exitosa
-if (!$conexion) {
-    echo "Error de conexión";
-    exit;
+    // Cambiar el estado de la reserva a 'Cancelada'
+    $query = "UPDATE reserva_total SET Estado = 'Cancelada' WHERE id = '$reserva_id'";
+    
+    if (mysqli_query($conexion, $query)) {
+        header("Location: mis_reservas.php");
+    } else {
+        echo "Error al cancelar la reserva: " . mysqli_error($conexion);
+    }
 }
-
-$id = intval($_GET['idReserva']);
-
-// Eliminar la reserva de la base de datos
-$sql = "UPDATE reserva_total SET `Estado` = 'Cancelada' WHERE id = $id";
-
-if ($conexion->query($sql) === TRUE) {
-    echo "Reserva cancelada correctamente.";
-} else {
-    echo "Error al cancelar la reserva: " . $conexion->error;
-}
-
-$conexion->close();
-
-header('Location: mis_reservas.php');
 ?>
