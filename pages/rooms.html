@@ -19,6 +19,68 @@
     <script src="../script.js"></script>
     <link rel="icon" type="image/svg+xml" href="../icons/bed.png" />
     <title>Suites</title>
+    <style>
+      .room-description {
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        text-align: center;
+        font-family: "Merriweather", serif;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #2c3e50;
+      }
+
+
+      .observer img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+
+
+        /* Estilos específicos para la galería de la habitación simple */
+        .gallery {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-gap: 15px;
+          margin-bottom: 3rem;
+        }
+
+        .gallery .grid-item {
+          position: relative;
+          overflow: hidden;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery .grid-item img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+
+        .gallery .grid-item:first-child {
+          grid-column: span 2;
+          grid-row: span 2;
+        }
+
+        .gallery .grid-item:first-child img {
+          height: 415px;
+        }
+
+      /* Estilos para las imágenes de la habitación completa y suite top */
+      .row.gx-3, .row.g-2 {
+        margin-bottom: 1rem;
+      }
+
+      .row.gx-3 .col, .row.g-2 .col {
+        padding: 0.5rem;
+      }
+    </style>
   </head>
 
   <body class="container-fluid">
@@ -239,7 +301,7 @@
           />
           <div class="card-body d-flex flex-column">
             <h5 class="card-title" data-section="rooms" data-value="luxurious">
-              Lujosa
+              Suite Top
             </h5>
             <a
               href="#room-3"
@@ -263,12 +325,11 @@
         ></video>
       </div>
     </div>
-    <br /><br /><br />
     <!----------------------------------- Intersection Observer ------------------------------------------------------------>
     <div class="container-fluid observer">
       <!--------------------------------- ROOM TITLE SIMPLE  ------------------------------------------->
       <div class="row align-items-center room-title">
-        <span class="subrayado" id="room-1">HABITACIÓN SIMPLE</span>
+        <span class="subrayado" id="room-1">HABITACIÓN SIMPLE</span> <br><br>
       </div>
       <div class="row room-description">
         <p>
@@ -280,24 +341,13 @@
         </p>
       </div>
 
-      <!--- <div class="row hidden">
-            <div class="col-6 "><img src="../images/room/room-12.jpg" alt="" class="img-fluid"></div>
-            <div class=" col-6 ">
-                <img src=" ../images/room/room_girl_luggage.jpg" alt="" class="img-fluid"><br><br>
-                <img src="../images/room/room-5.jpg" alt="" class="img-fluid">
-            </div>
-        </div><br>
-        <div class=" row align-items-end hidden">
-            <div class="col-6 "><img src="../images/room/room-4.jpg" alt="" class="img-fluid"></div>
-            <div class="col-6 "><img src="../images/room/room-8.jpg" alt="" class="img-fluid"></div>
-        </div><br><br>--->
-      <div class="row hidden">
+      <div class="row">
         <div class="gallery">
           <div class="grid-item">
-            <img class="img-fluid" src="../images/room/room-12.jpg" />
+            <img class="img-fluid" src="../images/room/room-simple-1.jpg" />
           </div>
           <div class="grid-item">
-            <img class="img-fluid" src="../images/room/room_girl_luggage.jpg" />
+            <img class="img-fluid" src="../images/room/room-simple-2.jpg" />
           </div>
           <div class="grid-item">
             <img class="img-fluid" src="../images/room/room-5.jpg" />
@@ -308,11 +358,14 @@
           <div class="grid-item">
             <img class="img-fluid" src="../images/room/room-8.jpg" />
           </div>
+          <div class="grid-item">
+            <img class="img-fluid" src="../images/room/room_girl_luggage.jpg" />
+          </div>
         </div>
       </div>
       <!--------------------------------- ROOM TITLE COMPLETA  ------------------------------------------->
       <div class="row align-items-center room-title">
-        <span class="subrayado" id="room-2">HABITACIÓN COMPLETA</span>
+        <span class="subrayado" id="room-2">HABITACIÓN COMPLETA</span> <br><br>
       </div>
       <div class="row room-description">
         <p>
@@ -324,7 +377,7 @@
         </p>
       </div>
 
-      <div class="row gx-3 hidden">
+      <div class="row gx-3">
         <div class="col">
           <div class="p-3">
             <img src="../images/room/room-10.jpg" alt="" class="img-fluid" />
@@ -336,7 +389,7 @@
           </div>
         </div>
       </div>
-      <div class="row gx-3 hidden">
+      <div class="row gx-3">
         <div class="col">
           <div class="p-3">
             <img src="../images/room/bathroom.jpg" alt="" class="img-fluid" />
@@ -349,7 +402,7 @@
         </div>
       </div>
 
-      <div class="row gx-3 hidden">
+      <div class="row gx-3">
         <div class="col">
           <div class="p-3">
             <img src="../images/room/room-11.jpg" alt="" class="img-fluid" />
@@ -364,7 +417,7 @@
       <br /><br />
       <!--------------------------------- ROOM TITLE TOP  ------------------------------------------->
       <div class="row align-items-center room-title">
-        <span class="subrayado" id="room-3">SUITE TOP</span>
+        <span class="subrayado" id="room-3">SUITE TOP</span> <br><br>
       </div>
       <div class="row room-description">
         <p>
@@ -377,7 +430,7 @@
           confort durante su estancia
         </p>
       </div>
-      <div class="row g-2 hidden">
+      <div class="row g-2">
         <div class="col">
           <div class="p-3">
             <img class="img-fluid" src="../images/room/room-13.jpg" alt="" />
@@ -389,7 +442,7 @@
           </div>
         </div>
       </div>
-      <div class="row g-2 hidden">
+      <div class="row g-2">
         <div class="col">
           <div class="p-3">
             <img class="img-fluid" src="../images/room/room-16.jpg" alt="" />
