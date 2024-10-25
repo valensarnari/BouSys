@@ -110,43 +110,21 @@ include("cerrar_conexion.php");
                             data-value="signup">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="pages/receptions.php" data-section="nav" data-value="receptions">
+                        <a class="nav-link text-dark" href="pages/receptions.php" data-section="nav"
+                            data-value="receptions">
                             <img src="icons/calendar-check.svg" alt="Reservas" /> Reservas
                         </a>
                     </li>
                 </ul>
 
                 <ul class="navbar-nav ms-auto">
-                    <?php
-                    if (isset($_SESSION['usuario_id'])) {
-                        ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link text-dark dropdown-toggle" href="#" id="perfilDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false" style="color: #212529 !important;">
-                            <i class="fas fa-user"></i> Perfil
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilDropdown">
-                            <li><a class="dropdown-item" href="cliente/perfil.php" data-section="nav" data-value="perfil">Mi
-                                    Perfil</a></li>
-                            <li><a class="dropdown-item" href="cliente/mis_reservas.php" data-section="nav"
-                                    data-value="reservas">Mis Reservas</a></li>
-                            <li><a class="dropdown-item" href="codigo/registro_login/cerrar_sesion.php" data-section="nav"
-                                    data-value="cerrar-sesion">Cerrar sesión</a></li>
-                        </ul>
-                    </li>
-                    <?php
-                    } else {
-                        ?>
                     <li class="nav-item">
                         <a class="nav-link text-dark active" aria-current="page"
-                            href="codigo/registro_login/panel_registro_login.php" data-section="nav"
-                            data-value="login" style="color: #212529 !important;">
+                            href="codigo/registro_login/panel_registro_login.php" data-section="nav" data-value="login"
+                            style="color: #212529 !important;">
                             <i class="fas fa-user"></i> Ingreso
                         </a>
                     </li>
-                    <?php
-                    }
-                    ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link text-dark dropdown-toggle" href="#" id="languageDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false" data-section="nav" data-value="language">
