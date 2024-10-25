@@ -1,16 +1,8 @@
 <?php
+include("../../conexion.php");
+include("../../registro_login/validacion_sesion.php");
 
-session_start();
-
-include("../conexion.php");
-
-// Verificar si el usuario ha iniciado sesión
-if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] == 2)) {
-    // Si no hay sesión activa, redirigir a la página de login
-    //echo "No hay sesión activa";
-    header("Location: ../registro_login/panel_registro_login.php");
-    exit();
-}
+$reserva_id = $_SESSION['usuario_id'];
 ?>
 
 <!DOCTYPE html>
@@ -19,16 +11,13 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis Reservas</title>
+    <title>Nueva Reserva</title>
     <!---iconos --->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
-    <link href="../../styles.css" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="../../icons/calendar-check.svg" />
+    <link href="../../../styles.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../../../icons/calendar-check.svg" />
     <style>
         body {
             background-color: #f8f9fa;
@@ -129,6 +118,16 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
             font-size: 1.2rem;
             color: #6c757d;
         }
+
+        .paso-indicador {
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .paso-indicador .badge {
+            padding: 0.5em 1em;
+            border-radius: 20px;
+        }
     </style>
 </head>
 
@@ -146,29 +145,29 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="../../index.php" data-section="nav"
+                        <a class="nav-link text-dark" href="../../../index.php" data-section="nav"
                             data-value="services">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="../../pages/services.php" data-section="nav"
+                        <a class="nav-link text-dark" href="../../../pages/services.php" data-section="nav"
                             data-value="services">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="../../pages/rooms.php" data-section="nav"
+                        <a class="nav-link text-dark" href="../../../pages/rooms.php" data-section="nav"
                             data-value="rooms">Habitaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="../../pages/recommendations.php" data-section="nav"
+                        <a class="nav-link text-dark" href="../../../pages/recommendations.php" data-section="nav"
                             data-value="recommendations">Recomendaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="../../pages/contacto.php" data-section="nav"
+                        <a class="nav-link text-dark" href="../../../pages/contacto.php" data-section="nav"
                             data-value="signup">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="../../pages/receptions.php" data-section="nav"
+                        <a class="nav-link text-dark" href="../../../pages/receptions.php" data-section="nav"
                             data-value="receptions">
-                            <img src="../../icons/calendar-check.svg" alt="Reservas"> Reservas
+                            <img src="../../../icons/calendar-check.svg" alt="Reservas"> Reservas
                         </a>
                     </li>
                 </ul>
@@ -187,12 +186,12 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                             <i class="fas fa-user"></i> Perfil
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="perfil.php" data-section="nav" data-value="perfil">Mi
+                            <li><a class="dropdown-item" href="../perfil.php" data-section="nav" data-value="perfil">Mi
                                     Perfil</a></li>
-                            <li><a class="dropdown-item" href="mis_reservas.php" data-section="nav"
+                            <li><a class="dropdown-item" href="../mis_reservas.php" data-section="nav"
                                     data-value="reservas">Mis Reservas</a></li>
-                            <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php" data-section="nav"
-                                    data-value="reservas">Cerrar sesión</a></li>
+                            <li><a class="dropdown-item" href="../../registro_login/cerrar_sesion.php"
+                                    data-section="nav" data-value="reservas">Cerrar sesión</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -203,19 +202,19 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
                             <li>
                                 <div id="flags" class="flags_item dropdown-item" data-language="en"><img
-                                        src="../../icons/gb.svg" alt="English" class="me-2" style="width: 20px;">
+                                        src="../../../icons/gb.svg" alt="English" class="me-2" style="width: 20px;">
                                     English
                                 </div>
                             </li>
                             <li>
                                 <div id="flag-es" class="flags_item_es dropdown-item" data-language="es"><img
-                                        src="../../icons/es.svg" alt="Español" class="me-2" style="width: 20px;">
+                                        src="../../../icons/es.svg" alt="Español" class="me-2" style="width: 20px;">
                                     Español
                                 </div>
                             </li>
                             <li>
                                 <div id="flag-pt" class="flags_item_pt dropdown-item" data-language="pt"><img
-                                        src="../../icons/pt.svg" alt="Português" class="me-2" style="width: 20px;">
+                                        src="../../../icons/pt.svg" alt="Português" class="me-2" style="width: 20px;">
                                     Português
                                 </div>
                             </li>
@@ -225,100 +224,36 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
             </div>
         </div>
     </nav>
-
     <div class="content">
         <div class="container mt-5">
-            <h2>Mis Reservas</h2>
-            <div class="card">
+            <h2>Nueva Reserva</h2>
+            <div class="card mx-auto" style="max-width: 400px;">
                 <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5 class="mb-0">Reservas actuales</h5>
-                        <a href="reserva/uno.php" class="btn btn-primary">
-                            <i class="fas fa-calendar-plus"></i> Realizar reserva
-                        </a>
-                    </div>
-                    <?php
-                    // Consulta SQL para obtener las reservas del usuario
-                    $id = $_SESSION['usuario_id'];
-                    $sql = "SELECT rt.id, c.id, rt.Estado, rt.Fecha_Inicio, rt.Fecha_Fin, rt.Check_In, rt.Check_Out, rt.Valor_Total, c.Nombre, c.Apellido
-                            FROM reserva_total rt JOIN cliente c ON rt.ID_Cliente = c.id
-                            WHERE c.id = '$id'
-                            AND rt.Estado != 'Cancelada'
-                            ORDER BY rt.id DESC";
-                    $query = mysqli_query($conexion, $sql);
-
-                    if (mysqli_num_rows($query) > 0) {
-                        // Si hay reservas, mostrar la tabla
-                        ?>
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Cliente</th>
-                                        <th>Estado</th>
-                                        <th>Inicio</th>
-                                        <th>Fin</th>
-                                        <th>Check-In</th>
-                                        <th>Check-Out</th>
-                                        <th>Valor total</th>
-                                        <th>Opciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    while ($resultado = mysqli_fetch_array($query)) {
-                                        ?>
-                                        <tr>
-                                            <td scope="row">
-                                                <?php echo $resultado['8'] . " " . $resultado['9'] ?>
-                                            </td>
-                                            <td scope="row">
-                                                <?php echo $resultado['2'] ?>
-                                            </td>
-                                            <td scope="row">
-                                                <?php echo $resultado['3'] ?>
-                                            </td>
-                                            <td scope="row">
-                                                <?php echo $resultado['4'] ?>
-                                            </td>
-                                            <td scope="row">
-                                                <?php echo $resultado['5'] ?>
-                                            </td>
-                                            <td scope="row">
-                                                <?php echo $resultado['6'] ?>
-                                            </td>
-                                            <td scope="row">
-                                                <?php echo $resultado['7'] ?>
-                                            </td>
-                                            <td scope="row">
-                                                <div class="mb-3 d-flex justify-content-between">
-                                                    <div>
-                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                            data-bs-target="#cancelar<?php echo $resultado['0'] ?>"
-                                                            data-bs-dismiss="modal">
-                                                            Cancelar
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <?php
-                                        include("cancelar_reserva_modal.php");
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
+                    <form action="dos.php" method="POST">
+                        <div class="mb-3">
+                            <label for="reserva_adultos" class="form-label">Número de adultos:</label>
+                            <input type="number" min="1" max="10" id="reserva_adultos" name="reserva_adultos"
+                                class="form-control" required>
                         </div>
-                        <?php
-                    } else {
-                        // Si no hay reservas, mostrar un mensaje
-                        echo '<div class="no-reservas">No tienes reservas confirmadas en este momento.</div>';
-                    }
-                    ?>
+                        <div class="mb-3">
+                            <label for="reserva_ninos" class="form-label">Número de niños:</label>
+                            <input type="number" max="10" id="reserva_ninos" name="reserva_ninos" class="form-control">
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <div class="paso-indicador">
+                                <span class="badge bg-primary">Paso 1 de 5</span>
+                            </div>
+                            <div>
+                                <input type="hidden" name="reserva_id" value="<?php echo $reserva_id; ?>">
+                                <button type="submit" class="btn btn-primary">Siguiente</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Footer -->
     <footer class="bg-dark text-white pt-4 mt-5">
@@ -342,6 +277,23 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
             </div>
         </div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var dropdowns = document.querySelectorAll('.dropdown-toggle');
+            dropdowns.forEach(function (dropdown) {
+                new bootstrap.Dropdown(dropdown);
+            });
+
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -3,7 +3,7 @@ session_start();
 include("../conexion.php");
 
 // Verificar si el usuario ha iniciado sesión
-if (!isset($_SESSION['usuario_id'])) {
+if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] == 2)) {
     // Si no hay sesión activa, redirigir a la página de login
     //echo "No hay sesión activa";
     header("Location: ../registro_login/panel_registro_login.php");

@@ -151,7 +151,7 @@ session_start();
   
             <ul class="navbar-nav ms-auto">
               <?php
-              if(isset($_SESSION['usuario_id'])) {
+              if(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] == 2) {
               ?>
                 <li class="nav-item dropdown">
                   <a class="nav-link text-dark dropdown-toggle" href="#" id="perfilDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #212529 !important;">
