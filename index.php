@@ -14,6 +14,7 @@ include("cerrar_conexion.php");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="styles.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="icons/home.png" />
     <script src="script.js"></script>
     <title>Home</title>
 </head>
@@ -93,25 +94,25 @@ include("cerrar_conexion.php");
                             data-value="services">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="pages/services.html" data-section="nav"
+                        <a class="nav-link text-dark" href="pages/services.php" data-section="nav"
                             data-value="services">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="pages/rooms.html" data-section="nav"
+                        <a class="nav-link text-dark" href="pages/rooms.php" data-section="nav"
                             data-value="rooms">Habitaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="pages/recommendations.html" data-section="nav"
+                        <a class="nav-link text-dark" href="pages/recommendations.php" data-section="nav"
                             data-value="recommendations">Recomendaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="pages/contacto.html" data-section="nav"
+                        <a class="nav-link text-dark" href="pages/contacto.php" data-section="nav"
                             data-value="signup">Contacto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="pages/receptions.php" data-section="nav"
                             data-value="receptions">
-                            <img src="icons/calendar-check.svg" alt="Reservas"> Reservas
+                            <img src="icons/calendar-check.svg" alt="Reservas" /> Reservas
                         </a>
                     </li>
                 </ul>
@@ -121,7 +122,8 @@ include("cerrar_conexion.php");
                         <a class="nav-link text-dark active" aria-current="page"
                             href="codigo/registro_login/panel_registro_login.php" data-section="nav" data-value="login"
                             style="color: #212529 !important;">
-                            <i class="fas fa-user"></i> Ingreso</a>
+                            <i class="fas fa-user"></i> Ingreso
+                        </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link text-dark dropdown-toggle" href="#" id="languageDropdown" role="button"
@@ -130,20 +132,20 @@ include("cerrar_conexion.php");
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
                             <li>
-                                <div id="flags" class="flags_item dropdown-item" data-language="en"><img
-                                        src="icons/gb.svg" alt="English" class="me-2" style="width: 20px;"> English
+                                <div id="flags" class="flags_item dropdown-item" data-language="en">
+                                    <img src="icons/gb.svg" alt="English" class="me-2" style="width: 20px" />
+                                    English
                                 </div>
                             </li>
                             <li>
-                                <div id="flag-es" class="flags_item_es dropdown-item" data-language="es"><img
-                                        src="icons/es.svg" alt="Español" class="me-2" style="width: 20px;"> Español
+                                <div id="flag-es" class="flags_item_es dropdown-item" data-language="es">
+                                    <img src="icons/es.svg" alt="Español" class="me-2" style="width: 20px" />
+                                    Español
                                 </div>
                             </li>
-                            <li>
-                                <div id="flag-pt" class="flags_item_pt dropdown-item" data-language="pt"><img
-                                        src="icons/pt.svg" alt="Português" class="me-2" style="width: 20px;"> Português
-                                </div>
-                            </li>
+                            <div id="flag-pt" class="flags_item_pt dropdown-item" data-language="pt"><img
+                                    src="icons/pt.svg" alt="Português" class="me-2" style="width: 20px;"> Português
+                            </div>
                         </ul>
                     </li>
                 </ul>
