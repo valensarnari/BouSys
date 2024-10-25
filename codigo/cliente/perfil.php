@@ -102,21 +102,17 @@ $user = $result->fetch_assoc();
             color: #007bff;
         }
 
-        .nav-link:hover {
-            background-color: #b2ebf2;
-        }
-
         .custom-navbar {
             background-color: #E6F3FF;
         }
 
         .custom-navbar .nav-link {
             color: #333333;
-            font-weight: 500; 
+            font-weight: 500;
         }
 
         .custom-navbar .nav-link:hover {
-            color: #0056b3; 
+            color: #0056b3;
         }
 
         .custom-navbar .dropdown-menu {
@@ -133,53 +129,89 @@ $user = $result->fetch_assoc();
     <header class="row top-title">
         <h1>C o n t i n e n t a l&nbsp&nbsp&nbsp&nbsp&nbsp H o t e l</h1>
     </header>
-    <nav class="navbar navbar-expand-lg custom-navbar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="../../index.php" data-section="nav" data-value="home">Inicio</a>
+                        <a class="nav-link text-dark" href="../../index.php" data-section="nav"
+                            data-value="services">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../pages/services.html" data-section="nav" data-value="services">Servicios</a>
+                        <a class="nav-link text-dark" href="../../pages/services.php" data-section="nav"
+                            data-value="services">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../pages/rooms.html" data-section="nav" data-value="rooms">Habitaciones</a>
+                        <a class="nav-link text-dark" href="../../pages/rooms.php" data-section="nav"
+                            data-value="rooms">Habitaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../pages/recommendations.html" data-section="nav" data-value="recommendations">Recomendaciones</a>
+                        <a class="nav-link text-dark" href="../../pages/recommendations.php" data-section="nav"
+                            data-value="recommendations">Recomendaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../pages/contacto.html" data-section="nav" data-value="signup">Contacto</a>
+                        <a class="nav-link text-dark" href="../../pages/contacto.php" data-section="nav"
+                            data-value="signup">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../pages/receptions.php" data-section="nav" data-value="receptions">
-                            <i class="fa-regular fa-calendar-check"></i> Reservas
+                        <a class="nav-link text-dark" href="../../pages/receptions.php" data-section="nav"
+                            data-value="receptions">
+                            <img src="../../icons/calendar-check.svg" alt="Reservas"> Reservas
                         </a>
                     </li>
                 </ul>
-                
+
                 <ul class="navbar-nav ms-auto">
+                    <!--
+                    <li class="nav-item">
+                        <a class="nav-link text-dark active" aria-current="page"
+                            href="../../codigo/registro_login/panel_registro_login.php" data-section="nav" data-value="login"
+                            style="color: #212529 !important;">
+                            <i class="fas fa-user"></i> Ingreso</a>
+                    </li> -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a style="color: #212529 !important;" class="nav-link dropdown-toggle" href="#"
+                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-user"></i> Perfil
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="perfil.php" data-section="nav" data-value="perfil">Mi Perfil</a></li>
-                            <li><a class="dropdown-item" href="mis_reservas.php" data-section="nav" data-value="reservas">Mis Reservas</a></li>
+                            <li><a class="dropdown-item" href="perfil.php" data-section="nav" data-value="perfil">Mi
+                                    Perfil</a></li>
+                            <li><a class="dropdown-item" href="mis_reservas.php" data-section="nav"
+                                    data-value="reservas">Mis Reservas</a></li>
+                            <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php" data-section="nav"
+                                    data-value="reservas">Cerrar sesión</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link text-dark dropdown-toggle" href="#" id="languageDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" data-section="nav" data-value="language">
                             <i class="fas fa-globe"></i> Idioma
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-                            <li><a class="dropdown-item" href="#" data-language="en"><img src="../../icons/gb.svg" alt="English" class="me-2" style="width: 20px;"> English</a></li>
-                            <li><a class="dropdown-item" href="#" data-language="es"><img src="../../icons/es.svg" alt="Español" class="me-2" style="width: 20px;"> Español</a></li>
+                            <li>
+                                <div id="flags" class="flags_item dropdown-item" data-language="en"><img
+                                        src="../../icons/gb.svg" alt="English" class="me-2" style="width: 20px;">
+                                    English
+                                </div>
+                            </li>
+                            <li>
+                                <div id="flag-es" class="flags_item_es dropdown-item" data-language="es"><img
+                                        src="../../icons/es.svg" alt="Español" class="me-2" style="width: 20px;">
+                                    Español
+                                </div>
+                            </li>
+                            <li>
+                                <div id="flag-pt" class="flags_item_pt dropdown-item" data-language="pt"><img
+                                        src="../../icons/pt.svg" alt="Português" class="me-2" style="width: 20px;">
+                                    Português
+                                </div>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -192,15 +224,33 @@ $user = $result->fetch_assoc();
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Información Personal</h5>
-                <p><strong>Nombre:</strong> <?php echo $user['Nombre']; ?> </p>
-                <p><strong>Apellido:</strong> <?php echo $user['Apellido']; ?> </p>
-                <p><strong>Puntos:</strong> <?php echo $user['Puntos']; ?> </p>
-                <p><strong>Documento:</strong> <?php echo $user['Documento']; ?> </p>
-                <p><strong>Nacimiento:</strong> <?php echo $user['Fecha_Nacimiento']; ?> </p>
-                <p><strong>Sexo:</strong> <?php echo $user['Sexo']; ?> </p>
-                <p><strong>Email:</strong> <?php echo $user['Email']; ?> </p>
-                <p><strong>Teléfono:</strong> <?php echo $user['Telefono']; ?> </p>
-                <p><strong>Fecha de Registro:</strong> <?php echo $user['Fecha_Registro']; ?> </p>
+                <p><strong>Nombre:</strong>
+                    <?php echo $user['Nombre']; ?>
+                </p>
+                <p><strong>Apellido:</strong>
+                    <?php echo $user['Apellido']; ?>
+                </p>
+                <p><strong>Puntos:</strong>
+                    <?php echo $user['Puntos']; ?>
+                </p>
+                <p><strong>Documento:</strong>
+                    <?php echo $user['Documento']; ?>
+                </p>
+                <p><strong>Nacimiento:</strong>
+                    <?php echo $user['Fecha_Nacimiento']; ?>
+                </p>
+                <p><strong>Sexo:</strong>
+                    <?php echo $user['Sexo']; ?>
+                </p>
+                <p><strong>Email:</strong>
+                    <?php echo $user['Email']; ?>
+                </p>
+                <p><strong>Teléfono:</strong>
+                    <?php echo $user['Telefono']; ?>
+                </p>
+                <p><strong>Fecha de Registro:</strong>
+                    <?php echo $user['Fecha_Registro']; ?>
+                </p>
 
             </div>
         </div>
