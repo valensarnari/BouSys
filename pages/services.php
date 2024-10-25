@@ -97,7 +97,7 @@ session_start();
                       class="nav-link text-dark"
                       href="../index.php"
                       data-section="nav"
-                      data-value="services"
+                      data-value="home"
                       >Inicio</a
                     >
                 </li>

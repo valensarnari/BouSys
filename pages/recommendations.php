@@ -36,7 +36,7 @@ session_start();
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="../index.php" data-section="nav"
-                            data-value="services">Inicio</a>
+                            data-value="home">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="services.php" data-section="nav"
@@ -64,7 +64,7 @@ session_start();
                 <ul class="navbar-nav ms-auto">
                     <?php
                     if (isset($_SESSION['usuario_id'])) {
-                        ?>
+                    ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link text-dark dropdown-toggle" href="#" id="perfilDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false" style="color: #212529 !important;">
@@ -81,7 +81,7 @@ session_start();
                     </li>
                     <?php
                     } else {
-                        ?>
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link text-dark active" aria-current="page"
                             href="../codigo/registro_login/panel_registro_login.php" data-section="nav"
@@ -90,7 +90,7 @@ session_start();
                         </a>
                     </li>
                     <?php
-                    }
+                }
                     ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link text-dark dropdown-toggle" href="#" id="languageDropdown" role="button"

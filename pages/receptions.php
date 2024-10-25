@@ -72,14 +72,19 @@ $preference->save();
             </a>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-user"></i> Perfil
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="../codigo/cliente/perfil.php" data-section="nav" data-value="perfil">Mi Perfil</a></li>
-                <li><a class="dropdown-item" href="../codigo/cliente/mis_reservas.php" data-section="nav" data-value="reservas">Mis Reservas</a></li>
-            </ul>
-        </li>
+                        <a style="color: #212529 !important;" class="nav-link dropdown-toggle" href="#"
+                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i> Perfil
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="perfil.php" data-section="nav" data-value="perfil">Mi
+                                    Perfil</a></li>
+                            <li><a class="dropdown-item" href="mis_reservas.php" data-section="nav"
+                                    data-value="reservas">Mis Reservas</a></li>
+                            <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php" data-section="nav"
+                                    data-value="reservas">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
         <li class="nav-item ms-auto">
             <img src="../icons/calendar-check.svg"></a>
         </li>

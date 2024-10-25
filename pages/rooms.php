@@ -99,7 +99,7 @@ session_start();
       <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link text-dark" href="../index.php" data-section="nav" data-value="services">Inicio</a>
+            <a class="nav-link text-dark" href="../index.php" data-section="nav" data-value="home">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-dark" href="services.php" data-section="nav" data-value="services">Servicios</a>

@@ -36,7 +36,7 @@ session_start();
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="../index.php" data-section="nav"
-                            data-value="services">Inicio</a>
+                            data-value="home">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="services.php" data-section="nav"
@@ -52,7 +52,7 @@ session_start();
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="contacto.php" data-section="nav"
-                            data-value="signup">Contacto</a>
+                            data-value="singup">Contacto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="receptions.php" data-section="nav" data-value="receptions">
