@@ -94,36 +94,59 @@ include("cerrar_conexion.php");
                             data-value="services">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="pages/services.html" data-section="nav"
+                        <a class="nav-link text-dark" href="pages/services.php" data-section="nav"
                             data-value="services">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="pages/rooms.html" data-section="nav"
+                        <a class="nav-link text-dark" href="pages/rooms.php" data-section="nav"
                             data-value="rooms">Habitaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="pages/recommendations.html" data-section="nav"
+                        <a class="nav-link text-dark" href="pages/recommendations.php" data-section="nav"
                             data-value="recommendations">Recomendaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="pages/contacto.html" data-section="nav"
+                        <a class="nav-link text-dark" href="pages/contacto.php" data-section="nav"
                             data-value="signup">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="pages/receptions.php" data-section="nav"
-                            data-value="receptions">
-                            <img src="icons/calendar-check.svg" alt="Reservas"> Reservas
+                        <a class="nav-link text-dark" href="pages/receptions.php" data-section="nav" data-value="receptions">
+                            <img src="icons/calendar-check.svg" alt="Reservas" /> Reservas
                         </a>
                     </li>
                 </ul>
 
                 <ul class="navbar-nav ms-auto">
+                    <?php
+                    if (isset($_SESSION['usuario_id'])) {
+                        ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-dark dropdown-toggle" href="#" id="perfilDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" style="color: #212529 !important;">
+                            <i class="fas fa-user"></i> Perfil
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilDropdown">
+                            <li><a class="dropdown-item" href="cliente/perfil.php" data-section="nav" data-value="perfil">Mi
+                                    Perfil</a></li>
+                            <li><a class="dropdown-item" href="cliente/mis_reservas.php" data-section="nav"
+                                    data-value="reservas">Mis Reservas</a></li>
+                            <li><a class="dropdown-item" href="codigo/registro_login/cerrar_sesion.php" data-section="nav"
+                                    data-value="cerrar-sesion">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                    <?php
+                    } else {
+                        ?>
                     <li class="nav-item">
                         <a class="nav-link text-dark active" aria-current="page"
-                            href="codigo/registro_login/panel_registro_login.php" data-section="nav" data-value="login"
-                            style="color: #212529 !important;">
-                            <i class="fas fa-user"></i> Ingreso</a>
+                            href="codigo/registro_login/panel_registro_login.php" data-section="nav"
+                            data-value="login" style="color: #212529 !important;">
+                            <i class="fas fa-user"></i> Ingreso
+                        </a>
                     </li>
+                    <?php
+                    }
+                    ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link text-dark dropdown-toggle" href="#" id="languageDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false" data-section="nav" data-value="language">
@@ -131,20 +154,20 @@ include("cerrar_conexion.php");
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
                             <li>
-                                <div id="flags" class="flags_item dropdown-item" data-language="en"><img
-                                        src="icons/gb.svg" alt="English" class="me-2" style="width: 20px;"> English
+                                <div id="flags" class="flags_item dropdown-item" data-language="en">
+                                    <img src="icons/gb.svg" alt="English" class="me-2" style="width: 20px" />
+                                    English
                                 </div>
                             </li>
                             <li>
-                                <div id="flag-es" class="flags_item_es dropdown-item" data-language="es"><img
-                                        src="icons/es.svg" alt="Español" class="me-2" style="width: 20px;"> Español
+                                <div id="flag-es" class="flags_item_es dropdown-item" data-language="es">
+                                    <img src="icons/es.svg" alt="Español" class="me-2" style="width: 20px" />
+                                    Español
                                 </div>
                             </li>
-                            <li>
-                                <div id="flag-pt" class="flags_item_pt dropdown-item" data-language="pt"><img
-                                        src="icons/pt.svg" alt="Português" class="me-2" style="width: 20px;"> Português
-                                </div>
-                            </li>
+                            <div id="flag-pt" class="flags_item_pt dropdown-item" data-language="pt"><img
+                                    src="icons/pt.svg" alt="Português" class="me-2" style="width: 20px;"> Português
+                            </div>
                         </ul>
                     </li>
                 </ul>

@@ -1,9 +1,16 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!---iconos --->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="../styles.css" rel="stylesheet">
@@ -18,54 +25,100 @@
         <h1>C o n t i n e n t a l&nbsp&nbsp&nbsp&nbsp&nbsp H o t e l</h1>
     </header>
     <!---------------------------------------------MENÚ------------------------------------------------------------->
-    <ul class="nav nav-pills menuPages">
-        <div class="flags">
-            <div id="flags" class="flags_item" data-language="en"><img src="../icons/gb.svg"></div>
-            <div id="flag-es" class="flags_item_es" data-language="es"><img src="../icons/es.svg"></div>
-        </div>
-        <li class="nav-item">
-            <button type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#ingresar">
-                Ingreso
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="../index.php" data-section="nav"
-                data-value="home">Inicio</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="../pages/services.html" data-section="nav" data-value="services">Servicios</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="../pages/rooms.html" data-section="nav" data-value="rooms">Habitaciones</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true" data-section="nav"
-                data-value="recommendations">
-                Recomendaciones</a>
-        </li>
-        <li class="nav-item "></li>
-            <a class="nav-link right" href="contacto.html">
-                <p data-section="nav" data-value="signup">Contacto</p>
-            </a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-user"></i> Perfil
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="../codigo/cliente/perfil.php" data-section="nav" data-value="perfil">Mi Perfil</a></li>
-                <li><a class="dropdown-item" href="../codigo/cliente/mis_reservas.php" data-section="nav" data-value="reservas">Mis Reservas</a></li>
-            </ul>
-        </li>
-        <li class="nav-item ms-auto">
-            <img src="../icons/calendar-check.svg"></a>
-        </li>
-        <li class="nav-item ">
-            <a class="nav-link right" href="receptions.php">
-                <p data-section="nav" data-value="receptions">Reservas</p>
-            </a>
-        </li>
-    </ul>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="../index.php" data-section="nav"
+                            data-value="services">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="services.php" data-section="nav"
+                            data-value="services">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="rooms.php" data-section="nav"
+                            data-value="rooms">Habitaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="recommendations.php" data-section="nav"
+                            data-value="recommendations">Recomendaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="contacto.php" data-section="nav"
+                            data-value="signup">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="receptions.php" data-section="nav" data-value="receptions">
+                            <img src="../icons/calendar-check.svg" alt="Reservas" /> Reservas
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ms-auto">
+                    <?php
+                    if (isset($_SESSION['usuario_id'])) {
+                        ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-dark dropdown-toggle" href="#" id="perfilDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" style="color: #212529 !important;">
+                            <i class="fas fa-user"></i> Perfil
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilDropdown">
+                            <li><a class="dropdown-item" href="../codigo/cliente/perfil.php" data-section="nav"
+                                    data-value="perfil">Mi Perfil</a></li>
+                            <li><a class="dropdown-item" href="../codigo/cliente/mis_reservas.php" data-section="nav"
+                                    data-value="reservas">Mis Reservas</a></li>
+                            <li><a class="dropdown-item" href="../codigo/registro_login/cerrar_sesion.php"
+                                    data-section="nav" data-value="cerrar-sesion">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                    <?php
+                    } else {
+                        ?>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark active" aria-current="page"
+                            href="../codigo/registro_login/panel_registro_login.php" data-section="nav"
+                            data-value="login" style="color: #212529 !important;">
+                            <i class="fas fa-user"></i> Ingreso
+                        </a>
+                    </li>
+                    <?php
+                    }
+                    ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-dark dropdown-toggle" href="#" id="languageDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" data-section="nav" data-value="language">
+                            <i class="fas fa-globe"></i> Idioma
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                            <li>
+                                <div id="flags" class="flags_item dropdown-item" data-language="en">
+                                    <img src="../icons/gb.svg" alt="English" class="me-2" style="width: 20px" />
+                                    English
+                                </div>
+                            </li>
+                            <li>
+                                <div id="flag-es" class="flags_item_es dropdown-item" data-language="es">
+                                    <img src="../icons/es.svg" alt="Español" class="me-2" style="width: 20px" />
+                                    Español
+                                </div>
+                            </li>
+                            <div id="flag-pt" class="flags_item_pt dropdown-item" data-language="pt"><img
+                                    src="../icons/pt.svg" alt="Português" class="me-2" style="width: 20px;"> Português
+                            </div>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <!------------------------------------texto 1------------------------------------------------------------------>
     <div class="row recomendaciones">
         <div class="col-6 txt-opinions">

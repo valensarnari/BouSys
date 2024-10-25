@@ -7,244 +7,329 @@ include("../conexion.php");
 //include("../registro_login/validacion_sesion.php");
 ?>
 
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Reservas</title>
     <!---iconos --->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         crossorigin="anonymous">
-    <!---bootstrap css --->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Mis reservas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+    <link href="../../styles.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../../icons/calendar-check.svg" />
     <style>
         body {
-            background-color: #121212;
-            color: #e0e0e0;
+            background-color: #f8f9fa;
         }
 
-        .container {
-            background-color: #1e1e1e;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        .container.mt-5 {
+            max-width: 900px;
+            margin-top: 3rem !important;
         }
 
-        h2 {
-            color: #007bff;
+        .container.mt-5 h2 {
+            color: #343a40;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
         }
 
-        .form-control {
-            background-color: #2a2a2a;
-            border-color: #444;
-            color: #e0e0e0;
+        .card {
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
         }
 
-        .form-control::placeholder {
-            color: #888;
+        .card-body {
+            padding: 2rem;
         }
 
         .table {
-            background-color: #2a2a2a;
-            color: #e0e0e0;
+            margin-bottom: 0;
         }
 
-        .table-dark {
-            background-color: #1e1e1e;
-        }
-
-        .table-striped tbody tr:nth-of-type(odd) {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .table-striped tbody tr:nth-of-type(even) {
-            background-color: #2a2a2a;
-        }
-
-        .table tbody tr td {
-            color: #e0e0e0 !important;
-        }
-
-        .btn-success,
-        .btn-warning {
-            background-color: #03dac6;
-            border-color: #03dac6;
-            color: #121212;
-        }
-
-        .btn-success:hover,
-        .btn-warning:hover,
-        .btn-danger:hover {
-            background-color: #018786;
-            border-color: #018786;
-        }
-
-        .pagination .page-link {
-            background-color: #2a2a2a;
-            border-color: #444;
-            color: #e0e0e0;
-        }
-
-        .pagination .page-item.active .page-link {
+        .table th {
             background-color: #007bff;
-            border-color: #007bff;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
         }
 
-        .dropdown-menu-dark {
-            background-color: #2a2a2a;
+        .table td,
+        .table th {
+            vertical-align: middle;
         }
 
-        /* Estilos para los modales */
-        .modal-content {
-            background-color: #2a2a2a;
-            color: #e0e0e0;
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
         }
 
-        .modal-header {
-            border-bottom-color: #444;
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
         }
 
-        .modal-footer {
-            border-top-color: #444;
+        .custom-navbar {
+            background-color: #E6F3FF;
         }
 
-        .close {
-            color: #e0e0e0;
+        .custom-navbar .nav-link {
+            color: #333333;
+            font-weight: 500;
         }
 
-        .modal .form-control {
-            background-color: #1e1e1e;
-            border-color: #444;
-            color: #e0e0e0;
+        .custom-navbar .nav-link:hover {
+            color: #0056b3;
         }
 
-        .modal .form-control:focus {
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        .custom-navbar .dropdown-menu {
+            background-color: #E6F3FF;
         }
 
-        .modal .btn-secondary {
-            background-color: #6c757d;
-            border-color: #6c757d;
+        .custom-navbar .dropdown-item:hover {
+            background-color: #CCE5FF;
         }
 
-        .modal .btn-secondary:hover {
-            background-color: #5a6268;
-            border-color: #545b62;
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .content {
+            flex: 1 0 auto;
+        }
+
+        footer {
+            flex-shrink: 0;
+        }
+
+        .no-reservas {
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.2rem;
+            color: #6c757d;
         }
     </style>
 </head>
 
-<body>
-    <div class="d-flex">
+<body class="container-fluid d-flex flex-column min-vh-100">
+    <header class="row top-title">
+        <h1>C o n t i n e n t a l&nbsp&nbsp&nbsp&nbsp&nbsp H o t e l</h1>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <!-- Visualizar reservas (siempre visible) -->
-        <div class="container my-4">
-            <h2 class="mb-3">Mis reservas</h2>
-            <hr>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="../../index.php" data-section="nav"
+                            data-value="services">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="../../pages/services.php" data-section="nav"
+                            data-value="services">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="../../pages/rooms.php" data-section="nav"
+                            data-value="rooms">Habitaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="../../pages/recommendations.php" data-section="nav"
+                            data-value="recommendations">Recomendaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="../../pages/contacto.php" data-section="nav"
+                            data-value="signup">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="../../pages/receptions.php" data-section="nav"
+                            data-value="receptions">
+                            <img src="../../icons/calendar-check.svg" alt="Reservas"> Reservas
+                        </a>
+                    </li>
+                </ul>
 
-            <div class="row">
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead class="table-dark">
-                            <tr>
-                                <td scope="col">Cliente</td>
-                                <td scope="col">Estado</td>
-                                <td scope="col">Inicio</td>
-                                <td scope="col">Fin</td>
-                                <td scope="col">Check-In</td>
-                                <td scope="col">Check-Out</td>
-                                <td scope="col">Valor total</td>
-                                <td scope="col">Opciones</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            // paginacion
-                            $por_pagina = 20; // num de registros por pagina
-                            $pagina_actual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
-                            $offset = ($pagina_actual - 1) * $por_pagina;
+                <ul class="navbar-nav ms-auto">
+                    <!--
+                    <li class="nav-item">
+                        <a class="nav-link text-dark active" aria-current="page"
+                            href="../../codigo/registro_login/panel_registro_login.php" data-section="nav" data-value="login"
+                            style="color: #212529 !important;">
+                            <i class="fas fa-user"></i> Ingreso</a>
+                    </li> -->
+                    <li class="nav-item dropdown">
+                        <a style="color: #212529 !important;" class="nav-link dropdown-toggle" href="#"
+                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i> Perfil
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="perfil.php" data-section="nav" data-value="perfil">Mi
+                                    Perfil</a></li>
+                            <li><a class="dropdown-item" href="mis_reservas.php" data-section="nav"
+                                    data-value="reservas">Mis Reservas</a></li>
+                            <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php" data-section="nav"
+                                    data-value="reservas">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-dark dropdown-toggle" href="#" id="languageDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" data-section="nav" data-value="language">
+                            <i class="fas fa-globe"></i> Idioma
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                            <li>
+                                <div id="flags" class="flags_item dropdown-item" data-language="en"><img
+                                        src="../../icons/gb.svg" alt="English" class="me-2" style="width: 20px;">
+                                    English
+                                </div>
+                            </li>
+                            <li>
+                                <div id="flag-es" class="flags_item_es dropdown-item" data-language="es"><img
+                                        src="../../icons/es.svg" alt="Español" class="me-2" style="width: 20px;">
+                                    Español
+                                </div>
+                            </li>
+                            <li>
+                                <div id="flag-pt" class="flags_item_pt dropdown-item" data-language="pt"><img
+                                        src="../../icons/pt.svg" alt="Português" class="me-2" style="width: 20px;">
+                                    Português
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-                            $id = $_SESSION['usuario_id'];
-                            // Consulta SQL con LIMIT, OFFSET y filtros
-                            $sql = "SELECT rt.id, c.id, rt.Estado, rt.Fecha_Inicio, rt.Fecha_Fin, rt.Check_In, rt.Check_Out, rt.Valor_Total, c.Nombre, c.Apellido
-                                    FROM reserva_total rt JOIN cliente c ON rt.ID_Cliente = c.id
-                                    WHERE c.id = '$id'
-                                    AND rt.Estado != 'Cancelada'
-                                    ORDER BY rt.id DESC LIMIT ? OFFSET ?";
+    <div class="content">
+        <div class="container mt-5">
+            <h2>Mis Reservas</h2>
+            <div class="card">
+                <div class="card-body">
+                    <?php
+                    // Consulta SQL para obtener las reservas del usuario
+                    $id = $_SESSION['usuario_id'];
+                    $sql = "SELECT rt.id, c.id, rt.Estado, rt.Fecha_Inicio, rt.Fecha_Fin, rt.Check_In, rt.Check_Out, rt.Valor_Total, c.Nombre, c.Apellido
+                            FROM reserva_total rt JOIN cliente c ON rt.ID_Cliente = c.id
+                            WHERE c.id = '$id'
+                            AND rt.Estado != 'Cancelada'
+                            ORDER BY rt.id DESC";
+                    $query = mysqli_query($conexion, $sql);
 
-                            $stmt = mysqli_prepare($conexion, $sql);
-                            if (!empty($params)) {
-                                $types .= "ii";
-                                $params[] = $por_pagina;
-                                $params[] = $offset;
-                                mysqli_stmt_bind_param($stmt, $types, ...$params);
-                            } else {
-                                mysqli_stmt_bind_param($stmt, "ii", $por_pagina, $offset);
-                            }
-                            mysqli_stmt_execute($stmt);
-                            $query = mysqli_stmt_get_result($stmt);
-
-                            // Verificar si la consulta falló
-                            if (!$query) {
-                                die("Error en la consulta SQL: " . mysqli_error($conexion));
-                            }
-
-                            // Mostrar resultados en la tabla
-                            while ($resultado = mysqli_fetch_array($query)) {
-                                ?>
-                                <tr>
-                                    <td scope="row">
-                                        <?php echo $resultado['8'] . " " . $resultado['9'] ?>
-                                    </td>
-                                    <td scope="row">
-                                        <?php echo $resultado['2'] ?>
-                                    </td>
-                                    <td scope="row">
-                                        <?php echo $resultado['3'] ?>
-                                    </td>
-                                    <td scope="row">
-                                        <?php echo $resultado['4'] ?>
-                                    </td>
-                                    <td scope="row">
-                                        <?php echo $resultado['5'] ?>
-                                    </td>
-                                    <td scope="row">
-                                        <?php echo $resultado['6'] ?>
-                                    </td>
-                                    <td scope="row">
-                                        <?php echo $resultado['7'] ?>
-                                    </td>
-                                    <td scope="row">
-                                    <div class="mb-3 d-flex justify-content-between">
-                                        <div>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#cancelar<?php echo $resultado['0'] ?>" data-bs-dismiss="modal">
-                                                Cancelar
-                                            </button>
-                                        </div>
-                                    </div>
-                                    </td>
-                                </tr>
-                                <?php
-                                include("cancelar_reserva_modal.php");
-                            }
-                        
-                            ?>
-                        </tbody>
-                    </table>
-
+                    if (mysqli_num_rows($query) > 0) {
+                        // Si hay reservas, mostrar la tabla
+                        ?>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Cliente</th>
+                                        <th>Estado</th>
+                                        <th>Inicio</th>
+                                        <th>Fin</th>
+                                        <th>Check-In</th>
+                                        <th>Check-Out</th>
+                                        <th>Valor total</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    while ($resultado = mysqli_fetch_array($query)) {
+                                        ?>
+                                        <tr>
+                                            <td scope="row">
+                                                <?php echo $resultado['8'] . " " . $resultado['9'] ?>
+                                            </td>
+                                            <td scope="row">
+                                                <?php echo $resultado['2'] ?>
+                                            </td>
+                                            <td scope="row">
+                                                <?php echo $resultado['3'] ?>
+                                            </td>
+                                            <td scope="row">
+                                                <?php echo $resultado['4'] ?>
+                                            </td>
+                                            <td scope="row">
+                                                <?php echo $resultado['5'] ?>
+                                            </td>
+                                            <td scope="row">
+                                                <?php echo $resultado['6'] ?>
+                                            </td>
+                                            <td scope="row">
+                                                <?php echo $resultado['7'] ?>
+                                            </td>
+                                            <td scope="row">
+                                                <div class="mb-3 d-flex justify-content-between">
+                                                    <div>
+                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                            data-bs-target="#cancelar<?php echo $resultado['0'] ?>"
+                                                            data-bs-dismiss="modal">
+                                                            Cancelar
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                        include("cancelar_reserva_modal.php");
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <?php
+                    } else {
+                        // Si no hay reservas, mostrar un mensaje
+                        echo '<div class="no-reservas">No tienes reservas confirmadas en este momento.</div>';
+                    }
+                    ?>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Sobre nosotros</h5>
+                    <p>Somos especialistas en viajes y reservas de hoteles. Nos encargamos de encontrar la mejor opción
+                        para ti.</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Links rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../../index.php" class="text-white">Inicio</a></li>
+                        <li><a href="../../pages/services.html" class="text-white">Servicios</a></li>
+                        <li><a href="../../pages/rooms.html" class="text-white">Habitaciones</a></li>
+                        <li><a href="../../pages/recommendations.html" class="text-white">Recomendaciones</a></li>
+                        <li><a href="../../pages/contacto.html" class="text-white">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 
-<!---bootstrap js --->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
 </html>

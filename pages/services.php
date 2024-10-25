@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -101,7 +104,7 @@
               <li class="nav-item">
                 <a
                   class="nav-link text-dark"
-                  href="services.html"
+                  href="services.php"
                   data-section="nav"
                   data-value="services"
                   >Servicios</a
@@ -110,7 +113,7 @@
               <li class="nav-item">
                 <a
                   class="nav-link text-dark"
-                  href="rooms.html"
+                  href="rooms.php"
                   data-section="nav"
                   data-value="rooms"
                   >Habitaciones</a
@@ -119,7 +122,7 @@
               <li class="nav-item">
                 <a
                   class="nav-link text-dark"
-                  href="recommendations.html"
+                  href="recommendations.php"
                   data-section="nav"
                   data-value="recommendations"
                   >Recomendaciones</a
@@ -128,7 +131,7 @@
               <li class="nav-item">
                 <a
                   class="nav-link text-dark"
-                  href="contacto.html"
+                  href="contacto.php"
                   data-section="nav"
                   data-value="signup"
                   >Contacto</a
@@ -147,18 +150,30 @@
             </ul>
   
             <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a
-                  class="nav-link text-dark active"
-                  aria-current="page"
-                  href="../codigo/registro_login/panel_registro_login.php"
-                  data-section="nav"
-                  data-value="login"
-                  style="color: #212529 !important"
-                >
-                  <i class="fas fa-user"></i> Ingreso</a
-                >
-              </li>
+              <?php
+              if(isset($_SESSION['usuario_id'])) {
+              ?>
+                <li class="nav-item dropdown">
+                  <a class="nav-link text-dark dropdown-toggle" href="#" id="perfilDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #212529 !important;">
+                    <i class="fas fa-user"></i> Perfil
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilDropdown">
+                    <li><a class="dropdown-item" href="../codigo/cliente/perfil.php" data-section="nav" data-value="perfil">Mi Perfil</a></li>
+                    <li><a class="dropdown-item" href="../codigo/cliente/mis_reservas.php" data-section="nav" data-value="reservas">Mis Reservas</a></li>
+                    <li><a class="dropdown-item" href="../codigo/registro_login/cerrar_sesion.php" data-section="nav" data-value="cerrar-sesion">Cerrar sesión</a></li>
+                  </ul>
+                </li>
+              <?php
+              } else {
+              ?>
+                <li class="nav-item">
+                  <a class="nav-link text-dark active" aria-current="page" href="../codigo/registro_login/panel_registro_login.php" data-section="nav" data-value="login" style="color: #212529 !important;">
+                    <i class="fas fa-user"></i> Ingreso
+                  </a>
+                </li>
+              <?php
+              }
+              ?>
               <li class="nav-item dropdown">
                 <a
                   class="nav-link text-dark dropdown-toggle"
@@ -214,7 +229,7 @@
             </ul>
           </div>
         </div>
-      </nav><br>
+      </nav>
     <!-------------------------------------------Center title-------------------------------------------------------------------->
     <div class="row align-items-center room-title">
         <span class="subrayado" id="room-3" data-section="services" data-value="title-1">Nuestros servicios</span>
