@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* Función para cambiar el idioma y guardar la selección en localStorage */
   const changeLanguage = async (language) => {
-    const requestJson = await fetch(`../languages/${language}.json`);
+    const requestJson = await fetch(`../../../../../languages/${language}.json`);
     const texts = await requestJson.json();
     const textsToChange = document.querySelectorAll("[data-section]");
     textsToChange.forEach((textToChange) => {

@@ -55,8 +55,8 @@ session_start();
                             data-value="signup">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="receptions.php" data-section="nav" data-value="receptions">
-                            <img src="../icons/calendar-check.svg" alt="Reservas" /> Reservas
+                        <a class="nav-link text-dark" href="receptions.php">
+                            <img src="../icons/calendar-check.svg" alt="Reservas" /><span data-section="nav" data-value="receptions">Reservas</span>
                         </a>
                     </li>
                 </ul>
@@ -94,8 +94,8 @@ session_start();
                     ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link text-dark dropdown-toggle" href="#" id="languageDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false" data-section="nav" data-value="language">
-                            <i class="fas fa-globe"></i> Idioma
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-globe"></i> <span data-section="nav" data-value="language">Idioma</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
                             <li>
