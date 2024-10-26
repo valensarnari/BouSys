@@ -1,5 +1,11 @@
 {
     "presentacion":{
+    "relax":"Relax...",
+    "relax_texto":"Disfruta de nuestra espectacular piscina en el Hotel Continental, ideal para relajarte y disfrutar del sol en pleno centro de Buenos Aires.",
+    "comodidad":"Comodidad",
+    "comodidad_texto":"Disfruta de la máxima comodidad en el Hotel Continental, donde cada detalle está diseñado para ofrecerte una estancia relajante y placentera en pleno centro de Buenos Aires.",
+    "noche":"Noche",
+    "noche_texto":"Sumérgete en la vibrante noche porteña en el Hotel Continental, donde la energía de Buenos Aires cobra vida con entretenimiento, gastronomía y cultura a solo unos pasos de tu habitación.",
     "texto":"Bienvenido al Hotel Continental, donde la elegancia y el confort se unen. Disfruta de nuestras instalaciones de primera clase yun servicio excepcional en el corazón de la ciudad. Tu satisfacción es nuestra prioridad."
 },
 "nav":{
@@ -10,7 +16,71 @@
     "rooms":"Habitaciones",
     "home":"Inicio",
     "signup":"Registrarse",
-    "language": "Idioma"
+    "language": "Idioma",
+    "contact": "Contacto",
+    "close" : "Cerrar sesión",
+    "reservas": "Mis Reservas",
+    "perfil": "Mi Perfil",
+    "perfilnav": "Perfil"
+},
+"contact.php_form":{
+        "Nombre" : "Nombre",
+        "Correo" : "Correo electrónico",
+        "Asunto" : "Asunto",
+        "Mensaje" : "Mensaje",
+        "boton": "Enviar mensaje"
+    },
+"contact.php_body":{
+        "info":"Información de contacto",
+        "horario" : "Lunes a Viernes, 9:00 - 18:00"
+    },
+"cliente_perfil.php":{
+    "Perfil":"Perfil de Usuario",
+    "info":"Información Personal",
+    "Nombre":"Nombre",
+    "Apellido":"Apellido",
+    "Puntos":"Puntos",
+    "Documento":"Documento",
+    "Nacimiento":"Nacimiento",
+    "Sexo":"Sexo",
+    "Email":"Email",
+    "Telefono":"Teléfono",
+    "Registro":"Fecha de Registro"
+},
+"panel_registro_login.php":
+{
+    "iniciar":"Iniciar Sesión",
+    "contrasena":"Contraseña",
+    "contrasena Olvidada":"¿Olvidaste tu contraseña?",
+    "no tiene cuanta":"¿No tienes cuenta?",
+    "registrar":"Regístrate",
+    "registro":"Registro",
+    "Nombre":"Nombre",
+    "Apellido":"Apellido",
+    "Puntos":"Puntos",
+    "Documento":"Documento",
+    "Nacionalidad":"Nacionalidad",
+    "Nacimiento":"Nacimiento",
+    "Sexo":"Sexo",
+    "SeleccionaSexo":"Selecciona tu sexo",
+    "Masculino":"Masculino",
+    "Femenino":"Femenino",
+    "Otro":"Otro",
+    "Email":"Email",
+    "Telefono":"Teléfono",
+    "nacimiento":"Fecha de Nacimiento",
+    "ya tiene cuenta":"¿Ya tienes cuenta?"
+},
+"footer":{
+    "nosotros": "Sobre Nosotros",
+    "info": "Información sobre la empresa",
+    "Links" :"Enlaces",
+    "home" : "Inicio",
+    "rooms" : "Habitaciones",
+    "services" : "Servicios",
+    "recommendations" : "Recomendaciones",
+    "contact": "Contacto",
+    "empresa": "© 2024 Tu Empresa. Todos los derechos reservados."
 },
 "Home":{
     "first":"Descubre el lujo en el corazón de Buenos Aires. El Hotel Continental ofrece elegancia, comodidad y una ubicación inmejorable cerca de los principales atractivos turísticos. ¡Reserva tu estancia hoy mismo!",

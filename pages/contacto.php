@@ -134,11 +134,11 @@ session_start();
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="contacto.php" data-section="nav"
-                            data-value="signup">Contacto</a>
+                            data-value="contact">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="receptions.php" data-section="nav" data-value="receptions">
-                            <img src="../icons/calendar-check.svg" alt="Reservas" /> Reservas
+                        <a class="nav-link text-dark" href="receptions.php">
+                            <img src="../icons/calendar-check.svg" alt="Reservas" /> <span data-section="nav" data-value="receptions">Reservas</span>
                         </a>
                     </li>
                 </ul>
@@ -212,32 +212,32 @@ session_start();
                     <div class="col-md-6">
                         <form>
                             <div class="mb-3">
-                                <label for="name" class="form-label">Nombre</label>
+                                <label for="name" class="form-label" data-section="contact.php_form" data-value="Nombre">Nombre</label>
                                 <input type="text" class="form-control" id="name" required>
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-label">Correo electrónico</label>
+                                <label for="email" class="form-label" data-section="contact.php_form" data-value="Correo">Correo electrónico</label>
                                 <input type="email" class="form-control" id="email" required>
                             </div>
                             <div class="mb-3">
-                                <label for="subject" class="form-label">Asunto</label>
+                                <label for="subject" class="form-label" data-section="contact.php_form" data-value="Asunto">Asunto</label>
                                 <input type="text" class="form-control" id="subject" required>
                             </div>
                             <div class="mb-3">
-                                <label for="message" class="form-label">Mensaje</label>
+                                <label for="message" class="form-label" data-section="contact.php_form" data-value="Mensaje">Mensaje</label>
                                 <textarea class="form-control" id="message" rows="5" required></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+                            <button type="submit" class="btn btn-primary" data-section="contact.php_form" data-value="boton">Enviar mensaje</button>
                         </form>
                     </div>
                     <div class="col-md-6">
                         <div class="contact-info">
                             <div class="contact-info-content">
-                                <h3>Información de contacto</h3>
+                                <h3 data-section="contact.php_body" data-value="info">Información de contacto</h3>
                                 <p><i class="fas fa-map-marker-alt"></i> Calle Ficticia 123, Ciudad Imaginaria</p>
                                 <p><i class="fas fa-phone"></i> +34 123 456 789</p>
                                 <p><i class="fas fa-envelope"></i> info@continentalhotel.com</p>
-                                <p><i class="fas fa-clock"></i> Lunes a Viernes, 9:00 - 18:00</p>
+                                <p><i class="fas fa-clock"></i><span data-section="contact.php_body" data-value="horario"> Lunes a Viernes, 9:00 - 18:00</span></p>
                             </div>
                         </div>
                     </div>

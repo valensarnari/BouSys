@@ -29,6 +29,7 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
     <link href="../../styles.css" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="../../icons/calendar-check.svg" />
+    <script src="../../script.js"></script>
     <style>
         body {
             background-color: #f8f9fa;
@@ -147,7 +148,7 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="../../index.php" data-section="nav"
-                            data-value="services">Inicio</a>
+                            data-value="home">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="../../pages/services.php" data-section="nav"

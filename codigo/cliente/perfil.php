@@ -35,6 +35,7 @@ $user = $result->fetch_assoc();
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
     <link href="../../styles.css" rel="stylesheet">
+    <script src="../../script.js"></script>
     <link rel="icon" type="image/svg+xml" href="../../icons/perfil-png.png" />
     <style>
         .container.mt-5 {
@@ -140,7 +141,7 @@ $user = $result->fetch_assoc();
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="../../index.php" data-section="nav"
-                            data-value="services">Inicio</a>
+                            data-value="home">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="../../pages/services.php" data-section="nav"
@@ -159,9 +160,8 @@ $user = $result->fetch_assoc();
                             data-value="signup">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="../../pages/receptions.php" data-section="nav"
-                            data-value="receptions">
-                            <img src="../../icons/calendar-check.svg" alt="Reservas"> Reservas
+                        <a class="nav-link text-dark" href="../../pages/receptions.php">
+                            <img src="../../icons/calendar-check.svg" alt="Reservas"> <span data-section="nav" data-value="receptions">Reservas</span>
                         </a>
                     </li>
                 </ul>
@@ -176,8 +176,8 @@ $user = $result->fetch_assoc();
                     </li> -->
                     <li class="nav-item dropdown">
                         <a style="color: #212529 !important;" class="nav-link dropdown-toggle" href="#"
-                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user"></i> Perfil
+                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                            <i class="fas fa-user" ></i> <span data-section="nav" data-value="perfilnav">Perfil</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="perfil.php" data-section="nav" data-value="perfil">Mi
@@ -185,13 +185,13 @@ $user = $result->fetch_assoc();
                             <li><a class="dropdown-item" href="mis_reservas.php" data-section="nav"
                                     data-value="reservas">Mis Reservas</a></li>
                             <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php" data-section="nav"
-                                    data-value="reservas">Cerrar sesión</a></li>
+                                    data-value="close">Cerrar sesión</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link text-dark dropdown-toggle" href="#" id="languageDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false" data-section="nav" data-value="language">
-                            <i class="fas fa-globe"></i> Idioma
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-globe"></i><span data-section="nav" data-value="language">Idioma</span> 
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
                             <li>
@@ -220,35 +220,35 @@ $user = $result->fetch_assoc();
     </nav>
 
     <div class="container mt-5">
-        <h2>Perfil de Usuario</h2>
+        <h2 data-section="cliente_perfil.php" data-value="Perfil">Perfil de Usuario</h2>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Información Personal</h5>
-                <p><strong>Nombre:</strong>
+                <h5 class="card-title "data-section="cliente_perfil.php" data-value="info">Información Personal</h5>
+                <p><strong data-section="cliente_perfil.php" data-value="Nombre">Nombre:</strong>
                     <?php echo $user['Nombre']; ?>
                 </p>
-                <p><strong>Apellido:</strong>
+                <p><strong data-section="cliente_perfil.php" data-value="Apellido">Apellido:</strong>
                     <?php echo $user['Apellido']; ?>
                 </p>
-                <p><strong>Puntos:</strong>
+                <p><strong data-section="cliente_perfil.php" data-value="Apellido">Puntos:</strong>
                     <?php echo $user['Puntos']; ?>
                 </p>
-                <p><strong>Documento:</strong>
+                <p><strong data-section="cliente_perfil.php" data-value="Documento">Documento:</strong>
                     <?php echo $user['Documento']; ?>
                 </p>
-                <p><strong>Nacimiento:</strong>
+                <p><strong data-section="cliente_perfil.php" data-value="Nacimiento">Nacimiento:</strong>
                     <?php echo $user['Fecha_Nacimiento']; ?>
                 </p>
-                <p><strong>Sexo:</strong>
-                    <?php echo $user['Sexo']; ?>
+                <p><strong data-section="cliente_perfil.php" data-value="Sexo">Sexo:</strong>
+                    <?php echo substr($user['Sexo'],0,1); ?>
                 </p>
-                <p><strong>Email:</strong>
+                <p><strong data-section="cliente_perfil.php" data-value="Email">Email:</strong>
                     <?php echo $user['Email']; ?>
                 </p>
-                <p><strong>Teléfono:</strong>
+                <p><strong data-section="cliente_perfil.php" data-value="Telefono">Teléfono:</strong>
                     <?php echo $user['Telefono']; ?>
                 </p>
-                <p><strong>Fecha de Registro:</strong>
+                <p><strong data-section="cliente_perfil.php" data-value="Registro">Fecha de Registro:</strong>
                     <?php echo $user['Fecha_Registro']; ?>
                 </p>
 

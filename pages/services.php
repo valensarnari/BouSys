@@ -141,10 +141,8 @@ session_start();
                 <a
                   class="nav-link text-dark"
                   href="receptions.php"
-                  data-section="nav"
-                  data-value="receptions"
                 >
-                  <img src="../icons/calendar-check.svg" alt="Reservas" /> Reservas
+                  <img src="../icons/calendar-check.svg" alt="Reservas" /> <span data-section="nav" data-value="receptions">Reservas</span>
                 </a>
               </li>
             </ul>
@@ -167,8 +165,8 @@ session_start();
               } else {
               ?>
                 <li class="nav-item">
-                  <a class="nav-link text-dark active" aria-current="page" href="../codigo/registro_login/panel_registro_login.php" data-section="nav" data-value="login" style="color: #212529 !important;">
-                    <i class="fas fa-user"></i> Ingreso
+                  <a class="nav-link text-dark active" aria-current="page" href="../codigo/registro_login/panel_registro_login.php" style="color: #212529 !important;">
+                    <i class="fas fa-user"></i> <span data-section="nav" data-value="perfilnav">Ingreso</span>
                   </a>
                 </li>
               <?php
@@ -182,10 +180,8 @@ session_start();
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  data-section="nav" 
-                  data-value="language"
                 >
-                  <i class="fas fa-globe"></i> Idioma
+                  <i class="fas fa-globe"></i> <span data-section="nav" data-value="language">Idioma</span>
                 </a>
                 <ul
                   class="dropdown-menu dropdown-menu-end"

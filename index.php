@@ -40,24 +40,24 @@ include("cerrar_conexion.php");
                     <div class="carousel-item active">
                         <img src="images/pileta-dia.jfif" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>Relax...</h5>
-                            <p>Disfruta de nuestra espectacular piscina en el Hotel Continental, ideal para relajarte y
+                            <h5 data-section="presentacion" data-value="relax">Relax...</h5>
+                            <p data-section="presentacion" data-value="relax_texto">Disfruta de nuestra espectacular piscina en el Hotel Continental, ideal para relajarte y
                                 disfrutar del sol en pleno centro de Buenos Aires.</p>
                         </div>
                     </div>
                     <div class="carousel-item ">
                         <img src="images/habitaciones-hotel.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>Comodidad</h5>
-                            <p>Disfruta de la máxima comodidad en el Hotel Continental, donde cada detalle está diseñado
+                            <h5 data-section="presentacion" data-value="comodidad">Comodidad</h5>
+                            <p data-section="presentacion" data-value="comodidad_texto">Disfruta de la máxima comodidad en el Hotel Continental, donde cada detalle está diseñado
                                 para ofrecerte una estancia relajante y placentera en pleno centro de Buenos Aires.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="images/pileta-noche.jfif" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>Noche...</h5>
-                            <p>Sumérgete en la vibrante noche porteña en el Hotel Continental, donde la energía de
+                            <h5 data-section="presentacion" data-value="noche">Noche...</h5>
+                            <p data-section="presentacion" data-value="noche_texto">Sumérgete en la vibrante noche porteña en el Hotel Continental, donde la energía de
                                 Buenos
                                 Aires cobra vida con entretenimiento, gastronomía y cultura a solo unos pasos de tu
                                 habitación.</p>
@@ -91,7 +91,7 @@ include("cerrar_conexion.php");
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="index.php" data-section="nav"
-                            data-value="services">Inicio</a>
+                            data-value="home">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="pages/services.php" data-section="nav"
@@ -107,12 +107,11 @@ include("cerrar_conexion.php");
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="pages/contacto.php" data-section="nav"
-                            data-value="signup">Contacto</a>
+                            data-value="contact">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="pages/receptions.php" data-section="nav"
-                            data-value="receptions">
-                            <img src="icons/calendar-check.svg" alt="Reservas" /> Reservas
+                        <a class="nav-link text-dark" href="../../pages/receptions.php">
+                            <img src="../../icons/calendar-check.svg" alt="Reservas"> <span data-section="nav" data-value="receptions">Reservas</span>
                         </a>
                     </li>
                 </ul>
@@ -120,15 +119,15 @@ include("cerrar_conexion.php");
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link text-dark active" aria-current="page"
-                            href="codigo/registro_login/panel_registro_login.php" data-section="nav" data-value="login"
+                            href="codigo/registro_login/panel_registro_login.php"
                             style="color: #212529 !important;">
-                            <i class="fas fa-user"></i> Ingreso
+                            <i class="fas fa-user"></i> <span data-section="nav" data-value="perfilnav">Ingreso</span>
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link text-dark dropdown-toggle" href="#" id="languageDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false" data-section="nav" data-value="language">
-                            <i class="fas fa-globe"></i> Idioma
+                    <a class="nav-link text-dark dropdown-toggle" href="#" id="languageDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-globe"></i><span data-section="nav" data-value="language">Idioma</span> 
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
                             <li>
@@ -238,18 +237,19 @@ include("cerrar_conexion.php");
     <footer class="bg-dark text-white pt-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <h5>Sobre Nosotros</h5>
-                    <p>Información sobre la empresa.</p>
+                <div class="col-md-4" >
+                    <h5 data-section="footer" data-value="nosotros">Sobre Nosotros</h5>
+                    <p data-section="footer" data-value="info">Información sobre la empresa.</p>
                 </div>
+                
                 <div class="col-md-4">
-                    <h5>Enlaces</h5>
+                    <h5 data-section="footer" data-value="Links">Enlaces</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#index.php" class="text-white">Inicio</a></li>
-                        <li><a href="pages/rooms.html" class="text-white">Habitaciones</a></li>
-                        <li><a href="pages/services.html" class="text-white">Servicios</a></li>
-                        <li><a href="pages/recommendations.html" class="text-white">Recomendaciones</a></li>
-                        <li><a href="pages/contacto.html" class="text-white">Contacto</a></li>
+                        <li><a href="#index.php" class="text-white" data-section="footer" data-value="home">Inicio</a></li>
+                        <li><a href="pages/rooms.html" class="text-white" data-section="footer" data-value="rooms">Habitaciones</a></li>
+                        <li><a href="pages/services.html" class="text-white" data-section="footer" data-value="services">Servicios</a></li>
+                        <li><a href="pages/recommendations.html" class="text-white" data-section="footer" data-value="recommendations">Recomendaciones</a></li>
+                        <li><a href="pages/contacto.html" class="text-white" data-section="footer" data-value="contact">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 whapp">
@@ -257,7 +257,7 @@ include("cerrar_conexion.php");
                         data-bs-target="#exampleModal">
                 </div>
             </div>
-            <div class="text-center py-3">
+            <div class="text-center py-3" data-section="footer" data-value="empresa">
                 © 2024 Tu Empresa. Todos los derechos reservados.
             </div>
         </div>
