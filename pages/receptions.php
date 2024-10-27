@@ -68,7 +68,7 @@ $preference->save();
         </li>
         <li class="nav-item "></li>
             <a class="nav-link right" href="contacto.html">
-                <p data-section="nav" data-value="signup">Contacto</p>
+                <p data-section="nav" data-value="contact">Contacto</p>
             </a>
         </li>
         <li class="nav-item dropdown">

@@ -104,7 +104,7 @@ include("../registro_login/validacion_sesion.php");
 
         <li class="nav-item ">
             <a class="nav-link right" href="../registro_login/cerrar_sesion.php">
-                <p data-section="nav" data-value="signup">cerrar sesion</p>
+                <p data-section="nav" data-value="close">cerrar sesion</p>
             </a>
         </li>
 

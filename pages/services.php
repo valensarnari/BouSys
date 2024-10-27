@@ -133,7 +133,7 @@ session_start();
                   class="nav-link text-dark"
                   href="contacto.php"
                   data-section="nav"
-                  data-value="signup"
+                  data-value="contact"
                   >Contacto</a
                 >
               </li>

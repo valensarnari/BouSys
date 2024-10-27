@@ -157,7 +157,7 @@ $user = $result->fetch_assoc();
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="../../pages/contacto.php" data-section="nav"
-                            data-value="signup">Contacto</a>
+                            data-value="contact">Contacto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="../../pages/receptions.php">

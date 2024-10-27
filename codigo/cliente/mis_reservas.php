@@ -164,7 +164,7 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="../../pages/contacto.php" data-section="nav"
-                            data-value="signup">Contacto</a>
+                            data-value="contact">Contacto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="../../pages/receptions.php" data-section="nav"
@@ -193,7 +193,7 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                             <li><a class="dropdown-item" href="mis_reservas.php" data-section="nav"
                                     data-value="reservas">Mis Reservas</a></li>
                             <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php" data-section="nav"
-                                    data-value="reservas">Cerrar sesión</a></li>
+                                    data-value="close">Cerrar sesión</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">

@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const section = textToChange.dataset.section;
       const value = textToChange.dataset.value;
       textToChange.innerHTML = texts[section][value];
+      if(section === "panel_registro_login.php" && value === "iniciar")
+        document.getElementById("e").value = texts[section][value];
     });
 
     // Guardar el idioma seleccionado en localStorage
