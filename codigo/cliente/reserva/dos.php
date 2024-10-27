@@ -193,7 +193,7 @@ $_POST["reserva_ninos"] == "" ? $reserva_ninos = "0" : $reserva_ninos = $_POST["
                         </div>
                         <div class="d-flex justify-content-between align-items-center mt-4">
                             <div class="paso-indicador">
-                                <span class="badge bg-primary">Paso 2 de 5</span>
+                                <span class="badge bg-primary">Paso 2 de 4</span>
                             </div>
                             <div>
                                 <input type="hidden" name="reserva_id" value="<?php echo $reserva_id; ?>">

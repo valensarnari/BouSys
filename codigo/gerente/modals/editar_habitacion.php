@@ -17,13 +17,13 @@
                     <div class="mb-3">
                         <label class="form-label">Tipo:</label>
                         <select class="form-select" name="tipo">
-                            <option value="0" <?php if ($resultado['2'] == 0)
+                            <option value="0" <?php if ($resultado['2'] == "Simple")
                                 echo "selected" ?>>Simple
                             </option>
-                            <option value="1" <?php if ($resultado['2'] == 1)
+                            <option value="1" <?php if ($resultado['2'] == "Doble")
                                 echo "selected" ?>>Doble
                             </option>
-                            <option value="2" <?php if ($resultado['2'] == 2)
+                            <option value="2" <?php if ($resultado['2'] == "Suite")
                                 echo "selected" ?>>Suite
                             </option>
                         </select>
@@ -32,22 +32,6 @@
                         <label class="form-label">Precio:</label>
                         <input class="form-control" type="number" name="precio" id="precio"
                             value="<?php echo $resultado['3'] ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Estado:</label>
-                        <select class="form-select" name="estado">
-                            <option value="0" <?php if ($resultado['4'] == 0)
-                                echo "selected" ?>>Ocupado
-                            </option>
-                            <option value="1" <?php if ($resultado['4'] == 1)
-                                echo "selected" ?>>Disponible
-                            </option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Puntos:</label>
-                        <input class="form-control" type="number" name="puntos" id="puntos"
-                            value="<?php echo $resultado['5'] ?>">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Adultos:</label>

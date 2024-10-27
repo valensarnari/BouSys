@@ -2,25 +2,65 @@
 include("../../conexion.php");
 include("../../registro_login/validacion_sesion.php");
 
-$reserva_id = $_SESSION['usuario_id'];
+$reserva_id = $_POST["reserva_id"];
+$reserva_adultos = $_POST["reserva_adultos"];
+$_POST["reserva_ninos"] == "" ? $reserva_ninos = "0" : $reserva_ninos = $_POST["reserva_ninos"];
+$reserva_fecha_inicio = $_POST["reserva_fecha_inicio"];
+$reserva_fecha_fin = $_POST["reserva_fecha_fin"];
+
+$habitaciones_seleccionadas = isset($_POST['habitaciones']) ? $_POST['habitaciones'] : [];
+$habitaciones_adultos = isset($_POST['habitaciones_adultos']) ? $_POST['habitaciones_adultos'] : [];
+$habitaciones_ninos = isset($_POST['habitaciones_ninos']) ? $_POST['habitaciones_ninos'] : [];
+$habitaciones_cuna = isset($_POST['habitaciones_cuna']) ? $_POST['habitaciones_cuna'] : [];
+
+$sql = "SELECT DISTINCT c.id, c.Numero_Cochera
+        FROM cochera c
+        WHERE NOT EXISTS (
+            SELECT 1 
+            FROM reserva_cochera rc
+            JOIN reserva_total rt ON rc.ID_Reserva = rt.id
+            WHERE rc.ID_Cochera = c.id
+            AND (
+                (rt.Fecha_Inicio <= ? AND rt.Fecha_Fin >= ?) OR
+                (rt.Fecha_Inicio <= ? AND rt.Fecha_Fin >= ?) OR
+                (rt.Fecha_Inicio >= ? AND rt.Fecha_Fin <= ?)
+            )
+        )";
+
+$stmt = $conexion->prepare($sql);
+$stmt->bind_param(
+    "ssssss",
+    $reserva_fecha_inicio,
+    $reserva_fecha_inicio,
+    $reserva_fecha_fin,
+    $reserva_fecha_fin,
+    $reserva_fecha_inicio,
+    $reserva_fecha_fin
+);
+$stmt->execute();
+$resultado = $stmt->get_result();
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nueva Reserva</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!---iconos --->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!---bootstrap css --->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="../../../styles.css" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="../../../icons/calendar-check.svg" />
+    <title>Reserva de cochera</title>
     <style>
         body {
             background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .container.mt-5 {
@@ -44,79 +84,38 @@ $reserva_id = $_SESSION['usuario_id'];
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             border-radius: 15px;
             overflow: hidden;
+            margin-bottom: 20px;
         }
 
-        .card-body {
-            padding: 2rem;
+        .reservation-summary {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
 
-        .table {
-            margin-bottom: 0;
+        .habitacion-item {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .table th {
-            background-color: #007bff;
-            color: white;
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+        }
+
+        .btn-primary {
+            border-radius: 8px;
+            padding: 8px 20px;
+        }
+
+        .label {
+            color: #007bff;
             font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        .table td,
-        .table th {
-            vertical-align: middle;
-        }
-
-        .btn-danger {
-            background-color: #dc3545;
-            border-color: #dc3545;
-        }
-
-        .btn-danger:hover {
-            background-color: #c82333;
-            border-color: #bd2130;
-        }
-
-        .custom-navbar {
-            background-color: #E6F3FF;
-        }
-
-        .custom-navbar .nav-link {
-            color: #333333;
-            font-weight: 500;
-        }
-
-        .custom-navbar .nav-link:hover {
-            color: #0056b3;
-        }
-
-        .custom-navbar .dropdown-menu {
-            background-color: #E6F3FF;
-        }
-
-        .custom-navbar .dropdown-item:hover {
-            background-color: #CCE5FF;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .content {
-            flex: 1 0 auto;
-        }
-
-        footer {
-            flex-shrink: 0;
-        }
-
-        .no-reservas {
-            text-align: center;
-            padding: 2rem;
-            font-size: 1.2rem;
-            color: #6c757d;
         }
 
         .paso-indicador {
@@ -127,6 +126,15 @@ $reserva_id = $_SESSION['usuario_id'];
         .paso-indicador .badge {
             padding: 0.5em 1em;
             border-radius: 20px;
+        }
+
+        .content {
+            flex: 1 0 auto;
+            padding: 20px;
+        }
+
+        footer {
+            flex-shrink: 0;
         }
     </style>
 </head>
@@ -224,36 +232,63 @@ $reserva_id = $_SESSION['usuario_id'];
             </div>
         </div>
     </nav>
+
     <div class="content">
         <div class="container mt-5">
-            <h2>Nueva Reserva</h2>
-            <div class="card mx-auto" style="max-width: 400px;">
-                <div class="card-body">
-                    <form action="dos.php" method="POST">
-                        <div class="mb-3">
-                            <label for="reserva_adultos" class="form-label">Número de adultos:</label>
-                            <input type="number" min="1" max="10" id="reserva_adultos" name="reserva_adultos"
-                                class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="reserva_ninos" class="form-label">Número de niños:</label>
-                            <input type="number" max="10" id="reserva_ninos" name="reserva_ninos" class="form-control">
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mt-4">
-                            <div class="paso-indicador">
-                                <span class="badge bg-primary">Paso 1 de 4</span>
-                            </div>
-                            <div>
-                                <input type="hidden" name="reserva_id" value="<?php echo $reserva_id; ?>">
-                                <button type="submit" class="btn btn-primary">Siguiente</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+            <h2>Reservar cocheras disponibles (opcional)</h2>
+
+            <div class="reservation-summary">
+                <p><span class="label">Adultos:</span> <?php echo $reserva_adultos; ?></p>
+                <p><span class="label">Niños:</span> <?php echo $reserva_ninos; ?></p>
+                <p><span class="label">Fecha de inicio:</span> <?php echo $reserva_fecha_inicio; ?></p>
+                <p><span class="label">Fecha de fin:</span> <?php echo $reserva_fecha_fin; ?></p>
             </div>
+
+            <form action="cinco.php" method="POST">
+                <div class="my-4">
+                    <?php if ($resultado->num_rows > 0) { ?>
+                        <?php while ($cochera = $resultado->fetch_assoc()) { ?>
+                            <div class="habitacion-item">
+                                <div class="form-check">
+                                    <input class="form-check-input cochera-radio" type="radio" name="reserva_cochera"
+                                        value="<?php echo $cochera['id']; ?>" id="cochera<?php echo $cochera['id']; ?>">
+                                    <label class="form-check-label" for="cochera<?php echo $cochera['id']; ?>">
+                                        Cochera <?php echo $cochera['Numero_Cochera']; ?>
+                                    </label>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <p class="text-center">No hay cocheras disponibles para las fechas seleccionadas.</p>
+                    <?php } ?>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mt-4">
+                    <div class="paso-indicador">
+                        <span class="badge bg-primary">Paso 4 de 4</span>
+                    </div>
+
+                    <input type="hidden" name="reserva_id" value="<?php echo $reserva_id; ?>">
+                    <input type="hidden" name="reserva_adultos" value="<?php echo $reserva_adultos; ?>">
+                    <input type="hidden" name="reserva_ninos" value="<?php echo $reserva_ninos; ?>">
+                    <input type="hidden" name="reserva_fecha_inicio" value="<?php echo $reserva_fecha_inicio; ?>">
+                    <input type="hidden" name="reserva_fecha_fin" value="<?php echo $reserva_fecha_fin; ?>">
+
+                    <?php foreach ($habitaciones_seleccionadas as $habitacion_id): ?>
+                        <input type="hidden" name="habitaciones[]" value="<?php echo $habitacion_id; ?>">
+                        <input type="hidden" name="habitaciones_adultos[<?php echo $habitacion_id; ?>]"
+                            value="<?php echo isset($habitaciones_adultos[$habitacion_id]) ? $habitaciones_adultos[$habitacion_id] : 0; ?>">
+                        <input type="hidden" name="habitaciones_ninos[<?php echo $habitacion_id; ?>]"
+                            value="<?php echo isset($habitaciones_ninos[$habitacion_id]) ? $habitaciones_ninos[$habitacion_id] : 0; ?>">
+                        <input type="hidden" name="habitaciones_cuna[<?php echo $habitacion_id; ?>]"
+                            value="<?php echo isset($habitaciones_cuna[$habitacion_id]) ? 1 : 0; ?>">
+                    <?php endforeach; ?>
+
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Siguiente</button>
+                </div>
+            </form>
         </div>
     </div>
-
 
     <!-- Footer -->
     <footer class="bg-dark text-white pt-4 mt-5">
@@ -278,22 +313,11 @@ $reserva_id = $_SESSION['usuario_id'];
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var dropdowns = document.querySelectorAll('.dropdown-toggle');
-            dropdowns.forEach(function (dropdown) {
-                new bootstrap.Dropdown(dropdown);
-            });
+    <!---bootstrap js --->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
-            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl)
-            });
-        });
-    </script>
 </body>
 
 </html>

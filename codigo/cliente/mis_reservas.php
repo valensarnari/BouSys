@@ -64,29 +64,69 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
 
         .table {
             margin-bottom: 0;
+            font-size: 0.95rem;
         }
 
         .table th {
-            background-color: #007bff;
+            background-color: #0056b3;
             color: white;
             font-weight: 600;
             text-transform: uppercase;
             font-size: 0.9rem;
+            padding: 1rem;
+            vertical-align: middle;
         }
 
-        .table td,
-        .table th {
+        .table td {
+            padding: 1rem;
             vertical-align: middle;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f8f9fa;
+            transition: background-color 0.2s ease;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 123, 255, 0.05);
+        }
+
+        /* Estilos para los botones */
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #0056b3;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0, 86, 179, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: #004494;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0, 86, 179, 0.3);
         }
 
         .btn-danger {
             background-color: #dc3545;
-            border-color: #dc3545;
+            border: none;
+            box-shadow: 0 2px 4px rgba(220, 53, 69, 0.2);
         }
 
         .btn-danger:hover {
             background-color: #c82333;
-            border-color: #bd2130;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(220, 53, 69, 0.3);
+        }
+
+        /* Estilo para el contenedor de la tabla */
+        .table-responsive {
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
         }
 
         .custom-navbar {

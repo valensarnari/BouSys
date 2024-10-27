@@ -13,17 +13,30 @@ $habitaciones_adultos = isset($_POST['habitaciones_adultos']) ? $_POST['habitaci
 $habitaciones_ninos = isset($_POST['habitaciones_ninos']) ? $_POST['habitaciones_ninos'] : [];
 $habitaciones_cuna = isset($_POST['habitaciones_cuna']) ? $_POST['habitaciones_cuna'] : [];
 
-$sql = "SELECT c.id, c.Numero_Cochera
+$sql = "SELECT DISTINCT c.id, c.Numero_Cochera
         FROM cochera c
-        LEFT JOIN reserva_cochera rc ON c.id = rc.ID_Cochera
-        LEFT JOIN reserva_total rt ON rc.ID_Reserva = rt.id
-        WHERE c.Estado = 'Disponible'
-          AND (rt.id IS NULL 
-           OR (rt.Fecha_Inicio > ? OR rt.Fecha_Fin < ?))
-        GROUP BY c.id";
+        WHERE NOT EXISTS (
+            SELECT 1 
+            FROM reserva_cochera rc
+            JOIN reserva_total rt ON rc.ID_Reserva = rt.id
+            WHERE rc.ID_Cochera = c.id
+            AND (
+                (rt.Fecha_Inicio <= ? AND rt.Fecha_Fin >= ?) OR
+                (rt.Fecha_Inicio <= ? AND rt.Fecha_Fin >= ?) OR
+                (rt.Fecha_Inicio >= ? AND rt.Fecha_Fin <= ?)
+            )
+        )";
 
 $stmt = $conexion->prepare($sql);
-$stmt->bind_param("ss", $reserva_fecha_fin, $reserva_fecha_inicio);
+$stmt->bind_param(
+    "ssssss",
+    $reserva_fecha_inicio,
+    $reserva_fecha_inicio,
+    $reserva_fecha_fin,
+    $reserva_fecha_fin,
+    $reserva_fecha_inicio,
+    $reserva_fecha_fin
+);
 $stmt->execute();
 $resultado = $stmt->get_result();
 ?>
@@ -40,12 +53,13 @@ $resultado = $stmt->get_result();
     <!---bootstrap css --->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Reserva de habitación</title>
+    <title>Reserva de cochera</title>
     <style>
         body {
             background-color: #121212;
             color: #e0e0e0;
         }
+
         .container {
             background-color: #1e1e1e;
             border-radius: 10px;
@@ -55,29 +69,35 @@ $resultado = $stmt->get_result();
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             max-width: 600px;
         }
+
         h2 {
             color: #007bff;
             font-size: 1.8rem;
             margin-bottom: 20px;
         }
+
         .form-check-label {
             color: #e0e0e0;
             font-size: 1.1rem;
             margin-left: 10px;
         }
+
         .form-check-input {
             width: 1.2em;
             height: 1.2em;
             background-color: #2a2a2a;
             border-color: #444;
         }
+
         .form-check {
             margin-bottom: 15px;
         }
+
         hr {
             background-color: #444;
             opacity: 0.2;
         }
+
         .btn-primary {
             background-color: #03dac6;
             border-color: #03dac6;
@@ -85,6 +105,7 @@ $resultado = $stmt->get_result();
             padding: 10px 20px;
             font-size: 1.1rem;
         }
+
         .btn-primary:hover {
             background-color: #018786;
             border-color: #018786;
@@ -145,7 +166,8 @@ $resultado = $stmt->get_result();
                         </span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="../../registro_login/cerrar_sesion.php">Cerrar sesión</a></li>
+                        <li><a class="dropdown-item" href="../../registro_login/cerrar_sesion.php">Cerrar sesión</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -156,17 +178,18 @@ $resultado = $stmt->get_result();
             <form action="quinta.php" method="POST">
                 <div class="my-4">
                     <?php if ($resultado->num_rows > 0) { ?>
-                        <?php while ($cochera = $resultado->fetch_assoc()) { ?>
-                            <div class="form-check">
-                                <input class="form-check-input cochera-radio" type="radio" name="reserva_cochera"
-                                    value="<?php echo $cochera['id']; ?>" id="cochera<?php echo $cochera['id']; ?>">
-                                <label class="form-check-label" for="cochera<?php echo $cochera['id']; ?>">
-                                    Cochera <?php echo $cochera['Numero_Cochera']; ?>
-                                </label>
-                            </div>
-                        <?php } ?>
+                    <?php while ($cochera = $resultado->fetch_assoc()) { ?>
+                    <div class="form-check">
+                        <input class="form-check-input cochera-radio" type="radio" name="reserva_cochera"
+                            value="<?php echo $cochera['id']; ?>" id="cochera<?php echo $cochera['id']; ?>">
+                        <label class="form-check-label" for="cochera<?php echo $cochera['id']; ?>">
+                            Cochera
+                            <?php echo $cochera['Numero_Cochera']; ?>
+                        </label>
+                    </div>
+                    <?php } ?>
                     <?php } else { ?>
-                        <p class="text-center">No hay cocheras disponibles para las fechas seleccionadas.</p>
+                    <p class="text-center">No hay cocheras disponibles para las fechas seleccionadas.</p>
                     <?php } ?>
                 </div>
 
@@ -176,12 +199,15 @@ $resultado = $stmt->get_result();
                     <input type="hidden" name="reserva_ninos" value="<?php echo $reserva_ninos; ?>">
                     <input type="hidden" name="reserva_fecha_inicio" value="<?php echo $reserva_fecha_inicio; ?>">
                     <input type="hidden" name="reserva_fecha_fin" value="<?php echo $reserva_fecha_fin; ?>">
-                    
+
                     <?php foreach ($habitaciones_seleccionadas as $habitacion_id): ?>
-                        <input type="hidden" name="habitaciones[]" value="<?php echo $habitacion_id; ?>">
-                        <input type="hidden" name="habitaciones_adultos[<?php echo $habitacion_id; ?>]" value="<?php echo isset($habitaciones_adultos[$habitacion_id]) ? $habitaciones_adultos[$habitacion_id] : 0; ?>">
-                        <input type="hidden" name="habitaciones_ninos[<?php echo $habitacion_id; ?>]" value="<?php echo isset($habitaciones_ninos[$habitacion_id]) ? $habitaciones_ninos[$habitacion_id] : 0; ?>">
-                        <input type="hidden" name="habitaciones_cuna[<?php echo $habitacion_id; ?>]" value="<?php echo isset($habitaciones_cuna[$habitacion_id]) ? 1 : 0; ?>">
+                    <input type="hidden" name="habitaciones[]" value="<?php echo $habitacion_id; ?>">
+                    <input type="hidden" name="habitaciones_adultos[<?php echo $habitacion_id; ?>]"
+                        value="<?php echo isset($habitaciones_adultos[$habitacion_id]) ? $habitaciones_adultos[$habitacion_id] : 0; ?>">
+                    <input type="hidden" name="habitaciones_ninos[<?php echo $habitacion_id; ?>]"
+                        value="<?php echo isset($habitaciones_ninos[$habitacion_id]) ? $habitaciones_ninos[$habitacion_id] : 0; ?>">
+                    <input type="hidden" name="habitaciones_cuna[<?php echo $habitacion_id; ?>]"
+                        value="<?php echo isset($habitaciones_cuna[$habitacion_id]) ? 1 : 0; ?>">
                     <?php endforeach; ?>
 
                     <div class="text-center mt-4">

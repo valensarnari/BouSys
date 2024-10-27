@@ -42,171 +42,208 @@ $resultado = $stmt->get_result();
 $max_habitaciones = $reserva_adultos;
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!---iconos --->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selección de Habitaciones</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         crossorigin="anonymous">
-    <!---bootstrap css --->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Reserva de habitación</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../styles.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../../../icons/calendar-check.svg" />
     <style>
         body {
-            background-color: #121212;
-            color: #e0e0e0;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        .container {
-            background-color: #1e1e1e;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+        .container.mt-5 {
+            max-width: 900px;
+            margin-top: 3rem !important;
         }
-        h2 {
-            color: #007bff;
+
+        .container.mt-5 h2 {
+            color: #343a40;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
         }
-        .form-control {
-            background-color: #2a2a2a;
-            border-color: #444;
-            color: #e0e0e0;
-        }
-        .form-control::placeholder {
-            color: #888;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-        .sidebar {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-        }
-        .sidebar a {
-            color: #007bff;
-        }
-        .sidebar a:hover {
-            color: #0056b3;
-        }
-        .reservation-summary {
-            background-color: #2a2a2a;
-            border-radius: 5px;
-            padding: 15px;
+
+        .card {
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
             margin-bottom: 20px;
         }
-        .reservation-summary p {
-            margin-bottom: 5px;
+
+        .reservation-summary {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
-        .reservation-summary .label {
+
+        .habitacion-item {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+        }
+
+        .btn-primary {
+            border-radius: 8px;
+            padding: 8px 20px;
+        }
+
+        .label {
             color: #007bff;
+            font-weight: 600;
+        }
+
+        .paso-indicador {
+            font-size: 0.9rem;
             font-weight: bold;
         }
-        .habitacion-item {
-            background-color: #2a2a2a;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 15px;
+
+        .paso-indicador .badge {
+            padding: 0.5em 1em;
+            border-radius: 20px;
         }
-        .habitacion-info {
-            margin-bottom: 10px;
+
+        .content {
+            flex: 1 0 auto;
+            padding: 20px;
         }
-        .ocupantes-inputs {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .ocupantes-inputs .form-group {
-            flex: 1;
-        }
-        .form-check-input {
-            background-color: #2a2a2a;
-            border-color: #444;
-        }
-        .form-check-input:checked {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-        .form-check-label {
-            color: #e0e0e0;
+
+        footer {
+            flex-shrink: 0;
         }
     </style>
 </head>
 
-<body>
-    <div class="d-flex">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidebar bg-dark">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline">BouSys</span>
-                </a>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+<body class="container-fluid d-flex flex-column min-vh-100">
+    <header class="row top-title">
+        <h1>C o n t i n e n t a l&nbsp&nbsp&nbsp&nbsp&nbsp H o t e l</h1>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="../../../" class="nav-link align-middle px-0">
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-house"></i> Volver a inicio
-                            </span>
-                        </a>
+                        <a class="nav-link text-dark" href="../../../index.php" data-section="nav"
+                            data-value="home">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../listado_clientes_recepcionista.php" class="nav-link align-middle px-0">
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-user"></i> Gestión de clientes
-                            </span>
-                        </a>
+                        <a class="nav-link text-dark" href="../../../pages/services.php" data-section="nav"
+                            data-value="services">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../habitaciones.php" class="nav-link align-middle px-0">
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-hotel"></i> Gestión de habitaciones
-                            </span>
-                        </a>
+                        <a class="nav-link text-dark" href="../../../pages/rooms.php" data-section="nav"
+                            data-value="rooms">Habitaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../reservas.php" class="nav-link align-middle px-0">
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-book"></i> Gestión de reservas
-                            </span>
-                        </a>
+                        <a class="nav-link text-dark" href="../../../pages/recommendations.php" data-section="nav"
+                            data-value="recommendations">Recomendaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../nueva_reserva.php" class="nav-link align-middle px-0">
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-plus"></i> Nueva reserva
-                            </span>
+                        <a class="nav-link text-dark" href="../../../pages/contacto.php" data-section="nav"
+                            data-value="contact">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="../../../pages/receptions.php" data-section="nav"
+                            data-value="receptions">
+                            <img src="../../../icons/calendar-check.svg" alt="Reservas"> Reservas
                         </a>
                     </li>
                 </ul>
-                <hr>
-                <div class="dropdown pb-4">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-1">
-                            <?php echo $_SESSION['usuario_nombre']; ?>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="../../registro_login/cerrar_sesion.php">Cerrar sesión</a></li>
-                    </ul>
-                </div>
+
+                <ul class="navbar-nav ms-auto">
+                    <!--
+                    <li class="nav-item">
+                        <a class="nav-link text-dark active" aria-current="page"
+                            href="../../codigo/registro_login/panel_registro_login.php" data-section="nav" data-value="login"
+                            style="color: #212529 !important;">
+                            <i class="fas fa-user"></i> Ingreso</a>
+                    </li> -->
+                    <li class="nav-item dropdown">
+                        <a style="color: #212529 !important;" class="nav-link dropdown-toggle" href="#"
+                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i> Perfil
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="../perfil.php" data-section="nav" data-value="perfil">Mi
+                                    Perfil</a></li>
+                            <li><a class="dropdown-item" href="../mis_reservas.php" data-section="nav"
+                                    data-value="reservas">Mis Reservas</a></li>
+                            <li><a class="dropdown-item" href="../../registro_login/cerrar_sesion.php"
+                                    data-section="nav" data-value="reservas">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-dark dropdown-toggle" href="#" id="languageDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" data-section="nav" data-value="language">
+                            <i class="fas fa-globe"></i> Idioma
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                            <li>
+                                <div id="flags" class="flags_item dropdown-item" data-language="en"><img
+                                        src="../../../icons/gb.svg" alt="English" class="me-2" style="width: 20px;">
+                                    English
+                                </div>
+                            </li>
+                            <li>
+                                <div id="flag-es" class="flags_item_es dropdown-item" data-language="es"><img
+                                        src="../../../icons/es.svg" alt="Español" class="me-2" style="width: 20px;">
+                                    Español
+                                </div>
+                            </li>
+                            <li>
+                                <div id="flag-pt" class="flags_item_pt dropdown-item" data-language="pt"><img
+                                        src="../../../icons/pt.svg" alt="Português" class="me-2" style="width: 20px;">
+                                    Português
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="container my-5">
-            <h2 class="text-center mb-4">Seleccionar habitaciones disponibles</h2>
+    </nav>
+
+    <div class="content">
+        <div class="container mt-5">
+            <h2>Selección de Habitaciones</h2>
+
             <div class="reservation-summary">
                 <p><span class="label">Adultos:</span> <?php echo $reserva_adultos; ?></p>
                 <p><span class="label">Niños:</span> <?php echo $reserva_ninos; ?></p>
                 <p><span class="label">Fecha de inicio:</span> <?php echo $reserva_fecha_inicio; ?></p>
                 <p><span class="label">Fecha de fin:</span> <?php echo $reserva_fecha_fin; ?></p>
             </div>
-            <form action="cuarta.php" method="POST">
+
+            <form action="cuatro.php" method="POST">
                 <div class="my-3">
                     <?php if ($resultado->num_rows > 0) { ?>
                         <?php while ($habitacion = $resultado->fetch_assoc()) { ?>
@@ -214,13 +251,13 @@ $max_habitaciones = $reserva_adultos;
                                 <div class="habitacion-info">
                                     <div class="form-check">
                                         <input class="form-check-input habitacion-checkbox" type="checkbox"
-                                               name="habitaciones[]" value="<?php echo $habitacion['id']; ?>"
-                                               id="habitacion<?php echo $habitacion['id']; ?>"
-                                               data-adultos-max="<?php echo $habitacion['Cantidad_Adultos_Maximo']; ?>"
-                                               data-ninos-max="<?php echo $habitacion['Cantidad_Ninos_Maximo']; ?>">
+                                            name="habitaciones[]" value="<?php echo $habitacion['id']; ?>"
+                                            id="habitacion<?php echo $habitacion['id']; ?>"
+                                            data-adultos-max="<?php echo $habitacion['Cantidad_Adultos_Maximo']; ?>"
+                                            data-ninos-max="<?php echo $habitacion['Cantidad_Ninos_Maximo']; ?>">
                                         <label class="form-check-label" for="habitacion<?php echo $habitacion['id']; ?>">
-                                            Habitación <?php echo $habitacion['Numero_Habitacion']; ?> - 
-                                            Capacidad: <?php echo $habitacion['Cantidad_Adultos_Maximo']; ?> adultos, 
+                                            Habitación <?php echo $habitacion['Numero_Habitacion']; ?> -
+                                            Capacidad: <?php echo $habitacion['Cantidad_Adultos_Maximo']; ?> adultos,
                                             <?php echo $habitacion['Cantidad_Ninos_Maximo']; ?> niños
                                         </label>
                                     </div>
@@ -228,24 +265,22 @@ $max_habitaciones = $reserva_adultos;
                                 <div class="ocupantes-inputs">
                                     <div class="form-group">
                                         <label for="adultos<?php echo $habitacion['id']; ?>">Adultos:</label>
-                                        <input type="number" class="form-control adultos-input" 
-                                               id="adultos<?php echo $habitacion['id']; ?>"
-                                               name="habitaciones_adultos[<?php echo $habitacion['id']; ?>]" 
-                                               min="1" max="<?php echo $habitacion['Cantidad_Adultos_Maximo']; ?>" 
-                                               value="1" disabled>
+                                        <input type="number" class="form-control adultos-input"
+                                            id="adultos<?php echo $habitacion['id']; ?>"
+                                            name="habitaciones_adultos[<?php echo $habitacion['id']; ?>]" min="1"
+                                            max="<?php echo $habitacion['Cantidad_Adultos_Maximo']; ?>" value="1" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label for="ninos<?php echo $habitacion['id']; ?>">Niños:</label>
-                                        <input type="number" class="form-control ninos-input" 
-                                               id="ninos<?php echo $habitacion['id']; ?>"
-                                               name="habitaciones_ninos[<?php echo $habitacion['id']; ?>]" 
-                                               min="0" max="<?php echo $habitacion['Cantidad_Ninos_Maximo']; ?>" 
-                                               value="0" disabled>
+                                        <input type="number" class="form-control ninos-input"
+                                            id="ninos<?php echo $habitacion['id']; ?>"
+                                            name="habitaciones_ninos[<?php echo $habitacion['id']; ?>]" min="0"
+                                            max="<?php echo $habitacion['Cantidad_Ninos_Maximo']; ?>" value="0" disabled>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input cuna-checkbox" type="checkbox"
-                                               name="habitaciones_cuna[<?php echo $habitacion['id']; ?>]" value="1"
-                                               id="cuna<?php echo $habitacion['id']; ?>" disabled>
+                                            name="habitaciones_cuna[<?php echo $habitacion['id']; ?>]" value="1"
+                                            id="cuna<?php echo $habitacion['id']; ?>" disabled>
                                         <label class="form-check-label" for="cuna<?php echo $habitacion['id']; ?>">
                                             Cuna
                                         </label>
@@ -259,18 +294,24 @@ $max_habitaciones = $reserva_adultos;
                 </div>
 
                 <div class="my-3 reservation-summary">
-                    <p><span class="label">Adultos restantes:</span> <span id="adultosRestantes"><?php echo $reserva_adultos; ?></span></p>
-                    <p><span class="label">Niños restantes:</span> <span id="ninosRestantes"><?php echo $reserva_ninos; ?></span></p>
+                    <p><span class="label">Adultos restantes:</span> <span
+                            id="adultosRestantes"><?php echo $reserva_adultos; ?></span></p>
+                    <p><span class="label">Niños restantes:</span> <span
+                            id="ninosRestantes"><?php echo $reserva_ninos; ?></span></p>
                     <p><span class="label">Cunas seleccionadas:</span> <span id="cunasSeleccionadas">0</span></p>
                 </div>
 
-                <div class="d-flex justify-content-end align-items-end">
+                <div class="d-flex justify-content-between align-items-center mt-4">
+                    <div class="paso-indicador">
+                        <span class="badge bg-primary">Paso 3 de 4</span>
+                    </div>
+
+
                     <input type="hidden" name="reserva_id" value="<?php echo $reserva_id; ?>">
                     <input type="hidden" name="reserva_adultos" value="<?php echo $reserva_adultos; ?>">
                     <input type="hidden" name="reserva_ninos" value="<?php echo $reserva_ninos; ?>">
                     <input type="hidden" name="reserva_cuna" value="<?php echo $reserva_cuna; ?>">
-                    <input type="hidden" name="reserva_fecha_inicio"
-                        value="<?php echo $reserva_fecha_inicio; ?>">
+                    <input type="hidden" name="reserva_fecha_inicio" value="<?php echo $reserva_fecha_inicio; ?>">
                     <input type="hidden" name="reserva_fecha_fin" value="<?php echo $reserva_fecha_fin; ?>">
 
                     <button type="submit" class="btn btn-primary" id="submitBtn" disabled>Siguiente</button>
@@ -278,6 +319,29 @@ $max_habitaciones = $reserva_adultos;
             </form>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Sobre nosotros</h5>
+                    <p>Somos especialistas en viajes y reservas de hoteles. Nos encargamos de encontrar la mejor opción
+                        para ti.</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Links rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../../index.php" class="text-white">Inicio</a></li>
+                        <li><a href="../../pages/services.html" class="text-white">Servicios</a></li>
+                        <li><a href="../../pages/rooms.html" class="text-white">Habitaciones</a></li>
+                        <li><a href="../../pages/recommendations.html" class="text-white">Recomendaciones</a></li>
+                        <li><a href="../../pages/contacto.html" class="text-white">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script>
         let adultosRestantes = parseInt(<?php echo $reserva_adultos; ?>);
@@ -306,7 +370,7 @@ $max_habitaciones = $reserva_adultos;
 
             const checkboxes = document.querySelectorAll('.habitacion-checkbox:not(:checked)');
             const adultosInputs = document.querySelectorAll('.adultos-input:not(:disabled)');
-            
+
             if (adultosRestantes <= 0) {
                 checkboxes.forEach(checkbox => checkbox.disabled = true);
                 adultosInputs.forEach(input => {
@@ -356,7 +420,7 @@ $max_habitaciones = $reserva_adultos;
         });
 
         document.querySelectorAll('.adultos-input, .ninos-input').forEach((input) => {
-            input.addEventListener('change', function() {
+            input.addEventListener('change', function () {
                 const habitacionId = this.id.replace('adultos', '').replace('ninos', '');
                 const checkbox = document.getElementById(`habitacion${habitacionId}`);
                 const adultosInput = document.getElementById(`adultos${habitacionId}`);
@@ -406,7 +470,7 @@ $max_habitaciones = $reserva_adultos;
         });
 
         document.querySelectorAll('.cuna-checkbox').forEach((cunaCheckbox) => {
-            cunaCheckbox.addEventListener('change', function() {
+            cunaCheckbox.addEventListener('change', function () {
                 cunasSeleccionadas = document.querySelectorAll('.cuna-checkbox:checked').length;
                 updateCounters();
             });
