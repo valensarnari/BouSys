@@ -77,6 +77,49 @@ $_SESSION['valor_total'] = $valor_total;
 
 ?>
 
+<!--------------------------------------- MERCADO PAGO --------------------------------------->
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+// Configura credenciales
+MercadoPago\SDK::setAccessToken('TEST-5873219368709518-100511-fddcbcfa14ab02bac2c5c8f75823d22f-1433164475');
+
+// Crea un objeto de preferencia
+$preference = new MercadoPago\Preference();
+
+// Configura las URLs de retorno
+$preference->back_urls = array(
+    "success" => "http://localhost/BouSys/codigo/cliente/reserva/realizar_reserva.php",
+    "failure" => "http://localhost/BouSys/codigo/cliente/reserva/cinco.php",
+    "pending" => "http://localhost/BouSys/codigo/cliente/reserva/cinco.php"
+);
+
+$preference->auto_return = "approved"; 
+// Crea el ítem
+$item = new MercadoPago\Item();
+$descripcion = '';
+foreach ($habitaciones_seleccionadas as $hab_id) {
+    $descripcion .= 'Habitacion ' . $habitaciones_numeros[$hab_id] . ": " ;
+    $descripcion .= 'Adultos: ' . $habitaciones_adultos[$hab_id] . " " ;
+    if ($habitaciones_ninos[$hab_id] > 0){
+        $descripcion .= 'Ninos ' . $habitaciones_ninos[$hab_id] . " " ;
+    }
+}
+
+$item->title =  $descripcion;
+
+$item->quantity = 1;
+$item->unit_price = $valor_con_descuento;
+
+$preference->items = array($item);
+
+$preference->save();
+
+if (!$preference->id) {
+    die("Error al crear la preferencia de pago");
+}
+?>
+
 <!doctype html>
 <html lang="es">
 
@@ -474,8 +517,8 @@ $_SESSION['valor_total'] = $valor_total;
                                     <i class="fas fa-check"></i> Confirmar reserva
                                 </button>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                        <!--  <div class="cho-container" style="margin: 20px auto; text-align: center;"></div> --> 
                 </div>
             </div>
         </div>
@@ -509,6 +552,21 @@ $_SESSION['valor_total'] = $valor_total;
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
+    <!--------------------------- script mercado pago --------------------------->
+    
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script>
+        const mp = new MercadoPago('TEST-57ec9be1-bb4b-461d-8b3d-7e1dd72a76f9');
+        const checkout = mp.checkout({
+            preference: {
+                id: '<?php echo $preference->id; ?>',
+            },
+            render: {
+                container: '.cho-container',
+                label: 'Pagar',
+            },
+        });
+    </script>
 </body>
 
 </html>
