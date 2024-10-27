@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `calificaciones` (
   `id` int(11) NOT NULL,
   `Calificacion` int(11) NOT NULL,
-  `Comentario` longtext NOT NULL,
+  `Comentario` longtext,
   `ID_Reserva` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -110,7 +110,7 @@ CREATE TABLE `habitacion` (
   `Estado` text NOT NULL,
   `Puntos` int(11) NOT NULL,
   `Cantidad_Adultos_Maximo` int(11) NOT NULL,
-  `Cantidad_Ninos_Maximo` int(11) NOT NULL,
+  `Cantidad_Ninos_Maximo` int(11),
   `Activo` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -120,10 +120,10 @@ CREATE TABLE `habitacion` (
 
 INSERT INTO `habitacion` (`id`, `Numero_Habitacion`, `Tipo`, `Precio_Por_Noche`, `Estado`, `Puntos`, `Cantidad_Adultos_Maximo`, `Cantidad_Ninos_Maximo`, `Activo`) VALUES
 (1, 201, 'Suite', 15000, 'Disponible', 500, 2, 2, 1),
-(2, 202, 'Simple', 6000, 'Disponible', 300, 2, 1, 1),
-(3, 204, 'Doble', 9000, 'Ocupado', 250, 2, 1, 1),
-(4, 205, 'Doble', 8000, 'Ocupado', 150, 2, 2, 1),
-(5, 203, 'Simple', 5000, 'Ocupado', 100, 1, 0, 1);
+(2, 202, 'Simple', 6000, 'Disponible', 50, 2, 1, 1),
+(3, 204, 'Doble', 9000, 'Ocupado', 200, 2, 1, 1),
+(4, 205, 'Doble', 8000, 'Ocupado', 200, 2, 2, 1),
+(5, 203, 'Simple', 5000, 'Ocupado', 50, 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -135,8 +135,8 @@ CREATE TABLE `pago` (
   `id` int(11) NOT NULL,
   `Fecha_Pago` datetime NOT NULL,
   `Medio_De_Pago` text NOT NULL,
-  `Descuento` decimal(10,0) NOT NULL,
-  `Aumento` decimal(10,0) NOT NULL,
+  `Descuento` decimal(10,0),
+  `Aumento` decimal(10,0),
   `Total` decimal(10,0) NOT NULL,
   `ID_Reserva` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -199,7 +199,7 @@ CREATE TABLE `reserva_habitacion` (
   `ID_Reserva` int(11) NOT NULL,
   `ID_Habitacion` int(11) NOT NULL,
   `Cantidad_Adultos` int(11) NOT NULL,
-  `Cantidad_Ninos` int(11) NOT NULL,
+  `Cantidad_Ninos` int(11),
   `Cuna` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

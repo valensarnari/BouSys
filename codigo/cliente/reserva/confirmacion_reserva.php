@@ -1,26 +1,28 @@
 <?php
 include("../../conexion.php");
 include("../../registro_login/validacion_sesion.php");
-
-$reserva_id = $_SESSION['usuario_id'];
 ?>
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nueva Reserva</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!---iconos --->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!---bootstrap css --->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="../../../styles.css" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="../../../icons/calendar-check.svg" />
+    <title>Confirmación de reserva</title>
     <style>
         body {
             background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .container.mt-5 {
@@ -39,94 +41,141 @@ $reserva_id = $_SESSION['usuario_id'];
             padding-bottom: 10px;
         }
 
-        .card {
-            border: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-            overflow: hidden;
-        }
-
-        .card-body {
+        .reservation-details {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 2rem;
+            margin: 2rem auto;
         }
 
-        .table {
-            margin-bottom: 0;
+        .detail-group {
+            margin-bottom: 1rem;
         }
 
-        .table th {
-            background-color: #007bff;
-            color: white;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.9rem;
+        .detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
         }
 
-        .table td,
-        .table th {
-            vertical-align: middle;
+        .detail-item i {
+            width: 25px;
+            color: #007bff;
+            margin-right: 10px;
         }
 
-        .btn-danger {
-            background-color: #dc3545;
-            border-color: #dc3545;
+        .detail-item.text-success i {
+            color: #28a745;
         }
 
-        .btn-danger:hover {
-            background-color: #c82333;
-            border-color: #bd2130;
-        }
-
-        .custom-navbar {
-            background-color: #E6F3FF;
-        }
-
-        .custom-navbar .nav-link {
-            color: #333333;
+        .cost-item.discount {
+            color: #28a745;
             font-weight: 500;
         }
 
-        .custom-navbar .nav-link:hover {
+        .room-item {
+            background: #f8f9fa;
+            padding: 0.8rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+
+        .room-occupancy span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .cost-summary {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .cost-item.total {
             color: #0056b3;
+            font-size: 1.1rem;
         }
 
-        .custom-navbar .dropdown-menu {
-            background-color: #E6F3FF;
+        .rooms-section {
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
         }
 
-        .custom-navbar .dropdown-item:hover {
-            background-color: #CCE5FF;
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
         }
 
-        body {
+        .room-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .room-number {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 0.5rem;
+        }
+
+        .room-occupancy {
             display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .parking-section {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .cost-summary {
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        .cost-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+        }
+
+        .cost-item.total {
+            border-top: 2px solid #eee;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            padding-top: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            color: #343a40;
+            margin-bottom: 1rem;
+        }
+
+        .btn-primary {
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
         }
 
         .content {
             flex: 1 0 auto;
+            padding: 20px;
         }
 
         footer {
             flex-shrink: 0;
-        }
-
-        .no-reservas {
-            text-align: center;
-            padding: 2rem;
-            font-size: 1.2rem;
-            color: #6c757d;
-        }
-
-        .paso-indicador {
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        .paso-indicador .badge {
-            padding: 0.5em 1em;
-            border-radius: 20px;
         }
     </style>
 </head>
@@ -224,36 +273,17 @@ $reserva_id = $_SESSION['usuario_id'];
             </div>
         </div>
     </nav>
-    <div class="content">
-        <div class="container mt-5">
-            <h2>Nueva Reserva</h2>
-            <div class="card mx-auto" style="max-width: 400px;">
-                <div class="card-body">
-                    <form action="dos.php" method="POST">
-                        <div class="mb-3">
-                            <label for="reserva_adultos" class="form-label">Número de adultos:</label>
-                            <input type="number" min="1" max="10" id="reserva_adultos" name="reserva_adultos"
-                                class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="reserva_ninos" class="form-label">Número de niños:</label>
-                            <input type="number" max="10" id="reserva_ninos" name="reserva_ninos" class="form-control">
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mt-4">
-                            <div class="paso-indicador">
-                                <span class="badge bg-primary">Paso 1 de 4</span>
-                            </div>
-                            <div>
-                                <input type="hidden" name="reserva_id" value="<?php echo $reserva_id; ?>">
-                                <button type="submit" class="btn btn-primary">Siguiente</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+
+    <div class="container my-5" style="min-height: 500px;">
+        <div class="reservation-details">
+            <h2 class="text-center mb-4">¡Reserva confirmada!</h2>
+            <p class="text-center">Su reserva ha sido procesada y confirmada con éxito.</p>
+        </div>
+        <div class="text-center">
+            <p>Gracias por elegir nuestro hotel. ¡Esperamos que disfrute su estancia!</p>
+            <a href="../mis_reservas.php" class="btn btn-primary mt-3">Volver a Reservas</a>
         </div>
     </div>
-
 
     <!-- Footer -->
     <footer class="bg-dark text-white pt-4 mt-5">
@@ -278,22 +308,11 @@ $reserva_id = $_SESSION['usuario_id'];
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var dropdowns = document.querySelectorAll('.dropdown-toggle');
-            dropdowns.forEach(function (dropdown) {
-                new bootstrap.Dropdown(dropdown);
-            });
+    <!---bootstrap js --->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
-            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl)
-            });
-        });
-    </script>
 </body>
 
 </html>

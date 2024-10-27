@@ -253,25 +253,13 @@ include("../registro_login/validacion_sesion.php");
                                         <?php echo $resultado['1'] ?>
                                     </td>
                                     <td scope="row">
-                                        <?php
-                                        if ($resultado['2'] == 0)
-                                            echo "Simple";
-                                        else if ($resultado['2'] == 1)
-                                            echo "Doble";
-                                        else
-                                            echo "Suite";
-                                        ?>
+                                        <?php echo $resultado['2'] ?>
                                     </td>
                                     <td scope="row">
                                         <?php echo $resultado['3'] ?>
                                     </td>
                                     <td scope="row">
-                                        <?php
-                                        if ($resultado['4'] == 0)
-                                            echo "Ocupado";
-                                        else
-                                            echo "Disponible";
-                                        ?>
+                                        <?php echo $resultado['4'] ?>
                                     </td>
                                     <td scope="row">
                                         <?php echo $resultado['5'] ?>
