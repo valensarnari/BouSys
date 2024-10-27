@@ -92,15 +92,21 @@ session_start();
   
           <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a
-                      class="nav-link text-dark"
-                      href="../index.php"
-                      data-section="nav"
-                      data-value="home"
-                      >Inicio</a
-                    >
-                </li>
+            <?php
+            if (isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] == 2) {
+            ?>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="../codigo/cliente/panel_cliente.php" data-section="nav" data-value="home">Inicio</a>
+            </li>
+            <?php
+            } else {
+            ?>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="../index.php" data-section="nav" data-value="home">Inicio</a>
+            </li>
+            <?php
+            }
+            ?>
               <li class="nav-item">
                 <a
                   class="nav-link text-dark"
