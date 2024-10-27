@@ -98,9 +98,21 @@ session_start();
 
       <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <?php
+          if (isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] == 2) {
+            ?>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="../codigo/cliente/panel_cliente.php" data-section="nav" data-value="home">Inicio</a>
+          </li>
+          <?php
+          } else {
+          ?>
           <li class="nav-item">
             <a class="nav-link text-dark" href="../index.php" data-section="nav" data-value="home">Inicio</a>
           </li>
+          <?php
+          }
+          ?>
           <li class="nav-item">
             <a class="nav-link text-dark" href="services.php" data-section="nav" data-value="services">Servicios</a>
           </li>
@@ -116,7 +128,7 @@ session_start();
           </li>
           <li class="nav-item">
             <a class="nav-link text-dark" href="../../pages/receptions.php">
-              <img src="../../icons/calendar-check.svg" alt="Reservas"> <span data-section="nav" data-value="receptions">Reservas</span>
+              <img src="../icons/calendar-check.svg" alt="Reservas"> <span data-section="nav" data-value="receptions">Reservas</span>
             </a>
           </li>
         </ul>
@@ -303,7 +315,7 @@ session_start();
     <div class="row gx-3">
       <div class="col">
         <div class="p-3">
-          <img src="../images/room/bathroom.jpg" alt="" class="img-fluid" />
+          <img src="../images/room/room-bathroom.jpg" alt="" class="img-fluid" />
         </div>
       </div>
       <div class="col">
