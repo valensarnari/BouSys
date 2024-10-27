@@ -238,7 +238,7 @@ session_start();
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="../../pages/contacto.php" data-section="nav"
-                            data-value="signup">Contacto</a>
+                            data-value="contact">Contacto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="../../pages/receptions.php" data-section="nav"
@@ -311,7 +311,7 @@ session_start();
                                     <p class="recover">
                                         <a href="#" data-section="panel_registro_login.php" data-value="contrasena Olvidada">¿Olvidaste tu contraseña?</a>
                                     </p>
-                                    <input type="submit" class="btn" value="Iniciar Sesión">
+                                    <input type="submit" class="btn" id="e" value="Iniciar Sesión">
                                 </form>
                                 <div class="links">
                                     <p><span data-section="panel_registro_login.php" data-value="no tiene cuenta">¿No tienes cuenta? </span><button id="signUpButton" ><span data-section="panel_registro_login.php" data-value="registrar">Regístrate</span></button></p>

@@ -63,7 +63,7 @@ session_start();
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="contacto.php" data-section="nav"
-                            data-value="signup">Contacto</a>
+                            data-value="contact">Contacto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="receptions.php">
