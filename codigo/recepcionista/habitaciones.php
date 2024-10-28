@@ -175,6 +175,11 @@ include("../registro_login/validacion_sesion.php");
                                 }
 
                                 while ($resultado = mysqli_fetch_array($query)) {
+
+                                    echo "<pre>";
+                                    var_dump($resultado);
+                                    echo "</pre>";
+
                                     // Si la habitación está ocupada, obtener datos del cliente
                                     $cliente_data = array('id' => '', 'Apellido' => '', 'Nombre' => '');
                                     if ($resultado['2'] == 'Ocupada') {
@@ -235,11 +240,7 @@ include("../registro_login/validacion_sesion.php");
                         </table>
                     </div>
                 </div>
-                <?php
-                echo "<pre>";
-                var_dump($resultado);
-                echo "</pre>";
-                ?>
+
                 <div class="col-md-6">
                     <h2>Listado de Cocheras</h2>
                     <hr>
