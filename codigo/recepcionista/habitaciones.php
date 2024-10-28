@@ -175,15 +175,9 @@ include("../registro_login/validacion_sesion.php");
                                 }
 
                                 while ($resultado = mysqli_fetch_array($query)) {
-
-                                    echo "<pre>";
-                                    var_dump($resultado);
-                                    echo "</pre>";
-
                                     // Si la habitación está ocupada, obtener datos del cliente
                                     $cliente_data = array('id' => '', 'Apellido' => '', 'Nombre' => '');
                                     if ($resultado['2'] == 'Ocupada') {
-
                                         $habitacion = $resultado['0'];
                                         $sql_cliente = "SELECT c.id, c.Nombre, c.Apellido 
                                                       FROM habitacion h
@@ -199,6 +193,9 @@ include("../registro_login/validacion_sesion.php");
                                     } else {
                                         $cliente_data = array('id' => '', 'Apellido' => '', 'Nombre' => '');
                                     }
+                                    echo "<pre>";
+                                    var_dump($cliente_data);
+                                    echo "</pre>";
                                     ?>
                                 <tr>
                                     <td scope="row">
