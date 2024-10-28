@@ -170,6 +170,47 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
             font-size: 1.2rem;
             color: #6c757d;
         }
+
+        .table-canceladas tbody tr {
+            background-color: #f8f9fa;
+        }
+
+        .table-canceladas tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .table-canceladas th {
+            background-color: #dc3545;
+        }
+
+        .badge {
+            padding: 0.5em 1em;
+            font-size: 0.85em;
+        }
+
+        .table-activas tbody tr {
+            background-color: #f8f9fa;
+        }
+
+        .table-activas tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .table-activas th {
+            background-color: #007bff;
+        }
+
+        .table-finalizadas tbody tr {
+            background-color: #f8f9fa;
+        }
+
+        .table-finalizadas tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .table-finalizadas th {
+            background-color: #6c757d;
+        }
     </style>
 </head>
 
@@ -188,15 +229,17 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?php
                     if (isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] == 2) {
-                    ?>
+                        ?>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="panel_cliente.php" data-section="nav" data-value="home">Inicio</a>
+                        <a class="nav-link text-dark" href="panel_cliente.php" data-section="nav"
+                            data-value="home">Inicio</a>
                     </li>
                     <?php
                     } else {
-                    ?>
+                        ?>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="../../index.php" data-section="nav" data-value="home">Inicio</a>
+                        <a class="nav-link text-dark" href="../../index.php" data-section="nav"
+                            data-value="home">Inicio</a>
                     </li>
                     <?php
                     }
@@ -284,26 +327,27 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5 class="mb-0">Reservas actuales</h5>
+                        <h5 class="mb-0">Reservas activas</h5>
                         <a href="reserva/uno.php" class="btn btn-primary">
                             <i class="fas fa-calendar-plus"></i> Realizar reserva
                         </a>
                     </div>
                     <?php
-                    // Consulta SQL para obtener las reservas del usuario
+                    // Consulta SQL para obtener las reservas activas del usuario (fecha fin >= hoy)
                     $id = $_SESSION['usuario_id'];
                     $sql = "SELECT rt.id, c.id, rt.Estado, rt.Fecha_Inicio, rt.Fecha_Fin, rt.Check_In, rt.Check_Out, rt.Valor_Total, c.Nombre, c.Apellido
                             FROM reserva_total rt JOIN cliente c ON rt.ID_Cliente = c.id
                             WHERE c.id = '$id'
                             AND rt.Estado != 'Cancelada'
-                            ORDER BY rt.id DESC";
+                            AND rt.Fecha_Fin >= CURDATE()
+                            ORDER BY rt.Fecha_Inicio ASC";
                     $query = mysqli_query($conexion, $sql);
 
                     if (mysqli_num_rows($query) > 0) {
                         // Si hay reservas, mostrar la tabla
                         ?>
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped table-activas">
                                 <thead>
                                     <tr>
                                         <th>Cliente</th>
@@ -325,7 +369,7 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                                                 <?php echo $resultado['8'] . " " . $resultado['9'] ?>
                                             </td>
                                             <td scope="row">
-                                                <?php echo $resultado['2'] ?>
+                                                <span class="badge bg-success"><?php echo $resultado['2'] ?></span>
                                             </td>
                                             <td scope="row">
                                                 <?php echo $resultado['3'] ?>
@@ -343,19 +387,30 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                                                 <?php echo $resultado['7'] ?>
                                             </td>
                                             <td scope="row">
-                                                <div class="mb-3 d-flex justify-content-between">
-                                                    <div>
-                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                            data-bs-target="#cancelar<?php echo $resultado['0'] ?>"
-                                                            data-bs-dismiss="modal">
-                                                            Cancelar
+                                                <div class="mb-3">
+                                                    <?php
+                                                    $fecha_actual = date('Y-m-d');
+                                                    if ($fecha_actual < $resultado['3']) { // Si la fecha actual es menor a la fecha de inicio
+                                                        ?>
+                                                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                                                            data-bs-target="#detalles<?php echo $resultado['0'] ?>">
+                                                            <i class="fas fa-edit"></i> Modificar
                                                         </button>
-                                                    </div>
+                                                    <?php
+                                                    } else {
+                                                        ?>
+                                                        <button type="button" class="btn btn-secondary" disabled
+                                                            title="No se puede modificar una reserva que ya comenzó">
+                                                            <i class="fas fa-edit"></i> Modificar
+                                                        </button>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                 </div>
                                             </td>
                                         </tr>
                                         <?php
-                                        include("cancelar_reserva_modal.php");
+                                        include("detalle_reserva_modal.php");
                                     }
                                     ?>
                                 </tbody>
@@ -364,7 +419,118 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                         <?php
                     } else {
                         // Si no hay reservas, mostrar un mensaje
-                        echo '<div class="no-reservas">No tienes reservas confirmadas en este momento.</div>';
+                        echo '<div class="no-reservas">No tienes reservas activas en este momento.</div>';
+                    }
+                    ?>
+                </div>
+            </div>
+
+            <!-- Nueva sección para reservas finalizadas -->
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="mb-4">Reservas finalizadas</h5>
+                    <?php
+                    // Consulta SQL para obtener las reservas finalizadas
+                    $sql_finalizadas = "SELECT rt.id, c.id, rt.Estado, rt.Fecha_Inicio, rt.Fecha_Fin, rt.Check_In, rt.Check_Out, rt.Valor_Total, c.Nombre, c.Apellido
+                                       FROM reserva_total rt JOIN cliente c ON rt.ID_Cliente = c.id
+                                       WHERE c.id = '$id'
+                                       AND rt.Estado != 'Cancelada'
+                                       AND rt.Fecha_Fin < CURDATE()
+                                       ORDER BY rt.Fecha_Fin DESC";
+                    $query_finalizadas = mysqli_query($conexion, $sql_finalizadas);
+
+                    if (mysqli_num_rows($query_finalizadas) > 0) {
+                        ?>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-finalizadas">
+                                <thead>
+                                    <tr>
+                                        <th>Cliente</th>
+                                        <th>Estado</th>
+                                        <th>Inicio</th>
+                                        <th>Fin</th>
+                                        <th>Check-In</th>
+                                        <th>Check-Out</th>
+                                        <th>Valor total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    while ($resultado = mysqli_fetch_array($query_finalizadas)) {
+                                        ?>
+                                        <tr>
+                                            <td scope="row"><?php echo $resultado['8'] . " " . $resultado['9'] ?></td>
+                                            <td scope="row"><span class="badge bg-secondary">Finalizada</span></td>
+                                            <td scope="row"><?php echo $resultado['3'] ?></td>
+                                            <td scope="row"><?php echo $resultado['4'] ?></td>
+                                            <td scope="row"><?php echo $resultado['5'] ?></td>
+                                            <td scope="row"><?php echo $resultado['6'] ?></td>
+                                            <td scope="row"><?php echo $resultado['7'] ?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <?php
+                    } else {
+                        echo '<div class="no-reservas">No tienes reservas finalizadas.</div>';
+                    }
+                    ?>
+                </div>
+            </div>
+
+            <!-- Nueva sección para reservas canceladas -->
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="mb-4">Historial de reservas canceladas</h5>
+                    <?php
+                    // Consulta SQL para obtener las reservas canceladas del usuario
+                    $sql_canceladas = "SELECT rt.id, c.id, rt.Estado, rt.Fecha_Inicio, rt.Fecha_Fin, rt.Check_In, rt.Check_Out, rt.Valor_Total, c.Nombre, c.Apellido
+                                      FROM reserva_total rt JOIN cliente c ON rt.ID_Cliente = c.id
+                                      WHERE c.id = '$id'
+                                      AND rt.Estado = 'Cancelada'
+                                      ORDER BY rt.id DESC";
+                    $query_canceladas = mysqli_query($conexion, $sql_canceladas);
+
+                    if (mysqli_num_rows($query_canceladas) > 0) {
+                        ?>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-canceladas">
+                                <thead>
+                                    <tr>
+                                        <th>Cliente</th>
+                                        <th>Estado</th>
+                                        <th>Inicio</th>
+                                        <th>Fin</th>
+                                        <th>Check-In</th>
+                                        <th>Check-Out</th>
+                                        <th>Valor total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    while ($resultado = mysqli_fetch_array($query_canceladas)) {
+                                        ?>
+                                        <tr>
+                                            <td scope="row"><?php echo $resultado['8'] . " " . $resultado['9'] ?></td>
+                                            <td scope="row"><span class="badge bg-danger"><?php echo $resultado['2'] ?></span></td>
+                                            <td scope="row"><?php echo $resultado['3'] ?></td>
+                                            <td scope="row"><?php echo $resultado['4'] ?></td>
+                                            <td scope="row"><?php echo $resultado['5'] ?></td>
+                                            <td scope="row"><?php echo $resultado['6'] ?></td>
+                                            <td scope="row"><?php echo $resultado['7'] ?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <?php
+                    } else {
+                        echo '<div class="no-reservas">No tienes reservas canceladas.</div>';
                     }
                     ?>
                 </div>
