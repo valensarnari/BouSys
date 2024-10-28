@@ -195,9 +195,12 @@ include("../registro_login/validacion_sesion.php");
                                                           AND rt.Estado = 'Activa'";
                                             $query_cliente = mysqli_query($conexion, $sql_cliente);
                                             if ($cliente = mysqli_fetch_array($query_cliente)) {
-                                                echo "<td scope='row'>" . $cliente['ID_Cliente'] . "</td>";
-                                                echo "<td scope='row'>" . $cliente['Apellido'] . "</td>";
-                                                echo "<td scope='row'>" . $cliente['Nombre'] . "</td>";
+                                                echo "<td scope='row'>" . htmlspecialchars($cliente['ID_Cliente']) . "</td>";
+                                                echo "<td scope='row'>" . htmlspecialchars($cliente['Apellido']) . "</td>";
+                                                echo "<td scope='row'>" . htmlspecialchars($cliente['Nombre']) . "</td>";
+                                                echo "<script>console.log('ID Cliente: " . $cliente['ID_Cliente'] . "');</script>";
+                                                echo "<script>console.log('Apellido: " . $cliente['Apellido'] . "');</script>";
+                                                echo "<script>console.log('Nombre: " . $cliente['Nombre'] . "');</script>";
                                             } else {
                                                 echo "<td scope='row'></td>";
                                                 echo "<td scope='row'></td>";
