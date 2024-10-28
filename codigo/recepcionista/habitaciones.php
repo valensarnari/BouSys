@@ -183,6 +183,9 @@ include("../registro_login/validacion_sesion.php");
                                         <td scope="row"><?php echo $resultado['4'] ?></td>
                                         <td scope="row"><?php echo $resultado['5'] ?></td>
                                         <td scope="row"><?php echo $resultado['6'] ?></td>
+                                        <td scope="row"></td>
+                                        <td scope="row"></td>
+                                        <td scope="row"></td>
                                         <?php
                                         if ($resultado['2'] == 'Ocupada') {
                                             $habitacion = $resultado['0'];
@@ -195,9 +198,9 @@ include("../registro_login/validacion_sesion.php");
                                                           AND rt.Estado = 'Activa'";
                                             $query_cliente = mysqli_query($conexion, $sql_cliente);
                                             if ($cliente = mysqli_fetch_array($query_cliente)) {
-                                                echo "<td scope='row'>" . $cliente['ID_Cliente'] . "</td>
-                                                      <td scope='row'>" . $cliente['Nombre'] . "</td>
-                                                      <td scope='row'>" . $cliente['Apellido'] . "</td>";
+                                                $resultado['7'] = $cliente['ID_Cliente'];
+                                                $resultado['8'] = $cliente['Apellido'];
+                                                $resultado['9'] = $cliente['Nombre'];
                                             }
                                         }
                                         ?>
