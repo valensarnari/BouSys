@@ -161,6 +161,9 @@ include("../registro_login/validacion_sesion.php");
                                     <td scope="col">Puntos</td>
                                     <td scope="col">Adultos</td>
                                     <td scope="col">Niños</td>
+                                    <td scope="col">ID Cliente</td>
+                                    <td scope="col">Apellido Cliente</td>
+                                    <td scope="col">Nombre Cliente</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -180,6 +183,7 @@ include("../registro_login/validacion_sesion.php");
                                         <td scope="row"><?php echo $resultado['4'] ?></td>
                                         <td scope="row"><?php echo $resultado['5'] ?></td>
                                         <td scope="row"><?php echo $resultado['6'] ?></td>
+                                        <td scope='row'>" . $cliente['Nombre'] . "</td>
                                         <?php
                                         if ($resultado['2'] == 'Ocupada') {
                                             $habitacion = $resultado['0'];
@@ -190,8 +194,9 @@ include("../registro_login/validacion_sesion.php");
                                                           AND r.Estado = 'Activa'";
                                             $query_cliente = mysqli_query($conexion, $sql_cliente);
                                             if ($cliente = mysqli_fetch_array($query_cliente)) {
-                                                echo "<td>Cliente: " . $cliente['ID_Cliente'] . " - " .
-                                                    $cliente['Nombre'] . " " . $cliente['Apellido'] . "</td>";
+                                                echo "<td scope='row'>" . $cliente['ID_Cliente'] . "</td>
+                                                      <td scope='row'>" . $cliente['Nombre'] . "</td>
+                                                      <td scope='row'>" . $cliente['Apellido'] . "</td>";
                                             }
                                         }
                                         ?>
