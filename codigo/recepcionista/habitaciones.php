@@ -192,7 +192,7 @@ include("../registro_login/validacion_sesion.php");
                                             $cliente_data = $cliente;
                                         }
                                     } else {
-                                        $cliente_data = array('id' => '', 'Apellido' => '', 'Nombre' => '');
+                                        $cliente_data = array('id' => 'desocupada', 'Apellido' => 'desocupada', 'Nombre' => 'desocupada ');
                                     }
 
                                     ?>
