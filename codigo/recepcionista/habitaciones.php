@@ -180,8 +180,23 @@ include("../registro_login/validacion_sesion.php");
                                         <td scope="row"><?php echo $resultado['4'] ?></td>
                                         <td scope="row"><?php echo $resultado['5'] ?></td>
                                         <td scope="row"><?php echo $resultado['6'] ?></td>
+                                        <?php
+                                        if ($resultado['2'] == 'Ocupada') {
+                                            $habitacion = $resultado['0'];
+                                            $sql_cliente = "SELECT c.ID_Cliente, c.Nombre, c.Apellido 
+                                                          FROM cliente c
+                                                          INNER JOIN reserva r ON c.ID_Cliente = r.ID_Cliente 
+                                                          WHERE r.Numero_Habitacion = $habitacion 
+                                                          AND r.Estado = 'Activa'";
+                                            $query_cliente = mysqli_query($conexion, $sql_cliente);
+                                            if ($cliente = mysqli_fetch_array($query_cliente)) {
+                                                echo "<td>Cliente: " . $cliente['ID_Cliente'] . " - " .
+                                                    $cliente['Nombre'] . " " . $cliente['Apellido'] . "</td>";
+                                            }
+                                        }
+                                        ?>
                                     </tr>
-                                <?php
+                                    <?php
                                 }
                                 ?>
                             </tbody>
@@ -212,7 +227,7 @@ include("../registro_login/validacion_sesion.php");
                                         <td scope="row"><?php echo $resultado_cochera['Numero_Cochera'] ?></td>
                                         <td scope="row"><?php echo $resultado_cochera['Estado'] ?></td>
                                     </tr>
-                                <?php
+                                    <?php
                                 }
                                 ?>
                             </tbody>
@@ -272,7 +287,8 @@ include("../registro_login/validacion_sesion.php");
                             </div>
                             <div class="mb-3">
                                 <label for="nuevo_estado_cochera" class="form-label">Seleccionar nuevo estado:</label>
-                                <select class="form-select" name="nuevo_estado_cochera" id="nuevo_estado_cochera" required>
+                                <select class="form-select" name="nuevo_estado_cochera" id="nuevo_estado_cochera"
+                                    required>
                                     <option value="Disponible">Disponible</option>
                                     <option value="En mantenimiento">En mantenimiento</option>
                                 </select>
@@ -300,38 +316,38 @@ include("../registro_login/validacion_sesion.php");
     crossorigin="anonymous"></script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const habitacionSelect = document.getElementById('numero_habitacion');
-    const estadoSelect = document.getElementById('nuevo_estado');
-    const cocheraSelect = document.getElementById('numero_cochera');
-    const estadoCocheraSelect = document.getElementById('nuevo_estado_cochera');
+    document.addEventListener('DOMContentLoaded', function () {
+        const habitacionSelect = document.getElementById('numero_habitacion');
+        const estadoSelect = document.getElementById('nuevo_estado');
+        const cocheraSelect = document.getElementById('numero_cochera');
+        const estadoCocheraSelect = document.getElementById('nuevo_estado_cochera');
 
-    habitacionSelect.addEventListener('change', function() {
-        const estadoActual = this.options[this.selectedIndex].getAttribute('data-estado');
-        estadoSelect.innerHTML = ''; // Limpiar opciones existentes
+        habitacionSelect.addEventListener('change', function () {
+            const estadoActual = this.options[this.selectedIndex].getAttribute('data-estado');
+            estadoSelect.innerHTML = ''; // Limpiar opciones existentes
 
-        if (estadoActual === 'Disponible') {
-            estadoSelect.add(new Option('Mantenimiento', 'Mantenimiento'));
-        } else if (estadoActual === 'Mantenimiento') {
-            estadoSelect.add(new Option('Disponible', 'Disponible'));
-        }
+            if (estadoActual === 'Disponible') {
+                estadoSelect.add(new Option('Mantenimiento', 'Mantenimiento'));
+            } else if (estadoActual === 'Mantenimiento') {
+                estadoSelect.add(new Option('Disponible', 'Disponible'));
+            }
+        });
+
+        cocheraSelect.addEventListener('change', function () {
+            const estadoActual = this.options[this.selectedIndex].getAttribute('data-estado');
+            estadoCocheraSelect.innerHTML = ''; // Limpiar opciones existentes
+
+            if (estadoActual === 'Disponible') {
+                estadoCocheraSelect.add(new Option('En mantenimiento', 'En mantenimiento'));
+            } else if (estadoActual === 'En mantenimiento') {
+                estadoCocheraSelect.add(new Option('Disponible', 'Disponible'));
+            }
+        });
+
+        // Trigger change event on page load
+        habitacionSelect.dispatchEvent(new Event('change'));
+        cocheraSelect.dispatchEvent(new Event('change'));
     });
-
-    cocheraSelect.addEventListener('change', function() {
-        const estadoActual = this.options[this.selectedIndex].getAttribute('data-estado');
-        estadoCocheraSelect.innerHTML = ''; // Limpiar opciones existentes
-
-        if (estadoActual === 'Disponible') {
-            estadoCocheraSelect.add(new Option('En mantenimiento', 'En mantenimiento'));
-        } else if (estadoActual === 'En mantenimiento') {
-            estadoCocheraSelect.add(new Option('Disponible', 'Disponible'));
-        }
-    });
-
-    // Trigger change event on page load
-    habitacionSelect.dispatchEvent(new Event('change'));
-    cocheraSelect.dispatchEvent(new Event('change'));
-});
 </script>
 
 </html>
