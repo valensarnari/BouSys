@@ -183,7 +183,6 @@ include("../registro_login/validacion_sesion.php");
                                         <td scope="row"><?php echo $resultado['4'] ?></td>
                                         <td scope="row"><?php echo $resultado['5'] ?></td>
                                         <td scope="row"><?php echo $resultado['6'] ?></td>
-                                        <td scope='row'>" . $cliente['Nombre'] . "</td>
                                         <?php
                                         if ($resultado['2'] == 'Ocupada') {
                                             $habitacion = $resultado['0'];
