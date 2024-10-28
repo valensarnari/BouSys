@@ -179,6 +179,9 @@ include("../registro_login/validacion_sesion.php");
                                     $cliente_data = array('id' => '', 'Apellido' => '', 'Nombre' => '');
                                     if ($resultado['2'] == 'Ocupada') {
                                         $habitacion = intval($resultado['0']);
+                                        echo "<pre>";
+                                        var_dump($habitacion);
+                                        echo "</pre>";
                                         $sql_cliente = "SELECT c.id, c.Nombre, c.Apellido 
                                                       FROM habitacion h
                                                       INNER JOIN reserva_habitacion rh ON h.id = rh.ID_Habitacion
@@ -193,9 +196,7 @@ include("../registro_login/validacion_sesion.php");
                                     } else {
                                         $cliente_data = array('id' => '', 'Apellido' => '', 'Nombre' => '');
                                     }
-                                    echo "<pre>";
-                                    var_dump($habitacion);
-                                    echo "</pre>";
+
                                     ?>
                                 <tr>
                                     <td scope="row">
