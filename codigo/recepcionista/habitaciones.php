@@ -191,8 +191,8 @@ include("../registro_login/validacion_sesion.php");
                                                           INNER JOIN reserva_habitacion rh ON h.id = rh.ID_Habitacion
                                                           INNER JOIN reserva_total rt ON rh.ID_Reserva = rt.id
                                                           INNER JOIN cliente c ON rt.ID_Cliente = c.id
-                                                          WHERE h.Numero_Habitacion = $habitacion
-                                                          AND rt.Estado = 'Activa' OR rt.Estado = 'Confirmada'";
+                                                          WHERE h.Numero_Habitacion = $habitacion";
+
                                             $query_cliente = mysqli_query($conexion, $sql_cliente);
                                             if ($cliente = mysqli_fetch_array($query_cliente)) {
                                                 var_dump($cliente);
