@@ -186,7 +186,9 @@ include("../registro_login/validacion_sesion.php");
                                         <?php
                                         if ($resultado['2'] == 'Ocupada') {
                                             $habitacion = $resultado['0'];
-                                            echo "<script>console.log('Habitación: " . $habitacion . "');</script>";
+                                            echo "<pre>";
+                                            var_dump($habitacion);
+                                            echo "</pre>";
                                             $sql_cliente = "SELECT c.id, c.Nombre, c.Apellido 
                                                           FROM habitacion h
                                                           INNER JOIN reserva_habitacion rh ON h.id = rh.ID_Habitacion
