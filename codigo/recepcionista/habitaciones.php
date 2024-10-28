@@ -193,9 +193,9 @@ include("../registro_login/validacion_sesion.php");
                                     } else {
                                         $cliente_data = array('id' => '', 'Apellido' => '', 'Nombre' => '');
                                     }
-                                    /*echo "<pre>";
+                                    echo "<pre>";
                                     var_dump($habitacion);
-                                    echo "</pre>";*/
+                                    echo "</pre>";
                                     ?>
                                 <tr>
                                     <td scope="row">
