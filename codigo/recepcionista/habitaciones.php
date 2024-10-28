@@ -196,22 +196,11 @@ include("../registro_login/validacion_sesion.php");
 
                                             $query_cliente = mysqli_query($conexion, $sql_cliente);
                                             if ($cliente = mysqli_fetch_array($query_cliente)) {
-                                                var_dump($cliente);
-                                                echo $cliente['id'];
-                                                echo $cliente['Apellido'];
-                                                echo $cliente['Nombre'];
-                                                echo "<script>console.log('" . $cliente['id'] . "');</script>";
-                                                echo "<script>console.log('" . $cliente['Apellido'] . "');</script>";
-                                                echo "<script>console.log('" . $cliente['Nombre'] . "');</script>";
-                                            } else {
-                                                echo "<td scope='row'></td>";
-                                                echo "<td scope='row'></td>";
-                                                echo "<td scope='row'></td>";
+                                                echo '<td scope="row">' . $cliente['id'] . '</td>';
+                                                echo '<td scope="row">' . $cliente['Apellido'] . '</td>';
+                                                echo '<td scope="row">' . $cliente['Nombre'] . '</td>';
+
                                             }
-                                        } else {
-                                            echo "<td scope='row'></td>";
-                                            echo "<td scope='row'></td>";
-                                            echo "<td scope='row'></td>";
                                         }
                                         ?>
                                     </tr>
