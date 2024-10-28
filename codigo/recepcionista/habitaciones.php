@@ -183,9 +183,6 @@ include("../registro_login/validacion_sesion.php");
                                         <td scope="row"><?php echo $resultado['4'] ?></td>
                                         <td scope="row"><?php echo $resultado['5'] ?></td>
                                         <td scope="row"><?php echo $resultado['6'] ?></td>
-                                        <td scope="row"><?php echo isset($resultado['7']) ? $resultado['7'] : '' ?></td>
-                                        <td scope="row"><?php echo isset($resultado['8']) ? $resultado['8'] : '' ?></td>
-                                        <td scope="row"><?php echo isset($resultado['9']) ? $resultado['9'] : '' ?></td>
                                         <?php
                                         if ($resultado['2'] == 'Ocupada') {
                                             $habitacion = $resultado['0'];
@@ -198,10 +195,18 @@ include("../registro_login/validacion_sesion.php");
                                                           AND rt.Estado = 'Activa'";
                                             $query_cliente = mysqli_query($conexion, $sql_cliente);
                                             if ($cliente = mysqli_fetch_array($query_cliente)) {
-                                                $resultado['7'] = $cliente['ID_Cliente'];
-                                                $resultado['8'] = $cliente['Apellido'];
-                                                $resultado['9'] = $cliente['Nombre'];
+                                                echo "<td scope='row'>" . $cliente['ID_Cliente'] . "</td>";
+                                                echo "<td scope='row'>" . $cliente['Apellido'] . "</td>";
+                                                echo "<td scope='row'>" . $cliente['Nombre'] . "</td>";
+                                            } else {
+                                                echo "<td scope='row'></td>";
+                                                echo "<td scope='row'></td>";
+                                                echo "<td scope='row'></td>";
                                             }
+                                        } else {
+                                            echo "<td scope='row'></td>";
+                                            echo "<td scope='row'></td>";
+                                            echo "<td scope='row'></td>";
                                         }
                                         ?>
                                     </tr>
