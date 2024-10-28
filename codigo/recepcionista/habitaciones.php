@@ -177,7 +177,7 @@ include("../registro_login/validacion_sesion.php");
                                 while ($resultado = mysqli_fetch_array($query)) {
                                     // Si la habitación está ocupada, obtener datos del cliente
                                     $cliente_data = array('id' => '', 'Apellido' => '', 'Nombre' => '');
-                                    if ($resultado['Estado'] == 'Ocupada') {
+                                    if ($resultado['Estado'] == 'Disponible') {
                                         $habitacion = intval($resultado['0']);
 
                                         $sql_cliente = "SELECT c.id, c.Nombre, c.Apellido 
