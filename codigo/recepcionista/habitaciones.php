@@ -179,15 +179,13 @@ include("../registro_login/validacion_sesion.php");
                                     $cliente_data = array('id' => '', 'Apellido' => '', 'Nombre' => '');
                                     if ($resultado['2'] == 'Ocupada') {
                                         $habitacion = intval($resultado['0']);
-                                        echo "<pre>";
-                                        var_dump($habitacion);
-                                        echo "</pre>";
+
                                         $sql_cliente = "SELECT c.id, c.Nombre, c.Apellido 
                                                       FROM habitacion h
                                                       INNER JOIN reserva_habitacion rh ON h.id = rh.ID_Habitacion
                                                       INNER JOIN reserva_total rt ON rh.ID_Reserva = rt.id
                                                       INNER JOIN cliente c ON rt.ID_Cliente = c.id
-                                                      WHERE h.Numero_Habitacion = $habitacion";
+                                                      WHERE h.Numero_Habitacion = " . intval($habitacion);
 
                                         $query_cliente = mysqli_query($conexion, $sql_cliente);
                                         if ($cliente = mysqli_fetch_array($query_cliente)) {
