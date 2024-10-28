@@ -188,9 +188,9 @@ include("../registro_login/validacion_sesion.php");
                                             $habitacion = $resultado['0'];
                                             $sql_cliente = "SELECT c.ID_Cliente, c.Nombre, c.Apellido 
                                                           FROM habitacion h
-                                                          INNER JOIN reserva_habitacion rh ON h.ID_Habitacion = rh.ID_Habitacion
-                                                          INNER JOIN reserva_total rt ON rh.ID_Reserva = rt.ID_Reserva
-                                                          INNER JOIN cliente c ON rt.ID_Cliente = c.ID_Cliente
+                                                          INNER JOIN reserva_habitacion rh ON h.id = rh.ID_Habitacion
+                                                          INNER JOIN reserva_total rt ON rh.ID_Reserva = rt.id
+                                                          INNER JOIN cliente c ON rt.ID_Cliente = c.id
                                                           WHERE h.Numero_Habitacion = $habitacion
                                                           AND rt.Estado = 'Activa'";
                                             $query_cliente = mysqli_query($conexion, $sql_cliente);
