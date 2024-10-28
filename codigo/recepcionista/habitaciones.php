@@ -146,7 +146,7 @@ include("../registro_login/validacion_sesion.php");
         </div>
         <?php
         echo "<pre>";
-        var_dump($cliente_data);
+        var_dump($resultado);
         echo "</pre>";
         ?>
         <div class="container my-5">
