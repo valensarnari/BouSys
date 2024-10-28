@@ -144,11 +144,6 @@ include("../registro_login/validacion_sesion.php");
                 </div>
             </div>
         </div>
-        <?php
-        echo "<pre>";
-        var_dump($resultado);
-        echo "</pre>";
-        ?>
         <div class="container my-5">
             <div class="row">
                 <div class="col-md-6">
@@ -240,6 +235,11 @@ include("../registro_login/validacion_sesion.php");
                         </table>
                     </div>
                 </div>
+                <?php
+                echo "<pre>";
+                var_dump($resultado);
+                echo "</pre>";
+                ?>
                 <div class="col-md-6">
                     <h2>Listado de Cocheras</h2>
                     <hr>
