@@ -144,7 +144,11 @@ include("../registro_login/validacion_sesion.php");
                 </div>
             </div>
         </div>
-        <!--tabla, obviamente hay que ponerle forma y todo con css , probando funcionalidad gio-->
+        <?php
+        echo "<pre>";
+        var_dump($cliente_data);
+        echo "</pre>";
+        ?>
         <div class="container my-5">
             <div class="row">
                 <div class="col-md-6">
@@ -196,19 +200,39 @@ include("../registro_login/validacion_sesion.php");
                                         $cliente_data = array('id' => '', 'Apellido' => '', 'Nombre' => '');
                                     }
                                     ?>
-                                    <tr>
-                                        <td scope="row"><?php echo $resultado['0'] ?></td>
-                                        <td scope="row"><?php echo $resultado['1'] ?></td>
-                                        <td scope="row"><?php echo $resultado['2'] ?></td>
-                                        <td scope="row"><?php echo $resultado['3'] ?></td>
-                                        <td scope="row"><?php echo $resultado['4'] ?></td>
-                                        <td scope="row"><?php echo $resultado['5'] ?></td>
-                                        <td scope="row"><?php echo $resultado['6'] ?></td>
-                                        <td scope="row"><?php echo $cliente_data['id'] ?></td>
-                                        <td scope="row"><?php echo $cliente_data['Apellido'] ?></td>
-                                        <td scope="row"><?php echo $cliente_data['Nombre'] ?></td>
-                                    </tr>
-                                    <?php
+                                <tr>
+                                    <td scope="row">
+                                        <?php echo $resultado['0'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['1'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['2'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['3'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['4'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['5'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['6'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $cliente_data['id'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $cliente_data['Apellido'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $cliente_data['Nombre'] ?>
+                                    </td>
+                                </tr>
+                                <?php
                                 }
                                 ?>
                                 </tr>
@@ -236,11 +260,15 @@ include("../registro_login/validacion_sesion.php");
                                 }
                                 while ($resultado_cochera = mysqli_fetch_array($query_cocheras)) {
                                     ?>
-                                    <tr>
-                                        <td scope="row"><?php echo $resultado_cochera['Numero_Cochera'] ?></td>
-                                        <td scope="row"><?php echo $resultado_cochera['Estado'] ?></td>
-                                    </tr>
-                                    <?php
+                                <tr>
+                                    <td scope="row">
+                                        <?php echo $resultado_cochera['Numero_Cochera'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado_cochera['Estado'] ?>
+                                    </td>
+                                </tr>
+                                <?php
                                 }
                                 ?>
                             </tbody>
