@@ -168,12 +168,30 @@ include("../registro_login/validacion_sesion.php");
                             </thead>
                             <tbody>
                                 <?php
+                                // Consulta principal de habitaciones
                                 $select = "SELECT Numero_Habitacion, Tipo, Estado, Precio_Por_Noche, Puntos, Cantidad_Adultos_Maximo, Cantidad_Ninos_Maximo FROM habitacion WHERE Activo = 1 ORDER BY Numero_Habitacion ASC";
                                 $query = mysqli_query($conexion, $select);
                                 if (!$query) {
                                     die("Error en la consulta SQL: " . mysqli_error($conexion));
                                 }
+
                                 while ($resultado = mysqli_fetch_array($query)) {
+                                    // Si la habitación está ocupada, obtener datos del cliente
+                                    $cliente_data = array('id' => '', 'Apellido' => '', 'Nombre' => '');
+                                    if ($resultado['2'] == 'Ocupada') {
+                                        $habitacion = $resultado['0'];
+                                        $sql_cliente = "SELECT c.id, c.Nombre, c.Apellido 
+                                                      FROM habitacion h
+                                                      INNER JOIN reserva_habitacion rh ON h.id = rh.ID_Habitacion
+                                                      INNER JOIN reserva_total rt ON rh.ID_Reserva = rt.id
+                                                      INNER JOIN cliente c ON rt.ID_Cliente = c.id
+                                                      WHERE h.Numero_Habitacion = $habitacion";
+
+                                        $query_cliente = mysqli_query($conexion, $sql_cliente);
+                                        if ($cliente = mysqli_fetch_array($query_cliente)) {
+                                            $cliente_data = $cliente;
+                                        }
+                                    }
                                     ?>
                                     <tr>
                                         <td scope="row"><?php echo $resultado['0'] ?></td>
@@ -183,32 +201,14 @@ include("../registro_login/validacion_sesion.php");
                                         <td scope="row"><?php echo $resultado['4'] ?></td>
                                         <td scope="row"><?php echo $resultado['5'] ?></td>
                                         <td scope="row"><?php echo $resultado['6'] ?></td>
-                                        <?php
-                                        if ($resultado['2'] == 'Ocupada') {
-                                            $habitacion = $resultado['0'];
-                                            echo "<pre>";
-                                            var_dump($habitacion);
-                                            echo "</pre>";
-                                            $sql_cliente = "SELECT c.id, c.Nombre, c.Apellido 
-                                                          FROM habitacion h
-                                                          INNER JOIN reserva_habitacion rh ON h.id = rh.ID_Habitacion
-                                                          INNER JOIN reserva_total rt ON rh.ID_Reserva = rt.id
-                                                          INNER JOIN cliente c ON rt.ID_Cliente = c.id
-                                                          WHERE h.Numero_Habitacion = $habitacion";
-
-                                            $query_cliente = mysqli_query($conexion, $sql_cliente);
-                                            if ($cliente = mysqli_fetch_array($query_cliente)) {
-                                                echo '<td scope="row">' . $cliente['id'] . '</td>';
-                                                echo '<td scope="row">' . $cliente['Apellido'] . '</td>';
-                                                echo '<td scope="row">' . $cliente['Nombre'] . '</td>';
-
-                                            }
-                                        }
-                                        ?>
+                                        <td scope="row"><?php echo $cliente_data['id'] ?></td>
+                                        <td scope="row"><?php echo $cliente_data['Apellido'] ?></td>
+                                        <td scope="row"><?php echo $cliente_data['Nombre'] ?></td>
                                     </tr>
                                     <?php
                                 }
                                 ?>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
