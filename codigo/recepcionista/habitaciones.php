@@ -186,20 +186,20 @@ include("../registro_login/validacion_sesion.php");
                                         <?php
                                         if ($resultado['2'] == 'Ocupada') {
                                             $habitacion = $resultado['0'];
-                                            $sql_cliente = "SELECT c.ID_Cliente, c.Nombre, c.Apellido 
+                                            $sql_cliente = "SELECT c.id, c.Nombre, c.Apellido 
                                                           FROM habitacion h
                                                           INNER JOIN reserva_habitacion rh ON h.id = rh.ID_Habitacion
                                                           INNER JOIN reserva_total rt ON rh.ID_Reserva = rt.id
                                                           INNER JOIN cliente c ON rt.ID_Cliente = c.id
                                                           WHERE h.Numero_Habitacion = $habitacion
-                                                          AND rt.Estado = 'Activa'";
+                                                          AND rt.Estado = 'Activa' OR rt.Estado = 'Confirmada'";
                                             $query_cliente = mysqli_query($conexion, $sql_cliente);
                                             if ($cliente = mysqli_fetch_array($query_cliente)) {
                                                 var_dump($cliente);
-                                                echo $cliente['ID_Cliente'];
+                                                echo $cliente['id'];
                                                 echo $cliente['Apellido'];
                                                 echo $cliente['Nombre'];
-                                                echo "<script>console.log('" . $cliente['ID_Cliente'] . "');</script>";
+                                                echo "<script>console.log('" . $cliente['id'] . "');</script>";
                                                 echo "<script>console.log('" . $cliente['Apellido'] . "');</script>";
                                                 echo "<script>console.log('" . $cliente['Nombre'] . "');</script>";
                                             } else {
