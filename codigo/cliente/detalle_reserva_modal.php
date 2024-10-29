@@ -18,6 +18,7 @@
                     <form action="modificar_reserva.php" method="POST" class="mb-4" id="formModificarReserva<?php echo $resultado['0'] ?>">
                         <input type="hidden" name="reserva_id" value="<?php echo $resultado['0'] ?>">
                         <input type="hidden" name="valor_original" value="<?php echo $resultado['7'] ?>">
+                        <input type="hidden" name="nuevo_valor" id="input_nuevo_valor<?php echo $resultado['0'] ?>">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
@@ -105,6 +106,7 @@
                                     }
 
                                     nuevoValorSpan.textContent = data.nuevo_valor_formateado;
+                                    document.getElementById('input_nuevo_valor' + formId).value = data.nuevo_valor;
                                     
                                     // Validaciones de precio
                                     const nuevoValor = parseFloat(data.nuevo_valor);

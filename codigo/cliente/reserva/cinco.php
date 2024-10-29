@@ -99,7 +99,7 @@ foreach ($habitaciones_seleccionadas as $hab_id) {
 
 $item->title =  $descripcion;
 $item->quantity = 1;
-$item->unit_price = $valor_con_descuento;
+$item->unit_price = 0.50 * $valor_con_descuento;
 $preference->items = array($item);
 
 // Crear URL con parámetros

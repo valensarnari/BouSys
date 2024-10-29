@@ -6,6 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $reserva_id = $_POST['reserva_id'];
     $fecha_inicio = $_POST['fecha_inicio'];
     $fecha_fin = $_POST['fecha_fin'];
+    $nuevo_valor = $_POST['nuevo_valor'];
     
     // Validar que la fecha de fin sea posterior a la de inicio
     if ($fecha_fin < $fecha_inicio) {
@@ -40,13 +41,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Actualizar las fechas de la reserva
+    // Actualizar las fechas y el valor total de la reserva
     $sql_update = "UPDATE reserva_total 
-                   SET Fecha_Inicio = ?, Fecha_Fin = ? 
+                   SET Fecha_Inicio = ?, 
+                       Fecha_Fin = ?,
+                       Valor_Total = ? 
                    WHERE id = ?";
     
     $stmt = mysqli_prepare($conexion, $sql_update);
-    mysqli_stmt_bind_param($stmt, "ssi", $fecha_inicio, $fecha_fin, $reserva_id);
+    mysqli_stmt_bind_param($stmt, "ssdi", $fecha_inicio, $fecha_fin, $nuevo_valor, $reserva_id);
     
     if (mysqli_stmt_execute($stmt)) {
         $_SESSION['success'] = "Reserva modificada exitosamente";
