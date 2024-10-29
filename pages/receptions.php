@@ -1,6 +1,6 @@
 <!--------------------------------------- MERCADO PAGO --------------------------------------->
 <?php
-require __DIR__ . '../codigo/vendor/autoload.php';
+require __DIR__ . '..\codigo\vendor\autoload.php';
 $access_token = 'TEST-5873219368709518-100511-fddcbcfa14ab02bac2c5c8f75823d22f-1433164475';
 MercadoPago\SDK::setAccessToken($access_token);
 $preference = new MercadoPago\Preference();
