@@ -32,6 +32,12 @@ try {
     $stmt_reserva_total->execute();
     $id_reserva_total = $stmt_reserva_total->insert_id;
 
+    $valor_pago = $valor_total * 0.50; // 50% del valor total
+    $sql_pago = "INSERT INTO pago (Fecha_Pago, Medio_De_Pago, Total, ID_Reserva) VALUES (NOW(), 'Mercado Pago', ?, ?)";
+    $stmt_pago = $conexion->prepare($sql_pago);
+    $stmt_pago->bind_param("di", $valor_pago, $id_reserva_total);
+    $stmt_pago->execute();
+
     $sql_reserva_habitacion = "INSERT INTO reserva_habitacion (ID_Reserva, ID_Habitacion, Cantidad_Adultos, Cantidad_Ninos, Cuna) VALUES (?, ?, ?, ?, ?)";
     $stmt_reserva_habitacion = $conexion->prepare($sql_reserva_habitacion);
 

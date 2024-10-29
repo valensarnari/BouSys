@@ -80,6 +80,82 @@ session_start();
     .row.g-2 .col {
       padding: 0.5rem;
     }
+
+    /* Estilos mejorados para las tarjetas de habitaciones */
+    .room-cards .card {
+      border: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 15px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      height: 100%;
+    }
+
+    .room-cards .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+    .room-cards .card-img-top {
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .room-cards .card:hover .card-img-top {
+      transform: scale(1.1);
+    }
+
+    .room-cards .card-body {
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+      text-align: center;
+      background: linear-gradient(to bottom, #fff, #f8f9fa);
+    }
+
+    .room-cards .card-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+    }
+
+    .room-cards .btn-primary {
+      background-color: #2c3e50;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      margin-top: auto;
+    }
+
+    .room-cards .btn-primary:hover {
+      background-color: #34495e;
+      transform: scale(1.05);
+    }
+
+    /* Ajuste del espaciado de las tarjetas */
+    .room-cards {
+      padding: 2rem 0;
+      margin: 0 1rem;
+    }
+
+    .room-cards .features {
+      color: #6c757d;
+      font-size: 1.1rem;
+    }
+
+    .room-cards .features i {
+      margin: 0 5px;
+      transition: color 0.3s ease;
+    }
+
+    .room-cards .features i:hover {
+      color: #2c3e50;
+    }
   </style>
 </head>
 
@@ -208,36 +284,56 @@ session_start();
   </div>
   <!--------------------------------------  CARDS  ------------------------------------------->
   <div class="row align-items-end room-cards">
+    <!-- Habitación Simple -->
     <div class="col-md-4 mb-4">
       <div class="card h-100">
         <img src="../images/room/room-simple.jpg" class="card-img-top" alt="Habitación Simple" />
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">Simple</h5>
-          <a href="#room-1" class="btn btn-primary mt-auto" data-section="rooms" data-value="more">Saber más...</a>
+          <p class="card-text mb-3">Desde $100/noche</p>
+          <div class="features mb-3">
+            <i class="fas fa-wifi me-2" title="WiFi"></i>
+            <i class="fas fa-tv me-2" title="TV"></i>
+            <i class="fas fa-coffee" title="Desayuno"></i>
+          </div>
+          <a href="#room-1" class="btn btn-primary mt-auto">Saber más...</a>
         </div>
       </div>
     </div>
 
+    <!-- Habitación Completa -->
     <div class="col-md-4 mb-4">
       <div class="card h-100">
         <img src="../images/room/room-completa.jpeg" class="card-img-top" alt="Habitación Completa" />
         <div class="card-body d-flex flex-column">
-          <h5 class="card-title" data-section="rooms" data-value="complete">
-            Completa
-          </h5>
-          <a href="#room-2" class="btn btn-primary mt-auto" data-section="rooms" data-value="more">Saber más...</a>
+          <h5 class="card-title">Completa</h5>
+          <p class="card-text mb-3">Desde $150/noche</p>
+          <div class="features mb-3">
+            <i class="fas fa-wifi me-2" title="WiFi"></i>
+            <i class="fas fa-tv me-2" title="TV"></i>
+            <i class="fas fa-snowflake me-2" title="Aire acondicionado"></i>
+            <i class="fas fa-coffee" title="Desayuno"></i>
+          </div>
+          <a href="#room-2" class="btn btn-primary mt-auto">Saber más...</a>
         </div>
       </div>
     </div>
 
+    <!-- Suite Top -->
     <div class="col-md-4 mb-4">
       <div class="card h-100">
-        <img src="../images/room/room-lujosa.jpg" class="card-img-top" alt="Habitación Lujosa" />
+        <img src="../images/room/room-lujosa.jpg" class="card-img-top" alt="Suite Top" />
         <div class="card-body d-flex flex-column">
-          <h5 class="card-title" data-section="rooms" data-value="luxurious">
-            Suite Top
-          </h5>
-          <a href="#room-3" class="btn btn-primary mt-auto" data-section="rooms" data-value="more">Saber más...</a>
+          <h5 class="card-title">Suite Top</h5>
+          <p class="card-text mb-3">Desde $200/noche</p>
+          <div class="features mb-3">
+            <i class="fas fa-wifi me-2" title="WiFi"></i>
+            <i class="fas fa-tv me-2" title="TV"></i>
+            <i class="fas fa-snowflake me-2" title="Aire acondicionado"></i>
+            <i class="fas fa-hot-tub me-2" title="Jacuzzi"></i>
+            <i class="fas fa-coffee" title="Desayuno"></i>
+          </div>
+          <a href="#room-3" class="btn btn-primary mt-auto">Saber más...</a>
         </div>
       </div>
     </div>
