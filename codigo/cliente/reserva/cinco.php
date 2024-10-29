@@ -79,23 +79,14 @@ $_SESSION['valor_total'] = $valor_total;
 
 <!--------------------------------------- MERCADO PAGO --------------------------------------->
 <?php
+// Agregar esto justo antes del formulario de confirmación
 require __DIR__ . '/vendor/autoload.php';
-
-// Configura credenciales
 MercadoPago\SDK::setAccessToken('TEST-5873219368709518-100511-fddcbcfa14ab02bac2c5c8f75823d22f-1433164475');
 
-// Crea un objeto de preferencia
+// Crear la preferencia
 $preference = new MercadoPago\Preference();
 
-// Configura las URLs de retorno
-$preference->back_urls = array(
-    "success" => "http://localhost/BouSys/codigo/cliente/reserva/realizar_reserva.php",
-    "failure" => "http://localhost/BouSys/codigo/cliente/reserva/cinco.php",
-    "pending" => "http://localhost/BouSys/codigo/cliente/reserva/cinco.php"
-);
-
-$preference->auto_return = "approved"; 
-// Crea el ítem
+// Crear el ítem
 $item = new MercadoPago\Item();
 $descripcion = '';
 foreach ($habitaciones_seleccionadas as $hab_id) {
@@ -107,19 +98,34 @@ foreach ($habitaciones_seleccionadas as $hab_id) {
 }
 
 $item->title =  $descripcion;
-
 $item->quantity = 1;
 $item->unit_price = $valor_con_descuento;
-
 $preference->items = array($item);
 
+// Crear URL con parámetros
+$success_url = "http://localhost/BouSys/codigo/cliente/reserva/realizar_reserva.php";
+$params = http_build_query([
+    'reserva_id' => $reserva_id,
+    'reserva_fecha_inicio' => $reserva_fecha_inicio,
+    'reserva_fecha_fin' => $reserva_fecha_fin,
+    'habitaciones' => base64_encode(json_encode($habitaciones_seleccionadas)),
+    'habitaciones_adultos' => base64_encode(json_encode($habitaciones_adultos)),
+    'habitaciones_ninos' => base64_encode(json_encode($habitaciones_ninos)),
+    'habitaciones_cuna' => base64_encode(json_encode($habitaciones_cuna)),
+    'reserva_cochera' => $reserva_cochera,
+    'valor_total' => $valor_con_descuento
+]);
+
+$preference->back_urls = array(
+    "success" => $success_url . "?" . $params,
+    "failure" => "http://localhost/BouSys/codigo/cliente/reserva/cinco.php",
+    "pending" => "http://localhost/BouSys/codigo/cliente/reserva/cinco.php"
+);
+
+$preference->auto_return = "approved";
 $preference->save();
 
-if (!$preference->id) {
-    die("Error al crear la preferencia de pago");
-}
 ?>
-
 <!doctype html>
 <html lang="es">
 
@@ -491,6 +497,7 @@ if (!$preference->id) {
                     </div>
 
                     <!-- Formulario de confirmación -->
+                    <div class="cho-container" style="margin: 20px auto; text-align: center;"></div>
                     <form action="realizar_reserva.php" method="POST" class="mt-4">
                         <div class="d-flex justify-content-end align-items-end mt-3">
                             <input type="hidden" name="reserva_id" value="<?php echo $reserva_id; ?>">
@@ -511,14 +518,7 @@ if (!$preference->id) {
                             <?php endforeach; ?>
 
                             <input type="hidden" name="reserva_cochera" value="<?php echo $reserva_cochera; ?>">
-
-                            <div class="d-flex justify-content-center">
-                                <button type="submit" class="btn btn-primary btn-lg">
-                                    <i class="fas fa-check"></i> Confirmar reserva
-                                </button>
-                            </div>
                         </form>
-                        <!--  <div class="cho-container" style="margin: 20px auto; text-align: center;"></div> --> 
                 </div>
             </div>
         </div>
@@ -557,16 +557,19 @@ if (!$preference->id) {
     <script src="https://sdk.mercadopago.com/js/v2"></script>
     <script>
         const mp = new MercadoPago('TEST-57ec9be1-bb4b-461d-8b3d-7e1dd72a76f9');
-        const checkout = mp.checkout({
+    
+        mp.checkout({
             preference: {
-                id: '<?php echo $preference->id; ?>',
+                id: '<?php echo $preference->id; ?>'
             },
-            render: {
-                container: '.cho-container',
-                label: 'Pagar',
-            },
-        });
-    </script>
+        render: {
+            container: '.cho-container',
+            label: 'Pagar con Mercado Pago',
+            type: 'wallet'
+        }
+    });
+</script>
 </body>
 
 </html>
+
