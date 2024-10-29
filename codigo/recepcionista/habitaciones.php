@@ -144,7 +144,6 @@ include("../registro_login/validacion_sesion.php");
                 </div>
             </div>
         </div>
-        <!--tabla, obviamente hay que ponerle forma y todo con css , probando funcionalidad gio-->
         <div class="container my-5">
             <div class="row">
                 <div class="col-md-6">
@@ -161,33 +160,83 @@ include("../registro_login/validacion_sesion.php");
                                     <td scope="col">Puntos</td>
                                     <td scope="col">Adultos</td>
                                     <td scope="col">Niños</td>
+                                    <td scope="col">ID Cliente</td>
+                                    <td scope="col">Apellido Cliente</td>
+                                    <td scope="col">Nombre Cliente</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
+                                // Consulta principal de habitaciones
                                 $select = "SELECT Numero_Habitacion, Tipo, Estado, Precio_Por_Noche, Puntos, Cantidad_Adultos_Maximo, Cantidad_Ninos_Maximo FROM habitacion WHERE Activo = 1 ORDER BY Numero_Habitacion ASC";
                                 $query = mysqli_query($conexion, $select);
                                 if (!$query) {
                                     die("Error en la consulta SQL: " . mysqli_error($conexion));
                                 }
+
                                 while ($resultado = mysqli_fetch_array($query)) {
+                                    // Si la habitación está ocupada, obtener datos del cliente
+                                    $cliente_data = array('id' => '', 'Apellido' => '', 'Nombre' => '');
+                                    if ($resultado['Estado'] == 'Ocupado') {
+                                        $habitacion = intval($resultado['0']);
+
+                                        $sql_cliente = "SELECT c.id, c.Nombre, c.Apellido 
+                                                      FROM habitacion h
+                                                      INNER JOIN reserva_habitacion rh ON h.id = rh.ID_Habitacion
+                                                      INNER JOIN reserva_total rt ON rh.ID_Reserva = rt.id
+                                                      INNER JOIN cliente c ON rt.ID_Cliente = c.id
+                                                      WHERE h.Numero_Habitacion = " . intval($habitacion);
+
+                                        $query_cliente = mysqli_query($conexion, $sql_cliente);
+                                        if ($cliente = mysqli_fetch_array($query_cliente)) {
+                                            $cliente_data = $cliente;
+                                        }
+                                    } else {
+                                        $cliente_data = array('id' => 'desocupada', 'Apellido' => 'desocupada', 'Nombre' => 'desocupada ');
+                                    }
+
                                     ?>
-                                    <tr>
-                                        <td scope="row"><?php echo $resultado['0'] ?></td>
-                                        <td scope="row"><?php echo $resultado['1'] ?></td>
-                                        <td scope="row"><?php echo $resultado['2'] ?></td>
-                                        <td scope="row"><?php echo $resultado['3'] ?></td>
-                                        <td scope="row"><?php echo $resultado['4'] ?></td>
-                                        <td scope="row"><?php echo $resultado['5'] ?></td>
-                                        <td scope="row"><?php echo $resultado['6'] ?></td>
-                                    </tr>
+                                <tr>
+                                    <td scope="row">
+                                        <?php echo $resultado['0'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['1'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['2'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['3'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['4'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['5'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado['6'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $cliente_data['id'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $cliente_data['Apellido'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $cliente_data['Nombre'] ?>
+                                    </td>
+                                </tr>
                                 <?php
                                 }
                                 ?>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
+
                 <div class="col-md-6">
                     <h2>Listado de Cocheras</h2>
                     <hr>
@@ -208,10 +257,14 @@ include("../registro_login/validacion_sesion.php");
                                 }
                                 while ($resultado_cochera = mysqli_fetch_array($query_cocheras)) {
                                     ?>
-                                    <tr>
-                                        <td scope="row"><?php echo $resultado_cochera['Numero_Cochera'] ?></td>
-                                        <td scope="row"><?php echo $resultado_cochera['Estado'] ?></td>
-                                    </tr>
+                                <tr>
+                                    <td scope="row">
+                                        <?php echo $resultado_cochera['Numero_Cochera'] ?>
+                                    </td>
+                                    <td scope="row">
+                                        <?php echo $resultado_cochera['Estado'] ?>
+                                    </td>
+                                </tr>
                                 <?php
                                 }
                                 ?>
@@ -272,7 +325,8 @@ include("../registro_login/validacion_sesion.php");
                             </div>
                             <div class="mb-3">
                                 <label for="nuevo_estado_cochera" class="form-label">Seleccionar nuevo estado:</label>
-                                <select class="form-select" name="nuevo_estado_cochera" id="nuevo_estado_cochera" required>
+                                <select class="form-select" name="nuevo_estado_cochera" id="nuevo_estado_cochera"
+                                    required>
                                     <option value="Disponible">Disponible</option>
                                     <option value="En mantenimiento">En mantenimiento</option>
                                 </select>
@@ -300,38 +354,38 @@ include("../registro_login/validacion_sesion.php");
     crossorigin="anonymous"></script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const habitacionSelect = document.getElementById('numero_habitacion');
-    const estadoSelect = document.getElementById('nuevo_estado');
-    const cocheraSelect = document.getElementById('numero_cochera');
-    const estadoCocheraSelect = document.getElementById('nuevo_estado_cochera');
+    document.addEventListener('DOMContentLoaded', function () {
+        const habitacionSelect = document.getElementById('numero_habitacion');
+        const estadoSelect = document.getElementById('nuevo_estado');
+        const cocheraSelect = document.getElementById('numero_cochera');
+        const estadoCocheraSelect = document.getElementById('nuevo_estado_cochera');
 
-    habitacionSelect.addEventListener('change', function() {
-        const estadoActual = this.options[this.selectedIndex].getAttribute('data-estado');
-        estadoSelect.innerHTML = ''; // Limpiar opciones existentes
+        habitacionSelect.addEventListener('change', function () {
+            const estadoActual = this.options[this.selectedIndex].getAttribute('data-estado');
+            estadoSelect.innerHTML = ''; // Limpiar opciones existentes
 
-        if (estadoActual === 'Disponible') {
-            estadoSelect.add(new Option('Mantenimiento', 'Mantenimiento'));
-        } else if (estadoActual === 'Mantenimiento') {
-            estadoSelect.add(new Option('Disponible', 'Disponible'));
-        }
+            if (estadoActual === 'Disponible') {
+                estadoSelect.add(new Option('Mantenimiento', 'Mantenimiento'));
+            } else if (estadoActual === 'Mantenimiento') {
+                estadoSelect.add(new Option('Disponible', 'Disponible'));
+            }
+        });
+
+        cocheraSelect.addEventListener('change', function () {
+            const estadoActual = this.options[this.selectedIndex].getAttribute('data-estado');
+            estadoCocheraSelect.innerHTML = ''; // Limpiar opciones existentes
+
+            if (estadoActual === 'Disponible') {
+                estadoCocheraSelect.add(new Option('En mantenimiento', 'En mantenimiento'));
+            } else if (estadoActual === 'En mantenimiento') {
+                estadoCocheraSelect.add(new Option('Disponible', 'Disponible'));
+            }
+        });
+
+        // Trigger change event on page load
+        habitacionSelect.dispatchEvent(new Event('change'));
+        cocheraSelect.dispatchEvent(new Event('change'));
     });
-
-    cocheraSelect.addEventListener('change', function() {
-        const estadoActual = this.options[this.selectedIndex].getAttribute('data-estado');
-        estadoCocheraSelect.innerHTML = ''; // Limpiar opciones existentes
-
-        if (estadoActual === 'Disponible') {
-            estadoCocheraSelect.add(new Option('En mantenimiento', 'En mantenimiento'));
-        } else if (estadoActual === 'En mantenimiento') {
-            estadoCocheraSelect.add(new Option('Disponible', 'Disponible'));
-        }
-    });
-
-    // Trigger change event on page load
-    habitacionSelect.dispatchEvent(new Event('change'));
-    cocheraSelect.dispatchEvent(new Event('change'));
-});
 </script>
 
 </html>
