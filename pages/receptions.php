@@ -1,6 +1,6 @@
 <!--------------------------------------- MERCADO PAGO --------------------------------------->
 <?php
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '..\codigo\vendor\autoload.php';
 $access_token = 'TEST-5873219368709518-100511-fddcbcfa14ab02bac2c5c8f75823d22f-1433164475';
 MercadoPago\SDK::setAccessToken($access_token);
 $preference = new MercadoPago\Preference();
@@ -48,7 +48,9 @@ $preference->save();
             <div id="flag-es" class="flags_item_es" data-language="es"><img src="../icons/es.svg"></div>
         </div>
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" data-section="nav" data-value="login">Ingreso</a>
+            <button type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#ingresar">
+                Ingreso
+            </button>
         </li>
         <li class="nav-item">
             <a class="nav-link " aria-current="page" href="../index.html" data-section="nav"
@@ -64,10 +66,24 @@ $preference->save();
             <a class="nav-link" href="../pages/recommendations.html" data-section="nav"
                 data-value="recommendations">Recomendaciones</a>
         </li>
-        <li class="nav-item ">
-            <a class="nav-link right" href="codigo/cliente/loginClientes.html">
-                <p data-section="nav" data-value="signup">Registrarse</p>
+        <li class="nav-item "></li>
+        <a class="nav-link right" href="contacto.html">
+            <p data-section="nav" data-value="contact">Contacto</p>
+        </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a style="color: #212529 !important;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-user"></i> Perfil
             </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="perfil.php" data-section="nav" data-value="perfil">Mi
+                        Perfil</a></li>
+                <li><a class="dropdown-item" href="mis_reservas.php" data-section="nav" data-value="reservas">Mis
+                        Reservas</a></li>
+                <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php" data-section="nav"
+                        data-value="reservas">Cerrar sesión</a></li>
+            </ul>
         </li>
         <li class="nav-item ms-auto">
             <img src="../icons/calendar-check.svg"></a>

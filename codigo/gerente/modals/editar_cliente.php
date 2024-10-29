@@ -1,3 +1,6 @@
+<?php
+include("eliminar_cliente.php");
+?>
 <!-- Modal -->
 <div class="modal fade" id="editar<?php echo $resultado['0'] ?>" tabindex="-1" aria-labelledby="editarLabel"
     aria-hidden="true">
@@ -34,10 +37,19 @@
                         <input class="form-control" type="password" name="contrasena" id="contrasena"
                             value="<?php echo $resultado['9'] ?>">
                     </div>
-                    <div class="my-3">
-                        <input type="hidden" name="id" value="<?php echo $resultado['0'] ?>">
-                        <button type="submit" class="btn btn-primary">Editar</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <div class="my-3 d-flex justify-content-between">
+                        <div>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-dismiss="modal"
+                                data-bs-target="#eliminar<?php echo $resultado['0'] ?>">
+                                Eliminar
+                            </button>
+                        </div>
+                        <div>
+                            <input type="hidden" name="id" value="<?php echo $resultado['0'] ?>">
+                            <button type="submit" class="btn btn-primary">Editar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

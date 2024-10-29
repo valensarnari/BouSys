@@ -1,4 +1,3 @@
-/*----------------------------TRANSLATOR---------------------------------*/
 document.addEventListener("DOMContentLoaded", () => {
   const elements = document.querySelectorAll(".hidden");
   const observer = new IntersectionObserver((entries) => {
@@ -12,49 +11,46 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   elements.forEach((element) => observer.observe(element));
-  /*------------------------------------flags.UK-----------------------------------*/
-  const flagsElement = document.getElementById("flags");
-  const textsToChange = document.querySelectorAll("[data-section]");
+
+  /* Función para cambiar el idioma y guardar la selección en localStorage */
   const changeLanguage = async (language) => {
-    const requestJson = await fetch("../languages/en.json");
+    const requestJson = await fetch(`../../../../../languages/${language}.json`);
     const texts = await requestJson.json();
-    for (const textToChange of textsToChange) {
+    const textsToChange = document.querySelectorAll("[data-section]");
+    textsToChange.forEach((textToChange) => {
       const section = textToChange.dataset.section;
       const value = textToChange.dataset.value;
       textToChange.innerHTML = texts[section][value];
-    }
-  };
-  flagsElement.addEventListener("click", (e) => {
-    changeLanguage(e.target.parentElement.dataset.language);
-  });
-  /*flags.ES*/
-  const flagsElement_es = document.getElementById("flag-es");
-  const textsToChange_es = document.querySelectorAll("[data-section]");
-  const changeLanguage_es = async (language) => {
-    const requestJson = await fetch("../languages/es.json");
-    const texts = await requestJson.json();
-    for (const textToChange of textsToChange_es) {
-      const section = textToChange.dataset.section;
-      const value = textToChange.dataset.value;
-      textToChange.innerHTML = texts[section][value];
-    }
-  };
-  flagsElement_es.addEventListener("click", (e) => {
-    changeLanguage_es(e.target.parentElement.dataset.language);
-  });
-}); /*-----------------------------------------end line---------------------------*/
-/*------------------Intersection Observer-------------- */
-document.addEventListener("DOMContentLoaded", () => {
-  const elements = document.querySelectorAll(".hidden");
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("mostrar");
-      } else {
-        entry.target.classList.remove("mostrar");
-      }
+      if(section === "panel_registro_login.php" && value === "iniciar")
+        document.getElementById("e").value = texts[section][value];
     });
+
+    // Guardar el idioma seleccionado en localStorage
+    localStorage.setItem("selectedLanguage", language);
+  };
+
+  // Elementos de las banderas
+  const flagsElement = document.getElementById("flags");
+  const flagsElement_es = document.getElementById("flag-es");
+  const flagsElement_pt = document.getElementById("flag-pt");
+
+  // Evento para cambiar a inglés
+  flagsElement.addEventListener("click", (e) => {
+    const language = e.target.parentElement.dataset.language || "en";
+    changeLanguage(language);
   });
 
-  elements.forEach((element) => observer.observe(element));
+  // Evento para cambiar a español
+  flagsElement_es.addEventListener("click", (e) => {
+    const language = e.target.parentElement.dataset.language || "es";
+    changeLanguage(language);
+  });
+  flagsElement_pt.addEventListener("click", (e) => {
+    const language = e.target.parentElement.dataset.language || "pt";
+    changeLanguage(language);
+  });
+
+  // Cargar el idioma guardado en localStorage al cargar la página
+  const savedLanguage = localStorage.getItem("selectedLanguage") || "en"; // Por defecto, inglés
+  changeLanguage(savedLanguage);
 });

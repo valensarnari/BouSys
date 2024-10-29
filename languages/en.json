@@ -1,6 +1,12 @@
 {
-    "presentacion":{
-        "texto":"Welcome to Hotel Continental, where elegance and comfort meet. Enjoy our first-class facilities and exceptional service in the heart of the city. Your satisfaction is our priority."
+    "presentacion": {
+        "relax":"Relax...",
+        "relax_texto": "Enjoy our spectacular pool at the Continental Hotel, ideal for relaxing and soaking up the sun right in the center of Buenos Aires.",
+        "comodidad": "Comfort",
+        "comodidad_texto": "Experience maximum comfort at the Continental Hotel, where every detail is designed to provide a relaxing and enjoyable stay in the heart of Buenos Aires.",
+        "noche": "Night",
+        "noche_texto": "Immerse yourself in the vibrant Buenos Aires nightlife at the Continental Hotel, where the city's energy comes alive with entertainment, gastronomy, and culture just steps from your room.",
+        "texto": "Welcome to the Continental Hotel, where elegance and comfort come together. Enjoy our first-class facilities and exceptional service in the heart of the city. Your satisfaction is our priority."
     },
     "nav":{
     "login":"Sign In",
@@ -9,7 +15,71 @@
     "recommendations":"Recommendations",
     "rooms":"Rooms",
     "home":"Home",
-    "signup":"Sign Up"
+    "signup":"Sign Up",
+    "language": "Language",
+    "contact": "Contact",
+    "close" : "Sign out",
+    "reservas": "My reservations",
+    "perfil": "My profile",
+    "perfilnav": "Profile"
+},
+"panel_registro_login.php": {
+    "iniciar": "Log In",
+    "contrasena": "Password",
+    "contrasena Olvidada": "Forgot your password?",
+    "no tiene cuenta": "Don't have an account?",
+    "registrar": "Sign Up",
+    "registro": "Register",
+    "Nombre": "First Name",
+    "Apellido": "Last Name",
+    "Puntos": "Points",
+    "Documento": "Document",
+    "Nacionalidad":"Nationality",
+    "Nacimiento": "Birthdate",
+    "Sexo": "Gender",
+    "SeleccionaSexo": "Select your gender",
+    "Masculino": "Male",
+    "Femenino": "Female",
+    "Otro": "Other",
+    "Email": "Email",
+    "Telefono": "Phone",
+    "nacimiento": "Date of Birth",
+    "ya tiene cuenta": "Already have an account?"
+},
+"contact.php_form": {
+    "Nombre" : "Name",
+    "Correo" : "Email",
+    "Asunto" : "Subject",
+    "Mensaje" : "Message",
+    "boton": "Send message"
+},
+"contact.php_body": {
+    "info": "Contact information",
+    "horario": "Monday to Friday, 9:00 - 18:00"
+},
+"cliente_perfil.php": {
+    "Perfil": "User Profile",
+    "info": "Personal Information",
+    "Nombre": "First Name",
+    "Apellido": "Last Name",
+    "Puntos": "Points",
+    "Documento": "Document",
+    "Nacimiento": "Birthdate",
+    "Sexo": "Gender",
+    "Email": "Email",
+    "Telefono": "Phone",
+    "Registro": "Registration Date"
+},
+"footer": {
+    "nosotros": "About Us",
+    "info": "Company Information",
+    "Links": "Links",
+    "home": "Home",
+    "rooms": "Rooms",
+    "services": "Services",
+    "recommendations": "Recommendations",
+    "contact": "Contact",
+    "empresa": "© 2024 Your Company. All rights reserved."
 },
 "Home":{
     "first":"Discover luxury in the heart of Buenos Aires. Hotel Continental offers elegance, comfort, and an unbeatable location near the main tourist attractions. Book your stay today!",

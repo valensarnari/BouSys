@@ -1,8 +1,8 @@
 <?php
 include("modals/agregar_cliente.php");
 include("../conexion.php");
-include ('../validacion_gerente.php');
-validarGerente('listado_clientes.php');
+include("../registro_login/validacion_sesion.php");
+
 ?>
 
 <!doctype html>
@@ -17,7 +17,163 @@ validarGerente('listado_clientes.php');
     <!---bootstrap css --->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!---para buscar cliente --->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // detecta cambios en el campo de busqueda
+            $("#buscador").on("keyup", function () {
+                var valorBusqueda = $(this).val();
+
+                $.ajax({
+                    url: "buscar_cliente.php", // nuevo archivo para la busqwueda
+                    type: "POST",
+                    data: { consulta: valorBusqueda },
+                    success: function (data) {
+                        // reemplaza contenido de la tabla
+                        $("tbody").html(data);
+                    }
+                });
+            });
+        });
+    </script>
     <title>Lista de clientes</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        .container {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .form-control {
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .form-control::placeholder {
+            color: #888;
+        }
+
+        .table {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        .table-dark {
+            background-color: #1e1e1e;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .table-striped tbody tr:nth-of-type(even) {
+            background-color: #2a2a2a;
+        }
+
+        .table tbody tr td {
+            color: #e0e0e0 !important;
+        }
+
+        .btn-success,
+        .btn-warning {
+            background-color: #03dac6;
+            border-color: #03dac6;
+            color: #121212;
+        }
+
+        .btn-success:hover,
+        .btn-warning:hover,
+        .btn-danger:hover {
+            background-color: #018786;
+            border-color: #018786;
+        }
+
+        .pagination .page-link {
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .dropdown-menu-dark {
+            background-color: #2a2a2a;
+        }
+
+        /* Estilos para los modales */
+        .modal-content {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #444;
+        }
+
+        .modal-footer {
+            border-top: 1px solid #444;
+        }
+
+        .modal-title {
+            color: #007bff;
+        }
+
+        .close {
+            color: #e0e0e0;
+        }
+
+        .modal .form-control {
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .modal .form-control::placeholder {
+            color: #888;
+        }
+
+        .modal .form-select {
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .modal .btn-secondary {
+            background-color: #444;
+            border-color: #444;
+        }
+
+        .modal .btn-secondary:hover {
+            background-color: #555;
+            border-color: #555;
+        }
+
+        .modal .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .modal .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
 </head>
 
 <body>
@@ -68,19 +224,28 @@ validarGerente('listado_clientes.php');
                 <div class="dropdown pb-4">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                         id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-1">nombreperfil</span>
+                        <span class="d-none d-sm-inline mx-1">
+                            <?php echo $_SESSION['usuario_nombre']; ?>
+                        </span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                        <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php">Cerrar sesión</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="container my-5">
-            <!-- Activa modal de agregar -->
-            <button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#agregar">
-                Agregar cliente <i class="fa-solid fa-user-plus"></i>
-            </button>
+            <div class="row my-3">
+                <div class="col">
+                    <!-- Activa modal de agregar -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregar">
+                        Agregar cliente <i class="fa-solid fa-user-plus"></i>
+                    </button>
+                </div>
+                <div class="col">
+                    <input type="text" id="buscador" class="form-control" placeholder="Buscar cliente por apellido...">
+                </div>
+            </div>
             <div class="row">
                 <div class="table-responsive">
                     <table class="table table-striped">
@@ -135,17 +300,11 @@ validarGerente('listado_clientes.php');
                                             data-bs-target="#editar<?php echo $resultado['0'] ?>">
                                             <i class="fa-solid fa-pen"></i>
                                         </button>
-                                        <!-- Activa modal de eliminar -->
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#eliminar<?php echo $resultado['0'] ?>">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
                                     </td>
                                 </tr>
                                 <?php
                                 include("modals/detalle_cliente.php");
                                 include("modals/editar_cliente.php");
-                                include("modals/eliminar_cliente.php");
                             }
                             ?>
                         </tbody>
