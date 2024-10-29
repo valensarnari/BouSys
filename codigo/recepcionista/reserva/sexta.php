@@ -2,14 +2,24 @@
 include("../../conexion.php");
 include("../../registro_login/validacion_sesion.php");
 
+// Recuperar todos los datos del POST
 $reserva_id = $_POST["reserva_id"];
 $reserva_adultos = $_POST["reserva_adultos"];
-$_POST["reserva_ninos"] == "" ? $reserva_ninos = "0" : $reserva_ninos = $_POST["reserva_ninos"];
+$reserva_ninos = $_POST["reserva_ninos"];
+$reserva_fecha_inicio = $_POST["reserva_fecha_inicio"];
+$reserva_fecha_fin = $_POST["reserva_fecha_fin"];
+$habitaciones_seleccionadas = isset($_POST['habitaciones']) ? $_POST['habitaciones'] : [];
+$habitaciones_adultos = isset($_POST['habitaciones_adultos']) ? $_POST['habitaciones_adultos'] : [];
+$habitaciones_ninos = isset($_POST['habitaciones_ninos']) ? $_POST['habitaciones_ninos'] : [];
+$habitaciones_cuna = isset($_POST['habitaciones_cuna']) ? $_POST['habitaciones_cuna'] : [];
+$reserva_cochera = isset($_POST['reserva_cochera']) ? $_POST['reserva_cochera'] : null;
 
+// Recuperar el valor total de la sesión
+$valor_total = isset($_SESSION['valor_total']) ? $_SESSION['valor_total'] : 0;
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -20,58 +30,104 @@ $_POST["reserva_ninos"] == "" ? $reserva_ninos = "0" : $reserva_ninos = $_POST["
     <!---bootstrap css --->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Detalles de la Reserva</title>
+    <title>Acreditar pago</title>
     <style>
         body {
             background-color: #121212;
             color: #e0e0e0;
         }
 
-        .container {
+        .reservation-details {
             background-color: #1e1e1e;
             border-radius: 10px;
             padding: 20px;
-            max-height: 350px;
-            margin-top: 30px;
+            margin-bottom: 30px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .detail-value {
+            color: #e0e0e0;
+        }
+
+        .sub-details {
+            margin-left: 20px;
+            font-size: 0.9em;
+        }
+
+        .total-value {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #03dac6;
         }
 
         h2 {
             color: #007bff;
         }
 
-        .form-label {
-            color: #e0e0e0;
-        }
-
-        .form-control {
+        .room-card {
             background-color: #2a2a2a;
-            border-color: #444;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .room-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+        }
+
+        .room-id {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #03dac6;
+        }
+
+        .room-details {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .room-detail-item {
+            flex-basis: 48%;
+            margin-bottom: 8px;
+        }
+
+        .room-detail-label {
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        .room-detail-value {
+            font-size: 1em;
             color: #e0e0e0;
         }
 
-        .form-control:focus {
-            background-color: #3d3d3d;
-            border-color: #007bff;
-            color: #e0e0e0;
-            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
-        }
 
-        .btn-primary {
-            background-color: #03dac6;
-            border-color: #03dac6;
-            color: #121212;
-        }
-
-        .btn-primary:hover {
-            background-color: #018786;
-            border-color: #018786;
-        }
-
-        hr {
-            border-color: #444;
-        }
 
         /* Ajustes para el texto en el sidebar */
         .nav-link {
@@ -202,10 +258,36 @@ $_POST["reserva_ninos"] == "" ? $reserva_ninos = "0" : $reserva_ninos = $_POST["
         }
 
         .container {
-            max-width: 500px;
+            max-width: 1400px;
             /* O el ancho máximo que prefieras */
             margin: 0 auto;
             padding: 15px;
+        }
+
+        .payment-form {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .form-select {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            border: 1px solid #444;
+        }
+
+        .form-select:focus {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            border-color: #0dcaf0;
+            box-shadow: 0 0 0 0.25rem rgba(13, 202, 240, 0.25);
+        }
+
+        .payment-summary {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
         }
     </style>
 </head>
@@ -266,29 +348,67 @@ $_POST["reserva_ninos"] == "" ? $reserva_ninos = "0" : $reserva_ninos = $_POST["
                 </ul>
             </div>
         </div>
+
         <div class="main-content">
             <div class="container">
-                <h2 class="text-center mb-4">Detalles de la Reserva</h2>
-                <hr>
-                <form action="tercera.php" method="POST">
-                    <div class="my-4">
-                        <label for="fecha_inicio" class="form-label">Fecha de inicio:</label>
-                        <input type="date" id="reserva_fecha_inicio" name="reserva_fecha_inicio" class="form-control"
-                            required min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-8 col-lg-6">
+                        <div class="payment-form">
+                            <h2 class="mb-4">Registro de Pago</h2>
+
+                            <form action="procesar_reserva.php" method="POST">
+                                <input type="hidden" name="reserva_id" value="<?php echo $reserva_id; ?>">
+                                <input type="hidden" name="reserva_adultos" value="<?php echo $reserva_adultos; ?>">
+                                <input type="hidden" name="reserva_ninos" value="<?php echo $reserva_ninos; ?>">
+                                <input type="hidden" name="reserva_fecha_inicio"
+                                    value="<?php echo $reserva_fecha_inicio; ?>">
+                                <input type="hidden" name="reserva_fecha_fin" value="<?php echo $reserva_fecha_fin; ?>">
+                                <input type="hidden" name="reserva_cochera" value="<?php echo $reserva_cochera; ?>">
+
+                                <?php foreach ($habitaciones_seleccionadas as $habitacion_id): ?>
+                                <input type="hidden" name="habitaciones[]" value="<?php echo $habitacion_id; ?>">
+                                <input type="hidden" name="habitaciones_adultos[<?php echo $habitacion_id; ?>]"
+                                    value="<?php echo isset($habitaciones_adultos[$habitacion_id]) ? $habitaciones_adultos[$habitacion_id] : 0; ?>">
+                                <input type="hidden" name="habitaciones_ninos[<?php echo $habitacion_id; ?>]"
+                                    value="<?php echo isset($habitaciones_ninos[$habitacion_id]) ? $habitaciones_ninos[$habitacion_id] : 0; ?>">
+                                <input type="hidden" name="habitaciones_cuna[<?php echo $habitacion_id; ?>]"
+                                    value="<?php echo isset($habitaciones_cuna[$habitacion_id]) ? $habitaciones_cuna[$habitacion_id] : 0; ?>">
+                                <?php endforeach; ?>
+
+                                <div class="mb-4">
+                                    <label for="medio_pago" class="form-label">Método de Pago</label>
+                                    <select class="form-select" name="medio_pago" id="medio_pago" required>
+                                        <option value="">Seleccione un método de pago</option>
+                                        <option value="Efectivo">Efectivo</option>
+                                        <option value="Tarjeta de débito">Tarjeta de débito</option>
+                                        <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+                                        <option value="Transferencia">Mercado Pago</option>
+                                    </select>
+                                </div>
+
+                                <div class="payment-summary">
+                                    <h4 class="mb-3">Resumen del Pago</h4>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Subtotal:</span>
+                                        <span class="detail-value">$
+                                            <?php echo number_format($valor_total, 2); ?>
+                                        </span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Total a Pagar:</span>
+                                        <span class="detail-value total-value">$
+                                            <?php echo number_format($valor_total, 2); ?>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-end mt-4">
+                                    <button type="submit" class="btn btn-primary">Confirmar Pago y Reserva</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="fecha_fin" class="form-label">Fecha de fin:</label>
-                        <input type="date" id="reserva_fecha_fin" name="reserva_fecha_fin" class="form-control"
-                            required>
-                    </div>
-                    <div class="d-flex justify-content-end align-items-end mt-4">
-                        <input type="hidden" name="reserva_id" value="<?php echo $reserva_id; ?>">
-                        <input type="hidden" name="reserva_adultos" value="<?php echo $reserva_adultos; ?>">
-                        <input type="hidden" name="reserva_ninos" value="<?php echo $reserva_ninos; ?>">
-                        <input type="hidden" name="reserva_cuna" value="<?php echo $reserva_cuna; ?>">
-                        <button type="submit" class="btn btn-primary">Siguiente</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -297,21 +417,6 @@ $_POST["reserva_ninos"] == "" ? $reserva_ninos = "0" : $reserva_ninos = $_POST["
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var fechaInicio = document.getElementById('reserva_fecha_inicio');
-            var fechaFin = document.getElementById('reserva_fecha_fin');
-
-            fechaInicio.addEventListener('change', function () {
-                fechaFin.min = fechaInicio.value;
-                if (fechaFin.value && fechaFin.value < fechaInicio.value) {
-                    fechaFin.value = fechaInicio.value;
-                }
-            });
-        });
-    </script>
-
 </body>
 
 </html>

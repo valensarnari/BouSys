@@ -390,22 +390,12 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                                                 <div class="mb-3">
                                                     <?php
                                                     $fecha_actual = date('Y-m-d');
-                                                    if ($fecha_actual < $resultado['3']) { // Si la fecha actual es menor a la fecha de inicio
-                                                        ?>
-                                                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                                                            data-bs-target="#detalles<?php echo $resultado['0'] ?>">
-                                                            <i class="fas fa-edit"></i> Modificar
-                                                        </button>
-                                                    <?php
-                                                    } else {
-                                                        ?>
-                                                        <button type="button" class="btn btn-secondary" disabled
-                                                            title="No se puede modificar una reserva que ya comenzó">
-                                                            <i class="fas fa-edit"></i> Modificar
-                                                        </button>
-                                                    <?php
-                                                    }
                                                     ?>
+                                                    <button type="button" class="btn <?php echo ($fecha_actual < $resultado['3']) ? 'btn-info' : 'btn-secondary' ?>" 
+                                                            data-bs-toggle="modal" data-bs-target="#detalles<?php echo $resultado['0'] ?>">
+                                                        <i class="fas <?php echo ($fecha_actual < $resultado['3']) ? 'fa-edit' : 'fa-eye' ?>"></i>
+                                                        <?php echo ($fecha_actual < $resultado['3']) ? 'Modificar' : 'Ver detalles' ?>
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -452,12 +442,18 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                                         <th>Check-In</th>
                                         <th>Check-Out</th>
                                         <th>Valor total</th>
+                                        <th>Calificación</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     while ($resultado = mysqli_fetch_array($query_finalizadas)) {
-                                        ?>
+                                        // Verificar si ya existe una calificación
+                                        $sql_calificacion = "SELECT * FROM calificaciones WHERE ID_Reserva = " . $resultado['0'];
+                                        $query_calificacion = mysqli_query($conexion, $sql_calificacion);
+                                        $tiene_calificacion = mysqli_num_rows($query_calificacion) > 0;
+                                        $calificacion = $tiene_calificacion ? mysqli_fetch_array($query_calificacion) : null;
+                                    ?>
                                         <tr>
                                             <td scope="row"><?php echo $resultado['8'] . " " . $resultado['9'] ?></td>
                                             <td scope="row"><span class="badge bg-secondary">Finalizada</span></td>
@@ -466,10 +462,20 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                                             <td scope="row"><?php echo $resultado['5'] ?></td>
                                             <td scope="row"><?php echo $resultado['6'] ?></td>
                                             <td scope="row"><?php echo $resultado['7'] ?></td>
+                                            <td scope="row">
+                                                <?php if ($tiene_calificacion) { ?>
+                                                    <span class="badge bg-success">
+                                                        <i class="fas fa-star"></i> <?php echo $calificacion['Calificacion']; ?>/5
+                                                    </span>
+                                                <?php } else { ?>
+                                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#calificarModal<?php echo $resultado['0']; ?>">
+                                                        <i class="fas fa-star"></i> Calificar
+                                                    </button>
+                                                <?php } ?>
+                                            </td>
                                         </tr>
-                                        <?php
-                                    }
-                                    ?>
+                                        <?php include("calificar_modal.php"); ?>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>

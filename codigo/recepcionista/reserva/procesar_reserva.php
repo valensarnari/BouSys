@@ -49,6 +49,14 @@ try {
         $stmt_reserva_cochera->execute();
     }
 
+    // Procesar el pago
+    $medio_pago = $_POST['medio_pago'];
+    $sql_pago = "INSERT INTO pago (Fecha_Pago, Medio_De_Pago, Total, ID_Reserva) 
+                 VALUES (NOW(), ?, ?, ?)";
+    $stmt_pago = $conexion->prepare($sql_pago);
+    $stmt_pago->bind_param("sdi", $medio_pago, $valor_total, $id_reserva_total);
+    $stmt_pago->execute();
+
     $conexion->commit();
 
     header("Location: reserva_confirmada.php");

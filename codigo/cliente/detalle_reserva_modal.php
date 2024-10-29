@@ -5,16 +5,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="detallesLabel<?php echo $resultado['0'] ?>">
-                    Detalles y Modificación de la Reserva
+                    <?php echo ($fecha_actual < $resultado['3']) ? 'Detalles y Modificación de la Reserva' : 'Detalles de la Reserva' ?>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- Sección de Modificación -->
-                <?php
-                $fecha_actual = date('Y-m-d');
-                if ($fecha_actual < $resultado['3']) { // Si la reserva aún no comenzó
-                ?>
+                <?php if ($fecha_actual < $resultado['3']) { // Si la reserva aún no comenzó ?>
+                    <!-- Sección de Modificación -->
                     <form action="modificar_reserva.php" method="POST" class="mb-4" id="formModificarReserva<?php echo $resultado['0'] ?>">
                         <input type="hidden" name="reserva_id" value="<?php echo $resultado['0'] ?>">
                         <input type="hidden" name="valor_original" value="<?php echo $resultado['7'] ?>">
@@ -139,16 +136,12 @@
                         fechaFin.addEventListener('change', calcularNuevoPrecio);
                     });
                     </script>
-                <?php
-                } else {
-                ?>
-                    <div class="alert alert-info">
+                <?php } else { ?>
+                    <div class="alert alert-info mb-4">
                         <i class="fas fa-info-circle"></i> 
-                        Esta reserva ya comenzó y no puede ser modificada. Solo se pueden modificar reservas antes de su fecha de inicio.
+                        Esta reserva ya comenzó y no puede ser modificada. Puedes ver todos los detalles a continuación.
                     </div>
-                <?php
-                }
-                ?>
+                <?php } ?>
 
                 <!-- Sección de Habitaciones -->
                 <h6 class="mb-3">Habitaciones Reservadas:</h6>
