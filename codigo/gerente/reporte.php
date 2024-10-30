@@ -89,9 +89,9 @@ $query_calificaciones = mysqli_query($conexion, $sql_calificaciones);
                 $hasData = false;
                 while ($resultado = mysqli_fetch_array($query_ocupacion)) {
                     $hasData = true;
-                    $fecha_inicio = date('Y, m-1, d', strtotime($resultado['Fecha_Inicio']));
-                    $fecha_final = date('Y, m-1, d', strtotime($resultado['Fecha_Fin']));
-                    echo "['${resultado['Numero_Habitacion']}', new Date($fecha_inicio), new Date($fecha_final)],";
+                    $fecha_inicio = date('Y, n-1, j', strtotime($resultado['Fecha_Inicio']));
+                    $fecha_final = date('Y, n-1, j', strtotime($resultado['Fecha_Fin']));
+                    echo "['" . $resultado['Numero_Habitacion'] . "', new Date($fecha_inicio), new Date($fecha_final)],";
                 }
                 ?>
             ]);
@@ -482,9 +482,9 @@ $query_calificaciones = mysqli_query($conexion, $sql_calificaciones);
                                         <label for="mes" class="form-label text-light small fw-bold">
                                             <i class="fas fa-calendar-alt me-2"></i>Seleccionar Período
                                         </label>
-                                        <input class="form-control bg-dark text-light border-primary" 
-                                               type="month" name="mes" id="mes"
-                                               value="<?php echo isset($_GET['mes']) ? $_GET['mes'] : date('Y-m'); ?>">
+                                        <input class="form-control bg-dark text-light border-primary" type="month"
+                                            name="mes" id="mes"
+                                            value="<?php echo isset($_GET['mes']) ? $_GET['mes'] : date('Y-m'); ?>">
                                     </div>
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fas fa-search me-2"></i>Buscar
