@@ -41,21 +41,21 @@ try {
     $cliente = $resultado_cliente->fetch_assoc();
     $puntos_cliente = $cliente['puntos'];
 
-    // Obtener puntos de la habitación
-    $sql_habitacion = "SELECT h.Puntos 
-                      FROM reserva_habitacion rh
-                      JOIN habitacion h ON rh.ID_Habitacion = h.id 
-                      WHERE rh.ID_Reserva = ?";
-    $stmt_habitacion = $conexion->prepare($sql_habitacion);
-    $stmt_habitacion->bind_param("i", $reserva_id);
-    $stmt_habitacion->execute();
-    $resultado_habitacion = $stmt_habitacion->get_result();
-    $habitacion = $resultado_habitacion->fetch_assoc();
-    $puntos_habitacion = $habitacion['Puntos'];
+    // Obtener puntos de las habitaciones seleccionadas
+    $puntos_totales = 0;
+    foreach ($habitaciones_seleccionadas as $habitacion_id) {
+        $sql_habitacion = "SELECT Puntos FROM habitacion WHERE id = ?";
+        $stmt_habitacion = $conexion->prepare($sql_habitacion);
+        $stmt_habitacion->bind_param("i", $habitacion_id);
+        $stmt_habitacion->execute();
+        $resultado_habitacion = $stmt_habitacion->get_result();
+        $habitacion = $resultado_habitacion->fetch_assoc();
+        $puntos_totales += $habitacion['Puntos'];
+    }
 
     // Actualizar puntos del cliente
     $sql_actualizar_puntos = "UPDATE cliente SET Puntos = ? WHERE id = ?";
-    $nuevos_puntos = $puntos_cliente + $puntos_habitacion;
+    $nuevos_puntos = $puntos_cliente + $puntos_totales;
     $stmt_actualizar = $conexion->prepare($sql_actualizar_puntos);
     $stmt_actualizar->bind_param("ii", $nuevos_puntos, $reserva_id);
     $stmt_actualizar->execute();
