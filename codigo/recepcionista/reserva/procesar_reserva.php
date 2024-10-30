@@ -26,17 +26,6 @@ try {
     $sql_reserva_total = "INSERT INTO reserva_total (ID_Cliente, Estado, Fecha_Inicio, Fecha_Fin, Fecha_Reserva, Valor_Total) VALUES (?, 'Confirmada', ?, ?, NOW(), ?)";
     $stmt_reserva_total = $conexion->prepare($sql_reserva_total);
 
-    // Actualizar puntos del cliente
-    $sql_actualizar_puntos = "UPDATE Cliente c 
-                             JOIN Reserva_Total rt ON c.id = rt.ID_Cliente
-                             JOIN Reserva_Habitacion rh ON rt.id = rh.ID_Reserva 
-                             JOIN Habitacion h ON rh.ID_Habitacion = h.id
-                             SET c.Puntos = c.Puntos + h.Puntos
-                             WHERE c.id = ?";
-    $stmt_puntos = $conexion->prepare($sql_actualizar_puntos);
-    $stmt_puntos->bind_param("i", $reserva_id);
-    $stmt_puntos->execute();
-
     $stmt_reserva_total->bind_param("issd", $reserva_id, $reserva_fecha_inicio, $reserva_fecha_fin, $valor_total);
     $stmt_reserva_total->execute();
     $id_reserva_total = $stmt_reserva_total->insert_id;
