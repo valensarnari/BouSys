@@ -33,7 +33,7 @@ try {
                              JOIN Reserva_Habitacion rh ON rt.id = rh.ID_Reserva 
                              JOIN Habitacion h ON rh.ID_Habitacion = h.id
                              SET c.Puntos = c.Puntos + h.Puntos
-                             WHERE rt.id = @reserva_total_id";
+                             WHERE rt.id = ?";
     $stmt_actualizar_puntos = $conexion->prepare($sql_actualizar_puntos);
     $stmt_actualizar_puntos->bind_param("i", $id_reserva_total);
     $stmt_actualizar_puntos->execute();
