@@ -2,26 +2,28 @@
 include("../../conexion.php");
 include("../../registro_login/validacion_sesion.php");
 
+// Verificar que el pago fue exitoso
+if (!isset($_GET['collection_status']) || $_GET['collection_status'] !== 'approved') {
+    header("Location: cinco.php?error=pago_no_aprobado");
+    exit();
+}
+
 $conexion->begin_transaction();
 
 try {
+    // Obtener datos de la URL
+    $reserva_id = $_GET['reserva_id'];
+    $reserva_fecha_inicio = $_GET['reserva_fecha_inicio'];
+    $reserva_fecha_fin = $_GET['reserva_fecha_fin'];
     
-    $reserva_id = $_POST['reserva_id'];
-    $reserva_fecha_inicio = $_POST['reserva_fecha_inicio'];
-    $reserva_fecha_fin = $_POST['reserva_fecha_fin'];
-
-    $valor_total = isset($_SESSION['valor_total']) ? $_SESSION['valor_total'] : 0;
-
-    $habitaciones_seleccionadas = isset($_POST['habitaciones']) ? $_POST['habitaciones'] : [];
-    $habitaciones_adultos = isset($_POST['habitaciones_adultos']) ? $_POST['habitaciones_adultos'] : [];
-    $habitaciones_ninos = isset($_POST['habitaciones_ninos']) ? $_POST['habitaciones_ninos'] : [];
-    $habitaciones_cuna = isset($_POST['habitaciones_cuna']) ? $_POST['habitaciones_cuna'] : [];
+    // Decodificar arrays
+    $habitaciones_seleccionadas = json_decode(base64_decode($_GET['habitaciones']), true);
+    $habitaciones_adultos = json_decode(base64_decode($_GET['habitaciones_adultos']), true);
+    $habitaciones_ninos = json_decode(base64_decode($_GET['habitaciones_ninos']), true);
+    $habitaciones_cuna = json_decode(base64_decode($_GET['habitaciones_cuna']), true);
     
-    $reserva_cochera = isset($_POST['reserva_cochera']) ? $_POST['reserva_cochera'] : null;
-
-    if ($valor_total === null || $valor_total === '') {
-        throw new Exception("El valor total de la reserva no puede ser nulo.");
-    }
+    $reserva_cochera = isset($_GET['reserva_cochera']) ? $_GET['reserva_cochera'] : null;
+    $valor_total = $_GET['valor_total'];
 
     $sql_reserva_total = "INSERT INTO reserva_total (ID_Cliente, Estado, Fecha_Inicio, Fecha_Fin, Fecha_Reserva, Valor_Total) VALUES (?, 'Confirmada', ?, ?, NOW(), ?)";
     $stmt_reserva_total = $conexion->prepare($sql_reserva_total);
@@ -29,6 +31,12 @@ try {
     $stmt_reserva_total->bind_param("issd", $reserva_id, $reserva_fecha_inicio, $reserva_fecha_fin, $valor_total);
     $stmt_reserva_total->execute();
     $id_reserva_total = $stmt_reserva_total->insert_id;
+
+    $valor_pago = $valor_total * 0.50; // 50% del valor total
+    $sql_pago = "INSERT INTO pago (Fecha_Pago, Medio_De_Pago, Total, ID_Reserva) VALUES (NOW(), 'Mercado Pago', ?, ?)";
+    $stmt_pago = $conexion->prepare($sql_pago);
+    $stmt_pago->bind_param("di", $valor_pago, $id_reserva_total);
+    $stmt_pago->execute();
 
     $sql_reserva_habitacion = "INSERT INTO reserva_habitacion (ID_Reserva, ID_Habitacion, Cantidad_Adultos, Cantidad_Ninos, Cuna) VALUES (?, ?, ?, ?, ?)";
     $stmt_reserva_habitacion = $conexion->prepare($sql_reserva_habitacion);
@@ -49,17 +57,9 @@ try {
         $stmt_reserva_cochera->execute();
     }
 
-    // Procesar el pago
-    $medio_pago = $_POST['medio_pago'];
-    $sql_pago = "INSERT INTO pago (Fecha_Pago, Medio_De_Pago, Total, ID_Reserva) 
-                 VALUES (NOW(), ?, ?, ?)";
-    $stmt_pago = $conexion->prepare($sql_pago);
-    $stmt_pago->bind_param("sdi", $medio_pago, $valor_total, $id_reserva_total);
-    $stmt_pago->execute();
-
     $conexion->commit();
 
-    header("Location: reserva_confirmada.php");
+    header("Location: confirmacion_reserva.php");
     exit();
 
 } catch (Exception $e) {

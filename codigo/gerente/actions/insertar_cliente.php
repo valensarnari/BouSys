@@ -1,7 +1,7 @@
 <?php
 
-$conexion = mysqli_connect("localhost", "root", "", "hotel") 
-or die('No se pudo conectar al servidor');
+$conexion = mysqli_connect("localhost", "root", "", "hotel")
+    or die('No se pudo conectar al servidor');
 
 $nombre = $_POST['nombre'];
 $apellido = $_POST['apellido'];
@@ -19,23 +19,18 @@ $consulta_existencia->bind_param("ss", $documento, $email);
 $consulta_existencia->execute();
 $resultado = $consulta_existencia->get_result();
 
-if($resultado->num_rows > 0)
-{
+if ($resultado->num_rows > 0) {
     echo "El usuario ya está registrado.";
-}
-else 
-{
-    $sql = "INSERT INTO `cliente` (`Nombre`, `Apellido`, `Fecha_Nacimiento`, `Documento`, `Nacionalidad`, `Sexo`, `Email`, `Telefono`, `Contrasena`, `Fecha_Registro`) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+} else {
+    $sql = "INSERT INTO `cliente` (`Nombre`, `Apellido`, `Fecha_Nacimiento`, `Documento`, `Nacionalidad`, `Sexo`, `Email`, `Telefono`, `Contrasena`, `Fecha_Registro`, `Jerarquia`) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), '2')";
     $stmt = $conexion->prepare($sql);
     $stmt->bind_param("sssisssss", $nombre, $apellido, $nacimiento, $documento, $nacionalidad, $sexo, $email, $telefono, $contrasena);
 
-    if($stmt->execute())
-    {
+    if ($stmt->execute()) {
         header("Location: ../listado_clientes.php");
         exit();
-    }
-    else{
+    } else {
         echo "No se pudo insertar: " . $stmt->error;
     }
     $stmt->close();

@@ -1,5 +1,6 @@
 <?php
-include ('../../conexion.php');
+session_start();
+include("../conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $reserva_id = $_POST['reserva_id'];
@@ -10,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validar que la fecha de fin sea posterior a la de inicio
     if ($fecha_fin < $fecha_inicio) {
         $_SESSION['error'] = "La fecha de fin debe ser posterior a la fecha de inicio";
-        header("Location: ../reservas.php");
+        header("Location: mis_reservas.php");
         exit();
     }
 
@@ -36,26 +37,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($row['conflictos'] > 0) {
         $_SESSION['error'] = "Las habitaciones no están disponibles para las fechas seleccionadas";
-        header("Location: ../reservas.php");
+        header("Location: mis_reservas.php");
         exit();
     }
 
-    // Validar el nuevo valor
-    $sql_valor_original = "SELECT Valor_Total FROM reserva_total WHERE id = ?";
-    $stmt = mysqli_prepare($conexion, $sql_valor_original);
-    mysqli_stmt_bind_param($stmt, "i", $reserva_id);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    $row = mysqli_fetch_assoc($result);
-    $valor_original = $row['Valor_Total'];
-
-    if ($nuevo_valor < $valor_original || $nuevo_valor > ($valor_original * 2)) {
-        $_SESSION['error'] = "El nuevo valor está fuera del rango permitido";
-        header("Location: ../reservas.php");
-        exit();
-    }
-
-    // Actualizar la reserva
+    // Actualizar las fechas y el valor total de la reserva
     $sql_update = "UPDATE reserva_total 
                    SET Fecha_Inicio = ?, 
                        Fecha_Fin = ?,
@@ -72,6 +58,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-header("Location: ../reservas.php");
+header("Location: mis_reservas.php");
 exit();
-?>

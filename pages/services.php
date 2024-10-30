@@ -63,6 +63,89 @@ session_start();
             font-size: 1.1rem;
             color: #2c3e50;
         }
+
+        .service-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-img-wrapper img {
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0) 100%);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .card-overlay {
+            transform: translateY(0);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .card-description {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .btn-light {
+            background: rgba(255,255,255,0.9);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-light:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        .service-wrapper {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .service-title {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            color: #2c3e50;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            transition: color 0.3s ease;
+        }
+
+        .service-wrapper:hover .service-title {
+            color: #0056b3;
+        }
     </style>
 
 </head>
@@ -240,48 +323,78 @@ session_start();
     <div class="container services-container">
         <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
             <div class="col">
-                <div class="card h-100">
-                    <img src="../images/garage/cars.jpg" class="card-img-top" alt="Garage">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Garage</h5>
-                        <a href="#garage" class="btn btn-primary mt-auto">Saber más...</a>
+                <div class="service-wrapper">
+                    <div class="card service-card h-100">
+                        <div class="card-img-wrapper">
+                            <img src="../images/garage/cars.jpg" class="card-img-top" alt="Garage">
+                            <div class="card-overlay">
+                                <h5 class="card-title">Garage</h5>
+                                <p class="card-description">Servicio de estacionamiento seguro 24/7</p>
+                                <a href="#garage" class="btn btn-light">Saber más...</a>
+                            </div>
+                        </div>
                     </div>
+                    <h3 class="service-title">Garage</h3>
                 </div>
             </div>
             <div class="col">
-                <div class="card h-100">
-                    <img src="../images/services/baby-cot-1.jpg" class="card-img-top" alt="Baby">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Baby</h5>
-                        <a href="#baby" class="btn btn-primary mt-auto">Saber más...</a>
+                <div class="service-wrapper">
+                    <div class="card service-card h-100">
+                        <div class="card-img-wrapper">
+                            <img src="../images/services/baby-cot-1.jpg" class="card-img-top" alt="Baby">
+                            <div class="card-overlay">
+                                <h5 class="card-title">Baby</h5>
+                                <p class="card-description">Servicio de cuna para bebés</p>
+                                <a href="#baby" class="btn btn-light">Saber más...</a>
+                            </div>
+                        </div>
                     </div>
+                    <h3 class="service-title">Baby</h3>
                 </div>
             </div>
             <div class="col">
-                <div class="card h-100">
-                    <img src="../images/services/laundry-1.jpg" class="card-img-top" alt="Laundry">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Laundry</h5>
-                        <a href="#laundry" class="btn btn-primary mt-auto">Saber más...</a>
+                <div class="service-wrapper">
+                    <div class="card service-card h-100">
+                        <div class="card-img-wrapper">
+                            <img src="../images/services/laundry-1.jpg" class="card-img-top" alt="Laundry">
+                            <div class="card-overlay">
+                                <h5 class="card-title">Laundry</h5>
+                                <p class="card-description">Servicio de lavandería</p>
+                                <a href="#laundry" class="btn btn-light">Saber más...</a>
+                            </div>
+                        </div>
                     </div>
+                    <h3 class="service-title">Laundry</h3>
                 </div>
             </div>
             <div class="col">
-                <div class="card h-100">
-                    <img src="../images/spa/spa_1.jpg" class="card-img-top" alt="Spa">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Spa</h5>
-                        <a href="#spa" class="btn btn-primary mt-auto">Saber más...</a>
+                <div class="service-wrapper">
+                    <div class="card service-card h-100">
+                        <div class="card-img-wrapper">
+                            <img src="../images/spa/spa_1.jpg" class="card-img-top" alt="Spa">
+                            <div class="card-overlay">
+                                <h5 class="card-title">Spa</h5>
+                                <p class="card-description">Servicio de spa</p>
+                                <a href="#spa" class="btn btn-light">Saber más...</a>
+                            </div>
+                        </div>
                     </div>
+                    <h3 class="service-title">Spa</h3>
                 </div>
             </div>
             <div class="col">
-                <div class="card h-100">
-                    <img src="../images/bar_resto/bar_1.jpg" class="card-img-top" alt="Restaurant">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Restaurant</h5>
-                        <a href="#resto" class="btn btn-primary mt-auto">Saber más...</a>
+                <div class="service-wrapper">
+                    <div class="card service-card h-100">
+                        <div class="card-img-wrapper">
+                            <img src="../images/bar_resto/bar_1.jpg" class="card-img-top" alt="Restaurant">
+                            <div class="card-overlay">
+                                <h5 class="card-title">Restaurant</h5>
+                                <p class="card-description">Restaurante y bar</p>
+                                <a href="#resto" class="btn btn-light">Saber más...</a>
+                            </div>
+                        </div>
                     </div>
+                    <h3 class="service-title">Restaurant</h3>
                 </div>
             </div>
         </div>
@@ -451,6 +564,32 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var navbar = document.querySelector('.navbar');
+            var navbarOffset = navbar.offsetTop;
+
+            function updateNavbar() {
+                if (window.pageYOffset >= navbarOffset) {
+                    if (!navbar.classList.contains('fixed-top')) {
+                        navbar.classList.add('fixed-top', 'scrolled');
+                        document.body.classList.add('navbar-fixed');
+                        document.body.style.paddingTop = navbar.offsetHeight + 'px';
+                    }
+                } else {
+                    navbar.classList.remove('fixed-top', 'scrolled');
+                    document.body.classList.remove('navbar-fixed');
+                    document.body.style.paddingTop = 0;
+                }
+            }
+
+            window.addEventListener('scroll', updateNavbar);
+            window.addEventListener('resize', function () {
+                navbarOffset = navbar.offsetTop;
+                updateNavbar();
+            });
+        });
+    </script>
     </body>
     
     </html>

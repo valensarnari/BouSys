@@ -20,8 +20,8 @@ $current_file = basename($_SERVER['PHP_SELF']);
 // Definir las rutas permitidas según la jerarquía del usuario
 $allowed_routes = [
     0 => ['panel_gerente.php', 'listado_clientes.php', 'listado_empleados.php', 'listado_habitaciones.php', 'reporte.php'], // Gerente
-    1 => ['panel_recepcionista.php', 'habitaciones.php', 'listado_clientes_recepcionista.php', 'reservas.php', 'nueva_reserva.php', 'primera.php', 'segunda.php', 'tercera.php', 'cuarta.php', 'quinta.php', 'reserva_confirmada.php', 'procesar_reserva.php'], // Recepcionista
-    2 => ['perfil.php', 'mis_reservas.php', 'panel_cliente.php', 'uno.php', 'dos.php', 'tres.php', 'cuatro.php', 'cinco.php'] // Cliente
+    1 => ['panel_recepcionista.php', 'habitaciones.php', 'listado_clientes_recepcionista.php', 'reservas.php', 'nueva_reserva.php', 'primera.php', 'segunda.php', 'tercera.php', 'cuarta.php', 'quinta.php', 'sexta.php', 'reserva_confirmada.php', 'procesar_reserva.php'], // Recepcionista
+    2 => ['perfil.php', 'mis_reservas.php', 'panel_cliente.php', 'uno.php', 'dos.php', 'tres.php', 'cuatro.php', 'cinco.php', 'confirmacion_reserva.php', 'realizar_reserva.php'] // Cliente
 ];
 
 // Verificar si el usuario tiene acceso a la página actual

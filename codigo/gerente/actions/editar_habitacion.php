@@ -5,14 +5,25 @@ include("../registro_login/validacion_sesion.php");
 
 $id = $_POST['id'];
 $numero = $_POST['numero'];
-$tipo = $_POST['tipo'];
+if($_POST['tipo'] == 0) {
+    $tipo = "Simple";
+} else if($_POST['tipo'] == 1) {
+    $tipo = "Doble";
+} else {
+    $tipo = "Suite";
+}
 $precio = $_POST['precio'];
-$estado = $_POST['estado'];
-$puntos = $_POST['puntos'];
+if($tipo == "Simple") {
+    $puntos = 50;
+} else if($tipo == "Doble") {
+    $puntos = 200;
+} else {
+    $puntos = 500;
+}
 $adultos = $_POST['adultos'];
 $ninos = $_POST['ninos'];
 
-$update = "UPDATE `habitacion` SET `Numero_Habitacion` = '$numero', `Tipo` = '$tipo', `Precio_Por_Noche` = '$precio', `Estado` = '$estado', `Puntos` = '$puntos', `Cantidad_Adultos_Maximo` = '$adultos', `Cantidad_Ninos_Maximo` = '$ninos' WHERE `habitacion`.`id` = $id";
+$update = "UPDATE `habitacion` SET `Numero_Habitacion` = '$numero', `Tipo` = '$tipo', `Precio_Por_Noche` = '$precio', `Puntos` = '$puntos', `Cantidad_Adultos_Maximo` = '$adultos', `Cantidad_Ninos_Maximo` = '$ninos' WHERE `habitacion`.`id` = $id";
 $query = mysqli_query($conexion, $update);
 
 if(!$query) {

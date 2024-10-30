@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("../codigo/conexion.php");
 ?>
 
 <!doctype html>
@@ -36,15 +37,17 @@ session_start();
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?php
                     if (isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] == 2) {
-                    ?>
+                        ?>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="../codigo/cliente/panel_cliente.php" data-section="nav" data-value="home">Inicio</a>
+                        <a class="nav-link text-dark" href="../codigo/cliente/panel_cliente.php" data-section="nav"
+                            data-value="home">Inicio</a>
                     </li>
                     <?php
                     } else {
-                    ?>
+                        ?>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="../index.php" data-section="nav" data-value="home">Inicio</a>
+                        <a class="nav-link text-dark" href="../index.php" data-section="nav"
+                            data-value="home">Inicio</a>
                     </li>
                     <?php
                     }
@@ -67,7 +70,8 @@ session_start();
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="receptions.php">
-                            <img src="../icons/calendar-check.svg" alt="Reservas" /><span data-section="nav" data-value="receptions">Reservas</span>
+                            <img src="../icons/calendar-check.svg" alt="Reservas" /><span data-section="nav"
+                                data-value="receptions">Reservas</span>
                         </a>
                     </li>
                 </ul>
@@ -75,7 +79,7 @@ session_start();
                 <ul class="navbar-nav ms-auto">
                     <?php
                     if (isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] == 2) {
-                    ?>
+                        ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link text-dark dropdown-toggle" href="#" id="perfilDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false" style="color: #212529 !important;">
@@ -92,7 +96,7 @@ session_start();
                     </li>
                     <?php
                     } else {
-                    ?>
+                        ?>
                     <li class="nav-item">
                         <a class="nav-link text-dark active" aria-current="page"
                             href="../codigo/registro_login/panel_registro_login.php" data-section="nav"
@@ -101,7 +105,7 @@ session_start();
                         </a>
                     </li>
                     <?php
-                }
+                    }
                     ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link text-dark dropdown-toggle" href="#" id="languageDropdown" role="button"
@@ -190,9 +194,245 @@ session_start();
         <div class="col-6">
             <img class="img-fluid" src="../images/sauna.jpg">
         </div>
+        <div class="col-12">
+            <div class="testimonials-header text-center">
+                <h2 class="main-title">Comentarios de Nuestros Clientes</h2>
+                <div class="title-decoration">
+                    <span class="line"></span>
+                    <i class="fas fa-hotel"></i>
+                    <span class="line"></span>
+                </div>
+                <p class="subtitle">Descubre las experiencias de quienes ya nos visitaron</p>
+            </div>
+            <div id="calificacionesCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <?php
+                    $query = "SELECT c.Calificacion, c.Comentario, 
+                             GROUP_CONCAT(DISTINCT h.Tipo SEPARATOR ', ') as Habitaciones,
+                             cl.Nombre, cl.Apellido
+                             FROM calificaciones c
+                             JOIN reserva_total rt ON c.ID_Reserva = rt.id
+                             JOIN cliente cl ON rt.ID_Cliente = cl.id
+                             JOIN reserva_habitacion rh ON rt.id = rh.ID_Reserva
+                             JOIN habitacion h ON rh.ID_Habitacion = h.id
+                             GROUP BY c.id";
 
+                    $resultado = $conexion->query($query);
+                    $first = true;
 
+                    while ($row = $resultado->fetch_assoc()) {
+                        $estrellas = str_repeat('⭐', $row['Calificacion']);
+                        ?>
+                        <div class="carousel-item <?php echo $first ? 'active' : ''; ?>">
+                            <div class="review-card mx-auto">
+                                <div class="quote-icon">
+                                    <i class="fas fa-quote-right"></i>
+                                </div>
+                                <div class="card-body">
+                                    <div class="calificacion mb-3">
+                                        <?php echo $estrellas; ?>
+                                    </div>
+                                    <p class="review-text"><?php echo htmlspecialchars($row['Comentario']); ?></p>
+                                    <div class="reviewer-info">
+                                        <h5 class="reviewer-name">
+                                            <?php echo htmlspecialchars($row['Nombre'] . ' ' . $row['Apellido']); ?></h5>
+                                        <p class="room-info">
+                                            <i class="fas fa-bed"></i>
+                                            <?php echo htmlspecialchars($row['Habitaciones']); ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                        $first = false;
+                    }
+                    $conexion->close();
+                    ?>
+                </div>
+
+                <div class="carousel-controls">
+                    <button class="control-button prev" type="button" data-bs-target="#calificacionesCarousel"
+                        data-bs-slide="prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="control-button next" type="button" data-bs-target="#calificacionesCarousel"
+                        data-bs-slide="next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <style>
+        .testimonials-header {
+            padding: 2rem 0 4rem;
+        }
+
+        .main-title {
+            font-size: 2.8rem;
+            color: #333;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .title-decoration {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .title-decoration .line {
+            height: 2px;
+            width: 60px;
+            background: linear-gradient(to right, transparent, #FFD700, transparent);
+            margin: 0 15px;
+        }
+
+        .title-decoration i {
+            color: #FFD700;
+            font-size: 1.8rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .carousel-section {
+            background-color: #f8f9fa;
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .review-card {
+            background: white;
+            max-width: 800px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            margin: 1rem;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: #FFD700;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .review-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .reviewer-info {
+            border-top: 1px solid #eee;
+            padding-top: 1.5rem;
+            text-align: left;
+        }
+
+        .reviewer-name {
+            color: #333;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .room-info {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .room-info i {
+            margin-right: 8px;
+            color: #FFD700;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .control-button {
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-button:hover {
+            background: #FFD700;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .control-button i {
+            font-size: 1.2rem;
+        }
+
+        .calificacion {
+            font-size: 1.8rem;
+            letter-spacing: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .title-decoration .line {
+                width: 40px;
+            }
+
+            .review-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            .review-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+
     <br><br><br><br><br>
     <!-------------------------------------footer----------------------------------------------------->
     <footer class="bg-dark text-white pt-4">
@@ -222,6 +462,36 @@ session_start();
         </div>
     </footer>
 
+    <!-- Agregar después del nav -->
+    <div id="nav-spacer"></div>
+
+    <!-- Agregar antes del cierre del body -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var navbar = document.querySelector('.navbar');
+            var navbarOffset = navbar.offsetTop;
+
+            function updateNavbar() {
+                if (window.pageYOffset >= navbarOffset) {
+                    if (!navbar.classList.contains('fixed-top')) {
+                        navbar.classList.add('fixed-top', 'scrolled');
+                        document.body.classList.add('navbar-fixed');
+                        document.body.style.paddingTop = navbar.offsetHeight + 'px';
+                    }
+                } else {
+                    navbar.classList.remove('fixed-top', 'scrolled');
+                    document.body.classList.remove('navbar-fixed');
+                    document.body.style.paddingTop = 0;
+                }
+            }
+
+            window.addEventListener('scroll', updateNavbar);
+            window.addEventListener('resize', function () {
+                navbarOffset = navbar.offsetTop;
+                updateNavbar();
+            });
+        });
+    </script>
 
     <!---bootstrap js --->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
