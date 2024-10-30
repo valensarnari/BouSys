@@ -11,7 +11,8 @@ $reserva_fecha_fin = $_POST["reserva_fecha_fin"];
 
 $sql = "SELECT DISTINCT h.id, h.Numero_Habitacion, h.Cantidad_Adultos_Maximo, h.Cantidad_Ninos_Maximo
         FROM habitacion h
-        WHERE NOT EXISTS (
+        WHERE h.Activo != 0
+        AND NOT EXISTS (
             SELECT 1
             FROM reserva_total rt
             JOIN reserva_habitacion rh ON rt.id = rh.ID_Reserva
