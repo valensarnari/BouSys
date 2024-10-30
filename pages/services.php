@@ -564,6 +564,35 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+<<<<<<< HEAD
+=======
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var navbar = document.querySelector('.navbar');
+            var navbarOffset = navbar.offsetTop;
+
+            function updateNavbar() {
+                if (window.pageYOffset >= navbarOffset) {
+                    if (!navbar.classList.contains('fixed-top')) {
+                        navbar.classList.add('fixed-top', 'scrolled');
+                        document.body.classList.add('navbar-fixed');
+                        document.body.style.paddingTop = navbar.offsetHeight + 'px';
+                    }
+                } else {
+                    navbar.classList.remove('fixed-top', 'scrolled');
+                    document.body.classList.remove('navbar-fixed');
+                    document.body.style.paddingTop = 0;
+                }
+            }
+
+            window.addEventListener('scroll', updateNavbar);
+            window.addEventListener('resize', function () {
+                navbarOffset = navbar.offsetTop;
+                updateNavbar();
+            });
+        });
+    </script>
+>>>>>>> prueba
     </body>
     
     </html>

@@ -267,6 +267,11 @@ session_start();
       </div>
     </div>
   </nav>
+<<<<<<< HEAD
+=======
+  <!-- Agregar un div espaciador después del nav -->
+  <div id="nav-spacer"></div>
+>>>>>>> prueba
   <!-----------------------------V I D E O-------------------------------------------->
   <div class="row ratio ratio-16x9 video-first">
     <video src="../video/video-room-view.mp4" autoplay muted loop></video>
@@ -506,6 +511,37 @@ session_start();
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+<<<<<<< HEAD
+=======
+
+  <!-- Antes de cerrar el body, agregar el script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var navbar = document.querySelector('.navbar');
+      var navbarOffset = navbar.offsetTop;
+
+      function updateNavbar() {
+        if (window.pageYOffset >= navbarOffset) {
+          if (!navbar.classList.contains('fixed-top')) {
+            navbar.classList.add('fixed-top', 'scrolled');
+            document.body.classList.add('navbar-fixed');
+            document.body.style.paddingTop = navbar.offsetHeight + 'px';
+          }
+        } else {
+          navbar.classList.remove('fixed-top', 'scrolled');
+          document.body.classList.remove('navbar-fixed');
+          document.body.style.paddingTop = 0;
+        }
+      }
+
+      window.addEventListener('scroll', updateNavbar);
+      window.addEventListener('resize', function () {
+        navbarOffset = navbar.offsetTop;
+        updateNavbar();
+      });
+    });
+  </script>
+>>>>>>> prueba
 </body>
 
 </html>
