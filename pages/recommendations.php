@@ -462,6 +462,36 @@ include("../codigo/conexion.php");
         </div>
     </footer>
 
+    <!-- Agregar después del nav -->
+    <div id="nav-spacer"></div>
+
+    <!-- Agregar antes del cierre del body -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var navbar = document.querySelector('.navbar');
+            var navbarOffset = navbar.offsetTop;
+
+            function updateNavbar() {
+                if (window.pageYOffset >= navbarOffset) {
+                    if (!navbar.classList.contains('fixed-top')) {
+                        navbar.classList.add('fixed-top', 'scrolled');
+                        document.body.classList.add('navbar-fixed');
+                        document.body.style.paddingTop = navbar.offsetHeight + 'px';
+                    }
+                } else {
+                    navbar.classList.remove('fixed-top', 'scrolled');
+                    document.body.classList.remove('navbar-fixed');
+                    document.body.style.paddingTop = 0;
+                }
+            }
+
+            window.addEventListener('scroll', updateNavbar);
+            window.addEventListener('resize', function () {
+                navbarOffset = navbar.offsetTop;
+                updateNavbar();
+            });
+        });
+    </script>
 
     <!---bootstrap js --->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
