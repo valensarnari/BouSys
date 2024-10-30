@@ -213,10 +213,6 @@ $query_calificaciones = mysqli_query($conexion, $sql_calificaciones);
         body {
             background-color: #121212;
             color: #e0e0e0;
-<<<<<<< HEAD
-            font-family: 'Arial', sans-serif;
-=======
->>>>>>> prueba
         }
 
         .container {
@@ -296,8 +292,6 @@ $query_calificaciones = mysqli_query($conexion, $sql_calificaciones);
         .dropdown-item:hover {
             background-color: #3a3a3a;
         }
-<<<<<<< HEAD
-=======
 
         /* Estilos para el sidebar */
         .sidebar {
@@ -410,7 +404,6 @@ $query_calificaciones = mysqli_query($conexion, $sql_calificaciones);
             margin: 0 auto;
             padding: 0 15px;
         }
->>>>>>> prueba
     </style>
 </head>
 
@@ -468,68 +461,8 @@ $query_calificaciones = mysqli_query($conexion, $sql_calificaciones);
                         </a>
                     </li>
                 </ul>
-<<<<<<< HEAD
-                <hr>
-                <div class="dropdown pb-4">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-1">
-                            <?php echo $_SESSION['usuario_nombre']; ?>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php">Cerrar sesión</a></li>
-                    </ul>
-                </div>
-=======
->>>>>>> prueba
-            </div>
-
-        </div>
-<<<<<<< HEAD
-        <div class="container my-5">
-            <h2 class="text-center mb-4">Reporte de Ocupación</h2>
-            <div class="row my-4 rounded" style="background-color: #2a2a2a;">
-                <div class="col p-4">
-                    <form method="GET" action="reporte.php" class="d-flex align-items-end">
-                        <div class="me-3">
-                            <label for="mes" class="form-label">Seleccionar mes:</label>
-                            <input class="form-control" type="month" name="mes" id="mes"
-                                value="<?php echo isset($_GET['mes']) ? $_GET['mes'] : date('Y-m'); ?>">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Buscar</button>
-                    </form>
-                </div>
-            </div>
-            <div class="row my-4">
-                <div class="col-12 chart">
-                    <h3>Ocupación de Habitaciones</h3>
-                    <div id="ocupacion"></div>
-                </div>
-            </div>
-            <div class="row my-4">
-                <div class="col-md-6 chart">
-                    <h3>Tipos de Habitaciones Reservadas</h3>
-                    <div id="tipos_habitaciones" style="height: 300px;"></div>
-                </div>
-                <div class="col-md-6 chart">
-                    <h3>Ingresos por Día</h3>
-                    <div id="ingresos" style="height: 300px;"></div>
-                </div>
-            </div>
-            <div class="row my-4">
-                <div class="col-12 chart">
-                    <h3>Distribución de Calificaciones</h3>
-                    <div id="calificaciones" style="height: 300px;"></div>
-                </div>
             </div>
         </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-=======
 
         <div class="main-content">
             <div class="container">
@@ -625,7 +558,6 @@ $query_calificaciones = mysqli_query($conexion, $sql_calificaciones);
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
->>>>>>> prueba
 </body>
 
 </html>

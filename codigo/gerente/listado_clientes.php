@@ -173,8 +173,6 @@ include("../registro_login/validacion_sesion.php");
             background-color: #0056b3;
             border-color: #0056b3;
         }
-<<<<<<< HEAD
-=======
 
 
         /* Ajustes para el texto en el sidebar */
@@ -311,7 +309,6 @@ include("../registro_login/validacion_sesion.php");
             margin: 0 auto;
             padding: 0 15px;
         }
->>>>>>> prueba
     </style>
 </head>
 
@@ -376,88 +373,6 @@ include("../registro_login/validacion_sesion.php");
             <div class="container">
                 <h3 class="mb-3">Lista de clientes</h3>
                 <hr>
-<<<<<<< HEAD
-                <div class="dropdown pb-4">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-1">
-                            <?php echo $_SESSION['usuario_nombre']; ?>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php">Cerrar sesión</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="container my-5">
-            <div class="row my-3">
-                <div class="col">
-                    <!-- Activa modal de agregar -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregar">
-                        Agregar cliente <i class="fa-solid fa-user-plus"></i>
-                    </button>
-                </div>
-                <div class="col">
-                    <input type="text" id="buscador" class="form-control" placeholder="Buscar cliente por apellido...">
-                </div>
-            </div>
-            <div class="row">
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead class="table-dark">
-                            <tr>
-                                <td scope="col">Nombre</td>
-                                <td scope="col">Apellido</td>
-                                <td scope="col">Email</td>
-                                <td scope="col">Nacionalidad</td>
-                                <td scope="col">Sexo</td>
-                                <td scope="col">Opciones</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            // Parámetro de paginación
-                            $por_pagina = 10; // Número de registros por página
-                            $pagina_actual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
-                            $offset = ($pagina_actual - 1) * $por_pagina;
-
-                            // Consulta SQL con LIMIT y OFFSET
-                            $select = "SELECT * FROM cliente WHERE Activo = 1 ORDER BY id DESC LIMIT $por_pagina OFFSET $offset;";
-                            $query = mysqli_query($conexion, $select);
-
-                            // Mostrar resultados en la tabla
-                            while ($resultado = mysqli_fetch_array($query)) {
-                                ?>
-                                <tr>
-                                    <td scope="row">
-                                        <?php echo $resultado['1'] ?>
-                                    </td>
-                                    <td scope="row">
-                                        <?php echo $resultado['2'] ?>
-                                    </td>
-                                    <td scope="row">
-                                        <?php echo $resultado['7'] ?>
-                                    </td>
-                                    <td scope="row">
-                                        <?php echo $resultado['5'] ?>
-                                    </td>
-                                    <td scope="row">
-                                        <?php echo $resultado['6'] ?>
-                                    </td>
-                                    <td scope="row">
-                                        <!-- Activa modal de ver detalle -->
-                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#detalle<?php echo $resultado['0'] ?>">
-                                            <i class="fa-solid fa-address-card"></i>
-                                        </button>
-                                        <!-- Activa modal de editar -->
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                            data-bs-target="#editar<?php echo $resultado['0'] ?>">
-                                            <i class="fa-solid fa-pen"></i>
-                                        </button>
-                                    </td>
-=======
                 <div class="row my-3">
                     <div class="col">
                         <!-- Activa modal de agregar -->
@@ -481,24 +396,14 @@ include("../registro_login/validacion_sesion.php");
                                     <td scope="col">Nacionalidad</td>
                                     <td scope="col">Sexo</td>
                                     <td scope="col">Opciones</td>
->>>>>>> prueba
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-<<<<<<< HEAD
-                                include("modals/detalle_cliente.php");
-                                include("modals/editar_cliente.php");
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-=======
                                 // Parámetro de paginación
                                 $por_pagina = 10; // Número de registros por página
                                 $pagina_actual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
                                 $offset = ($pagina_actual - 1) * $por_pagina;
->>>>>>> prueba
 
                                 // Consulta SQL con LIMIT y OFFSET
                                 $select = "SELECT * FROM cliente WHERE Activo = 1 ORDER BY id DESC LIMIT $por_pagina OFFSET $offset;";

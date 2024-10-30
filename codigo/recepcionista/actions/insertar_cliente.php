@@ -1,10 +1,6 @@
 <?php
 
-<<<<<<< HEAD
-include ('../../conexion.php');
-=======
 include('../../conexion.php');
->>>>>>> prueba
 
 $nombre = $_POST['nombre'];
 $apellido = $_POST['apellido'];
@@ -16,21 +12,11 @@ $email = $_POST['email'];
 $telefono = $_POST['telefono'];
 $contrasena = password_hash($_POST['contrasena'], PASSWORD_DEFAULT);
 
-<<<<<<< HEAD
-$insert = "INSERT INTO `cliente` (`Nombre`, `Apellido`, `Fecha_Nacimiento`, `Documento`, `Nacionalidad`, `Sexo`, `Email`, `Telefono`, `Contrasena`, `Fecha_Registro`) VALUES ('$nombre', '$apellido', '$nacimiento', '$documento', '$nacionalidad', '$sexo', '$email', '$telefono', '$contrasena', NOW());";
-$query = mysqli_query($conexion, $insert);
-
-if(!$query) {
-    echo ("No se pudo insertar.");
-}
-else {
-=======
 $insert = "INSERT INTO `cliente` (`Nombre`, `Apellido`, `Fecha_Nacimiento`, `Documento`, `Nacionalidad`, `Sexo`, `Email`, `Telefono`, `Contrasena`, `Fecha_Registro`, `Jerarquia`) VALUES ('$nombre', '$apellido', '$nacimiento', '$documento', '$nacionalidad', '$sexo', '$email', '$telefono', '$contrasena', NOW(), '2');";
 $query = mysqli_query($conexion, $insert);
 
 if (!$query) {
     echo ("No se pudo insertar.");
 } else {
->>>>>>> prueba
     header("Location: ../listado_clientes_recepcionista.php");
 }

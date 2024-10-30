@@ -112,8 +112,6 @@ include("../registro_login/validacion_sesion.php");
             font-size: 1em;
             color: #e0e0e0;
         }
-<<<<<<< HEAD
-=======
 
         /* Estilos para el sidebar */
         .sidebar {
@@ -226,80 +224,11 @@ include("../registro_login/validacion_sesion.php");
             margin: 0 auto;
             padding: 0 15px;
         }
->>>>>>> prueba
     </style>
 </head>
 
 <body>
     <div class="d-flex">
-<<<<<<< HEAD
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline">BouSys</span>
-                </a>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item">
-                        <a href="../../" class="nav-link align-middle px-0">
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-house"></i> Volver a inicio
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="listado_empleados.php" class="nav-link align-middle px-0">
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-user"></i> Gestión de empleados
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="listado_clientes.php" class="nav-link align-middle px-0">
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-address-book"></i> Gestión de clientes
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="listado_habitaciones.php" class="nav-link align-middle px-0">
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-hotel"></i> Gestión de habitaciones
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="reporte.php" class="nav-link align-middle px-0">
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-chart-simple"></i> Reporte de ocupación
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-                <hr>
-                <div class="dropdown pb-4">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-1">
-                            <?php echo $_SESSION['usuario_nombre']; ?>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php">Cerrar sesión</a></li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-        <div class="container my-5">
-            <div class="reservation-details">
-                <h2 class="text-center mb-4">Bienvenido
-                    <?php echo $_SESSION['usuario_nombre']; ?>!
-                </h2>
-                <p class="text-center">Seleccioná una opción del menú de la izquierda para comenzar.</p>
-            </div>
-        </div>
-    </div>
-=======
         <div class="sidebar">
             <div class="sidebar-header">
                 <h3>BouSys</h3>
@@ -365,7 +294,6 @@ include("../registro_login/validacion_sesion.php");
                 </div>
             </div>
         </div>
->>>>>>> prueba
 </body>
 
 <!---bootstrap js --->

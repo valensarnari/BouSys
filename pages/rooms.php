@@ -267,11 +267,8 @@ session_start();
       </div>
     </div>
   </nav>
-<<<<<<< HEAD
-=======
   <!-- Agregar un div espaciador después del nav -->
   <div id="nav-spacer"></div>
->>>>>>> prueba
   <!-----------------------------V I D E O-------------------------------------------->
   <div class="row ratio ratio-16x9 video-first">
     <video src="../video/video-room-view.mp4" autoplay muted loop></video>
@@ -511,8 +508,6 @@ session_start();
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
-<<<<<<< HEAD
-=======
 
   <!-- Antes de cerrar el body, agregar el script -->
   <script>
@@ -541,7 +536,6 @@ session_start();
       });
     });
   </script>
->>>>>>> prueba
 </body>
 
 </html>

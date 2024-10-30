@@ -285,8 +285,6 @@ session_start();
         </div>
     </footer>
 
-<<<<<<< HEAD
-=======
     <!-- Agregar este script antes del cierre del body -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -314,7 +312,6 @@ session_start();
             });
         });
     </script>
->>>>>>> prueba
 </body>
 
 </html>

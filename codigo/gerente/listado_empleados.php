@@ -153,8 +153,6 @@ include("../registro_login/validacion_sesion.php");
             background-color: #0056b3;
             border-color: #0056b3;
         }
-<<<<<<< HEAD
-=======
 
         /* Ajustes para el texto en el sidebar */
         .nav-link {
@@ -290,7 +288,6 @@ include("../registro_login/validacion_sesion.php");
             margin: 0 auto;
             padding: 0 15px;
         }
->>>>>>> prueba
     </style>
 </head>
 
@@ -355,51 +352,6 @@ include("../registro_login/validacion_sesion.php");
             <div class="container">
                 <h3 class="mb-3">Lista de empleados</h3>
                 <hr>
-<<<<<<< HEAD
-                <div class="dropdown pb-4">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-1">
-                            <?php echo $_SESSION['usuario_nombre']; ?>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php">Cerrar sesión</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="container my-5">
-            <!-- Activa modal de agregar -->
-            <button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#agregar">
-                Agregar empleado <i class="fa-solid fa-user-plus"></i>
-            </button>
-            <div class="row">
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead class="table-dark">
-                            <tr>
-                                <td scope="col">Nombre</td>
-                                <td scope="col">Mail</td>
-                                <td scope="col">Rol</td>
-                                <td scope="col">Opciones</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            // Parámetro de paginación
-                            $por_pagina = 10; // Número de registros por página
-                            $pagina_actual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
-                            $offset = ($pagina_actual - 1) * $por_pagina;
-
-                            // Consulta SQL con LIMIT y OFFSET
-                            $select = "SELECT id, Nombre, Email, Contrasena, Jerarquia FROM usuario_empleados WHERE Activo = 1 ORDER BY id DESC LIMIT $por_pagina OFFSET $offset;";
-                            $query = mysqli_query($conexion, $select);
-
-                            // Mostrar resultados en la tabla
-                            while ($resultado = mysqli_fetch_array($query)) {
-                                ?>
-=======
                 <!-- Activa modal de agregar -->
                 <button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#agregar">
                     Agregar empleado <i class="fa-solid fa-user-plus"></i>
@@ -408,7 +360,6 @@ include("../registro_login/validacion_sesion.php");
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead class="table-dark">
->>>>>>> prueba
                                 <tr>
                                     <td scope="col">Nombre</td>
                                     <td scope="col">Mail</td>
