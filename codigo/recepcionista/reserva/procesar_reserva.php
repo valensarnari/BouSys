@@ -32,7 +32,36 @@ try {
 
     $sql_reserva_habitacion = "INSERT INTO reserva_habitacion (ID_Reserva, ID_Habitacion, Cantidad_Adultos, Cantidad_Ninos, Cuna) VALUES (?, ?, ?, ?, ?)";
     $stmt_reserva_habitacion = $conexion->prepare($sql_reserva_habitacion);
+    // Obtener puntos del cliente
+    $sql_cliente = "SELECT puntos FROM cliente WHERE id = ?";
+    $stmt_cliente = $conexion->prepare($sql_cliente);
+    $stmt_cliente->bind_param("i", $reserva_id);
+    $stmt_cliente->execute();
+    $resultado_cliente = $stmt_cliente->get_result();
+    $cliente = $resultado_cliente->fetch_assoc();
+    $puntos_cliente = $cliente['puntos'];
 
+    // Obtener puntos de la habitación
+    $sql_habitacion = "SELECT h.Puntos 
+                      FROM reserva_habitacion rh
+                      JOIN habitacion h ON rh.ID_Habitacion = h.id 
+                      WHERE rh.ID_Reserva = ?";
+    $stmt_habitacion = $conexion->prepare($sql_habitacion);
+    $stmt_habitacion->bind_param("i", $reserva_id);
+    $stmt_habitacion->execute();
+    $resultado_habitacion = $stmt_habitacion->get_result();
+    $habitacion = $resultado_habitacion->fetch_assoc();
+    $puntos_habitacion = $habitacion['Puntos'];
+
+    // Actualizar puntos del cliente
+    $sql_actualizar_puntos = "UPDATE cliente SET Puntos = ? WHERE id = ?";
+    $nuevos_puntos = $puntos_cliente + $puntos_habitacion;
+    $stmt_actualizar = $conexion->prepare($sql_actualizar_puntos);
+    $stmt_actualizar->bind_param("ii", $nuevos_puntos, $reserva_id);
+    $stmt_actualizar->execute();
+
+
+    //-----------------ACTUUALIZA ESTADO HABITACIONES-----------------
     foreach ($habitaciones_seleccionadas as $habitacion_id) {
         $cantidad_adultos = isset($habitaciones_adultos[$habitacion_id]) ? intval($habitaciones_adultos[$habitacion_id]) : 1;
         $cantidad_ninos = isset($habitaciones_ninos[$habitacion_id]) ? intval($habitaciones_ninos[$habitacion_id]) : 0;
