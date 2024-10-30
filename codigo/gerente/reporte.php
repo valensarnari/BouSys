@@ -213,7 +213,6 @@ $query_calificaciones = mysqli_query($conexion, $sql_calificaciones);
         body {
             background-color: #121212;
             color: #e0e0e0;
-            font-family: 'Arial', sans-serif;
         }
 
         .container {
@@ -293,110 +292,272 @@ $query_calificaciones = mysqli_query($conexion, $sql_calificaciones);
         .dropdown-item:hover {
             background-color: #3a3a3a;
         }
+
+        /* Estilos para el sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 20px;
+            z-index: 1000;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-header {
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .sidebar-header h3 {
+            color: #0dcaf0;
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .nav-pills .nav-link {
+            color: #e0e0e0 !important;
+            padding: 12px 20px;
+            margin: 8px 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .nav-pills .nav-link:hover {
+            background-color: rgba(13, 202, 240, 0.1);
+            color: #0dcaf0 !important;
+            transform: translateX(5px);
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: #0dcaf0;
+            color: #000 !important;
+        }
+
+        .nav-pills .nav-link i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Perfil de usuario en el sidebar */
+        .user-profile {
+            padding: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
+        }
+
+        .user-profile .dropdown-toggle {
+            background-color: rgba(13, 202, 240, 0.1);
+            padding: 10px 15px;
+            border-radius: 8px;
+            width: 100%;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .user-profile .dropdown-toggle:after {
+            margin-left: auto;
+        }
+
+        .user-profile .dropdown-menu {
+            background-color: #2a2a2a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .user-profile .dropdown-item {
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .user-profile .dropdown-item i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Ajuste del contenido principal */
+        .main-content {
+            margin-left: 260px;
+            /* Ancho del sidebar */
+            padding: 30px;
+            width: calc(100% - 260px);
+            /* Ancho total menos el sidebar */
+        }
+
+        .container {
+            max-width: 1400px;
+            /* O el ancho máximo que prefieras */
+            margin: 0 auto;
+            padding: 0 15px;
+        }
     </style>
 </head>
 
 <body>
     <div class="d-flex">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline">BouSys</span>
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h3>BouSys</h3>
+            </div>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="../../" class="nav-link">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="listado_empleados.php" class="nav-link">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Gestión de Empleados</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="listado_clientes.php" class="nav-link">
+                        <i class="fa-solid fa-address-book"></i>
+                        <span>Gestión de Clientes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="listado_habitaciones.php" class="nav-link">
+                        <i class="fa-solid fa-hotel"></i>
+                        <span>Gestión de Habitaciones</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reporte.php" class="nav-link active">
+                        <i class="fa-solid fa-chart-simple"></i>
+                        <span>Reporte de Ocupación</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="user-profile">
+                <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-user-circle fa-2x me-2"></i>
+                    <span>
+                        <?php echo $_SESSION['usuario_nombre']; ?>
+                    </span>
                 </a>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item">
-                        <a href="../../" class="nav-link align-middle px-0">
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-house"></i> Volver a inicio
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="listado_empleados.php" class="nav-link align-middle px-0">
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-user"></i> Gestión de empleados
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="listado_clientes.php" class="nav-link align-middle px-0">
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-address-book"></i> Gestión de clientes
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="listado_habitaciones.php" class="nav-link align-middle px-0">
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-hotel"></i> Gestión de habitaciones
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="reporte.php" class="nav-link align-middle px-0">
-                            <span class="ms-1 d-none d-sm-inline">
-                                <i class="fa-solid fa-chart-simple"></i> Reporte de ocupación
-                            </span>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                    <li>
+                        <a class="dropdown-item" href="../registro_login/cerrar_sesion.php">
+                            <i class="fa-solid fa-sign-out-alt"></i>
+                            <span>Cerrar sesión</span>
                         </a>
                     </li>
                 </ul>
-                <hr>
-                <div class="dropdown pb-4">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-1">
-                            <?php echo $_SESSION['usuario_nombre']; ?>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php">Cerrar sesión</a></li>
-                    </ul>
-                </div>
             </div>
-
         </div>
-        <div class="container my-5">
-            <h2 class="text-center mb-4">Reporte de Ocupación</h2>
-            <div class="row my-4 rounded" style="background-color: #2a2a2a;">
-                <div class="col p-4">
-                    <form method="GET" action="reporte.php" class="d-flex align-items-end">
-                        <div class="me-3">
-                            <label for="mes" class="form-label">Seleccionar mes:</label>
-                            <input class="form-control" type="month" name="mes" id="mes"
-                                value="<?php echo isset($_GET['mes']) ? $_GET['mes'] : date('Y-m'); ?>">
+
+        <div class="main-content">
+            <div class="container">
+                <!-- Título con decoración -->
+                <div class="text-center mb-4">
+                    <h2 class="h3 fw-bold text-light mb-3">Reporte de Ocupación</h2>
+                    <div class="border-bottom border-primary w-25 mx-auto"></div>
+                </div>
+
+                <!-- Selector de mes mejorado -->
+                <div class="row mb-4">
+                    <div class="col-md-8 mx-auto">
+                        <div class="card bg-dark border-primary">
+                            <div class="card-body p-3">
+                                <form method="GET" action="reporte.php" class="d-flex align-items-end gap-3">
+                                    <div class="flex-grow-1">
+                                        <label for="mes" class="form-label text-light small fw-bold">
+                                            <i class="fas fa-calendar-alt me-2"></i>Seleccionar Período
+                                        </label>
+                                        <input class="form-control bg-dark text-light border-primary" 
+                                               type="month" name="mes" id="mes"
+                                               value="<?php echo isset($_GET['mes']) ? $_GET['mes'] : date('Y-m'); ?>">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-search me-2"></i>Buscar
+                                    </button>
+                                </form>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Buscar</button>
-                    </form>
+                    </div>
                 </div>
-            </div>
-            <div class="row my-4">
-                <div class="col-12 chart">
-                    <h3>Ocupación de Habitaciones</h3>
-                    <div id="ocupacion"></div>
-                </div>
-            </div>
-            <div class="row my-4">
-                <div class="col-md-6 chart">
-                    <h3>Tipos de Habitaciones Reservadas</h3>
-                    <div id="tipos_habitaciones" style="height: 300px;"></div>
-                </div>
-                <div class="col-md-6 chart">
-                    <h3>Ingresos por Día</h3>
-                    <div id="ingresos" style="height: 300px;"></div>
-                </div>
-            </div>
-            <div class="row my-4">
-                <div class="col-12 chart">
-                    <h3>Distribución de Calificaciones</h3>
-                    <div id="calificaciones" style="height: 300px;"></div>
+
+                <!-- Gráficos con diseño mejorado -->
+                <div class="row g-4">
+                    <!-- Gráfico de Ocupación -->
+                    <div class="col-12">
+                        <div class="card bg-dark border-primary h-100">
+                            <div class="card-header bg-primary bg-opacity-10 border-bottom border-primary">
+                                <h3 class="card-title h6 mb-0 text-light">
+                                    <i class="fas fa-bed me-2"></i>Ocupación de Habitaciones
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="ocupacion" class="chart-container"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gráficos de Tipos de Habitaciones e Ingresos -->
+                    <div class="col-md-6">
+                        <div class="card bg-dark border-primary h-100">
+                            <div class="card-header bg-primary bg-opacity-10 border-bottom border-primary">
+                                <h3 class="card-title h6 mb-0 text-light">
+                                    <i class="fas fa-door-open me-2"></i>Tipos de Habitaciones
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="tipos_habitaciones" style="height: 300px;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card bg-dark border-primary h-100">
+                            <div class="card-header bg-primary bg-opacity-10 border-bottom border-primary">
+                                <h3 class="card-title h6 mb-0 text-light">
+                                    <i class="fas fa-chart-line me-2"></i>Ingresos por Día
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="ingresos" style="height: 300px;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gráfico de Calificaciones -->
+                    <div class="col-12">
+                        <div class="card bg-dark border-primary h-100">
+                            <div class="card-header bg-primary bg-opacity-10 border-bottom border-primary">
+                                <h3 class="card-title h6 mb-0 text-light">
+                                    <i class="fas fa-star me-2"></i>Distribución de Calificaciones
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="calificaciones" style="height: 300px;"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>
