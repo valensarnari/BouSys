@@ -332,7 +332,7 @@ session_start();
                                 <form action="registro.php" method="POST">
                                     <div class="input-group">
                                         <i class="fas fa-user"></i>
-                                        <input type="text" id="nombre" name="nombre" required
+                                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required
                                             pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]{3,25}" oninvalid="(() => {
                                                 const modalDiv = document.createElement('div');
                                                 modalDiv.innerHTML = `
