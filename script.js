@@ -14,8 +14,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* Función para cambiar el idioma y guardar la selección en localStorage */
   const changeLanguage = async (language) => {
-    const requestJson = await fetch(`../../../../../languages/${language}.json`);
+    const requestJson = await fetch(`../../../../../bousys/languages/${language}.json`);
     const texts = await requestJson.json();
+    document.querySelectorAll("[data-status]").forEach((element) => {
+      const statusValue = element.getAttribute("data-status");
+      element.innerHTML = texts.status[statusValue] || statusValue;
+    });
+    document.querySelectorAll("[data-action]").forEach((button) => {
+      const actionKey = button.getAttribute("data-action");
+      button.querySelector("span").innerHTML = texts.actions[actionKey] || actionKey;
+    });
     const textsToChange = document.querySelectorAll("[data-section]");
     textsToChange.forEach((textToChange) => {
       const section = textToChange.dataset.section;

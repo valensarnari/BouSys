@@ -247,7 +247,7 @@ session_start();
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilDropdown">
                     <li><a class="dropdown-item" href="../codigo/cliente/perfil.php" data-section="nav" data-value="perfil">Mi Perfil</a></li>
                     <li><a class="dropdown-item" href="../codigo/cliente/mis_reservas.php" data-section="nav" data-value="reservas">Mis Reservas</a></li>
-                    <li><a class="dropdown-item" href="../codigo/registro_login/cerrar_sesion.php" data-section="nav" data-value="cerrar-sesion">Cerrar sesión</a></li>
+                    <li><a class="dropdown-item" href="../codigo/registro_login/cerrar_sesion.php" data-section="nav" data-value="close">Cerrar sesión</a></li>
                   </ul>
                 </li>
               <?php
@@ -329,8 +329,8 @@ session_start();
                             <img src="../images/garage/cars.jpg" class="card-img-top" alt="Garage">
                             <div class="card-overlay">
                                 <h5 class="card-title">Garage</h5>
-                                <p class="card-description">Servicio de estacionamiento seguro 24/7</p>
-                                <a href="#garage" class="btn btn-light">Saber más...</a>
+                                <p class="card-description"><span  data-section="services" data-value="garage">Servicio de estacionamiento seguro 24/7</soan></p>
+                                <a href="#garage" class="btn btn-light" data-section="services" data-value="mas">Saber más...</a>
                             </div>
                         </div>
                     </div>
@@ -344,8 +344,8 @@ session_start();
                             <img src="../images/services/baby-cot-1.jpg" class="card-img-top" alt="Baby">
                             <div class="card-overlay">
                                 <h5 class="card-title">Baby</h5>
-                                <p class="card-description">Servicio de cuna para bebés</p>
-                                <a href="#baby" class="btn btn-light">Saber más...</a>
+                                <p class="card-description" data-section="services" data-value="cuna">Servicio de cuna para bebés</p>
+                                <a href="#baby" class="btn btn-light" data-section="services" data-value="mas">Saber más...</a>
                             </div>
                         </div>
                     </div>
@@ -359,8 +359,8 @@ session_start();
                             <img src="../images/services/laundry-1.jpg" class="card-img-top" alt="Laundry">
                             <div class="card-overlay">
                                 <h5 class="card-title">Laundry</h5>
-                                <p class="card-description">Servicio de lavandería</p>
-                                <a href="#laundry" class="btn btn-light">Saber más...</a>
+                                <p class="card-description" data-section="services" data-value="lavanderia">Servicio de lavandería</p>
+                                <a href="#laundry" class="btn btn-light" data-section="services" data-value="mas">Saber más...</a>
                             </div>
                         </div>
                     </div>
@@ -374,8 +374,8 @@ session_start();
                             <img src="../images/spa/spa_1.jpg" class="card-img-top" alt="Spa">
                             <div class="card-overlay">
                                 <h5 class="card-title">Spa</h5>
-                                <p class="card-description">Servicio de spa</p>
-                                <a href="#spa" class="btn btn-light">Saber más...</a>
+                                <p class="card-description" data-section="services" data-value="spa">Servicio de spa</p>
+                                <a href="#spa" class="btn btn-light" data-section="services" data-value="mas">Saber más...</a>
                             </div>
                         </div>
                     </div>
@@ -389,8 +389,8 @@ session_start();
                             <img src="../images/bar_resto/bar_1.jpg" class="card-img-top" alt="Restaurant">
                             <div class="card-overlay">
                                 <h5 class="card-title">Restaurant</h5>
-                                <p class="card-description">Restaurante y bar</p>
-                                <a href="#resto" class="btn btn-light">Saber más...</a>
+                                <p class="card-description" data-section="services" data-value="resbar">Restaurante y bar</p>
+                                <a href="#resto" class="btn btn-light" data-section="services" data-value="mas">Saber más...</a>
                             </div>
                         </div>
                     </div>
@@ -417,7 +417,7 @@ session_start();
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <p class="card-text resto-description description">
+                        <p class="card-text resto-description description" data-section="services" data-value="texto1">
                             El Continental Hotel se enorgullece de albergar un restaurante y bar de renombre, conocido
                             por ser el escenario de eventos importantes y celebraciones exclusivas. <br> 
                             Su gastronomía excepcional ha sido reconocida con estrellas Michelin, destacándose 
@@ -442,7 +442,7 @@ session_start();
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <p class="card-text resto-description description">
+                        <p class="card-text resto-description description" data-section="services" data-value="texto2">
                             El Continental Hotel ofrece un servicio de garaje y guardería de coches de primera clase,
                             garantizando la máxima seguridad y trasnquilidad para sus huéspedes, gracias a nuestra 
                             seguridad privada las 24 horas, nuestros clientes pueden estar tranquilos sabiendo 
@@ -467,7 +467,7 @@ session_start();
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <p class="card-text resto-description description">
+                        <p class="card-text resto-description description" data-section="services" data-value="texto3">
                             Sumérgete en un oasis de tranquilidad en el spa del Continental Hotel. 
                             Disfruta de tratamientos rejuvenecedores, masajes terapéuticos y una 
                             variedad de servicios diseñados para revitalizar tu cuerpo y mente. 
@@ -494,7 +494,7 @@ session_start();
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <p class="card-text resto-description description">
+                        <p class="card-text resto-description description" data-section="services" data-value="texto4">
                             En el Continental Hotel, nos preocupamos por el bienestar de toda tu familia. <br>
                             Por eso, ofrecemos un servicio gratuito de cuna para nuestros huéspedes con bebés. 
                             Disfruta de una estancia en donde no tendrás que dormir con tu bebé en la misma cama, 
@@ -518,7 +518,7 @@ session_start();
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <p class="card-text resto-description description">
+                        <p class="card-text resto-description description" data-section="services" data-value="texto5">
                             Mantén tu ropa impecable con nuestro servicio de lavandería del Continental Hotel. <br> 
                             Ofrecemos un servicio eficiente y de alta calidad para todos nuestros huéspedes.
                             Aunque este servicio tiene un costo adicional, es completamente gratuito para nuestros clientes
@@ -536,24 +536,24 @@ session_start();
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h5>Sobre Nosotros</h5>
-                    <p>Información sobre la empresa.</p>
+                    <h5 data-section="footer" data-value="nosotros">Sobre Nosotros</h5>
+                    <p data-section="footer" data-value="info">Información sobre la empresa.</p>
                 </div>
                 <div class="col-md-4">
-                    <h5>Enlaces</h5>
+                    <h5 data-section="footer" data-value="Links">Enlaces</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Inicio</a></li>
-                        <li><a href="#" class="text-white">Servicios</a></li>
-                        <li><a href="#" class="text-white">Contacto</a></li>
+                        <li><a href="#" class="text-white" data-section="footer" data-value="home">Inicio</a></li>
+                        <li><a href="#" class="text-white" data-section="footer" data-value="services">Servicios</a></li>
+                        <li><a href="#" class="text-white" data-section="footer" data-value="contact">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h5>Contacto</h5>
+                    <h5 data-section="footer" data-value="contact">Contacto</h5>
                     <p>Email: info@ejemplo.com</p>
-                    <p>Teléfono: +123 456 7890</p>
+                    <p><span data-section="footer" data-value="tele">Teléfono:</span> +123 456 7890</p>
                 </div>
             </div>
-            <div class="text-center py-3">
+            <div class="text-center py-3" data-section="footer" data-value="empresa">
                 © 2024 Tu Empresa. Todos los derechos reservados.
             </div>
         </div>

@@ -18,6 +18,7 @@ $_POST["reserva_ninos"] == "" ? $reserva_ninos = "0" : $reserva_ninos = $_POST["
         crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../../styles.css" rel="stylesheet">
+    <script src="../../../script.js"></script>
     <link rel="icon" type="image/svg+xml" href="../../../icons/calendar-check.svg" />
     <style>
         body {
@@ -177,29 +178,29 @@ $_POST["reserva_ninos"] == "" ? $reserva_ninos = "0" : $reserva_ninos = $_POST["
     </nav>
     <div class="content">
         <div class="container mt-5">
-            <h2>Fechas de la Reserva</h2>
+            <h2 data-section="reservaDos.php" data-value="Fechas">Fechas de la Reserva</h2>
             <div class="card mx-auto" style="max-width: 400px;">
                 <div class="card-body">
                     <form action="tres.php" method="POST">
                         <div class="mb-3">
-                            <label for="reserva_fecha_inicio" class="form-label">Fecha de inicio:</label>
+                            <label for="reserva_fecha_inicio" class="form-label" data-section="reservaDos.php" data-value="inicio">Fecha de inicio:</label>
                             <input type="date" id="reserva_fecha_inicio" name="reserva_fecha_inicio"
                                 class="form-control" required min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>">
                         </div>
                         <div class="mb-3">
-                            <label for="reserva_fecha_fin" class="form-label">Fecha de fin:</label>
+                            <label for="reserva_fecha_fin" class="form-label" data-section="reservaDos.php" data-value="fin">Fecha de fin:</label>
                             <input type="date" id="reserva_fecha_fin" name="reserva_fecha_fin" class="form-control"
                                 required>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mt-4">
                             <div class="paso-indicador">
-                                <span class="badge bg-primary">Paso 2 de 4</span>
+                                <span class="badge bg-primary" data-section="reservaDos.php" data-value="Paso2-4">Paso 2 de 4</span>
                             </div>
                             <div>
                                 <input type="hidden" name="reserva_id" value="<?php echo $reserva_id; ?>">
                                 <input type="hidden" name="reserva_adultos" value="<?php echo $reserva_adultos; ?>">
                                 <input type="hidden" name="reserva_ninos" value="<?php echo $reserva_ninos; ?>">
-                                <button type="submit" class="btn btn-primary">Siguiente</button>
+                                <button type="submit" class="btn btn-primary" data-section="reservaDos.php" data-value="Siguiente">Siguiente</button>
                             </div>
                         </div>
                     </form>
