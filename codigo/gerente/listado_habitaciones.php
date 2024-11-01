@@ -346,6 +346,7 @@ include("../registro_login/validacion_sesion.php");
                                     <td scope="col">Adultos</td>
                                     <td scope="col">Niños</td>
                                     <td scope="col">Opciones</td>
+                                    <td scope="col">Activo</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -356,7 +357,7 @@ include("../registro_login/validacion_sesion.php");
                                 $offset = ($pagina_actual - 1) * $por_pagina;
 
                                 // Consulta SQL con LIMIT y OFFSET
-                                $select = "SELECT id, Numero_Habitacion, Tipo, Precio_Por_Noche, Estado, Puntos, Cantidad_Adultos_Maximo, Cantidad_Ninos_Maximo FROM habitacion WHERE Activo = 1 ORDER BY id DESC LIMIT $por_pagina OFFSET $offset;";
+                                $select = "SELECT id, Numero_Habitacion, Tipo, Precio_Por_Noche, Estado, Puntos, Cantidad_Adultos_Maximo, Cantidad_Ninos_Maximo, Activo FROM habitacion  ORDER BY id DESC LIMIT $por_pagina OFFSET $offset;";
                                 $query = mysqli_query($conexion, $select);
 
                                 // Mostrar resultados en la tabla
@@ -383,6 +384,9 @@ include("../registro_login/validacion_sesion.php");
                                         </td>
                                         <td scope="row">
                                             <?php echo $resultado['7'] ?>
+                                        </td>
+                                        <td scope="row">
+                                            <?php echo $resultado['8'] ?>
                                         </td>
                                         <td scope="row">
                                             <!-- Activa modal de editar -->
