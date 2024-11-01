@@ -151,10 +151,10 @@ session_start();
             pointer-events: none;
         }
 
-        .input-group input:focus + label,
-        .input-group input:not(:placeholder-shown) + label,
-        .input-group select:focus + label,
-        .input-group select:not(:placeholder-shown) + label {
+        .input-group input:focus+label,
+        .input-group input:not(:placeholder-shown)+label,
+        .input-group select:focus+label,
+        .input-group select:not(:placeholder-shown)+label {
             top: 0;
             font-size: 12px;
             color: #007bff;
@@ -251,8 +251,8 @@ session_start();
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link text-dark active" aria-current="page"
-                            href="../../codigo/registro_login/panel_registro_login.php" data-section="nav" data-value="login"
-                            style="color: #212529 !important;">
+                            href="../../codigo/registro_login/panel_registro_login.php" data-section="nav"
+                            data-value="login" style="color: #212529 !important;">
                             <i class="fas fa-user"></i> Ingreso</a>
                     </li>
                     <li class="nav-item dropdown">
@@ -306,16 +306,23 @@ session_start();
                                         <i class="fas fa-lock"></i>
                                         <input type="password" id="password_login" name="password_login"
                                             placeholder="Contraseña" required>
-                                        <label for="password_login" data-section="panel_registro_login.php" data-value="contrasena">Contraseña</label>
+                                        <label for="password_login" data-section="panel_registro_login.php"
+                                            data-value="contrasena">Contraseña</label>
                                     </div>
                                     <p class="recover">
-                                        <a href="#" data-section="panel_registro_login.php" data-value="contrasena Olvidada">¿Olvidaste tu contraseña?</a>
+                                        <a href="#" data-section="panel_registro_login.php"
+                                            data-value="contrasena Olvidada">¿Olvidaste tu contraseña?</a>
                                     </p>
                                     <input type="submit" class="btn" id="e" value="Iniciar Sesión">
                                 </form>
                                 <div class="links">
-                                    <p><span data-section="panel_registro_login.php" data-value="no tiene cuenta">¿No tienes cuenta? </span><button id="signUpButton" ><span data-section="panel_registro_login.php" data-value="registrar">Regístrate</span></button></p>
-                                    <p><a href="#"><span data-section="panel_registro_login.php" data-value="contrasena Olvidada">¿Olvidaste tu contraseña?</span></a></p>
+                                    <p><span data-section="panel_registro_login.php" data-value="no tiene cuenta">¿No
+                                            tienes cuenta? </span><button id="signUpButton"><span
+                                                data-section="panel_registro_login.php"
+                                                data-value="registrar">Regístrate</span></button></p>
+                                    <p><a href="#"><span data-section="panel_registro_login.php"
+                                                data-value="contrasena Olvidada">¿Olvidaste tu contraseña?</span></a>
+                                    </p>
                                 </div>
                             </div>
 
@@ -325,62 +332,109 @@ session_start();
                                 <form action="registro.php" method="POST">
                                     <div class="input-group">
                                         <i class="fas fa-user"></i>
-                                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
-                                        <label for="nombre" data-section="panel_registro_login.php" data-value="Nombre">Nombre</label>
+                                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required
+                                            pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]{1,25}"
+                                            title="Solo se permiten letras, máximo 25 caracteres" maxlength="25"
+                                            onkeypress="return /[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/.test(event.key)">
+                                        <label for="nombre" data-section="panel_registro_login.php"
+                                            data-value="Nombre">Nombre</label>
                                     </div>
                                     <div class="input-group">
                                         <i class="fas fa-user"></i>
-                                        <input type="text" id="apellido" name="apellido" placeholder="Apellido"
-                                            required>
-                                        <label for="apellido" data-section="panel_registro_login.php" data-value="Apellido">Apellido</label>
+                                        <input type="text" id="apellido" name="apellido" placeholder="Apellido" required
+                                            pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]{1,25}"
+                                            title="Solo se permiten letras, máximo 25 caracteres" maxlength="25"
+                                            onkeypress="return /[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/.test(event.key)">
+                                        <label for="apellido" data-section="panel_registro_login.php"
+                                            data-value="Apellido">Apellido</label>
                                     </div>
                                     <div class="input-group">
                                         <i class="fas fa-id-card"></i>
-                                        <input type="text" id="dni" name="dni" placeholder="DNI" required>
-                                        <label for="dni" data-section="panel_registro_login.php" data-value="Documento">Documento</label>
+                                        <input type="text" id="dni" name="dni" placeholder="DNI" required minlength="7"
+                                            maxlength="8" pattern="[0-9]{7,8}"
+                                            title="El DNI debe tener entre 7 y 8 números">
+                                        <label for="dni" data-section="panel_registro_login.php"
+                                            data-value="Documento">Documento</label>
                                     </div>
                                     <div class="input-group">
                                         <i class="fas fa-globe"></i>
                                         <input type="text" id="nacionalidad" name="nacionalidad"
-                                            placeholder="Nacionalidad" required>
-                                        <label for="nacionalidad" data-section="panel_registro_login.php" data-value="Nacionalidad">Nacionalidad</label>
+                                            placeholder="Nacionalidad" required minlength="4" maxlength="20"
+                                            pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]{4,20}"
+                                            title="La nacionalidad debe tener entre 4 y 20 caracteres">
+                                        <label for="nacionalidad" data-section="panel_registro_login.php"
+                                            data-value="Nacionalidad">Nacionalidad</label>
                                     </div><br>
                                     <div class="input-group">
                                         <i class="fas fa-venus-mars"></i>
                                         <select id="sexo" name="sexo" required>
-                                            <option value="" data-section="panel_registro_login.php" data-value="SeleccionaSexo">Selecciona tu sexo</option>
-                                            <option value="Masculino" data-section="panel_registro_login.php" data-value="Masculino">Masculino</option>
-                                            <option value="Femenino" data-section="panel_registro_login.php" data-value="Femenino">Femenino</option>
-                                            <option value="Otro" data-section="panel_registro_login.php" data-value="Otro">Otro</option>
+                                            <option value="" data-section="panel_registro_login.php"
+                                                data-value="SeleccionaSexo">Selecciona tu sexo</option>
+                                            <option value="Masculino" data-section="panel_registro_login.php"
+                                                data-value="Masculino">Masculino</option>
+                                            <option value="Femenino" data-section="panel_registro_login.php"
+                                                data-value="Femenino">Femenino</option>
+                                            <option value="Otro" data-section="panel_registro_login.php"
+                                                data-value="Otro">Otro</option>
                                         </select>
-                                        <label for="sexo" data-section="panel_registro_login.php" data-value="Sexo">Sexo</label>
+                                        <label for="sexo" data-section="panel_registro_login.php"
+                                            data-value="Sexo">Sexo</label>
                                     </div><br>
                                     <div class="input-group">
                                         <i class="fas fa-calendar"></i>
-                                        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
-                                        <label for="fecha_nacimiento" data-section="panel_registro_login.php" data-value="nacimiento">Fecha de Nacimiento</label>
+                                        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required
+                                            onchange="validarEdad(this)">
+                                        <label for="fecha_nacimiento" data-section="panel_registro_login.php"
+                                            data-value="nacimiento">Fecha de Nacimiento</label>
+                                        <script>
+                                            function validarEdad(input) {
+                                                const fechaNacimiento = new Date(input.value);
+                                                const hoy = new Date();
+                                                let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+                                                const mes = hoy.getMonth() - fechaNacimiento.getMonth();
+
+                                                if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
+                                                    edad--;
+                                                }
+
+                                                if (edad < 18) {
+                                                    alert("Debes ser mayor de 18 años para registrarte");
+                                                    input.value = '';
+                                                }
+                                            }
+                                        </script>
                                     </div>
                                     <div class="input-group">
                                         <i class="fas fa-envelope"></i>
-                                        <input type="email" id="email" name="email" placeholder="Email" required>
+                                        <input type="email" id="email" name="email" placeholder="Email" required
+                                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$" maxlength="35"
+                                            title="El email debe contener @ y terminar en .com, máximo 35 caracteres">
                                         <label for="email">Email</label>
                                     </div>
                                     <div class="input-group">
                                         <i class="fas fa-phone"></i>
-                                        <input type="text" id="telefono" name="telefono" placeholder="Teléfono"
-                                            required>
-                                        <label for="telefono" data-section="panel_registro_login.php" data-value="Telefono">Teléfono</label>
+                                        <input type="text" id="telefono" name="telefono" placeholder="Teléfono" required
+                                            minlength="9" maxlength="15" pattern="[0-9]{9,15}"
+                                            title="El teléfono debe tener entre 9 y 15 números">
+                                        <label for="telefono" data-section="panel_registro_login.php"
+                                            data-value="Telefono">Teléfono</label>
                                     </div>
                                     <div class="input-group">
                                         <i class="fas fa-lock"></i>
                                         <input type="password" id="contrasena" name="contrasena"
-                                            placeholder="Contraseña" required>
-                                        <label for="contrasena" data-section="panel_registro_login.php" data-value="contrasena">Contraseña</label>
+                                            placeholder="Contraseña" required minlength="5"
+                                            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$"
+                                            title="La contraseña debe tener al menos 5 caracteres y contener al menos una letra y un número">
+                                        <label for="contrasena" data-section="panel_registro_login.php"
+                                            data-value="contrasena">Contraseña</label>
                                     </div>
                                     <input type="submit" class="btn" value="Registrarse">
                                 </form>
                                 <div class="links">
-                                    <p><span data-section="panel_registro_login.php" data-value="ya tiene cuenta">¿Ya tienes cuenta? </span><button id="signInButton"><span data-section="panel_registro_login.php" data-value="iniciar">Iniciar Sesión</span></button></p>
+                                    <p><span data-section="panel_registro_login.php" data-value="ya tiene cuenta">¿Ya
+                                            tienes cuenta? </span><button id="signInButton"><span
+                                                data-section="panel_registro_login.php" data-value="iniciar">Iniciar
+                                                Sesión</span></button></p>
                                 </div>
                             </div>
                         </div>
