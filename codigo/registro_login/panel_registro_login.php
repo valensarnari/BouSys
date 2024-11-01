@@ -333,19 +333,44 @@ session_start();
                                     <div class="input-group">
                                         <i class="fas fa-user"></i>
                                         <input type="text" id="nombre" name="nombre" placeholder="Nombre" required
-                                            pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]{1,25}" oninvalid="this.setCustomValidity(''); if (!this.validity.valid) { 
-                                                $('#validationModal').modal('show');
-                                                $('#validationMessage').text('Solo se permiten letras, máximo 25 caracteres');
-                                            }" oninput="this.setCustomValidity('')" maxlength="25"
+                                            pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]{3,25}"
+                                            oninvalid="mostrarError('Solo se permiten letras, mínimo 3 caracteres y máximo 25 caracteres')"
+                                            oninput="this.setCustomValidity('')" minlength="3" maxlength="25"
                                             onkeypress="return /[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/.test(event.key)">
+                                        <div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Error de validación</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p id="mensajeError"></p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            function mostrarError(mensaje) {
+                                                document.getElementById('mensajeError').textContent = mensaje;
+                                                var modal = new bootstrap.Modal(document.getElementById('errorModal'));
+                                                modal.show();
+                                            }
+                                        </script>
                                         <label for="nombre" data-section="panel_registro_login.php"
                                             data-value="Nombre">Nombre</label>
                                     </div>
                                     <div class="input-group">
                                         <i class="fas fa-user"></i>
                                         <input type="text" id="apellido" name="apellido" placeholder="Apellido" required
-                                            pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]{1,25}"
-                                            title="Solo se permiten letras, máximo 25 caracteres" maxlength="25"
+                                            pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]{3,25}"
+                                            title="Solo se permiten letras, mínimo 3 caracteres y máximo 25 caracteres"
+                                            maxlength="25" minlength="3"
                                             onkeypress="return /[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/.test(event.key)">
                                         <label for="apellido" data-section="panel_registro_login.php"
                                             data-value="Apellido">Apellido</label>
