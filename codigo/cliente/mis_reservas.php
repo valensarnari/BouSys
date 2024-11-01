@@ -323,13 +323,13 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
 
     <div class="content">
         <div class="container mt-5">
-            <h2>Mis Reservas</h2>
+            <h2 data-section="mis_reservaas.php" data-value="misReservas">Mis Reservas</h2>
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5 class="mb-0">Reservas activas</h5>
+                        <h5 class="mb-0" data-section="mis_reservaas.php" data-value="activas">Reservas activas</h5>
                         <a href="reserva/uno.php" class="btn btn-primary">
-                            <i class="fas fa-calendar-plus"></i> Realizar reserva
+                            <i class="fas fa-calendar-plus"></i> <span data-section="mis_reservaas.php" data-value="RealizarReserva">Realizar reserva</span>
                         </a>
                     </div>
                     <?php
@@ -350,14 +350,14 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                             <table class="table table-striped table-activas">
                                 <thead>
                                     <tr>
-                                        <th>Cliente</th>
-                                        <th>Estado</th>
-                                        <th>Inicio</th>
-                                        <th>Fin</th>
+                                        <th data-section="mis_reservaas.php" data-value="Cliente">Cliente</th>
+                                        <th data-section="mis_reservaas.php" data-value="Estado">Estado</th>
+                                        <th data-section="mis_reservaas.php" data-value="Inicio">Inicio</th>
+                                        <th data-section="mis_reservaas.php" data-value="Fin">Fin</th>
                                         <th>Check-In</th>
                                         <th>Check-Out</th>
-                                        <th>Valor total</th>
-                                        <th>Opciones</th>
+                                        <th data-section="mis_reservaas.php" data-value="Total">Valor total</th>
+                                        <th data-section="mis_reservaas.php" data-value="Opciones">Opciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -369,7 +369,7 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                                                 <?php echo $resultado['8'] . " " . $resultado['9'] ?>
                                             </td>
                                             <td scope="row">
-                                                <span class="badge bg-success"><?php echo $resultado['2'] ?></span>
+                                                <span class="badge bg-success" data-status= "<?php echo $resultado['2'] ?>"><?php echo $resultado['2'] ?></span>
                                             </td>
                                             <td scope="row">
                                                 <?php echo $resultado['3'] ?>
@@ -392,9 +392,10 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                                                     $fecha_actual = date('Y-m-d');
                                                     ?>
                                                     <button type="button" class="btn <?php echo ($fecha_actual < $resultado['3']) ? 'btn-info' : 'btn-secondary' ?>" 
-                                                            data-bs-toggle="modal" data-bs-target="#detalles<?php echo $resultado['0'] ?>">
+                                                            data-bs-toggle="modal" data-bs-target="#detalles<?php echo $resultado['0'] ?>"
+                                                            data-action="<?php echo ($fecha_actual < $resultado['3']) ? 'Modificar' : 'Ver detalles' ?>">
                                                         <i class="fas <?php echo ($fecha_actual < $resultado['3']) ? 'fa-edit' : 'fa-eye' ?>"></i>
-                                                        <?php echo ($fecha_actual < $resultado['3']) ? 'Modificar' : 'Ver detalles' ?>
+                                                        <span><?php echo ($fecha_actual < $resultado['3']) ? 'Modificar' : 'Ver detalles' ?></span>
                                                     </button>
                                                 </div>
                                             </td>
@@ -418,7 +419,7 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
             <!-- Nueva sección para reservas finalizadas -->
             <div class="card mt-4">
                 <div class="card-body">
-                    <h5 class="mb-4">Reservas finalizadas</h5>
+                    <h5 class="mb-4" data-section="mis_reservaas.php" data-value="Finalizada">Reservas finalizadas</h5>
                     <?php
                     // Consulta SQL para obtener las reservas finalizadas
                     $sql_finalizadas = "SELECT rt.id, c.id, rt.Estado, rt.Fecha_Inicio, rt.Fecha_Fin, rt.Check_In, rt.Check_Out, rt.Valor_Total, c.Nombre, c.Apellido
@@ -435,14 +436,14 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                             <table class="table table-striped table-finalizadas">
                                 <thead>
                                     <tr>
-                                        <th>Cliente</th>
-                                        <th>Estado</th>
-                                        <th>Inicio</th>
-                                        <th>Fin</th>
+                                        <th data-section="mis_reservaas.php" data-value="Cliente">Cliente</th>
+                                        <th data-section="mis_reservaas.php" data-value="Estado">Estado</th>
+                                        <th data-section="mis_reservaas.php" data-value="Inicio">Inicio</th>
+                                        <th data-section="mis_reservaas.php" data-value="Fin">Fin</th>
                                         <th>Check-In</th>
                                         <th>Check-Out</th>
-                                        <th>Valor total</th>
-                                        <th>Calificación</th>
+                                        <th data-section="mis_reservaas.php" data-value="Total">Valor total</th>
+                                        <th data-section="mis_reservaas.php" data-value="Calificacion">Calificación</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -456,7 +457,7 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                                     ?>
                                         <tr>
                                             <td scope="row"><?php echo $resultado['8'] . " " . $resultado['9'] ?></td>
-                                            <td scope="row"><span class="badge bg-secondary">Finalizada</span></td>
+                                            <td scope="row"><span class="badge bg-secondary" data-section="mis_reservaas.php" data-value="Finalizada">Finalizada</span></td>
                                             <td scope="row"><?php echo $resultado['3'] ?></td>
                                             <td scope="row"><?php echo $resultado['4'] ?></td>
                                             <td scope="row"><?php echo $resultado['5'] ?></td>
@@ -469,7 +470,7 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                                                     </span>
                                                 <?php } else { ?>
                                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#calificarModal<?php echo $resultado['0']; ?>">
-                                                        <i class="fas fa-star"></i> Calificar
+                                                        <i class="fas fa-star"></i><span data-section="mis_reservaas.php" data-value="Calificar"> Calificar</span>
                                                     </button>
                                                 <?php } ?>
                                             </td>
@@ -490,7 +491,7 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
             <!-- Nueva sección para reservas canceladas -->
             <div class="card mt-4">
                 <div class="card-body">
-                    <h5 class="mb-4">Historial de reservas canceladas</h5>
+                    <h5 class="mb-4" data-section="mis_reservaas.php" data-value="Canceladas">Historial de reservas canceladas</h5>
                     <?php
                     // Consulta SQL para obtener las reservas canceladas del usuario
                     $sql_canceladas = "SELECT rt.id, c.id, rt.Estado, rt.Fecha_Inicio, rt.Fecha_Fin, rt.Check_In, rt.Check_Out, rt.Valor_Total, c.Nombre, c.Apellido
@@ -506,13 +507,13 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                             <table class="table table-striped table-canceladas">
                                 <thead>
                                     <tr>
-                                        <th>Cliente</th>
-                                        <th>Estado</th>
-                                        <th>Inicio</th>
-                                        <th>Fin</th>
+                                        <th data-section="mis_reservaas.php" data-value="Cliente">Cliente</th>
+                                        <th data-section="mis_reservaas.php" data-value="Estado">Estado</th>
+                                        <th data-section="mis_reservaas.php" data-value="Inicio">Inicio</th>
+                                        <th data-section="mis_reservaas.php" data-value="Fin">Fin</th>
                                         <th>Check-In</th>
                                         <th>Check-Out</th>
-                                        <th>Valor total</th>
+                                        <th data-section="mis_reservaas.php" data-value="Total">Valor total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -521,7 +522,7 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                                         ?>
                                         <tr>
                                             <td scope="row"><?php echo $resultado['8'] . " " . $resultado['9'] ?></td>
-                                            <td scope="row"><span class="badge bg-danger"><?php echo $resultado['2'] ?></span></td>
+                                            <td scope="row"><span class="badge bg-danger" data-status= "<?php echo $resultado['2'] ?>"><?php echo $resultado['2'] ?></span></td>
                                             <td scope="row"><?php echo $resultado['3'] ?></td>
                                             <td scope="row"><?php echo $resultado['4'] ?></td>
                                             <td scope="row"><?php echo $resultado['5'] ?></td>

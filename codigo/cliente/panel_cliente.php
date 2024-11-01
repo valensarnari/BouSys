@@ -130,7 +130,7 @@ include("../registro_login/validacion_sesion.php");
                         <li><a class="dropdown-item" href="../cliente/mis_reservas.php" data-section="nav"
                             data-value="reservas">Mis Reservas</a></li>
                         <li><a class="dropdown-item" href="../registro_login/cerrar_sesion.php" data-section="nav"
-                            data-value="cerrar-sesion">Cerrar sesión</a></li>
+                            data-value="close">Cerrar sesión</a></li>
                         </ul>
                     </li>
                     <?php

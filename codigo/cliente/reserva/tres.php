@@ -54,6 +54,7 @@ $max_habitaciones = $reserva_adultos;
         crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../../styles.css" rel="stylesheet">
+    <script src="../../../script.js"></script>
     <link rel="icon" type="image/svg+xml" href="../../../icons/calendar-check.svg" />
     <style>
         body {
@@ -235,13 +236,13 @@ $max_habitaciones = $reserva_adultos;
 
     <div class="content">
         <div class="container mt-5">
-            <h2>Selección de Habitaciones</h2>
+            <h2 data-section="reservaTres.php" data-value="seleccion">Selección de Habitaciones</h2>
 
             <div class="reservation-summary">
-                <p><span class="label">Adultos:</span> <?php echo $reserva_adultos; ?></p>
-                <p><span class="label">Niños:</span> <?php echo $reserva_ninos; ?></p>
-                <p><span class="label">Fecha de inicio:</span> <?php echo $reserva_fecha_inicio; ?></p>
-                <p><span class="label">Fecha de fin:</span> <?php echo $reserva_fecha_fin; ?></p>
+                <p><span class="label" data-section="reservaTres.php" data-value="Adultos">Adultos:</span> <?php echo $reserva_adultos; ?></p>
+                <p><span class="label" data-section="reservaTres.php" data-value="Niños">Niños:</span> <?php echo $reserva_ninos; ?></p>
+                <p><span class="label" data-section="reservaTres.php" data-value="inicio">Fecha de inicio:</span> <?php echo $reserva_fecha_inicio; ?></p>
+                <p><span class="label" data-section="reservaTres.php" data-value="fin">Fecha de fin:</span> <?php echo $reserva_fecha_fin; ?></p>
             </div>
 
             <form action="cuatro.php" method="POST">
@@ -257,22 +258,22 @@ $max_habitaciones = $reserva_adultos;
                                             data-adultos-max="<?php echo $habitacion['Cantidad_Adultos_Maximo']; ?>"
                                             data-ninos-max="<?php echo $habitacion['Cantidad_Ninos_Maximo']; ?>">
                                         <label class="form-check-label" for="habitacion<?php echo $habitacion['id']; ?>">
-                                            Habitación <?php echo $habitacion['Numero_Habitacion']; ?> -
-                                            Capacidad: <?php echo $habitacion['Cantidad_Adultos_Maximo']; ?> adultos,
-                                            <?php echo $habitacion['Cantidad_Ninos_Maximo']; ?> niños
+                                            <span data-section="reservaTres.php" data-value="Habitacion">Habitación</span> <?php echo $habitacion['Numero_Habitacion']; ?> -
+                                            <span data-section="reservaTres.php" data-value="Capacidad">Capacidad:</span> <?php echo $habitacion['Cantidad_Adultos_Maximo']; ?> <span data-section="reservaTres.php" data-value="Adultos">adultos</span>,
+                                            <?php echo $habitacion['Cantidad_Ninos_Maximo']; ?> <span data-section="reservaTres.php" data-value="Niños">niños</span>
                                         </label>
                                     </div>
                                 </div>
                                 <div class="ocupantes-inputs">
                                     <div class="form-group">
-                                        <label for="adultos<?php echo $habitacion['id']; ?>">Adultos:</label>
+                                        <label for="adultos<?php echo $habitacion['id']; ?>" data-section="reservaTres.php" data-value="Adultos">Adultos:</label>
                                         <input type="number" class="form-control adultos-input"
                                             id="adultos<?php echo $habitacion['id']; ?>"
                                             name="habitaciones_adultos[<?php echo $habitacion['id']; ?>]" min="1"
                                             max="<?php echo $habitacion['Cantidad_Adultos_Maximo']; ?>" value="1" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label for="ninos<?php echo $habitacion['id']; ?>">Niños:</label>
+                                        <label for="ninos<?php echo $habitacion['id']; ?>" data-section="reservaTres.php" data-value="Niños">Niños:</label>
                                         <input type="number" class="form-control ninos-input"
                                             id="ninos<?php echo $habitacion['id']; ?>"
                                             name="habitaciones_ninos[<?php echo $habitacion['id']; ?>]" min="0"
@@ -282,7 +283,7 @@ $max_habitaciones = $reserva_adultos;
                                         <input class="form-check-input cuna-checkbox" type="checkbox"
                                             name="habitaciones_cuna[<?php echo $habitacion['id']; ?>]" value="1"
                                             id="cuna<?php echo $habitacion['id']; ?>" disabled>
-                                        <label class="form-check-label" for="cuna<?php echo $habitacion['id']; ?>">
+                                        <label class="form-check-label" for="cuna<?php echo $habitacion['id']; ?>" data-section="reservaTres.php" data-value="Cuna" >
                                             Cuna
                                         </label>
                                     </div>
@@ -290,21 +291,21 @@ $max_habitaciones = $reserva_adultos;
                             </div>
                         <?php } ?>
                     <?php } else { ?>
-                        <p class="text-center">No hay habitaciones disponibles para las fechas seleccionadas.</p>
+                        <p class="text-center" data-section="reservaTres.php" data-value="Nohay">No hay habitaciones disponibles para las fechas seleccionadas.</p>
                     <?php } ?>
                 </div>
 
                 <div class="my-3 reservation-summary">
-                    <p><span class="label">Adultos restantes:</span> <span
+                    <p><span class="label" data-section="reservaTres.php" data-value="AdultosRestantes">Adultos restantes:</span> <span
                             id="adultosRestantes"><?php echo $reserva_adultos; ?></span></p>
-                    <p><span class="label">Niños restantes:</span> <span
+                    <p><span class="label" data-section="reservaTres.php" data-value="NiñosRestantes">Niños restantes:</span> <span
                             id="ninosRestantes"><?php echo $reserva_ninos; ?></span></p>
-                    <p><span class="label">Cunas seleccionadas:</span> <span id="cunasSeleccionadas">0</span></p>
+                    <p><span class="label" data-section="reservaTres.php" data-value="CunasSeleccionadas">Cunas seleccionadas:</span> <span id="cunasSeleccionadas">0</span></p>
                 </div>
 
                 <div class="d-flex justify-content-between align-items-center mt-4">
                     <div class="paso-indicador">
-                        <span class="badge bg-primary">Paso 3 de 4</span>
+                        <span class="badge bg-primary" data-section="reservaTres.php" data-value="Paso3-4">Paso 3 de 4</span>
                     </div>
 
 
@@ -315,7 +316,7 @@ $max_habitaciones = $reserva_adultos;
                     <input type="hidden" name="reserva_fecha_inicio" value="<?php echo $reserva_fecha_inicio; ?>">
                     <input type="hidden" name="reserva_fecha_fin" value="<?php echo $reserva_fecha_fin; ?>">
 
-                    <button type="submit" class="btn btn-primary" id="submitBtn" disabled>Siguiente</button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn" disabled><span data-section="reservaTres.php" data-value="Siguiente">Siguiente</span></button>
                 </div>
             </form>
         </div>

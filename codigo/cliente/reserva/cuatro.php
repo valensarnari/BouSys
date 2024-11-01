@@ -54,6 +54,7 @@ $resultado = $stmt->get_result();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="../../../styles.css" rel="stylesheet">
+    <script src="../../../script.js"></script>
     <title>Reserva de cochera</title>
     <style>
         body {
@@ -235,13 +236,13 @@ $resultado = $stmt->get_result();
 
     <div class="content">
         <div class="container mt-5">
-            <h2>Reservar cocheras disponibles (opcional)</h2>
+            <h2 data-section="reservaCuatro.php" data-value="Reservar">Reservar cocheras disponibles (opcional)</h2>
 
             <div class="reservation-summary">
-                <p><span class="label">Adultos:</span> <?php echo $reserva_adultos; ?></p>
-                <p><span class="label">Niños:</span> <?php echo $reserva_ninos; ?></p>
-                <p><span class="label">Fecha de inicio:</span> <?php echo $reserva_fecha_inicio; ?></p>
-                <p><span class="label">Fecha de fin:</span> <?php echo $reserva_fecha_fin; ?></p>
+                <p><span class="label" data-section="reservaCuatro.php" data-value="Adultos">Adultos:</span> <?php echo $reserva_adultos; ?></p>
+                <p><span class="label" data-section="reservaCuatro.php" data-value="Niños">Niños:</span> <?php echo $reserva_ninos; ?></p>
+                <p><span class="label" data-section="reservaCuatro.php" data-value="inicio">Fecha de inicio:</span> <?php echo $reserva_fecha_inicio; ?></p>
+                <p><span class="label" data-section="reservaCuatro.php" data-value="fin">Fecha de fin:</span> <?php echo $reserva_fecha_fin; ?></p>
             </div>
 
             <form action="cinco.php" method="POST">
@@ -252,20 +253,20 @@ $resultado = $stmt->get_result();
                                 <div class="form-check">
                                     <input class="form-check-input cochera-radio" type="radio" name="reserva_cochera"
                                         value="<?php echo $cochera['id']; ?>" id="cochera<?php echo $cochera['id']; ?>">
-                                    <label class="form-check-label" for="cochera<?php echo $cochera['id']; ?>">
-                                        Cochera <?php echo $cochera['Numero_Cochera']; ?>
+                                    <label class="form-check-label" for="cochera<?php echo $cochera['id']; ?>" >
+                                        <span data-section="reservaCuatro.php" data-value="Cochera">Cochera</span> <?php echo $cochera['Numero_Cochera']; ?>
                                     </label>
                                 </div>
                             </div>
                         <?php } ?>
                     <?php } else { ?>
-                        <p class="text-center">No hay cocheras disponibles para las fechas seleccionadas.</p>
+                        <p class="text-center" data-section="reservaCuatro.php" data-value="nohay">No hay cocheras disponibles para las fechas seleccionadas.</p>
                     <?php } ?>
                 </div>
 
                 <div class="d-flex justify-content-between align-items-center mt-4">
                     <div class="paso-indicador">
-                        <span class="badge bg-primary">Paso 4 de 4</span>
+                        <span class="badge bg-primary" data-section="reservaCuatro.php" data-value="Paso4-4">Paso 4 de 4</span>
                     </div>
 
                     <input type="hidden" name="reserva_id" value="<?php echo $reserva_id; ?>">
@@ -284,7 +285,7 @@ $resultado = $stmt->get_result();
                             value="<?php echo isset($habitaciones_cuna[$habitacion_id]) ? 1 : 0; ?>">
                     <?php endforeach; ?>
 
-                    <button type="submit" class="btn btn-primary" id="submitBtn">Siguiente</button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn"><span data-section="reservaCuatro.php" data-value="Siguiente">Siguiente</span></button>
                 </div>
             </form>
         </div>

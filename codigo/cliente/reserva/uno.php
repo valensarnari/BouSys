@@ -18,6 +18,7 @@ $reserva_id = $_SESSION['usuario_id'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../../styles.css" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="../../../icons/calendar-check.svg" />
+    <script src="../../../script.js"></script>
     <style>
         body {
             background-color: #f8f9fa;
@@ -226,26 +227,26 @@ $reserva_id = $_SESSION['usuario_id'];
     </nav>
     <div class="content">
         <div class="container mt-5">
-            <h2>Nueva Reserva</h2>
+            <h2 data-section="reservaUno.php" data-value="Nueva">Nueva Reserva</h2>
             <div class="card mx-auto" style="max-width: 400px;">
                 <div class="card-body">
                     <form action="dos.php" method="POST">
                         <div class="mb-3">
-                            <label for="reserva_adultos" class="form-label">Número de adultos:</label>
+                            <label for="reserva_adultos" class="form-label" data-section="reservaUno.php" data-value="adultos">Número de adultos:</label>
                             <input type="number" min="1" max="10" id="reserva_adultos" name="reserva_adultos"
                                 class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <label for="reserva_ninos" class="form-label">Número de niños:</label>
+                            <label for="reserva_ninos" class="form-label" data-section="reservaUno.php" data-value="niños">Número de niños:</label>
                             <input type="number" max="10" id="reserva_ninos" name="reserva_ninos" class="form-control">
                         </div>
                         <div class="d-flex justify-content-between align-items-center mt-4">
                             <div class="paso-indicador">
-                                <span class="badge bg-primary">Paso 1 de 4</span>
+                                <span class="badge bg-primary" data-section="reservaUno.php" data-value="Paso1-4">Paso 1 de 4</span>
                             </div>
                             <div>
                                 <input type="hidden" name="reserva_id" value="<?php echo $reserva_id; ?>">
-                                <button type="submit" class="btn btn-primary">Siguiente</button>
+                                <button type="submit" class="btn btn-primary"><span data-section="reservaUno.php" data-value="Siguiente">Siguiente</span></button>
                             </div>
                         </div>
                     </form>

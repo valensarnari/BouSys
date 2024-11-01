@@ -19,7 +19,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="fecha_inicio" class="form-label">Fecha de Inicio</label>
+                                    <label for="fecha_inicio" class="form-label" data-section="detalles_reservas_modal.php" data-value="inicio">Fecha de Inicio</label>
                                     <input type="date" class="form-control fecha-input" 
                                            id="fecha_inicio<?php echo $resultado['0'] ?>" 
                                            name="fecha_inicio" value="<?php echo $resultado['3'] ?>" 
@@ -28,7 +28,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="fecha_fin" class="form-label">Fecha de Fin</label>
+                                    <label for="fecha_fin" class="form-label" data-section="detalles_reservas_modal.php" data-value="fin">Fecha de Fin</label>
                                     <input type="date" class="form-control fecha-input" 
                                            id="fecha_fin<?php echo $resultado['0'] ?>" 
                                            name="fecha_fin" value="<?php echo $resultado['4'] ?>" 
@@ -41,8 +41,8 @@
                         <div class="alert alert-info" id="precio_info<?php echo $resultado['0'] ?>" style="display: none;">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
-                                    <p class="mb-1"><strong>Valor Original:</strong> $<span id="valor_original<?php echo $resultado['0'] ?>"><?php echo number_format($resultado['7'], 2) ?></span></p>
-                                    <p class="mb-1"><strong>Nuevo Valor:</strong> $<span id="nuevo_valor<?php echo $resultado['0'] ?>">0.00</span></p>
+                                    <p class="mb-1"><strong data-section="detalles_reservas_modal.php" data-value="original">Valor Original:</strong> $<span id="valor_original<?php echo $resultado['0'] ?>"><?php echo number_format($resultado['7'], 2) ?></span></p>
+                                    <p class="mb-1"><strong data-section="detalles_reservas_modal.php" data-value="nuevo">Nuevo Valor:</strong> $<span id="nuevo_valor<?php echo $resultado['0'] ?>">0.00</span></p>
                                 </div>
                                 <div id="precio_validacion<?php echo $resultado['0'] ?>" class="text-end">
                                 </div>
@@ -51,11 +51,11 @@
 
                         <div class="d-flex justify-content-end gap-2">
                             <button type="submit" class="btn btn-primary" id="btnGuardar<?php echo $resultado['0'] ?>">
-                                <i class="fas fa-save"></i> Guardar Cambios
+                                <i class="fas fa-save"></i> <span data-section="detalles_reservas_modal.php" data-value="Guardar">Guardar Cambios</span>
                             </button>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                 data-bs-target="#cancelar<?php echo $resultado['0'] ?>" data-bs-dismiss="modal">
-                                <i class="fas fa-times"></i> Cancelar Reserva
+                                <i class="fas fa-times"></i> <span data-section="detalles_reservas_modal.php" data-value="Cancelar">Cancelar Reserva</span>
                             </button>
                         </div>
                     </form>
@@ -139,12 +139,12 @@
                 <?php } else { ?>
                     <div class="alert alert-info mb-4">
                         <i class="fas fa-info-circle"></i> 
-                        Esta reserva ya comenzó y no puede ser modificada. Puedes ver todos los detalles a continuación.
+                        <span data-section="detalles_reservas_modal.php" data-value="comenzo">Esta reserva ya comenzó y no puede ser modificada. Puedes ver todos los detalles a continuación.</span>
                     </div>
                 <?php } ?>
 
                 <!-- Sección de Habitaciones -->
-                <h6 class="mb-3">Habitaciones Reservadas:</h6>
+                <h6 class="mb-3" data-section="detalles_reservas_modal.php" data-value="Reservadas">Habitaciones Reservadas:</h6>
                 <?php
                 $sql_habitaciones = "SELECT h.Numero_Habitacion, h.Tipo, rh.Cantidad_Adultos, 
                                           rh.Cantidad_Ninos, rh.Cuna 
@@ -158,11 +158,11 @@
                     while ($habitacion = mysqli_fetch_array($query_habitaciones)) {
                         echo "<div class='list-group-item'>";
                         echo "<div class='d-flex justify-content-between align-items-center'>";
-                        echo "<h6 class='mb-1'>Habitación " . $habitacion['Numero_Habitacion'] . " - " . $habitacion['Tipo'] . "</h6>";
+                        echo "<h6 class='mb-1'><span data-section='detalles_reservas_modal.php' data-value='Habitacion'>Habitación</span> " . $habitacion['Numero_Habitacion'] . " - " . $habitacion['Tipo'] . "</h6>";
                         echo "</div>";
-                        echo "<p class='mb-1'>Adultos: " . $habitacion['Cantidad_Adultos'] . "</p>";
-                        echo "<p class='mb-1'>Niños: " . ($habitacion['Cantidad_Ninos'] ?? '0') . "</p>";
-                        echo "<p class='mb-0'>Cuna: " . ($habitacion['Cuna'] ? 'Sí' : 'No') . "</p>";
+                        echo "<p class='mb-1'><span data-section='detalles_reservas_modal.php' data-value='Adultos'>Adultos</span>: " . $habitacion['Cantidad_Adultos'] . "</p>";
+                        echo "<p class='mb-1'><span data-section='detalles_reservas_modal.php' data-value='Niños'>Niños</span>: " . ($habitacion['Cantidad_Ninos'] ?? '0') . "</p>";
+                        echo "<p class='mb-0'><span data-section='detalles_reservas_modal.php' data-value='Cuna'>Cuna</span>: " . ($habitacion['Cuna'] ? 'Sí' : 'No') . "</p>";
                         echo "</div>";
                     }
                     echo "</div>";
@@ -172,7 +172,7 @@
                 ?>
 
                 <!-- Sección de Pagos -->
-                <h6 class="mb-3">Pagos Realizados:</h6>
+                <h6 class="mb-3" data-section="detalles_reservas_modal.php" data-value="Pagos">Pagos Realizados:</h6>
                 <?php
                 $sql_pagos = "SELECT Fecha_Pago, Medio_De_Pago, Descuento, Aumento, Total 
                              FROM pago 
@@ -189,8 +189,8 @@
                         echo "<div class='list-group-item'>";
                         echo "<div class='d-flex justify-content-between align-items-center'>";
                         echo "<div>";
-                        echo "<p class='mb-1'><strong>Fecha:</strong> " . $pago['Fecha_Pago'] . "</p>";
-                        echo "<p class='mb-1'><strong>Medio de pago:</strong> " . $pago['Medio_De_Pago'] . "</p>";
+                        echo "<p class='mb-1'><strong data-section='detalles_reservas_modal.php' data-value='Fecha'>Fecha:</strong> " . $pago['Fecha_Pago'] . "</p>";
+                        echo "<p class='mb-1'><strong data-section='detalles_reservas_modal.php' data-value='MedioPago'>Medio de pago:</strong> " . $pago['Medio_De_Pago'] . "</p>";
                         if ($pago['Descuento'] > 0)
                             echo "<p class='mb-1'><strong>Descuento:</strong> $" . $pago['Descuento'] . "</p>";
                         if ($pago['Aumento'] > 0)
@@ -248,7 +248,7 @@
                 ?>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><span data-section="detalles_reservas_modal.php" data-value="Cerrar">Cerrar</span></button>
             </div>
         </div>
     </div>
@@ -264,12 +264,12 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="cancelarLabel<?php echo $resultado['0'] ?>">Confirmar Cancelación</h5>
+                <h5 class="modal-title" id="cancelarLabel<?php echo $resultado['0'] ?>" data-section="detalles_reservas_modal.php" data-value="Confirmar">Confirmar Cancelación</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="alert alert-warning">
-                    <p>¿Estás seguro que deseas cancelar esta reserva?</p>
+                    <p data-section="detalles_reservas_modal.php" data-value="cancelarReserva">¿Estás seguro que deseas cancelar esta reserva?</p>
                 </div>
 
                 <?php
@@ -284,14 +284,14 @@
                 $total_pagado = 0;
 
                 if (mysqli_num_rows($query_pagos) > 0) {
-                    echo "<p><strong>Pagos realizados hasta el momento:</strong></p>";
+                    echo "<p><strong data-section='detalles_reservas_modal.php' data-value='pagosrealizados'>Pagos realizados hasta el momento:</strong></p>";
                     echo "<ul class='list-group mb-3'>";
                     while ($pago = mysqli_fetch_array($query_pagos)) {
                         echo "<li class='list-group-item'>";
                         echo "<div class='d-flex justify-content-between align-items-center'>";
                         echo "<div>";
-                        echo "<p class='mb-1'>Fecha: " . $pago['Fecha_Pago'] . "</p>";
-                        echo "<p class='mb-1'>Medio de pago: " . $pago['Medio_De_Pago'] . "</p>";
+                        echo "<p class='mb-1'><span data-section='detalles_reservas_modal.php' data-value='Fecha'>Fecha:</span> " . $pago['Fecha_Pago'] . "</p>";
+                        echo "<p class='mb-1'><span data-section='detalles_reservas_modal.php' data-value='MedioPago'>Fecha:</span> " . $pago['Medio_De_Pago'] . "</p>";
                         if ($pago['Descuento'] > 0)
                             echo "<p class='mb-1'>Descuento: $" . $pago['Descuento'] . "</p>";
                         if ($pago['Aumento'] > 0)
@@ -354,8 +354,8 @@
             <div class="modal-footer">
                 <form action="cancelar_reserva.php" method="POST">
                     <input type="hidden" name="reserva_id" value="<?php echo $resultado['0'] ?>">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver atrás</button>
-                    <button type="submit" class="btn btn-danger">Confirmar Cancelación</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-section="detalles_reservas_modal.php" data-value="atras">Volver atrás</button>
+                    <button type="submit" class="btn btn-danger" data-section="detalles_reservas_modal.php" data-value="Confirmar">Confirmar Cancelación</button>
                 </form>
             </div>
         </div>
