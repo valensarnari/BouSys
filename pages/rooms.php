@@ -275,7 +275,7 @@ session_start();
   </div>
   <!----------------------------- text above video -------------------------------------------------------->
   <div class="row txt-room-1">
-    <p data-section="rooms" data-value="video-txt">
+    <p data-section="rooms" data-value="video-txt" >
       El Hotel Continental te ofrece diferentes tipos de habitaciones
       adecuadas a tus necesidades. Desde suites de lujo con vistas panorámicas
       hasta habitaciones estándar cómodas y funcionales, encontrarás la opción
@@ -291,14 +291,14 @@ session_start();
       <div class="card h-100">
         <img src="../images/room/room-simple.jpg" class="card-img-top" alt="Habitación Simple" />
         <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Simple</h5>
-          <p class="card-text mb-3">Desde $100/noche</p>
+          <h5 class="card-title" data-section="rooms" data-value="simple">Simple</h5>
+          <p class="card-text mb-3"><span data-section="rooms" data-value="desde">Desde</span> $100/<span data-section="rooms" data-value="noche">noche</span></p>
           <div class="features mb-3">
             <i class="fas fa-wifi me-2" title="WiFi"></i>
             <i class="fas fa-tv me-2" title="TV"></i>
             <i class="fas fa-coffee" title="Desayuno"></i>
           </div>
-          <a href="#room-1" class="btn btn-primary mt-auto">Saber más...</a>
+          <a href="#room-1" class="btn btn-primary mt-auto" data-section="rooms" data-value="more">Saber más...</a>
         </div>
       </div>
     </div>
@@ -308,15 +308,15 @@ session_start();
       <div class="card h-100">
         <img src="../images/room/room-completa.jpeg" class="card-img-top" alt="Habitación Completa" />
         <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Completa</h5>
-          <p class="card-text mb-3">Desde $150/noche</p>
+          <h5 class="card-title" data-section="rooms" data-value="complete">Completa</h5>
+          <p class="card-text mb-3"><span data-section="rooms" data-value="desde">Desde</span> $150/<span data-section="rooms" data-value="noche">noche</span></p>
           <div class="features mb-3">
             <i class="fas fa-wifi me-2" title="WiFi"></i>
             <i class="fas fa-tv me-2" title="TV"></i>
             <i class="fas fa-snowflake me-2" title="Aire acondicionado"></i>
             <i class="fas fa-coffee" title="Desayuno"></i>
           </div>
-          <a href="#room-2" class="btn btn-primary mt-auto">Saber más...</a>
+          <a href="#room-2" class="btn btn-primary mt-auto" data-section="rooms" data-value="more">Saber más...</a>
         </div>
       </div>
     </div>
@@ -326,8 +326,8 @@ session_start();
       <div class="card h-100">
         <img src="../images/room/room-lujosa.jpg" class="card-img-top" alt="Suite Top" />
         <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Suite Top</h5>
-          <p class="card-text mb-3">Desde $200/noche</p>
+          <h5 class="card-title" data-section="rooms" data-value="complete">Suite Top</h5>
+          <p class="card-text mb-3"><span data-section="rooms" data-value="desde">Desde</span> $200/<span data-section="rooms" data-value="noche">noche</span></p>
           <div class="features mb-3">
             <i class="fas fa-wifi me-2" title="WiFi"></i>
             <i class="fas fa-tv me-2" title="TV"></i>
@@ -335,7 +335,7 @@ session_start();
             <i class="fas fa-hot-tub me-2" title="Jacuzzi"></i>
             <i class="fas fa-coffee" title="Desayuno"></i>
           </div>
-          <a href="#room-3" class="btn btn-primary mt-auto">Saber más...</a>
+          <a href="#room-3" class="btn btn-primary mt-auto" data-section="rooms" data-value="more">Saber más...</a>
         </div>
       </div>
     </div>
@@ -350,10 +350,10 @@ session_start();
   <div class="container-fluid observer">
     <!--------------------------------- ROOM TITLE SIMPLE  ------------------------------------------->
     <div class="row align-items-center room-title">
-      <span class="subrayado" id="room-1">HABITACIÓN SIMPLE</span> <br><br>
+      <span class="subrayado" id="room-1" data-section="rooms" data-value="habitacionSimple">HABITACIÓN SIMPLE</span> <br><br>
     </div>
     <div class="row room-description">
-      <p>
+      <p data-section="rooms" data-value="habitacionSimpleTexto">
         Nuestra habitación estándar es la opción más simple y económica, ideal
         para aquellos que buscan comodidad y funcionalidad. Esta habitación
         cuenta con una cama matrimonial, una caja fuerte con capacidad para
@@ -386,10 +386,10 @@ session_start();
     </div>
     <!--------------------------------- ROOM TITLE COMPLETA  ------------------------------------------->
     <div class="row align-items-center room-title">
-      <span class="subrayado" id="room-2">HABITACIÓN COMPLETA</span> <br><br>
+      <span class="subrayado" id="room-2" data-section="rooms" data-value="habitacionCompleta">HABITACIÓN COMPLETA</span> <br><br>
     </div>
     <div class="row room-description">
-      <p>
+      <p data-section="rooms" data-value="habitacionCompletaTexto">
         Nuestra habitación completa ofrece el máximo confort y espacio para tu
         estancia. Esta habitación cuenta con TV LED, wifi gratuito, y un
         frigobar. Además, dispone de dos ambientes: uno con una cama
@@ -438,10 +438,10 @@ session_start();
     <br /><br />
     <!--------------------------------- ROOM TITLE TOP  ------------------------------------------->
     <div class="row align-items-center room-title">
-      <span class="subrayado" id="room-3">SUITE TOP</span> <br><br>
+      <span class="subrayado" id="room-3" data-section="rooms" data-value="habitacionSuite">SUITE TOP</span> <br><br>
     </div>
     <div class="row room-description">
-      <p>
+      <p data-section="rooms" data-value="habitacionSuiteTexto">
         Nuestra habitación lujosa ofrece una experiencia de máxima comodidad y
         elegancia. Además de contar con TV LED, wifi gratuito, y un frigobar,
         esta habitación dispone de dos ambientes: uno con una cama matrimonial
@@ -478,31 +478,31 @@ session_start();
   </div>
   <!-------------------------------------footer----------------------------------------------------->
   <footer class="bg-dark text-white pt-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <h5>Sobre Nosotros</h5>
-          <p>Información sobre la empresa.</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 data-section="footer" data-value="nosotros">Sobre Nosotros</h5>
+                    <p data-section="footer" data-value="info">Información sobre la empresa.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 data-section="footer" data-value="Links">Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white" data-section="footer" data-value="home">Inicio</a></li>
+                        <li><a href="#" class="text-white" data-section="footer" data-value="services">Servicios</a></li>
+                        <li><a href="#" class="text-white" data-section="footer" data-value="contact">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 data-section="footer" data-value="contact">Contacto</h5>
+                    <p>Email: info@ejemplo.com</p>
+                    <p><span data-section="footer" data-value="tele">Teléfono:</span> +123 456 7890</p>
+                </div>
+            </div>
+            <div class="text-center py-3" data-section="footer" data-value="empresa">
+                © 2024 Tu Empresa. Todos los derechos reservados.
+            </div>
         </div>
-        <div class="col-md-4">
-          <h5>Enlaces</h5>
-          <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Inicio</a></li>
-            <li><a href="#" class="text-white">Servicios</a></li>
-            <li><a href="#" class="text-white">Contacto</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h5>Contacto</h5>
-          <p>Email: info@ejemplo.com</p>
-          <p>Teléfono: +123 456 7890</p>
-        </div>
-      </div>
-      <div class="text-center py-3">
-        © 2024 Tu Empresa. Todos los derechos reservados.
-      </div>
-    </div>
-  </footer>
+    </footer>
 
   <!---bootstrap js --->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

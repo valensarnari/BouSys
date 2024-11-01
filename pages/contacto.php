@@ -221,23 +221,26 @@ session_start();
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <form>
+                        <form action="https://api.web3forms.com/submit" method="POST">
+                        <!-- EN VALUE INCLUIR LA LLAVE QUE TE LEGA AL EMAIL  (WEB3FORMS)-->
+                            <input type="hidden" name="apikey" value="34b8a76f-10b5-4a58-b83d-3097b8fecb6e">
                             <div class="mb-3">
                                 <label for="name" class="form-label" data-section="contact.php_form" data-value="Nombre">Nombre</label>
-                                <input type="text" class="form-control" id="name" required>
+                                <input type="text" class="form-control" id="name" name="name" required>
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label" data-section="contact.php_form" data-value="Correo">Correo electrónico</label>
-                                <input type="email" class="form-control" id="email" required>
+                                <input type="email" class="form-control" id="email" name="email" required>
                             </div>
                             <div class="mb-3">
                                 <label for="subject" class="form-label" data-section="contact.php_form" data-value="Asunto">Asunto</label>
-                                <input type="text" class="form-control" id="subject" required>
+                                <input type="text" class="form-control" id="subject" name="subject" required>
                             </div>
                             <div class="mb-3">
                                 <label for="message" class="form-label" data-section="contact.php_form" data-value="Mensaje">Mensaje</label>
-                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                             </div>
+                            <input type="hidden" name="redirect" value="https://web3forms.com/success">
                             <button type="submit" class="btn btn-primary" data-section="contact.php_form" data-value="boton">Enviar mensaje</button>
                         </form>
                     </div>

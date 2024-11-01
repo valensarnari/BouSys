@@ -139,6 +139,7 @@ $preference->save();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="../../../styles.css" rel="stylesheet">
+    <script src="../../../script.js"></script>
     <title>Reserva de habitación</title>
     <style>
         body {
@@ -401,7 +402,7 @@ $preference->save();
         <div class="row d-flex justify-content-center">
             <div class="col-md-8 col-lg-6">
                 <div class="reservation-details">
-                    <h2 class="mb-4">Resumen de la reserva</h2>
+                    <h2 class="mb-4" data-section="reservaCinco.php" data-value="resumen">Resumen de la reserva</h2>
 
                     <!-- Información del cliente y puntos -->
                     <div class="row mb-3">
@@ -414,13 +415,13 @@ $preference->save();
                                 </div>
                                 <div class="detail-item">
                                     <i class="fas fa-star"></i>
-                                    <span class="detail-value"><?php echo $puntos_cliente; ?> puntos</span>
+                                    <span class="detail-value" ><?php echo $puntos_cliente; ?> <span data-section="reservaCinco.php" data-value="puntos">puntos</span></span>
                                 </div>
                                 <?php if ($descuento > 0): ?>
                                     <div class="detail-item text-success">
                                         <i class="fas fa-percentage"></i>
-                                        <span class="detail-value">Descuento del <?php echo ($descuento * 100); ?>%
-                                            aplicado</span>
+                                        <span class="detail-value"><span data-section="reservaCinco.php" data-value="descuento">Descuento del</span> <?php echo ($descuento * 100); ?>
+                                        <span data-section="reservaCinco.php" data-value="aplicado">% aplicado</span>
                                     </div>
                                 <?php endif; ?>
                             </div>
@@ -429,19 +430,19 @@ $preference->save();
                             <div class="detail-group">
                                 <div class="detail-item">
                                     <i class="fas fa-users"></i>
-                                    <span class="detail-value"><?php echo $reserva_adultos; ?> adultos,
-                                        <?php echo $reserva_ninos; ?> niños</span>
+                                    <span class="detail-value"><?php echo $reserva_adultos; ?> <span data-section="reservaCinco.php" data-value="adultos">adultos,</span>
+                                        <?php echo $reserva_ninos; ?> <span data-section="reservaCinco.php" data-value="niños">niños</span></span>
                                 </div>
                                 <div class="detail-item">
                                     <i class="fas fa-calendar-alt"></i>
-                                    <span class="detail-value">Del
+                                    <span class="detail-value"><span span data-section="reservaCinco.php" data-value="Del">Del</span>
                                         <?php echo date('d/m/Y', strtotime($reserva_fecha_inicio)); ?></span>
                                 </div>
                                 <div class="detail-item">
                                     <i class="fas fa-calendar-check"></i>
-                                    <span class="detail-value">Al
+                                    <span class="detail-value"><span data-section="reservaCinco.php" data-value="Al">Al</span>
                                         <?php echo date('d/m/Y', strtotime($reserva_fecha_fin)); ?>
-                                        (<?php echo $num_noches; ?> noches)</span>
+                                        (<?php echo $num_noches; ?> <span data-section="reservaCinco.php" data-value="noches">noches</span>)</span>
                                 </div>
                             </div>
                         </div>
@@ -449,11 +450,11 @@ $preference->save();
 
                     <!-- Habitaciones -->
                     <div class="rooms-section">
-                        <h3 class="section-title">Habitaciones Seleccionadas</h3>
+                        <h3 class="section-title" data-section="reservaCinco.php" data-value="Seleccionadas">Habitaciones Seleccionadas</h3>
                         <div class="rooms-grid">
                             <?php foreach ($habitaciones_seleccionadas as $hab_id): ?>
                                 <div class="room-item">
-                                    <div class="room-number">Habitación <?php echo $habitaciones_numeros[$hab_id]; ?></div>
+                                    <div class="room-number"><span data-section="reservaCinco.php" data-value="Habitacion">Habitación</span> <?php echo $habitaciones_numeros[$hab_id]; ?></div>
                                     <div class="room-occupancy">
                                         <span title="Adultos"><i class="fas fa-male"></i>
                                             <?php echo $habitaciones_adultos[$hab_id]; ?></span>
@@ -473,25 +474,25 @@ $preference->save();
                     <!-- Cochera si existe -->
                     <?php if ($cochera_detalles): ?>
                         <div class="parking-section">
-                            <i class="fas fa-car"></i> Cochera N° <?php echo $cochera_detalles['Numero_Cochera']; ?>
+                            <i class="fas fa-car"></i> <span data-section="reservaCinco.php" data-value="Cochera">Cochera N°</span> <?php echo $cochera_detalles['Numero_Cochera']; ?>
                         </div>
                     <?php endif; ?>
 
                     <!-- Resumen de costos -->
                     <div class="cost-summary">
                         <div class="cost-item">
-                            <span>Subtotal por <?php echo $num_noches; ?> noches</span>
+                            <span><span data-section="reservaCinco.php" data-value="subtotal">Subtotal por</span> <?php echo $num_noches; ?> <span data-section="reservaCinco.php" data-value="noches">noches</span<</span>
                             <span>$<?php echo number_format($valor_total, 2); ?></span>
                         </div>
                         <?php if ($descuento > 0): ?>
                             <div class="cost-item discount">
-                                <span>Descuento por puntos (<?php echo number_format($descuento * 100, 0); ?>%)</span>
+                                <span><span data-section="reservaCinco.php" data-value="Descuento">Descuento por puntos</sapn> (<?php echo number_format($descuento * 100, 0); ?>%)</span>
                                 <span
                                     class="text-success">-$<?php echo number_format($valor_total * $descuento, 2); ?></span>
                             </div>
                         <?php endif; ?>
                         <div class="cost-item total">
-                            <span>Total Final</span>
+                            <span data-section="reservaCinco.php" data-value="Total Final">Total Final</span>
                             <span>$<?php echo number_format($valor_con_descuento, 2); ?></span>
                         </div>
                     </div>
@@ -557,14 +558,14 @@ $preference->save();
     <script src="https://sdk.mercadopago.com/js/v2"></script>
     <script>
         const mp = new MercadoPago('TEST-57ec9be1-bb4b-461d-8b3d-7e1dd72a76f9');
-    
+        
         mp.checkout({
             preference: {
                 id: '<?php echo $preference->id; ?>'
             },
         render: {
             container: '.cho-container',
-            label: 'Pagar con Mercado Pago',
+            label: 'Mercado Pago',
             type: 'wallet'
         }
     });
