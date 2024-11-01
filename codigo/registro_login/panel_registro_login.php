@@ -398,8 +398,32 @@ session_start();
                                                 }
 
                                                 if (edad < 18) {
-                                                    alert("Debes ser mayor de 18 años para registrarte");
+                                                    const modalDiv = document.createElement('div');
+                                                    modalDiv.innerHTML = `
+                                                        <div class="modal fade" id="edadModal" tabindex="-1" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title">Aviso</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <p>Debes ser mayor de 18 años para registrarte</p>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    `;
+                                                    document.body.appendChild(modalDiv);
+                                                    const modal = new bootstrap.Modal(document.getElementById('edadModal'));
+                                                    modal.show();
                                                     input.value = '';
+                                                    document.getElementById('edadModal').addEventListener('hidden.bs.modal', function () {
+                                                        document.body.removeChild(modalDiv);
+                                                    });
                                                 }
                                             }
                                         </script>
