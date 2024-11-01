@@ -450,7 +450,7 @@ session_start();
                                                 const modal = new bootstrap.Modal(document.getElementById('dniModal'));
                                                 modal.show();
                                                 document.getElementById('dniModal').addEventListener('hidden.bs.modal', function() {
-                                                    document.body.removeChild(modalDiv);
+                                                    modalDiv.remove();
                                                 });
                                             })()" oninput="this.setCustomValidity('')"
                                             onkeypress="return /[0-9]/.test(event.key)">
