@@ -363,7 +363,7 @@ session_start();
                                             }
                                         </script>
                                         <label for="nombre" data-section="panel_registro_login.php"
-                                            data-value="Nombre">Nombre</label>
+                                            style="display: none;" data-value="Nombre">Nombre</label>
                                     </div>
                                     <div class="input-group">
                                         <i class="fas fa-user"></i>
