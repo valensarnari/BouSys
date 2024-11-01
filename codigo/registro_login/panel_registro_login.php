@@ -560,7 +560,7 @@ session_start();
                                         <input type="email" id="email" name="email" required
                                             pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$" maxlength="35"
                                             title="El correo electrónico debe contener @ y terminar en .com, máximo 35 caracteres"
-                                            oninvalid="mostrarModalError(this)" placeholder=" ">
+                                            oninvalid="mostrarModalError(this)" placeholder="Email">
                                         <script>
                                             function mostrarModalError(input) {
                                                 const modalDiv = document.createElement('div');
