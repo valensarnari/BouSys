@@ -332,7 +332,7 @@ session_start();
                                 <form action="registro.php" method="POST">
                                     <div class="input-group">
                                         <i class="fas fa-user"></i>
-                                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required
+                                        <input type="text" id="nombre" name="nombre" required
                                             pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]{3,25}"
                                             oninvalid="mostrarError('Solo se permiten letras, mínimo 3 caracteres y máximo 25 caracteres')"
                                             oninput="this.setCustomValidity('')" minlength="3" maxlength="25"
