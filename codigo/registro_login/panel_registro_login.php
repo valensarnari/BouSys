@@ -557,8 +557,8 @@ session_start();
                                     </div>
                                     <div class="input-group">
                                         <i class="fas fa-envelope"></i>
-                                        <input type="email" id="email" name="email" placeholder="Correo electrónico"
-                                            required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$" maxlength="35"
+                                        <input type="email" id="email" name="email" required
+                                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$" maxlength="35"
                                             title="El correo electrónico debe contener @ y terminar en .com, máximo 35 caracteres"
                                             oninvalid="mostrarModalError(this)">
                                         <script>
