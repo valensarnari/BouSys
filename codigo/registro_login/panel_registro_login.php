@@ -427,31 +427,35 @@ session_start();
                                         <i class="fas fa-id-card"></i>
                                         <input type="text" id="dni" name="dni" placeholder="DNI" required minlength="7"
                                             maxlength="8" pattern="[0-9]{7,8}" oninvalid="(function(){
-                                                const modalDiv = document.createElement('div');
-                                                modalDiv.innerHTML = `
-                                                    <div class='modal fade' id='dniModal' tabindex='-1'>
-                                                        <div class='modal-dialog'>
-                                                            <div class='modal-content'>
-                                                                <div class='modal-header'>
-                                                                    <h5 class='modal-title'>Error de validación</h5>
-                                                                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                                                                </div>
-                                                                <div class='modal-body'>
-                                                                    <p>El DNI debe tener entre 7 y 8 números</p>
-                                                                </div>
-                                                                <div class='modal-footer'>
-                                                                    <button type='button' class='btn btn-primary' data-bs-dismiss='modal'>Aceptar</button>
+                                                if (!document.getElementById('dniModal')) {
+                                                    const modalDiv = document.createElement('div');
+                                                    modalDiv.innerHTML = `
+                                                        <div class='modal fade' id='dniModal' tabindex='-1'>
+                                                            <div class='modal-dialog'>
+                                                                <div class='modal-content'>
+                                                                    <div class='modal-header'>
+                                                                        <h5 class='modal-title'>Error de validación</h5>
+                                                                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                                                    </div>
+                                                                    <div class='modal-body'>
+                                                                        <p>El DNI debe tener entre 7 y 8 números</p>
+                                                                    </div>
+                                                                    <div class='modal-footer'>
+                                                                        <button type='button' class='btn btn-primary' data-bs-dismiss='modal'>Aceptar</button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                `;
-                                                document.body.appendChild(modalDiv);
-                                                const modal = new bootstrap.Modal(document.getElementById('dniModal'));
-                                                modal.show();
-                                                document.getElementById('dniModal').addEventListener('hidden.bs.modal', function() {
-                                                    modalDiv.remove();
-                                                });
+                                                    `;
+                                                    document.body.appendChild(modalDiv);
+                                                    setTimeout(() => {
+                                                        const modal = new bootstrap.Modal(document.getElementById('dniModal'));
+                                                        modal.show();
+                                                        document.getElementById('dniModal').addEventListener('hidden.bs.modal', function() {
+                                                            modalDiv.remove();
+                                                        });
+                                                    }, 100);
+                                                }
                                             })()" oninput="this.setCustomValidity('')"
                                             onkeypress="return /[0-9]/.test(event.key)">
                                         <label for="dni" data-section="panel_registro_login.php"
