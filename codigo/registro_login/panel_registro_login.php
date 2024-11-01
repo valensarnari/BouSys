@@ -333,10 +333,10 @@ session_start();
                                     <div class="input-group">
                                         <i class="fas fa-user"></i>
                                         <input type="text" id="nombre" name="nombre" placeholder="Nombre" required
-                                            pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]{1,25}"
-                                            oninvalid="this.setCustomValidity(''); if (!this.validity.valid) { $('#validationModal').modal('show'); }"
-                                            oninput="this.setCustomValidity('')"
-                                            title="Solo se permiten letras, máximo 25 caracteres" maxlength="25"
+                                            pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]{1,25}" oninvalid="this.setCustomValidity(''); if (!this.validity.valid) { 
+                                                $('#validationModal').modal('show');
+                                                $('#validationMessage').text('Solo se permiten letras, máximo 25 caracteres');
+                                            }" oninput="this.setCustomValidity('')" maxlength="25"
                                             onkeypress="return /[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/.test(event.key)">
                                         <label for="nombre" data-section="panel_registro_login.php"
                                             data-value="Nombre">Nombre</label>
