@@ -333,9 +333,33 @@ session_start();
                                     <div class="input-group">
                                         <i class="fas fa-user"></i>
                                         <input type="text" id="nombre" name="nombre" required
-                                            pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]{3,25}"
-                                            oninvalid="mostrarError('Solo se permiten letras, mínimo 3 caracteres y máximo 25 caracteres')"
-                                            oninput="this.setCustomValidity('')" minlength="3" maxlength="25"
+                                            pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]{3,25}" oninvalid="(() => {
+                                                const modalDiv = document.createElement('div');
+                                                modalDiv.innerHTML = `
+                                                    <div class='modal fade' id='nombreModal' tabindex='-1' aria-hidden='true'>
+                                                        <div class='modal-dialog'>
+                                                            <div class='modal-content'>
+                                                                <div class='modal-header'>
+                                                                    <h5 class='modal-title'>Aviso</h5>
+                                                                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                                                </div>
+                                                                <div class='modal-body'>
+                                                                    <p>Solo se permiten letras, mínimo 3 caracteres y máximo 25 caracteres</p>
+                                                                </div>
+                                                                <div class='modal-footer'>
+                                                                    <button type='button' class='btn btn-primary' data-bs-dismiss='modal'>Aceptar</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                `;
+                                                document.body.appendChild(modalDiv);
+                                                const modal = new bootstrap.Modal(document.getElementById('nombreModal'));
+                                                modal.show();
+                                                document.getElementById('nombreModal').addEventListener('hidden.bs.modal', function() {
+                                                    document.body.removeChild(modalDiv);
+                                                });
+                                            })()" oninput="this.setCustomValidity('')" minlength="3" maxlength="25"
                                             onkeypress="return /[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/.test(event.key)">
                                         <div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true">
                                             <div class="modal-dialog">
