@@ -424,7 +424,7 @@ session_start();
                                         <input type="password" id="contrasena" name="contrasena"
                                             placeholder="Contraseña" required minlength="5"
                                             pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$"
-                                            title="La contraseña debe tener al menos 5 caracteres y contener al menos una letra y un número">
+                                            title="Hotel Continental: La contraseña debe tener al menos 5 caracteres y contener al menos una letra y un número">
                                         <label for="contrasena" data-section="panel_registro_login.php"
                                             data-value="contrasena">Contraseña</label>
                                     </div>
