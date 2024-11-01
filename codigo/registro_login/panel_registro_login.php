@@ -628,7 +628,7 @@ session_start();
                                             }
                                         </script>
                                         <label for="telefono" data-section="panel_registro_login.php"
-                                            data-value="Telefono">Teléfono</label>
+                                            data-value="Telefono" style="display: none;">Teléfono</label>
                                     </div>
                                     <div class="input-group">
                                         <i class="fas fa-lock"></i>
@@ -666,7 +666,7 @@ session_start();
                                             }
                                         </script>
                                         <label for="contrasena" data-section="panel_registro_login.php"
-                                            data-value="contrasena">Contraseña</label>
+                                            data-value="contrasena" style="display: none;">Contraseña</label>
                                     </div>
                                     <input type="submit" class="btn" value="Registrarse">
                                 </form>
