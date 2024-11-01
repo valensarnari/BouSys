@@ -590,7 +590,7 @@ session_start();
                                                 });
                                             }
                                         </script>
-                                        <label for="email">Email</label>
+                                        <label for="email" style="display: none;">Email</label>
                                     </div>
                                     <div class="input-group">
                                         <i class="fas fa-phone"></i>
