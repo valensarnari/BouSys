@@ -224,7 +224,7 @@ session_start();
               <li><a class="dropdown-item" href="../codigo/cliente/mis_reservas.php" data-section="nav"
                   data-value="reservas">Mis Reservas</a></li>
               <li><a class="dropdown-item" href="../codigo/registro_login/cerrar_sesion.php" data-section="nav"
-                  data-value="cerrar-sesion">Cerrar sesión</a></li>
+                  data-value="close">Cerrar sesión</a></li>
             </ul>
           </li>
           <?php

@@ -169,7 +169,7 @@ session_start();
                             <li><a class="dropdown-item" href="../codigo/cliente/mis_reservas.php" data-section="nav"
                                     data-value="reservas">Mis Reservas</a></li>
                             <li><a class="dropdown-item" href="../codigo/registro_login/cerrar_sesion.php"
-                                    data-section="nav" data-value="cerrar-sesion">Cerrar sesión</a></li>
+                                    data-section="nav" data-value="close">Cerrar sesión</a></li>
                         </ul>
                     </li>
                     <?php
@@ -261,28 +261,28 @@ session_start();
     </div>
 
     <!-------------------------------------footer----------------------------------------------------->
-    <footer class="bg-dark text-white pt-4 mt-5">
+    <footer class="bg-dark text-white pt-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h5>Sobre Nosotros</h5>
-                    <p>Información sobre la empresa.</p>
+                    <h5 data-section="footer" data-value="nosotros">Sobre Nosotros</h5>
+                    <p data-section="footer" data-value="info">Información sobre la empresa.</p>
                 </div>
                 <div class="col-md-4">
-                    <h5>Enlaces</h5>
+                    <h5 data-section="footer" data-value="Links">Enlaces</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Inicio</a></li>
-                        <li><a href="#" class="text-white">Servicios</a></li>
-                        <li><a href="#" class="text-white">Contacto</a></li>
+                        <li><a href="#" class="text-white" data-section="footer" data-value="home">Inicio</a></li>
+                        <li><a href="#" class="text-white" data-section="footer" data-value="services">Servicios</a></li>
+                        <li><a href="#" class="text-white" data-section="footer" data-value="contact">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h5>Contacto</h5>
+                    <h5 data-section="footer" data-value="contact">Contacto</h5>
                     <p>Email: info@ejemplo.com</p>
-                    <p>Teléfono: +123 456 7890</p>
+                    <p><span data-section="footer" data-value="tele">Teléfono:</span> +123 456 7890</p>
                 </div>
             </div>
-            <div class="text-center py-3">
+            <div class="text-center py-3" data-section="footer" data-value="empresa">
                 © 2024 Tu Empresa. Todos los derechos reservados.
             </div>
         </div>
