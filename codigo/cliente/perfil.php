@@ -170,11 +170,6 @@ $user = $result->fetch_assoc();
                         <a class="nav-link text-dark" href="../../pages/contacto.php" data-section="nav"
                             data-value="contact">Contacto</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="../../pages/receptions.php">
-                            <img src="../../icons/calendar-check.svg" alt="Reservas"> <span data-section="nav" data-value="receptions">Reservas</span>
-                        </a>
-                    </li>
                 </ul>
 
                 <ul class="navbar-nav ms-auto">
