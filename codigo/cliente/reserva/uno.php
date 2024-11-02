@@ -165,12 +165,6 @@ $reserva_id = $_SESSION['usuario_id'];
                         <a class="nav-link text-dark" href="../../../pages/contacto.php" data-section="nav"
                             data-value="contact">Contacto</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="../../../pages/receptions.php" data-section="nav"
-                            data-value="receptions">
-                            <img src="../../../icons/calendar-check.svg" alt="Reservas"> Reservas
-                        </a>
-                    </li>
                 </ul>
 
                 <ul class="navbar-nav ms-auto">

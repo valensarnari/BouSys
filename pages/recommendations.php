@@ -68,12 +68,6 @@ include("../codigo/conexion.php");
                         <a class="nav-link text-dark" href="contacto.php" data-section="nav"
                             data-value="contact">Contacto</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="receptions.php">
-                            <img src="../icons/calendar-check.svg" alt="Reservas" /><span data-section="nav"
-                                data-value="receptions">Reservas</span>
-                        </a>
-                    </li>
                 </ul>
 
                 <ul class="navbar-nav ms-auto">
