@@ -39,7 +39,7 @@ include("../registro_login/validacion_sesion.php");
                     <div class="carousel-item active">
                         <img src="../../images/pileta-dia.jfif" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5 data-section="presentacion" data-value="relax">Relax...</h5>
+                            <h5 data-section="presentacion" data-value="relax">Relax</h5>
                             <p data-section="presentacion" data-value="relax_texto">Disfruta de nuestra espectacular piscina en el Hotel Continental, ideal para relajarte y
                                 disfrutar del sol en pleno centro de Buenos Aires.</p>
                         </div>
@@ -278,7 +278,7 @@ include("../registro_login/validacion_sesion.php");
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="images/QrHotel.png" class="img-fluid">
+                    <img src="../../images/QrHotel.png" class="img-fluid">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

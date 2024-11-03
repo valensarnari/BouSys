@@ -358,7 +358,7 @@ $preference->save();
                             <li><a class="dropdown-item" href="../mis_reservas.php" data-section="nav"
                                     data-value="reservas">Mis Reservas</a></li>
                             <li><a class="dropdown-item" href="../../registro_login/cerrar_sesion.php"
-                                    data-section="nav" data-value="reservas">Cerrar sesión</a></li>
+                                    data-section="nav" data-value="close">Cerrar sesión</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">

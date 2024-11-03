@@ -236,7 +236,7 @@ $user = $result->fetch_assoc();
                 <p><strong data-section="cliente_perfil.php" data-value="Apellido">Apellido:</strong>
                     <?php echo $user['Apellido']; ?>
                 </p>
-                <p><strong data-section="cliente_perfil.php" data-value="Apellido">Puntos:</strong>
+                <p><strong data-section="cliente_perfil.php" data-value="Puntos">Puntos:</strong>
                     <?php echo $user['Puntos']; ?>
                 </p>
                 <p><strong data-section="cliente_perfil.php" data-value="Documento">Documento:</strong>
@@ -262,28 +262,30 @@ $user = $result->fetch_assoc();
         </div>
     </div>
     <!-------------------------------------footer----------------------------------------------------->
-    <footer class="bg-dark text-white pt-4 mt-5">
+    <footer class="bg-dark text-white pt-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <h5>Sobre Nosotros</h5>
-                    <p>Información sobre la empresa.</p>
+                <div class="col-md-4" >
+                    <h5 data-section="footer" data-value="nosotros">Sobre Nosotros</h5>
+                    <p data-section="footer" data-value="info">Información sobre la empresa.</p>
                 </div>
+                
                 <div class="col-md-4">
-                    <h5>Enlaces</h5>
+                    <h5 data-section="footer" data-value="Links">Enlaces</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Inicio</a></li>
-                        <li><a href="#" class="text-white">Servicios</a></li>
-                        <li><a href="#" class="text-white">Contacto</a></li>
+                        <li><a href="../../index.php" class="text-white" data-section="footer" data-value="home">Inicio</a></li>
+                        <li><a href="../../pages/rooms.php" class="text-white" data-section="footer" data-value="rooms">Habitaciones</a></li>
+                        <li><a href="../../pages/services.php" class="text-white" data-section="footer" data-value="services">Servicios</a></li>
+                        <li><a href="../../pages/recommendations.php" class="text-white" data-section="footer" data-value="recommendations">Recomendaciones</a></li>
+                        <li><a href="../../pages/contacto.php" class="text-white" data-section="footer" data-value="contact">Contacto</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4">
-                    <h5>Contacto</h5>
-                    <p>Email: info@ejemplo.com</p>
-                    <p>Teléfono: +123 456 7890</p>
+                <div class="col-md-4 whapp">
+                    <img src="../../icons/whapp.png" alt="Quiero sumarme a la comunidad del hotel!!!" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
                 </div>
             </div>
-            <div class="text-center py-3">
+            <div class="text-center py-3" data-section="footer" data-value="empresa">
                 © 2024 Tu Empresa. Todos los derechos reservados.
             </div>
         </div>

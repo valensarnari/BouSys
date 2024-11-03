@@ -404,7 +404,7 @@ session_start();
         <br>
         <div class="card-services mb-3" style="width: 100%">
             <div class="row g-0">
-                <div class="col-md-4 hidden">
+                <div class="col-md-4 ">
                     <img src="../images/bar_resto/restaurant-service.jpg" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
@@ -429,7 +429,7 @@ session_start();
         <!-----------------------------garage horizontal card-------------------------------------------->
         <div class="card-services mb-3" style="width: 100%">
             <div class="row g-0">
-                <div class="col-md-4 hidden">
+                <div class="col-md-4 ">
                     <img src="../images/garage/garage-services.jpg" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
@@ -454,7 +454,7 @@ session_start();
         <br>
         <div class="card-services mb-3" style="width: 100%">
             <div class="row g-0">
-                <div class="col-md-4 hidden">
+                <div class="col-md-4 ">
                     <img src="../images/spa/spa-service.jpg" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
@@ -481,7 +481,7 @@ session_start();
         <br>
         <div class="card-services mb-3" style="width: 100%" id="baby">
             <div class="row g-0">
-                <div class="col-md-4 hidden">
+                <div class="col-md-4 ">
                     <img src="../images/services/baby-cot.jpg" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
@@ -505,7 +505,7 @@ session_start();
         <br>
         <div class="card-services mb-3" style="width: 100%" id="laundry">
             <div class="row g-0">
-                <div class="col-md-4 hidden">
+                <div class="col-md-4 ">
                     <img src="../images/services/laundry-service.jpg" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
@@ -527,22 +527,24 @@ session_start();
     <footer class="bg-dark text-white pt-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4" >
                     <h5 data-section="footer" data-value="nosotros">Sobre Nosotros</h5>
                     <p data-section="footer" data-value="info">Información sobre la empresa.</p>
                 </div>
+                
                 <div class="col-md-4">
                     <h5 data-section="footer" data-value="Links">Enlaces</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white" data-section="footer" data-value="home">Inicio</a></li>
-                        <li><a href="#" class="text-white" data-section="footer" data-value="services">Servicios</a></li>
-                        <li><a href="#" class="text-white" data-section="footer" data-value="contact">Contacto</a></li>
+                        <li><a href="../index.php" class="text-white" data-section="footer" data-value="home">Inicio</a></li>
+                        <li><a href="rooms.php" class="text-white" data-section="footer" data-value="rooms">Habitaciones</a></li>
+                        <li><a href="services.php" class="text-white" data-section="footer" data-value="services">Servicios</a></li>
+                        <li><a href="recommendations.php" class="text-white" data-section="footer" data-value="recommendations">Recomendaciones</a></li>
+                        <li><a href="contacto.php" class="text-white" data-section="footer" data-value="contact">Contacto</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4">
-                    <h5 data-section="footer" data-value="contact">Contacto</h5>
-                    <p>Email: info@ejemplo.com</p>
-                    <p><span data-section="footer" data-value="tele">Teléfono:</span> +123 456 7890</p>
+                <div class="col-md-4 whapp">
+                    <img src="../icons/whapp.png" alt="Quiero sumarme a la comunidad del hotel!!!" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
                 </div>
             </div>
             <div class="text-center py-3" data-section="footer" data-value="empresa">

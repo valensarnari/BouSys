@@ -303,10 +303,6 @@ session_start();
                                         <label for="password_login" data-section="panel_registro_login.php"
                                             data-value="contrasena">Contraseña</label>
                                     </div>
-                                    <p class="recover">
-                                        <a href="#" data-section="panel_registro_login.php"
-                                            data-value="contrasena Olvidada">¿Olvidaste tu contraseña?</a>
-                                    </p>
                                     <input type="submit" class="btn" id="e" value="Iniciar Sesión">
                                 </form>
                                 <div class="links">
@@ -679,32 +675,50 @@ session_start();
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white pt-4 mt-5">
+    <footer class="bg-dark text-white pt-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <h5>Sobre Nosotros</h5>
-                    <p>Información sobre la empresa.</p>
+                <div class="col-md-4" >
+                    <h5 data-section="footer" data-value="nosotros">Sobre Nosotros</h5>
+                    <p data-section="footer" data-value="info">Información sobre la empresa.</p>
                 </div>
+                
                 <div class="col-md-4">
-                    <h5>Enlaces</h5>
+                    <h5 data-section="footer" data-value="Links">Enlaces</h5>
                     <ul class="list-unstyled">
-                        <li><a href="../../index.php" class="text-white">Inicio</a></li>
-                        <li><a href="../../pages/rooms.html" class="text-white">Habitaciones</a></li>
-                        <li><a href="../../pages/services.html" class="text-white">Servicios</a></li>
-                        <li><a href="../../pages/recommendations.html" class="text-white">Recomendaciones</a></li>
-                        <li><a href="../../pages/contacto.html" class="text-white">Contacto</a></li>
+                        <li><a href="../../index.php" class="text-white" data-section="footer" data-value="home">Inicio</a></li>
+                        <li><a href="../../pages/rooms.php" class="text-white" data-section="footer" data-value="rooms">Habitaciones</a></li>
+                        <li><a href="../../pages/services.php" class="text-white" data-section="footer" data-value="services">Servicios</a></li>
+                        <li><a href="../../pages/recommendations.php" class="text-white" data-section="footer" data-value="recommendations">Recomendaciones</a></li>
+                        <li><a href="../../pages/contacto.php" class="text-white" data-section="footer" data-value="contact">Contacto</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4">
-                    <!-- Aquí puedes agregar más contenido si lo deseas -->
+                <div class="col-md-4 whapp">
+                    <img src="../../icons/whapp.png" alt="Quiero sumarme a la comunidad del hotel!!!" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
                 </div>
             </div>
-            <div class="text-center py-3">
+            <div class="text-center py-3" data-section="footer" data-value="empresa">
                 © 2024 Tu Empresa. Todos los derechos reservados.
             </div>
         </div>
     </footer>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Whapp Community</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="../images/QrHotel.png" class="img-fluid">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
