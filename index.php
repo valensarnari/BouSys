@@ -40,7 +40,7 @@ include("cerrar_conexion.php");
                     <div class="carousel-item active">
                         <img src="images/pileta-dia.jfif" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5 data-section="presentacion" data-value="relax">Relax...</h5>
+                            <h5 data-section="presentacion" data-value="relax">Relax</h5>
                             <p data-section="presentacion" data-value="relax_texto">Disfruta de nuestra espectacular piscina en el Hotel Continental, ideal para relajarte y
                                 disfrutar del sol en pleno centro de Buenos Aires.</p>
                         </div>
@@ -163,7 +163,7 @@ include("cerrar_conexion.php");
     <!--------------------------------------------------Intersection Observer------------------------------->
     <div class="container-fluid observer contenedor-index">
         <!-----------------------------------------Images + texts side by side----------------------------------------------------->
-        <div class="row hidden">
+        <div class="row">
             <div class="col">
                 <img src="images/hotel-exterior.jpg" class="img-fluid" alt="...">
             </div>
@@ -179,7 +179,7 @@ include("cerrar_conexion.php");
             </div>
         </div>
 
-        <div class="row hidden">
+        <div class="row">
             <div class="col align-self-center texts" data-section="Home" data-value="second">
                 <p>Sumérgete en una experiencia gastronómica excepcional en nuestro aclamado restaurante. Nuestro equipo
                     de cocina fusionan
@@ -199,7 +199,7 @@ include("cerrar_conexion.php");
 
         </div>
 
-        <div class="row hidden">
+        <div class="row">
             <div class="col">
                 <img src="images/check-in.jpg" class="img-fluid" alt="...">
             </div>
@@ -241,10 +241,10 @@ include("cerrar_conexion.php");
                     <h5 data-section="footer" data-value="Links">Enlaces</h5>
                     <ul class="list-unstyled">
                         <li><a href="#index.php" class="text-white" data-section="footer" data-value="home">Inicio</a></li>
-                        <li><a href="pages/rooms.html" class="text-white" data-section="footer" data-value="rooms">Habitaciones</a></li>
-                        <li><a href="pages/services.html" class="text-white" data-section="footer" data-value="services">Servicios</a></li>
-                        <li><a href="pages/recommendations.html" class="text-white" data-section="footer" data-value="recommendations">Recomendaciones</a></li>
-                        <li><a href="pages/contacto.html" class="text-white" data-section="footer" data-value="contact">Contacto</a></li>
+                        <li><a href="pages/rooms.php" class="text-white" data-section="footer" data-value="rooms">Habitaciones</a></li>
+                        <li><a href="pages/services.php" class="text-white" data-section="footer" data-value="services">Servicios</a></li>
+                        <li><a href="pages/recommendations.php" class="text-white" data-section="footer" data-value="recommendations">Recomendaciones</a></li>
+                        <li><a href="pages/contacto.php" class="text-white" data-section="footer" data-value="contact">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 whapp">

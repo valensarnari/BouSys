@@ -73,8 +73,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         header("Location: panel_registro_login.php");
                         break;
                 }
-                exit; // Asegúrate de finalizar la ejecución después de redirigir
-
+                exit;
+                
             } else {
                 echo "Error: Contraseña incorrecta.";
             }
