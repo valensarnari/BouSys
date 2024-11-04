@@ -472,34 +472,73 @@ session_start();
     </div>
   </div>
   <!-------------------------------------footer----------------------------------------------------->
-  <footer class="bg-dark text-white pt-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4" >
-                    <h5 data-section="footer" data-value="nosotros">Sobre Nosotros</h5>
-                    <p data-section="footer" data-value="info">Información sobre la empresa.</p>
-                </div>
-                
-                <div class="col-md-4">
-                    <h5 data-section="footer" data-value="Links">Enlaces</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="../index.php" class="text-white" data-section="footer" data-value="home">Inicio</a></li>
-                        <li><a href="rooms.php" class="text-white" data-section="footer" data-value="rooms">Habitaciones</a></li>
-                        <li><a href="services.php" class="text-white" data-section="footer" data-value="services">Servicios</a></li>
-                        <li><a href="recommendations.php" class="text-white" data-section="footer" data-value="recommendations">Recomendaciones</a></li>
-                        <li><a href="contacto.php" class="text-white" data-section="footer" data-value="contact">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 whapp">
-                    <img src="../icons/whapp.png" alt="Quiero sumarme a la comunidad del hotel!!!" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
-                </div>
+  <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre Nosotros</h3>
+                <p>Informacion sobre la empresa.</p>
             </div>
-            <div class="text-center py-3" data-section="footer" data-value="empresa">
-                © 2024 Tu Empresa. Todos los derechos reservados.
+            <div class="footer-column">
+                <h3>Páginas</h3>
+                <ul>
+                    <li><a href="index.php">Inicio</a></li>
+                    <li><a href="pages/rooms.php">Habitaciones</a></li>
+                    <li><a href="pages/services.php">Servicios</a></li>
+                    <li><a href="pages/recommendations.php">Recomendaciones</a></li>
+                    <li><a href="pages/contacto.php">Contacto</a></li>
+                </ul>
             </div>
         </div>
     </footer>
+
+    <style>
+
+        footer {
+            background-color: black;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column {
+            width: 45%;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .footer-column p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-column ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
 
   <!---bootstrap js --->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
