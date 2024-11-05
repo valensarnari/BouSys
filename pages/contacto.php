@@ -14,12 +14,8 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="../styles.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="../script.js"></script>
     <link rel="icon" type="image/svg+xml" href="../icons/contacto.png">
     <title>Contacto</title>
@@ -122,17 +118,15 @@ session_start();
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?php
                     if (isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] == 2) {
-                        ?>
+                    ?>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="../codigo/cliente/panel_cliente.php" data-section="nav"
-                            data-value="home">Inicio</a>
+                        <a class="nav-link text-dark" href="../codigo/cliente/panel_cliente.php" data-section="nav" data-value="home">Inicio</a>
                     </li>
                     <?php
                     } else {
-                        ?>
+                    ?>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="../index.php" data-section="nav"
-                            data-value="home">Inicio</a>
+                        <a class="nav-link text-dark" href="../index.php" data-section="nav" data-value="home">Inicio</a>
                     </li>
                     <?php
                     }
@@ -223,31 +217,26 @@ session_start();
                 <div class="row">
                     <div class="col-md-6">
                         <form action="https://api.web3forms.com/submit" method="POST">
-                            <!-- EN VALUE INCLUIR LA LLAVE QUE TE LEGA AL EMAIL  (WEB3FORMS)-->
-                            <input type="hidden" name="apikey" value="3a048820-eb92-431f-a497-fc66b53cdee4">
+                        <!-- EN VALUE INCLUIR LA LLAVE QUE TE LEGA AL EMAIL  (WEB3FORMS)-->
+                            <input type="hidden" name="apikey" value="34b8a76f-10b5-4a58-b83d-3097b8fecb6e">
                             <div class="mb-3">
-                                <label for="name" class="form-label" data-section="contact.php_form"
-                                    data-value="Nombre">Nombre</label>
+                                <label for="name" class="form-label" data-section="contact.php_form" data-value="Nombre">Nombre</label>
                                 <input type="text" class="form-control" id="name" name="name" required>
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-label" data-section="contact.php_form"
-                                    data-value="Correo">Correo electrónico</label>
+                                <label for="email" class="form-label" data-section="contact.php_form" data-value="Correo">Correo electrónico</label>
                                 <input type="email" class="form-control" id="email" name="email" required>
                             </div>
                             <div class="mb-3">
-                                <label for="subject" class="form-label" data-section="contact.php_form"
-                                    data-value="Asunto">Asunto</label>
+                                <label for="subject" class="form-label" data-section="contact.php_form" data-value="Asunto">Asunto</label>
                                 <input type="text" class="form-control" id="subject" name="subject" required>
                             </div>
                             <div class="mb-3">
-                                <label for="message" class="form-label" data-section="contact.php_form"
-                                    data-value="Mensaje">Mensaje</label>
+                                <label for="message" class="form-label" data-section="contact.php_form" data-value="Mensaje">Mensaje</label>
                                 <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                             </div>
                             <input type="hidden" name="redirect" value="https://web3forms.com/success">
-                            <button type="submit" class="btn btn-primary" data-section="contact.php_form"
-                                data-value="boton">Enviar mensaje</button>
+                            <button type="submit" class="btn btn-primary" data-section="contact.php_form" data-value="boton">Enviar mensaje</button>
                         </form>
                     </div>
                     <div class="col-md-6">
@@ -257,8 +246,7 @@ session_start();
                                 <p><i class="fas fa-map-marker-alt"></i> Calle Ficticia 123, Ciudad Imaginaria</p>
                                 <p><i class="fas fa-phone"></i> +34 123 456 789</p>
                                 <p><i class="fas fa-envelope"></i> info@continentalhotel.com</p>
-                                <p><i class="fas fa-clock"></i><span data-section="contact.php_body"
-                                        data-value="horario"> Lunes a Viernes, 9:00 - 18:00</span></p>
+                                <p><i class="fas fa-clock"></i><span data-section="contact.php_body" data-value="horario"> Lunes a Viernes, 9:00 - 18:00</span></p>
                             </div>
                         </div>
                     </div>
@@ -268,39 +256,73 @@ session_start();
     </div>
 
     <!-------------------------------------footer----------------------------------------------------->
-    <footer class="bg-dark text-white pt-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5 data-section="footer" data-value="nosotros">Sobre Nosotros</h5>
-                    <p data-section="footer" data-value="info">Información sobre la empresa.</p>
-                </div>
-
-                <div class="col-md-4">
-                    <h5 data-section="footer" data-value="Links">Enlaces</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="../index.php" class="text-white" data-section="footer" data-value="home">Inicio</a>
-                        </li>
-                        <li><a href="rooms.php" class="text-white" data-section="footer"
-                                data-value="rooms">Habitaciones</a></li>
-                        <li><a href="services.php" class="text-white" data-section="footer"
-                                data-value="services">Servicios</a></li>
-                        <li><a href="recommendations.php" class="text-white" data-section="footer"
-                                data-value="recommendations">Recomendaciones</a></li>
-                        <li><a href="contacto.php" class="text-white" data-section="footer"
-                                data-value="contact">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 whapp">
-                    <img src="../icons/whapp.png" alt="Quiero sumarme a la comunidad del hotel!!!"
-                        data-bs-toggle="modal" data-bs-target="#exampleModal">
-                </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre Nosotros</h3>
+                <p>Informacion sobre la empresa.</p>
             </div>
-            <div class="text-center py-3" data-section="footer" data-value="empresa">
-                © 2024 Tu Empresa. Todos los derechos reservados.
+            <div class="footer-column">
+                <h3>Páginas</h3>
+                <ul>
+                    <li><a href="index.php">Inicio</a></li>
+                    <li><a href="pages/rooms.php">Habitaciones</a></li>
+                    <li><a href="pages/services.php">Servicios</a></li>
+                    <li><a href="pages/recommendations.php">Recomendaciones</a></li>
+                    <li><a href="pages/contacto.php">Contacto</a></li>
+                </ul>
             </div>
         </div>
     </footer>
+
+    <style>
+
+        footer {
+            background-color: black;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column {
+            width: 45%;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .footer-column p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-column ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
 
     <!-- Agregar este script antes del cierre del body -->
     <script>
