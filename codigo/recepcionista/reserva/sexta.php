@@ -398,7 +398,6 @@ $valor_total = isset($_SESSION['valor_total']) ? $_SESSION['valor_total'] : 0;
                                         <span class="detail-label">Total a Pagar:</span>
                                         <span class="detail-value total-value">$
                                             <?php
-                                            // Recuperar el valor con descuento de la sesión
                                             $valor_con_descuento = isset($_SESSION['valor_con_descuento']) ? $_SESSION['valor_con_descuento'] : $valor_total;
                                             // Calcular el descuento si no está en sesión
                                             if (!isset($_SESSION['valor_con_descuento'])) {
