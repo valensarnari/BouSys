@@ -397,7 +397,10 @@ $valor_total = isset($_SESSION['valor_total']) ? $_SESSION['valor_total'] : 0;
                                     <div class="detail-item">
                                         <span class="detail-label">Total a Pagar:</span>
                                         <span class="detail-value total-value">$
-                                            <?php echo number_format($valor_con_descuento, 2); ?>
+                                            <?php
+                                            $valor_con_descuento = isset($_SESSION['valor_con_descuento']) ? $_SESSION['valor_con_descuento'] : $valor_total;
+                                            echo number_format($valor_con_descuento, 2);
+                                            ?>
                                         </span>
                                     </div>
                                 </div>
