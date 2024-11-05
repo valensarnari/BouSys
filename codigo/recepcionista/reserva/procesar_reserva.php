@@ -10,7 +10,7 @@ try {
     $reserva_fecha_inicio = $_POST['reserva_fecha_inicio'];
     $reserva_fecha_fin = $_POST['reserva_fecha_fin'];
 
-    $valor_total = isset($_SESSION['valor_total']) ? $_SESSION['valor_total'] : 0;
+    $valor_total = isset($_SESSION['valor_con_descuento']) ? $_SESSION['valor_con_descuento'] : 0;
 
     $habitaciones_seleccionadas = isset($_POST['habitaciones']) ? $_POST['habitaciones'] : [];
     $habitaciones_adultos = isset($_POST['habitaciones_adultos']) ? $_POST['habitaciones_adultos'] : [];
