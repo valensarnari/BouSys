@@ -83,7 +83,7 @@ try {
     $sql_pago = "INSERT INTO pago (Fecha_Pago, Medio_De_Pago, Total, ID_Reserva) 
                  VALUES (NOW(), ?, ?, ?)";
     $stmt_pago = $conexion->prepare($sql_pago);
-    $stmt_pago->bind_param("sdi", $medio_pago, $valor_total, $id_reserva_total);
+    $stmt_pago->bind_param("sdi", $medio_pago, $valor_con_descuento, $id_reserva_total);
     $stmt_pago->execute();
 
     $conexion->commit();
