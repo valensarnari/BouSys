@@ -23,7 +23,7 @@ try {
         throw new Exception("El valor total de la reserva no puede ser nulo.");
     }
 
-    $sql_reserva_total = "INSERT INTO reserva_total (ID_Cliente, Estado, Fecha_Inicio, Fecha_Fin, Fecha_Reserva, Valor_Total) VALUES (?, 'Confirmada', ?, ?, NOW(), ?)";
+    $sql_reserva_total = "INSERT INTO reserva_total (ID_Cliente, Estado, Fecha_Inicio, Fecha_Fin, Fecha_Reserva, Valor_Total) VALUES (?, 'Confirmada', ?, ?, NOW(), $valor_total)";
     $stmt_reserva_total = $conexion->prepare($sql_reserva_total);
 
     $stmt_reserva_total->bind_param("issd", $reserva_id, $reserva_fecha_inicio, $reserva_fecha_fin, $valor_total);
