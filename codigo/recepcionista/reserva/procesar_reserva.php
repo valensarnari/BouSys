@@ -80,6 +80,7 @@ try {
 
     // Procesar el pago
     $medio_pago = $_POST['medio_pago'];
+    $valor_con_descuento = $_SESSION['valor_con_descuento'];
     $sql_pago = "INSERT INTO pago (Fecha_Pago, Medio_De_Pago, Total, ID_Reserva) 
                  VALUES (NOW(), ?, ?, ?)";
     $stmt_pago = $conexion->prepare($sql_pago);
