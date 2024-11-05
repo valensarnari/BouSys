@@ -56,12 +56,12 @@ foreach ($habitaciones_seleccionadas as $hab_id) {
         $descuento = 0; // no hay descuento para menos de 300 puntos
     }
     $valor_con_descuento = $valor_total - ($valor_total * $descuento);
-    $valor_total = $valor_con_descuento;
 
     mysqli_stmt_close($stmt);
 }
 
 $_SESSION['valor_total'] = $valor_total;
+$_SESSION['valor_con_descuento'] = $valor_con_descuento;
 
 ?>
 
