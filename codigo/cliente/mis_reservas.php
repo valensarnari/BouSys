@@ -260,12 +260,6 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
                         <a class="nav-link text-dark" href="../../pages/contacto.php" data-section="nav"
                             data-value="contact">Contacto</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="../../pages/receptions.php" data-section="nav"
-                            data-value="receptions">
-                            <img src="../../icons/calendar-check.svg" alt="Reservas"> Reservas
-                        </a>
-                    </li>
                 </ul>
 
                 <ul class="navbar-nav ms-auto">
@@ -546,24 +540,31 @@ if (!(isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] ==
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white pt-4 mt-5">
+    <footer class="bg-dark text-white pt-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <h5>Sobre nosotros</h5>
-                    <p>Somos especialistas en viajes y reservas de hoteles. Nos encargamos de encontrar la mejor opción
-                        para ti.</p>
+                <div class="col-md-4" >
+                    <h5 data-section="footer" data-value="nosotros">Sobre Nosotros</h5>
+                    <p data-section="footer" data-value="info">Información sobre la empresa.</p>
                 </div>
-                <div class="col-md-6">
-                    <h5>Links rápidos</h5>
+                
+                <div class="col-md-4">
+                    <h5 data-section="footer" data-value="Links">Enlaces</h5>
                     <ul class="list-unstyled">
-                        <li><a href="../../index.php" class="text-white">Inicio</a></li>
-                        <li><a href="../../pages/services.html" class="text-white">Servicios</a></li>
-                        <li><a href="../../pages/rooms.html" class="text-white">Habitaciones</a></li>
-                        <li><a href="../../pages/recommendations.html" class="text-white">Recomendaciones</a></li>
-                        <li><a href="../../pages/contacto.html" class="text-white">Contacto</a></li>
+                        <li><a href="../../index.php" class="text-white" data-section="footer" data-value="home">Inicio</a></li>
+                        <li><a href="../../pages/rooms.php" class="text-white" data-section="footer" data-value="rooms">Habitaciones</a></li>
+                        <li><a href="../../pages/services.php" class="text-white" data-section="footer" data-value="services">Servicios</a></li>
+                        <li><a href="../../pages/recommendations.php" class="text-white" data-section="footer" data-value="recommendations">Recomendaciones</a></li>
+                        <li><a href="../../pages/contacto.php" class="text-white" data-section="footer" data-value="contact">Contacto</a></li>
                     </ul>
                 </div>
+                <div class="col-md-4 whapp">
+                    <img src="../../icons/whapp.png" alt="Quiero sumarme a la comunidad del hotel!!!" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                </div>
+            </div>
+            <div class="text-center py-3" data-section="footer" data-value="empresa">
+                © 2024 Tu Empresa. Todos los derechos reservados.
             </div>
         </div>
     </footer>

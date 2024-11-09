@@ -39,7 +39,7 @@ include("../registro_login/validacion_sesion.php");
                     <div class="carousel-item active">
                         <img src="../../images/pileta-dia.jfif" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5 data-section="presentacion" data-value="relax">Relax...</h5>
+                            <h5 data-section="presentacion" data-value="relax">Relax</h5>
                             <p data-section="presentacion" data-value="relax_texto">Disfruta de nuestra espectacular piscina en el Hotel Continental, ideal para relajarte y
                                 disfrutar del sol en pleno centro de Buenos Aires.</p>
                         </div>
@@ -108,11 +108,6 @@ include("../registro_login/validacion_sesion.php");
                         <a class="nav-link text-dark" href="../../pages/contacto.php" data-section="nav"
                             data-value="contact">Contacto</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="../../pages/receptions.php">
-                            <img src="../../icons/calendar-check.svg" alt="Reservas"> <span data-section="nav" data-value="receptions">Reservas</span>
-                        </a>
-                    </li>
                 </ul>
 
                 <ul class="navbar-nav ms-auto">
@@ -165,6 +160,15 @@ include("../registro_login/validacion_sesion.php");
     </nav>
     <!-- Agregar un div espaciador después del nav -->
     <div id="nav-spacer"></div>
+
+        <!-- WhatsApp Me -->
+        <div id="whatsapp-button" class="whatsapp-button">
+        <a href="https://wa.me/+5492323319507" target="_blank">
+            <img src="icons/wasap.png" alt="WhatsApp">
+        </a>
+    </div>
+
+
     <!-----------------------------------------IMAGEN O VIDEO PRINCIPAL--------------------------------------------->
     <div class="row ratio ratio-16x9 video-first">
         <video src="../../video/video_pool.mp4" autoplay muted loop></video>
@@ -246,51 +250,73 @@ include("../registro_login/validacion_sesion.php");
         </div>
     </div>
     <!-------------------------------------footer----------------------------------------------------->
-    <footer class="bg-dark text-white pt-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4" >
-                    <h5 data-section="footer" data-value="nosotros">Sobre Nosotros</h5>
-                    <p data-section="footer" data-value="info">Información sobre la empresa.</p>
-                </div>
-                
-                <div class="col-md-4">
-                    <h5 data-section="footer" data-value="Links">Enlaces</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#index.php" class="text-white" data-section="footer" data-value="home">Inicio</a></li>
-                        <li><a href="pages/rooms.html" class="text-white" data-section="footer" data-value="rooms">Habitaciones</a></li>
-                        <li><a href="pages/services.html" class="text-white" data-section="footer" data-value="services">Servicios</a></li>
-                        <li><a href="pages/recommendations.html" class="text-white" data-section="footer" data-value="recommendations">Recomendaciones</a></li>
-                        <li><a href="pages/contacto.html" class="text-white" data-section="footer" data-value="contact">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 whapp">
-                    <img src="../../icons/whapp.png" alt="Quiero sumarme a la comunidad del hotel!!!" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
-                </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre Nosotros</h3>
+                <p>Informacion sobre la empresa.</p>
             </div>
-            <div class="text-center py-3" data-section="footer" data-value="empresa">
-                © 2024 Tu Empresa. Todos los derechos reservados.
+            <div class="footer-column">
+                <h3>Páginas</h3>
+                <ul>
+                    <li><a href="index.php">Inicio</a></li>
+                    <li><a href="pages/rooms.php">Habitaciones</a></li>
+                    <li><a href="pages/services.php">Servicios</a></li>
+                    <li><a href="pages/recommendations.php">Recomendaciones</a></li>
+                    <li><a href="pages/contacto.php">Contacto</a></li>
+                </ul>
             </div>
         </div>
     </footer>
-    <!--------------------------modal whapp------------->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Whapp Community</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="images/QrHotel.png" class="img-fluid">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <style>
+
+        footer {
+            background-color: black;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column {
+            width: 45%;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .footer-column p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-column ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
 
 
     <!---bootstrap js --->

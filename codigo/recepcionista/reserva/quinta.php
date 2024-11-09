@@ -61,6 +61,7 @@ foreach ($habitaciones_seleccionadas as $hab_id) {
 }
 
 $_SESSION['valor_total'] = $valor_total;
+$_SESSION['valor_con_descuento'] = $valor_con_descuento;
 
 ?>
 

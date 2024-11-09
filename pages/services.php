@@ -226,14 +226,6 @@ session_start();
                   >Contacto</a
                 >
               </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link text-dark"
-                  href="receptions.php"
-                >
-                  <img src="../icons/calendar-check.svg" alt="Reservas" /> <span data-section="nav" data-value="receptions">Reservas</span>
-                </a>
-              </li>
             </ul>
   
             <ul class="navbar-nav ms-auto">
@@ -412,7 +404,7 @@ session_start();
         <br>
         <div class="card-services mb-3" style="width: 100%">
             <div class="row g-0">
-                <div class="col-md-4 hidden">
+                <div class="col-md-4 ">
                     <img src="../images/bar_resto/restaurant-service.jpg" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
@@ -437,7 +429,7 @@ session_start();
         <!-----------------------------garage horizontal card-------------------------------------------->
         <div class="card-services mb-3" style="width: 100%">
             <div class="row g-0">
-                <div class="col-md-4 hidden">
+                <div class="col-md-4 ">
                     <img src="../images/garage/garage-services.jpg" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
@@ -462,7 +454,7 @@ session_start();
         <br>
         <div class="card-services mb-3" style="width: 100%">
             <div class="row g-0">
-                <div class="col-md-4 hidden">
+                <div class="col-md-4 ">
                     <img src="../images/spa/spa-service.jpg" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
@@ -489,7 +481,7 @@ session_start();
         <br>
         <div class="card-services mb-3" style="width: 100%" id="baby">
             <div class="row g-0">
-                <div class="col-md-4 hidden">
+                <div class="col-md-4 ">
                     <img src="../images/services/baby-cot.jpg" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
@@ -513,7 +505,7 @@ session_start();
         <br>
         <div class="card-services mb-3" style="width: 100%" id="laundry">
             <div class="row g-0">
-                <div class="col-md-4 hidden">
+                <div class="col-md-4 ">
                     <img src="../images/services/laundry-service.jpg" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
@@ -532,32 +524,73 @@ session_start();
             <br>
     </div>
     <!-------------------------------------footer----------------------------------------------------->
-    <footer class="bg-dark text-white pt-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5 data-section="footer" data-value="nosotros">Sobre Nosotros</h5>
-                    <p data-section="footer" data-value="info">Información sobre la empresa.</p>
-                </div>
-                <div class="col-md-4">
-                    <h5 data-section="footer" data-value="Links">Enlaces</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white" data-section="footer" data-value="home">Inicio</a></li>
-                        <li><a href="#" class="text-white" data-section="footer" data-value="services">Servicios</a></li>
-                        <li><a href="#" class="text-white" data-section="footer" data-value="contact">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5 data-section="footer" data-value="contact">Contacto</h5>
-                    <p>Email: info@ejemplo.com</p>
-                    <p><span data-section="footer" data-value="tele">Teléfono:</span> +123 456 7890</p>
-                </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre Nosotros</h3>
+                <p>Informacion sobre la empresa.</p>
             </div>
-            <div class="text-center py-3" data-section="footer" data-value="empresa">
-                © 2024 Tu Empresa. Todos los derechos reservados.
+            <div class="footer-column">
+                <h3>Páginas</h3>
+                <ul>
+                    <li><a href="index.php">Inicio</a></li>
+                    <li><a href="pages/rooms.php">Habitaciones</a></li>
+                    <li><a href="pages/services.php">Servicios</a></li>
+                    <li><a href="pages/recommendations.php">Recomendaciones</a></li>
+                    <li><a href="pages/contacto.php">Contacto</a></li>
+                </ul>
             </div>
         </div>
     </footer>
+
+    <style>
+
+        footer {
+            background-color: black;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column {
+            width: 45%;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .footer-column p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-column ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
     
     
     <!---bootstrap js --->

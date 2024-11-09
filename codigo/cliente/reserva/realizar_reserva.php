@@ -15,13 +15,13 @@ try {
     $reserva_id = $_GET['reserva_id'];
     $reserva_fecha_inicio = $_GET['reserva_fecha_inicio'];
     $reserva_fecha_fin = $_GET['reserva_fecha_fin'];
-    
+
     // Decodificar arrays
     $habitaciones_seleccionadas = json_decode(base64_decode($_GET['habitaciones']), true);
     $habitaciones_adultos = json_decode(base64_decode($_GET['habitaciones_adultos']), true);
     $habitaciones_ninos = json_decode(base64_decode($_GET['habitaciones_ninos']), true);
     $habitaciones_cuna = json_decode(base64_decode($_GET['habitaciones_cuna']), true);
-    
+
     $reserva_cochera = isset($_GET['reserva_cochera']) ? $_GET['reserva_cochera'] : null;
     $valor_total = $_GET['valor_total'];
 
