@@ -22,7 +22,9 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
+DROP DATABASE IF EXISTS hotel;
+CREATE DATABASE hotel;
+use hotel;
 --
 -- Estructura de tabla para la tabla `calificaciones`
 --
@@ -61,7 +63,7 @@ CREATE TABLE `cliente` (
   `Contrasena` text NOT NULL,
   `Fecha_Registro` datetime NOT NULL,
   `Puntos` int(11) NOT NULL DEFAULT 0,
-  `Jerarquia` text NOT NULL DEFAULT '2',
+  `Jerarquia` varchar(30) NOT NULL DEFAULT '2',
   `Activo` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -70,9 +72,9 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id`, `Nombre`, `Apellido`, `Fecha_Nacimiento`, `Documento`, `Nacionalidad`, `Sexo`, `Email`, `Telefono`, `Contrasena`, `Fecha_Registro`, `Puntos`, `Jerarquia`, `Activo`) VALUES
-(3, 'Juan', 'Pérez', '1980-05-23', 12345678, 'Argentina', 'Masculino', 'juan.perez@mail.com', '123456789', '$2y$10$g6Z/E7qZxhjQuSpTiBW/OOG2ciE3WcXMKcYGKKUgw5DQVhvCtiyHC', '2024-10-01 12:00:00', 22600, '2', 1),
-(4, 'Ana', 'Gómez', '1990-06-15', 87654321, 'Argentina', 'Femenino', 'ana.gomez@mail.com', '987654321', '$2y$10$vynfC6ENmGnz2WSlaQwzEOLWgaJkqMVdkTX0G/NGhI2cH3Y98fxFa', '2024-10-01 13:00:00', 14600, '2', 1),
-(5, 'Carlos', 'López', '1975-07-20', 56789012, 'Argentina', 'Masculino', 'carlos.lopez@mail.com', '123987456', '$2y$10$UByWC8JYP8R1wKR9UZrWg.XWupLkiT/.uVJAw8v66rIoaqb91o2w6', '2024-10-01 14:00:00', 15550, '2', 1);
+(3, 'Juan', 'Pérez', '1980-05-23', 12345678, 'Argentina', 'Masculino', 'juan.perez@mail.com', '123456789', '$2y$10$UdqbNu4voedDJFsuYrrLCuGYHs6JsN3ZUXQ6q09FdPOMmnTCzxTI2', '2024-10-01 12:00:00', 22600, '2', 1),
+(4, 'Ana', 'Gómez', '1990-06-15', 87654321, 'Argentina', 'Femenino', 'ana.gomez@mail.com', '987654321', '$2y$10$ajqkMVdGSr7NuL6Jl9F3S.aSSzixUyabQiryX7I2me253wjSk.biW', '2024-10-01 13:00:00', 14600, '2', 1),
+(5, 'Carlos', 'López', '1975-07-20', 56789012, 'Argentina', 'Masculino', 'carlos.lopez@mail.com', '123987456', '$2y$10$eLeMiI4smGoNuSCGlJDtJ.EMMsde/H2t/zujiqVEcyMS09td0vtgW', '2024-10-01 14:00:00', 15550, '2', 1);
 
 -- --------------------------------------------------------
 
@@ -251,8 +253,8 @@ CREATE TABLE `reserva_total` (
   `Estado` text NOT NULL,
   `Fecha_Inicio` date NOT NULL,
   `Fecha_Fin` date NOT NULL,
-  `Check_In` datetime NOT NULL,
-  `Check_Out` datetime NOT NULL,
+  `Check_In` datetime NULL,
+  `Check_Out` datetime NULL,
   `Fecha_Reserva` datetime NOT NULL,
   `Valor_Total` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -262,11 +264,11 @@ CREATE TABLE `reserva_total` (
 --
 
 INSERT INTO `reserva_total` (`id`, `ID_Cliente`, `Estado`, `Fecha_Inicio`, `Fecha_Fin`, `Check_In`, `Check_Out`, `Fecha_Reserva`, `Valor_Total`) VALUES
-(1, 5, 'Cancelada', '2024-10-25', '2024-10-30', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2024-10-21 17:37:03', 75000),
-(2, 4, 'Cancelada', '2024-10-20', '2024-10-30', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2024-10-22 20:22:18', 20000),
-(3, 5, 'Confirmada', '2024-10-20', '2024-10-26', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2024-10-22 20:37:52', 26000),
-(4, 5, 'Cancelada', '2024-10-21', '2024-10-26', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2024-10-22 20:55:38', 12000),
-(5, 5, 'Confirmada', '2024-10-22', '2024-10-26', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2024-10-22 21:05:44', 18000);
+(1, 5, 'Cancelada', '2024-10-25', '2024-10-30', '2024-10-25 00:00:00', '2024-10-30 00:00:00', '2024-10-21 17:37:03', 75000),
+(2, 4, 'Cancelada', '2024-10-20', '2024-10-30', '2024-10-20 00:00:00', '2024-10-30 00:00:00', '2024-10-22 20:22:18', 20000),
+(3, 5, 'Confirmada', '2024-10-20', '2024-10-26', '2024-10-20 00:00:00', '2024-10-26 00:00:00', '2024-10-22 20:37:52', 26000),
+(4, 5, 'Cancelada', '2024-10-21', '2024-10-26', '2024-10-21 00:00:00', '2024-10-26 00:00:00', '2024-10-22 20:55:38', 12000),
+(5, 5, 'Confirmada', '2024-10-22', '2024-10-26', '2024-10-22 00:00:00', '2024-10-26 00:00:00', '2024-10-22 21:05:44', 18000);
 
 --
 -- Disparadores `reserva_total`
@@ -326,9 +328,9 @@ CREATE TABLE `usuario_empleados` (
 --
 
 INSERT INTO `usuario_empleados` (`id`, `Nombre`, `Email`, `Contrasena`, `Jerarquia`, `Activo`) VALUES
-(1, 'Gerente1', 'gerente@gerente.com', '$2y$10$ORbIR19mdW6cx7cqpdLdL.rsUxzw7rJAtBmG5QlcZTX.yPYK0NdmO', '0', 1),
-(2, 'Recepcionista1', 'recepcionista1@recepcionista.com', 'Recepcionista123', '1', 0),
-(8, 'Recepcionista2', 'recepcionista@recepcionista.com', '$2y$10$KtH9LgFx.iyhYWQ/CiROK.kQm4YVlhl6f9UKj6fSE7htZKtZX0fiW', '1', 1);
+(1, 'Gerente1', 'gerente@gerente.com', '$2y$10$nV0NV3GcFqJe2T4S4CRP/uJleQXULf6zZQeXATnURex0Yds9qFSCi', '0', 1),
+(2, 'Recepcionista1', 'recepcionista@despedido.com', '$2y$10$rfFbCksGgv4uooAGyfeaTOYrdbH4vdl2NsPhGccID1bNjyR2Jb33K', '1', 0),
+(8, 'Recepcionista2', 'recepcionista@recepcionista.com', '$2y$10$OGigXuelBFE427/qJLfYseiasSOWXdAVlka/SFlJ4s0S5GcC.4..W', '1', 1);
 
 --
 -- Índices para tablas volcadas

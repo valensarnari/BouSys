@@ -292,14 +292,13 @@ session_start();
                                 <form action="login.php" method="POST">
                                     <div class="input-group">
                                         <i class="fas fa-envelope"></i>
-                                        <input type="email" id="email_login" name="email_login" placeholder="Email"
+                                        <input type="email" id="email_login" name="email_login"
                                             required>
                                         <label for="email_login">Email</label>
                                     </div>
                                     <div class="input-group">
                                         <i class="fas fa-lock"></i>
-                                        <input type="password" id="password_login" name="password_login"
-                                            placeholder="Contraseña" required>
+                                        <input type="password" id="password_login" name="password_login" required>
                                         <label for="password_login" data-section="panel_registro_login.php"
                                             data-value="contrasena">Contraseña</label>
                                     </div>
@@ -320,68 +319,43 @@ session_start();
                             <div id="signup" style="display:none;">
                                 <h2 data-section="panel_registro_login.php" data-value="registro">Registro</h2>
                                 <form action="registro.php" method="POST">
-                                    <div class="input-group">
-                                        <i class="fas fa-user"></i>
-                                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required
-                                            pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]{3,25}" oninvalid="(() => {
-                                                const modalDiv = document.createElement('div');
-                                                modalDiv.innerHTML = `
-                                                    <div class='modal fade' id='nombreModal' tabindex='-1' aria-hidden='true'>
-                                                        <div class='modal-dialog'>
-                                                            <div class='modal-content'>
-                                                                <div class='modal-header'>
-                                                                    <h5 class='modal-title'>Aviso</h5>
-                                                                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                                                                </div>
-                                                                <div class='modal-body'>
-                                                                    <p>Solo se permiten letras, mínimo 3 caracteres y máximo 25 caracteres</p>
-                                                                </div>
-                                                                <div class='modal-footer'>
-                                                                    <button type='button' class='btn btn-primary' data-bs-dismiss='modal'>Aceptar</button>
-                                                                </div>
+                                <div class="input-group">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="nombre" name="nombre" required
+                                        pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]{3,25}" oninvalid="(() => {
+                                            const modalDiv = document.createElement('div');
+                                            modalDiv.innerHTML = `
+                                                <div class='modal fade' id='nombreModal' tabindex='-1' aria-hidden='true'>
+                                                    <div class='modal-dialog'>
+                                                        <div class='modal-content'>
+                                                            <div class='modal-header'>
+                                                                <h5 class='modal-title'>Aviso</h5>
+                                                                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                                            </div>
+                                                            <div class='modal-body'>
+                                                                <p data-section= 'panel_registro_login.php' data-value='nombre_apellido_Restriccion'>Solo se permiten letras, mínimo 3 caracteres y máximo 25 caracteres</p>
+                                                            </div>
+                                                            <div class='modal-footer'>
+                                                                <button type='button' class='btn btn-primary' data-bs-dismiss='modal'><span data-section='panel_registro_login.php' data-value='Aceptar'>Aceptar</span></button>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                `;
-                                                document.body.appendChild(modalDiv);
-                                                const modal = new bootstrap.Modal(document.getElementById('nombreModal'));
-                                                modal.show();
-                                                document.getElementById('nombreModal').addEventListener('hidden.bs.modal', function() {
-                                                    document.body.removeChild(modalDiv);
-                                                });
-                                            })()" oninput="this.setCustomValidity('')" minlength="3" maxlength="25"
-                                            onkeypress="return /[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/.test(event.key)">
-                                        <div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title">Error de validación</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p id="mensajeError"></p>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Cerrar</button>
-                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <script>
-                                            function mostrarError(mensaje) {
-                                                document.getElementById('mensajeError').textContent = mensaje;
-                                                var modal = new bootstrap.Modal(document.getElementById('errorModal'));
-                                                modal.show();
-                                            }
-                                        </script>
-                                        <label for="nombre" data-section="panel_registro_login.php"
-                                            style="display: none;" data-value="Nombre">Nombre</label>
-                                    </div>
+                                            `;
+                                            document.body.appendChild(modalDiv);
+                                            const modal = new bootstrap.Modal(document.getElementById('nombreModal'));
+                                            modal.show();
+                                            document.getElementById('nombreModal').addEventListener('hidden.bs.modal', function() {
+                                                document.body.removeChild(modalDiv);
+                                            });
+                                        })()" oninput="this.setCustomValidity('')" minlength="3" maxlength="25"
+                                        onkeypress="return /[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/.test(event.key)">
+                                    
+                                    <label for="nombre" data-section="panel_registro_login.php" data-value="Nombre">Nombre</label>
+                                </div>
                                     <div class="input-group">
                                         <i class="fas fa-user"></i>
-                                        <input type="text" id="apellido" name="apellido" placeholder="Apellido" required
+                                        <input type="text" id="apellido" name="apellido" required
                                             pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]{3,25}" oninvalid="(function(){
                                                 const modalDiv = document.createElement('div');
                                                 modalDiv.innerHTML = `
@@ -393,10 +367,10 @@ session_start();
                                                                     <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                                                                 </div>
                                                                 <div class='modal-body'>
-                                                                    <p>Solo se permiten letras, mínimo 3 caracteres y máximo 25 caracteres</p>
+                                                                    <p data-section= 'panel_registro_login.php' data-value='nombre_apellido_Restriccion'>Solo se permiten letras, mínimo 3 caracteres y máximo 25 caracteres</p>
                                                                 </div>
                                                                 <div class='modal-footer'>
-                                                                    <button type='button' class='btn btn-primary' data-bs-dismiss='modal'>Aceptar</button>
+                                                                    <button type='button' class='btn btn-primary' data-bs-dismiss='modal'><span data-section='panel_registro_login.php' data-value='Aceptar'>Aceptar</span></button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -415,7 +389,7 @@ session_start();
                                     </div>
                                     <div class="input-group">
                                         <i class="fas fa-id-card"></i>
-                                        <input type="text" id="dni" name="dni" placeholder="DNI" required minlength="7"
+                                        <input type="text" id="dni" name="dni" required minlength="7"
                                             maxlength="8" pattern="[0-9]{7,8}" oninvalid="(function(){
                                                 const modalDiv = document.createElement('div');
                                                 modalDiv.innerHTML = `
@@ -427,10 +401,10 @@ session_start();
                                                                     <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                                                                 </div>
                                                                 <div class='modal-body'>
-                                                                    <p>El DNI debe tener entre 7 y 8 números</p>
+                                                                    <p data-section= 'panel_registro_login.php' data-value='Documento_Restriccion'>El Documento debe tener entre 7 y 8 números</p>
                                                                 </div>
                                                                 <div class='modal-footer'>
-                                                                    <button type='button' class='btn btn-primary' data-bs-dismiss='modal'>Aceptar</button>
+                                                                    <button type='button' class='btn btn-primary' data-bs-dismiss='modal'><span data-section='panel_registro_login.php' data-value='Aceptar'>Aceptar</span></button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -449,8 +423,7 @@ session_start();
                                     </div>
                                     <div class="input-group">
                                         <i class="fas fa-globe"></i>
-                                        <input type="text" id="nacionalidad" name="nacionalidad"
-                                            placeholder="Nacionalidad" required minlength="4" maxlength="20"
+                                        <input type="text" id="nacionalidad" name="nacionalidad" required minlength="4" maxlength="20"
                                             pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]{4,20}" oninvalid="(function(){
                                                 const modalDiv = document.createElement('div');
                                                 modalDiv.innerHTML = `
@@ -462,10 +435,10 @@ session_start();
                                                                     <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                                                                 </div>
                                                                 <div class='modal-body'>
-                                                                    <p>La nacionalidad debe tener entre 4 y 20 caracteres</p>
+                                                                    <p data-section= 'panel_registro_login.php' data-value='Nacionalidad_Restriccion'>La nacionalidad debe tener entre 4 y 20 caracteres</p>
                                                                 </div>
                                                                 <div class='modal-footer'>
-                                                                    <button type='button' class='btn btn-primary' data-bs-dismiss='modal'>Aceptar</button>
+                                                                    <button type='button' class='btn btn-primary' data-bs-dismiss='modal'><span data-section='panel_registro_login.php' data-value='Aceptar'>Aceptar</span></button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -525,10 +498,10 @@ session_start();
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <p>Debes ser mayor de 18 años para registrarte</p>
+                                                                        <p data-section="panel_registro_login.php" data-value="mayor">Debes ser mayor de 18 años para registrarte</p>
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                                                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><span data-section="panel_registro_login.php" data-value="Aceptar">Aceptar</span></button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -550,7 +523,8 @@ session_start();
                                         <input type="email" id="email" name="email" required
                                             pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$" maxlength="35"
                                             title="El correo electrónico debe contener @ y terminar en .com, máximo 35 caracteres"
-                                            oninvalid="mostrarModalError(this)" placeholder="Email">
+                                            oninvalid="mostrarModalError(this)">
+                                            <label for="email">Email</label>
                                         <script>
                                             function mostrarModalError(input) {
                                                 const modalDiv = document.createElement('div');
@@ -563,10 +537,10 @@ session_start();
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>El correo electrónico debe contener @ y terminar en .com, máximo 35 caracteres</p>
+                                                                    <p data-section="panel_registro_login.php" data-value="email_Restriccion">El correo electrónico debe contener @ y terminar en .com, máximo 35 caracteres</p>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><span data-section="panel_registro_login.php" data-value="Aceptar">Aceptar</span></button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -580,14 +554,15 @@ session_start();
                                                 });
                                             }
                                         </script>
-                                        <label for="email" style="display: none;">Email</label>
                                     </div>
                                     <div class="input-group">
                                         <i class="fas fa-phone"></i>
-                                        <input type="text" id="telefono" name="telefono" placeholder="Teléfono" required
+                                        <input type="text" id="telefono" name="telefono" required
                                             minlength="9" maxlength="15" pattern="[0-9]{9,15}"
                                             title="El teléfono debe tener entre 9 y 15 números"
                                             oninvalid="mostrarModalErrorTelefono(this)">
+                                            <label for="telefono" data-section="panel_registro_login.php"
+                                            data-value="Telefono">Teléfono</label>
                                         <script>
                                             function mostrarModalErrorTelefono(input) {
                                                 const modalDiv = document.createElement('div');
@@ -600,14 +575,15 @@ session_start();
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>El teléfono debe tener entre 9 y 15 números</p>
+                                                                    <p data-section="panel_registro_login.php" data-value="telefono_Restriccion">El teléfono debe tener entre 9 y 15 números</p>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><span data-section="panel_registro_login.php" data-value="Aceptar">Aceptar</span></button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    
                                                 `;
                                                 document.body.appendChild(modalDiv);
                                                 const modal = new bootstrap.Modal(document.getElementById('telefonoModal'));
@@ -617,15 +593,14 @@ session_start();
                                                 });
                                             }
                                         </script>
-                                        <label for="telefono" data-section="panel_registro_login.php"
-                                            data-value="Telefono" style="display: none;">Teléfono</label>
                                     </div>
                                     <div class="input-group">
                                         <i class="fas fa-lock"></i>
-                                        <input type="password" id="contrasena" name="contrasena"
-                                            placeholder="Contraseña" required minlength="5"
+                                        <input type="password" id="contrasena" name="contrasena" required minlength="5"
                                             pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$"
                                             oninvalid="mostrarModalErrorContrasena(this)">
+                                            <label for="contrasena" data-section="panel_registro_login.php"
+                                            data-value="contrasena">Contraseña</label>
                                         <script>
                                             function mostrarModalErrorContrasena(input) {
                                                 const modalDiv = document.createElement('div');
@@ -638,10 +613,10 @@ session_start();
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>La contraseña debe tener al menos 5 caracteres y contener al menos una letra y un número</p>
+                                                                    <p data-section="panel_registro_login.php" data-value="Contrasena_Restriccion">La contraseña debe tener al menos 5 caracteres y contener al menos una letra y un número. No se permiten caracteres especiales</p>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><span data-section="panel_registro_login.php" data-value="Aceptar">Aceptar</span></button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -655,10 +630,8 @@ session_start();
                                                 });
                                             }
                                         </script>
-                                        <label for="contrasena" data-section="panel_registro_login.php"
-                                            data-value="contrasena" style="display: none;">Contraseña</label>
                                     </div>
-                                    <input type="submit" class="btn" value="Registrarse">
+                                    <input type="submit" class="btn" id ="Panel_Registro_boton" value="Registrarse">
                                 </form>
                                 <div class="links">
                                     <p><span data-section="panel_registro_login.php" data-value="ya tiene cuenta">¿Ya
@@ -675,50 +648,73 @@ session_start();
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white pt-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4" >
-                    <h5 data-section="footer" data-value="nosotros">Sobre Nosotros</h5>
-                    <p data-section="footer" data-value="info">Información sobre la empresa.</p>
-                </div>
-                
-                <div class="col-md-4">
-                    <h5 data-section="footer" data-value="Links">Enlaces</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="../../index.php" class="text-white" data-section="footer" data-value="home">Inicio</a></li>
-                        <li><a href="../../pages/rooms.php" class="text-white" data-section="footer" data-value="rooms">Habitaciones</a></li>
-                        <li><a href="../../pages/services.php" class="text-white" data-section="footer" data-value="services">Servicios</a></li>
-                        <li><a href="../../pages/recommendations.php" class="text-white" data-section="footer" data-value="recommendations">Recomendaciones</a></li>
-                        <li><a href="../../pages/contacto.php" class="text-white" data-section="footer" data-value="contact">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 whapp">
-                    <img src="../../icons/whapp.png" alt="Quiero sumarme a la comunidad del hotel!!!" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
-                </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3 data-section="footer" data-value="nosotros">Sobre Nosotros</h3>
+                <p data-section="footer" data-value="info">Informacion sobre la empresa.</p>
             </div>
-            <div class="text-center py-3" data-section="footer" data-value="empresa">
-                © 2024 Tu Empresa. Todos los derechos reservados.
+            <div class="footer-column">
+                <h3 data-section="footer" data-value="Links">Páginas</h3>
+                <ul>
+                    <li><a data-section="footer" data-value="home" href="../../index.php">Inicio</a></li>
+                    <li><a data-section="footer" data-value="rooms" href="../../pages/rooms.php">Habitaciones</a></li>
+                    <li><a data-section="footer" data-value="services" href="../../pages/services.php">Servicios</a></li>
+                    <li><a data-section="footer" data-value="recommendations" href="../../pages/recommendations.php">Recomendaciones</a></li>
+                    <li><a data-section="footer" data-value="contact" href="../../pages/contacto.php">Contacto</a></li>
+                </ul>
             </div>
         </div>
     </footer>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Whapp Community</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="../images/QrHotel.png" class="img-fluid">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <style>
+
+        footer {
+            background-color: black;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column {
+            width: 45%;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .footer-column p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-column ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>

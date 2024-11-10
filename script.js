@@ -31,6 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
       textToChange.innerHTML = texts[section][value];
       if(section === "panel_registro_login.php" && value === "iniciar")
         document.getElementById("e").value = texts[section][value];
+      if(section === "panel_registro_login.php" && value === "registrar")
+        document.getElementById("Panel_Registro_boton").value = texts[section][value];
     });
 
     // Guardar el idioma seleccionado en localStorage

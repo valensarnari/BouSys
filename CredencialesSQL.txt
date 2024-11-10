@@ -1,0 +1,43 @@
+credenciales:
+
+	Clientes:
+		Email:		ana.gomez@mail.com
+		Contraseña:	1234a
+		
+		Email:		juan.perez@mail.com
+		Contraseña:	1234b
+
+		Email:		carlos.lopez@mail.com
+		Contraseña:	1234c
+
+	Recepcionista:
+		Email:		recepcionista@recepcionista.com
+		Contraseña:	5678a
+
+		(Nota: la siguiente credencial es de prueba, no deberia poder ingresar al sistema ya que es un usuario que fue despedido)
+		Email:		recepcionista@despedido.com
+		Contraseña:	EstasDesped1do
+	
+	Gerente:
+		Email:		gerente@gerente.com
+		Contraseña:	5678b
+
+Tarjetas de prueba de mercadoPago:
+
+Credito:
+	Mastercard
+		Numero:				5031 7557 3453 0604	
+		Codigo Seguridad:	123
+		Vencimiento:		11/25
+		Nombre titular:		apro
+	Visa
+		Numero:				4509 9535 6623 3704
+		Codigo Seguridad:	123
+		Vencimiento:		11/25
+		Nombre titular:		apro
+Debito:
+	Mastercard
+		Numero:				5287 3383 1025 3304	
+		Codigo Seguridad:	123
+		Vencimiento:		11/25
+		Nombre titular:		apro

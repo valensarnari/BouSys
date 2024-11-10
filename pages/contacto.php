@@ -259,17 +259,17 @@ session_start();
     <footer>
         <div class="footer-container">
             <div class="footer-column">
-                <h3>Sobre Nosotros</h3>
-                <p>Informacion sobre la empresa.</p>
+                <h3 data-section="footer" data-value="nosotros">Sobre Nosotros</h3>
+                <p data-section="footer" data-value="info">Informacion sobre la empresa.</p>
             </div>
             <div class="footer-column">
-                <h3>Páginas</h3>
+                <h3 data-section="footer" data-value="Links">Páginas</h3>
                 <ul>
-                    <li><a href="index.php">Inicio</a></li>
-                    <li><a href="pages/rooms.php">Habitaciones</a></li>
-                    <li><a href="pages/services.php">Servicios</a></li>
-                    <li><a href="pages/recommendations.php">Recomendaciones</a></li>
-                    <li><a href="pages/contacto.php">Contacto</a></li>
+                    <li><a data-section="footer" data-value="home" href="index.php">Inicio</a></li>
+                    <li><a data-section="footer" data-value="rooms" href="pages/rooms.php">Habitaciones</a></li>
+                    <li><a data-section="footer" data-value="services" href="pages/services.php">Servicios</a></li>
+                    <li><a data-section="footer" data-value="recommendations" href="pages/recommendations.php">Recomendaciones</a></li>
+                    <li><a data-section="footer" data-value="contact" href="pages/contacto.php">Contacto</a></li>
                 </ul>
             </div>
         </div>

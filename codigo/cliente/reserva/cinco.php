@@ -475,12 +475,12 @@ $preference->save();
                     <!-- Resumen de costos -->
                     <div class="cost-summary">
                         <div class="cost-item">
-                            <span><span data-section="reservaCinco.php" data-value="subtotal">Subtotal por</span> <?php echo $num_noches; ?> <span data-section="reservaCinco.php" data-value="noches">noches</span<</span>
+                            <span><span data-section="reservaCinco.php" data-value="subtotal">Subtotal por</span> <?php echo $num_noches; ?> <span data-section="reservaCinco.php" data-value="noches">noches</span></span>
                             <span>$<?php echo number_format($valor_total, 2); ?></span>
                         </div>
                         <?php if ($descuento > 0): ?>
                             <div class="cost-item discount">
-                                <span><span data-section="reservaCinco.php" data-value="Descuento">Descuento por puntos</sapn> (<?php echo number_format($descuento * 100, 0); ?>%)</span>
+                                <span><span data-section="reservaCinco.php" data-value="Descuento">Descuento por puntos</span> (<?php echo number_format($descuento * 100, 0); ?>%)</span>
                                 <span
                                     class="text-success">-$<?php echo number_format($valor_total * $descuento, 2); ?></span>
                             </div>
@@ -520,27 +520,72 @@ $preference->save();
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white pt-4 mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>Sobre nosotros</h5>
-                    <p>Somos especialistas en viajes y reservas de hoteles. Nos encargamos de encontrar la mejor opción
-                        para ti.</p>
-                </div>
-                <div class="col-md-6">
-                    <h5>Links rápidos</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="../../index.php" class="text-white">Inicio</a></li>
-                        <li><a href="../../pages/services.html" class="text-white">Servicios</a></li>
-                        <li><a href="../../pages/rooms.html" class="text-white">Habitaciones</a></li>
-                        <li><a href="../../pages/recommendations.html" class="text-white">Recomendaciones</a></li>
-                        <li><a href="../../pages/contacto.html" class="text-white">Contacto</a></li>
-                    </ul>
-                </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3 data-section="footer" data-value="nosotros">Sobre Nosotros</h3>
+                <p data-section="footer" data-value="info">Informacion sobre la empresa.</p>
+            </div>
+            <div class="footer-column">
+                <h3 data-section="footer" data-value="Links">Páginas</h3>
+                <ul>
+                    <li><a data-section="footer" data-value="home" href="../../../index.php">Inicio</a></li>
+                    <li><a data-section="footer" data-value="rooms" href="../../../pages/rooms.php">Habitaciones</a></li>
+                    <li><a data-section="footer" data-value="services" href="../../../pages/services.php">Servicios</a></li>
+                    <li><a data-section="footer" data-value="recommendations" href="../../../pages/recommendations.php">Recomendaciones</a></li>
+                    <li><a data-section="footer" data-value="contact" href="../../../pages/contacto.php">Contacto</a></li>
+                </ul>
             </div>
         </div>
     </footer>
+    <style>
+
+        footer {
+            background-color: black;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column {
+            width: 45%;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .footer-column p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-column ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
 
     <!---bootstrap js --->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

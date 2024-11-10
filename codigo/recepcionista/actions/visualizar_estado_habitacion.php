@@ -1,9 +1,6 @@
 <?php
 
-$conexion = mysqli_connect("localhost", "root", "", "hotel"); 
-//puse la conexion manual porque me tiraba error de direccionamiento, corregir y poner la direccion a conexion.php gio
-if (!$conexion)
-    echo "Error de conexión";
+include("../../conexion.php");
 
 
 

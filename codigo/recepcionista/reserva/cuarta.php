@@ -15,7 +15,8 @@ $habitaciones_cuna = isset($_POST['habitaciones_cuna']) ? $_POST['habitaciones_c
 
 $sql = "SELECT DISTINCT c.id, c.Numero_Cochera
         FROM cochera c
-        WHERE NOT EXISTS (
+        WHERE c.Estado != 'En mantenimiento' 
+        AND NOT EXISTS (
             SELECT 1 
             FROM reserva_cochera rc
             JOIN reserva_total rt ON rc.ID_Reserva = rt.id

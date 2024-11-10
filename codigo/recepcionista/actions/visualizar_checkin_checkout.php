@@ -1,9 +1,5 @@
 <?php
-$conexion = mysqli_connect("localhost", "root", "", "hotel"); 
-//puse la conexion manual porque me tiraba error de direccionamiento, corregir y poner la direccion a conexion.php gio
-if (!$conexion)
-    echo "Error de conexión";
-
+include("../../conexion.php");
 // Consulta para obtener las reservas con sus fechas de check-in y check-out
 $sql = "SELECT id, ID_Cliente, Fecha_Inicio, Fecha_Fin, Check_In, Check_Out FROM reserva_total";
 $result = $conexion->query($sql);

@@ -10,8 +10,8 @@
             <div class="modal-body">
                 <?php
                 // Verificar estado de check-in y check-out
-                $tiene_checkin = $resultado['5'] != "0000-00-00 00:00:00"; // Check_In
-                $tiene_checkout = $resultado['6'] != "0000-00-00 00:00:00"; // Check_Out
+                $tiene_checkin = $resultado['5'] != "0000-00-00 00:00:00" && $resultado['5'] !== null; // Check_In
+                $tiene_checkout = $resultado['6'] != "0000-00-00 00:00:00" && $resultado['6'] !== null; // Check_Out
 
                 if ($tiene_checkout) {
                     // Si ya tiene check-out, mostrar mensaje

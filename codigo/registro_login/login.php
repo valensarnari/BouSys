@@ -1,7 +1,6 @@
 <?php
 session_start();
-$conexion = mysqli_connect("localhost", "root", "", "hotel");
-
+include("../conexion.php");
 // Verificar si la conexión fue exitosa
 if (!$conexion) {
     echo "Error de conexión";
@@ -13,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contrasena = $_POST['password_login'];
 
     // Consultar el usuario en la tabla 'cliente' (con 'j' minúscula)
-    $query_cliente = "SELECT * FROM cliente WHERE Email = '$email'";
+    $query_cliente = "SELECT * FROM cliente WHERE Email = '$email' AND Activo = 1";
     $result_cliente = mysqli_query($conexion, $query_cliente);
 
     if ($result_cliente && mysqli_num_rows($result_cliente) > 0) {
@@ -48,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         // Si no se encuentra en la tabla cliente, buscar en la tabla usuario_empleados (con 'J' mayúscula)
-        $query_empleado = "SELECT * FROM usuario_empleados WHERE Email = '$email'";
+        $query_empleado = "SELECT * FROM usuario_empleados WHERE Email = '$email' AND Activo = 1";
         $result_empleado = mysqli_query($conexion, $query_empleado);
 
         if ($result_empleado && mysqli_num_rows($result_empleado) > 0) {

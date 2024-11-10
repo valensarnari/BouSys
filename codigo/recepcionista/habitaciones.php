@@ -298,6 +298,7 @@ include("../registro_login/validacion_sesion.php");
 
         /* Ajuste del ancho de las columnas */
         .col-md-6 {
+            width: 100%;
             padding: 0 15px;
         }
 
@@ -487,7 +488,6 @@ include("../registro_login/validacion_sesion.php");
                             </div>
                         </div>
                     </div>
-
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-header">

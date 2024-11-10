@@ -1,7 +1,6 @@
 <?php
 
-$conexion = mysqli_connect("localhost", "root", "", "hotel")
-    or die('No se pudo conectar al servidor');
+include("../../conexion.php");
 
 $nombre = $_POST['nombre'];
 $apellido = $_POST['apellido'];

@@ -1,10 +1,5 @@
 <?php
-$conexion = mysqli_connect("localhost", "root", "", "hotel"); 
-// Verificar si la conexión fue exitosa
-if (!$conexion) {
-    echo "Error de conexión";
-    exit;
-}
+include("../conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

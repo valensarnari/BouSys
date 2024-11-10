@@ -139,18 +139,18 @@ include("../registro_login/validacion_sesion.php");
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
                             <li>
                                 <div id="flags" class="flags_item dropdown-item" data-language="en">
-                                    <img src="icons/gb.svg" alt="English" class="me-2" style="width: 20px" />
+                                    <img src="../../icons/gb.svg" alt="English" class="me-2" style="width: 20px" />
                                     English
                                 </div>
                             </li>
                             <li>
                                 <div id="flag-es" class="flags_item_es dropdown-item" data-language="es">
-                                    <img src="icons/es.svg" alt="Español" class="me-2" style="width: 20px" />
+                                    <img src="../../icons/es.svg" alt="Español" class="me-2" style="width: 20px" />
                                     Español
                                 </div>
                             </li>
                             <div id="flag-pt" class="flags_item_pt dropdown-item" data-language="pt"><img
-                                    src="icons/pt.svg" alt="Português" class="me-2" style="width: 20px;"> Português
+                                    src="../../icons/pt.svg" alt="Português" class="me-2" style="width: 20px;"> Português
                             </div>
                         </ul>
                     </li>
@@ -164,10 +164,28 @@ include("../registro_login/validacion_sesion.php");
         <!-- WhatsApp Me -->
         <div id="whatsapp-button" class="whatsapp-button">
         <a href="https://wa.me/+5492323319507" target="_blank">
-            <img src="icons/wasap.png" alt="WhatsApp">
+            <img src="../../icons/wasap.png" alt="WhatsApp">
         </a>
     </div>
+    <style>
+        .whatsapp-button {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 1000;
+            animation: floatImageServ 1.5s ease-in-out infinite;
+            animation-delay: 3s;
+            filter: drop-shadow(0 0 0.75rem black);
+        }
+        .whatsapp-button[alt]{
+            display: none;
+        }
 
+        .whatsapp-button img {
+            width: 70px;
+            height: auto;  
+        }
+    </style>
 
     <!-----------------------------------------IMAGEN O VIDEO PRINCIPAL--------------------------------------------->
     <div class="row ratio ratio-16x9 video-first">
@@ -240,12 +258,12 @@ include("../registro_login/validacion_sesion.php");
     <!-------------------------------- slider con marcas---------------------------------------------->
     <div class="row justify-content slider">
         <div class="col slide-track">
-            <div class="slide"><img src="images/supplier/coca-cola-logo-5.svg" alt=""></div>
-            <div class="slide"><img src="images/supplier/don-perignon.png" alt=""></div>
+            <div class="slide"><img src="../../images/supplier/coca-cola-logo-5.svg" alt=""></div>
+            <div class="slide"><img src="../../images/supplier/don-perignon.png" alt=""></div>
             <!--  <div class="slide"><img src="images/supplier/logo_bousys.png" alt=""></div>--->
-            <div class="slide"><img src="images/supplier/perrier.png" alt=""></div>
-            <div class="slide"><img src="images/supplier/SFERRA_logo.jpg" alt=""></div>
-            <div class="slide"><img src="images/supplier/versace.png" alt=""></div>
+            <div class="slide"><img src="../../images/supplier/perrier.png" alt=""></div>
+            <div class="slide"><img src="../../images/supplier/SFERRA_logo.jpg" alt=""></div>
+            <div class="slide"><img src="../../images/supplier/versace.png" alt=""></div>
 
         </div>
     </div>

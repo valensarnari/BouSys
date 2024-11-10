@@ -69,7 +69,15 @@
     "Email":"Email",
     "Telefono":"Teléfono",
     "nacimiento":"Fecha de Nacimiento",
-    "ya tiene cuenta":"¿Ya tienes cuenta?"
+    "ya tiene cuenta":"¿Ya tienes cuenta?",
+    "Aceptar":"Aceptar",
+    "mayor":"Debes ser mayor de 18 años para registrarte",
+    "nombre_apellido_Restriccion":"Solo se permiten letras, mínimo 3 caracteres y máximo 25 caracteres",
+    "Documento_Restriccion":"El Documento debe tener entre 7 y 8 números",
+    "Nacionalidad_Restriccion":"La nacionalidad debe tener entre 4 y 20 caracteres",
+    "email_Restriccion":"El correo electrónico debe contener @ y terminar en .com, máximo 35 caracteres",
+    "telefono_Restriccion":"El teléfono debe tener entre 9 y 15 números",
+    "Contrasena_Restriccion":"La contraseña debe tener al menos 5 caracteres y contener al menos una letra y un número. No se permiten caracteres especiales"
 },
 "detalles_reservas_modal.php":{
     "inicio":"Fecha de Inicio",
@@ -100,7 +108,7 @@
 "footer":{
     "nosotros": "Sobre Nosotros",
     "info": "Información sobre la empresa",
-    "Links" :"Enlaces",
+    "Links" :"Páginas",
     "home" : "Inicio",
     "rooms" : "Habitaciones",
     "services" : "Servicios",
@@ -123,7 +131,10 @@
     "Calificacion":"Calificación",
     "Finalizada":"Finalizada",
     "Calificar":"Calificar",
-    "Canceladas":"Historial de reservas canceladas"
+    "Canceladas":"Historial de reservas canceladas",
+    "NoReservas":"No tienes reservas activas en este momento.",
+    "NoFinalizadas":"No tienes reservas finalizadas.",
+    "Cancelada":"No tienes reservas canceladas."
 },
 "calificar_modal.php": {
     "Calificar":"Calificar Estadía",
