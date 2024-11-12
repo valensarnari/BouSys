@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-10-2024 a las 02:11:44
+-- Tiempo de generación: 12-11-2024 a las 01:11:38
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -30,17 +30,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `calificaciones` (
   `id` int(11) NOT NULL,
   `Calificacion` int(11) NOT NULL,
-  `Comentario` longtext,
+  `Comentario` longtext DEFAULT NULL,
   `ID_Reserva` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `calificaciones`
---
-
-INSERT INTO `calificaciones` (`id`, `Calificacion`, `Comentario`, `ID_Reserva`) VALUES
-(6, 3, 'Aceptable', 3),
-(7, 2, 'Podría mejorar', 4);
 
 -- --------------------------------------------------------
 
@@ -53,7 +45,6 @@ CREATE TABLE `cliente` (
   `Nombre` text NOT NULL,
   `Apellido` text NOT NULL,
   `Fecha_Nacimiento` date NOT NULL,
-  `Documento` int(11) NOT NULL,
   `Nacionalidad` text NOT NULL,
   `Sexo` text NOT NULL,
   `Email` text NOT NULL,
@@ -62,17 +53,10 @@ CREATE TABLE `cliente` (
   `Fecha_Registro` datetime NOT NULL,
   `Puntos` int(11) NOT NULL DEFAULT 0,
   `Jerarquia` text NOT NULL DEFAULT '2',
-  `Activo` tinyint(1) NOT NULL DEFAULT 1
+  `Activo` tinyint(1) NOT NULL DEFAULT 1,
+  `tipo_de_documento` text DEFAULT NULL,
+  `numero_de_documento` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `cliente`
---
-
-INSERT INTO `cliente` (`id`, `Nombre`, `Apellido`, `Fecha_Nacimiento`, `Documento`, `Nacionalidad`, `Sexo`, `Email`, `Telefono`, `Contrasena`, `Fecha_Registro`, `Puntos`, `Jerarquia`, `Activo`) VALUES
-(3, 'Juan', 'Pérez', '1980-05-23', 12345678, 'Argentina', 'Masculino', 'juan.perez@mail.com', '123456789', '$2y$10$g6Z/E7qZxhjQuSpTiBW/OOG2ciE3WcXMKcYGKKUgw5DQVhvCtiyHC', '2024-10-01 12:00:00', 22600, '2', 1),
-(4, 'Ana', 'Gómez', '1990-06-15', 87654321, 'Argentina', 'Femenino', 'ana.gomez@mail.com', '987654321', '$2y$10$vynfC6ENmGnz2WSlaQwzEOLWgaJkqMVdkTX0G/NGhI2cH3Y98fxFa', '2024-10-01 13:00:00', 14600, '2', 1),
-(5, 'Carlos', 'López', '1975-07-20', 56789012, 'Argentina', 'Masculino', 'carlos.lopez@mail.com', '123987456', '$2y$10$UByWC8JYP8R1wKR9UZrWg.XWupLkiT/.uVJAw8v66rIoaqb91o2w6', '2024-10-01 14:00:00', 15550, '2', 1);
 
 -- --------------------------------------------------------
 
@@ -86,16 +70,6 @@ CREATE TABLE `cochera` (
   `Estado` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `cochera`
---
-
-INSERT INTO `cochera` (`id`, `Numero_Cochera`, `Estado`) VALUES
-(1, 101, 'Disponible'),
-(2, 102, 'Disponible'),
-(3, 103, 'Disponible'),
-(4, 104, 'Ocupado');
-
 -- --------------------------------------------------------
 
 --
@@ -106,24 +80,13 @@ CREATE TABLE `habitacion` (
   `id` int(11) NOT NULL,
   `Numero_Habitacion` int(11) NOT NULL,
   `Tipo` text NOT NULL,
-  `Precio_Por_Noche` decimal(10,0) NOT NULL,
   `Estado` text NOT NULL,
   `Puntos` int(11) NOT NULL,
   `Cantidad_Adultos_Maximo` int(11) NOT NULL,
-  `Cantidad_Ninos_Maximo` int(11),
-  `Activo` tinyint(1) NOT NULL DEFAULT 1
+  `Cantidad_Ninos_Maximo` int(11) DEFAULT NULL,
+  `Activo` tinyint(1) NOT NULL DEFAULT 1,
+  `ID_precio_por_noche` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `habitacion`
---
-
-INSERT INTO `habitacion` (`id`, `Numero_Habitacion`, `Tipo`, `Precio_Por_Noche`, `Estado`, `Puntos`, `Cantidad_Adultos_Maximo`, `Cantidad_Ninos_Maximo`, `Activo`) VALUES
-(1, 201, 'Suite', 15000, 'Disponible', 500, 2, 2, 1),
-(2, 202, 'Simple', 6000, 'Disponible', 50, 2, 1, 1),
-(3, 204, 'Doble', 9000, 'Ocupado', 200, 2, 1, 1),
-(4, 205, 'Doble', 8000, 'Ocupado', 200, 2, 2, 1),
-(5, 203, 'Simple', 5000, 'Ocupado', 50, 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -135,21 +98,23 @@ CREATE TABLE `pago` (
   `id` int(11) NOT NULL,
   `Fecha_Pago` datetime NOT NULL,
   `Medio_De_Pago` text NOT NULL,
-  `Descuento` decimal(10,0),
-  `Aumento` decimal(10,0),
+  `Descuento` decimal(10,0) DEFAULT NULL,
+  `Aumento` decimal(10,0) DEFAULT NULL,
   `Total` decimal(10,0) NOT NULL,
   `ID_Reserva` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `pago`
+-- Estructura de tabla para la tabla `precio_por_noche`
 --
 
-INSERT INTO `pago` (`id`, `Fecha_Pago`, `Medio_De_Pago`, `Descuento`, `Aumento`, `Total`, `ID_Reserva`) VALUES
-(1, '2024-10-01 15:00:00', 'Tarjeta de crédito', 1000, 0, 14000, 3),
-(2, '2024-10-01 16:00:00', 'Tarjeta de débito', 500, 0, 7500, 4),
-(3, '2024-10-01 15:00:00', 'Tarjeta de crédito', 1000, 0, 14000, 3),
-(4, '2024-10-01 16:00:00', 'Tarjeta de débito', 500, 0, 7500, 4);
+CREATE TABLE `precio_por_noche` (
+  `id` int(11) NOT NULL,
+  `tipo_de_habitacion` text NOT NULL,
+  `monto` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -162,15 +127,6 @@ CREATE TABLE `reserva_cochera` (
   `ID_Reserva` int(11) NOT NULL,
   `ID_Cochera` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `reserva_cochera`
---
-
-INSERT INTO `reserva_cochera` (`id`, `ID_Reserva`, `ID_Cochera`) VALUES
-(1, 1, 1),
-(2, 4, 1),
-(3, 5, 4);
 
 --
 -- Disparadores `reserva_cochera`
@@ -199,21 +155,9 @@ CREATE TABLE `reserva_habitacion` (
   `ID_Reserva` int(11) NOT NULL,
   `ID_Habitacion` int(11) NOT NULL,
   `Cantidad_Adultos` int(11) NOT NULL,
-  `Cantidad_Ninos` int(11),
+  `Cantidad_Ninos` int(11) DEFAULT NULL,
   `Cuna` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `reserva_habitacion`
---
-
-INSERT INTO `reserva_habitacion` (`id`, `ID_Reserva`, `ID_Habitacion`, `Cantidad_Adultos`, `Cantidad_Ninos`, `Cuna`) VALUES
-(1, 1, 1, 1, 1, 0),
-(2, 2, 5, 1, 0, 1),
-(3, 3, 4, 1, 0, 0),
-(4, 3, 5, 1, 0, 1),
-(5, 4, 2, 1, 0, 0),
-(6, 5, 3, 1, 0, 0);
 
 --
 -- Disparadores `reserva_habitacion`
@@ -256,17 +200,6 @@ CREATE TABLE `reserva_total` (
   `Fecha_Reserva` datetime NOT NULL,
   `Valor_Total` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `reserva_total`
---
-
-INSERT INTO `reserva_total` (`id`, `ID_Cliente`, `Estado`, `Fecha_Inicio`, `Fecha_Fin`, `Check_In`, `Check_Out`, `Fecha_Reserva`, `Valor_Total`) VALUES
-(1, 5, 'Cancelada', '2024-10-25', '2024-10-30', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2024-10-21 17:37:03', 75000),
-(2, 4, 'Cancelada', '2024-10-20', '2024-10-30', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2024-10-22 20:22:18', 20000),
-(3, 5, 'Confirmada', '2024-10-20', '2024-10-26', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2024-10-22 20:37:52', 26000),
-(4, 5, 'Cancelada', '2024-10-21', '2024-10-26', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2024-10-22 20:55:38', 12000),
-(5, 5, 'Confirmada', '2024-10-22', '2024-10-26', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2024-10-22 21:05:44', 18000);
 
 --
 -- Disparadores `reserva_total`
@@ -357,7 +290,8 @@ ALTER TABLE `cochera`
 -- Indices de la tabla `habitacion`
 --
 ALTER TABLE `habitacion`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `ID_precio_por_noche` (`ID_precio_por_noche`);
 
 --
 -- Indices de la tabla `pago`
@@ -365,6 +299,12 @@ ALTER TABLE `habitacion`
 ALTER TABLE `pago`
   ADD PRIMARY KEY (`id`),
   ADD KEY `ID_Reserva` (`ID_Reserva`);
+
+--
+-- Indices de la tabla `precio_por_noche`
+--
+ALTER TABLE `precio_por_noche`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `reserva_cochera`
@@ -403,49 +343,55 @@ ALTER TABLE `usuario_empleados`
 -- AUTO_INCREMENT de la tabla `calificaciones`
 --
 ALTER TABLE `calificaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `cochera`
 --
 ALTER TABLE `cochera`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `habitacion`
 --
 ALTER TABLE `habitacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `pago`
 --
 ALTER TABLE `pago`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `precio_por_noche`
+--
+ALTER TABLE `precio_por_noche`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva_cochera`
 --
 ALTER TABLE `reserva_cochera`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva_habitacion`
 --
 ALTER TABLE `reserva_habitacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva_total`
 --
 ALTER TABLE `reserva_total`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_empleados`
@@ -462,6 +408,12 @@ ALTER TABLE `usuario_empleados`
 --
 ALTER TABLE `calificaciones`
   ADD CONSTRAINT `calificaciones_ibfk_1` FOREIGN KEY (`ID_Reserva`) REFERENCES `reserva_total` (`id`);
+
+--
+-- Filtros para la tabla `habitacion`
+--
+ALTER TABLE `habitacion`
+  ADD CONSTRAINT `habitacion_ibfk_1` FOREIGN KEY (`ID_precio_por_noche`) REFERENCES `precio_por_noche` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `pago`
