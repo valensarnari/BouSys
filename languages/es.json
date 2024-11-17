@@ -1,5 +1,11 @@
 {
     "presentacion":{
+    "relax":"Relax",
+    "relax_texto":"Disfruta de nuestra espectacular piscina en el Hotel Continental, ideal para relajarte y disfrutar del sol en pleno centro de Buenos Aires.",
+    "comodidad":"Comodidad",
+    "comodidad_texto":"Disfruta de la máxima comodidad en el Hotel Continental, donde cada detalle está diseñado para ofrecerte una estancia relajante y placentera en pleno centro de Buenos Aires.",
+    "noche":"Noche",
+    "noche_texto":"Sumérgete en la vibrante noche porteña en el Hotel Continental, donde la energía de Buenos Aires cobra vida con entretenimiento, gastronomía y cultura a solo unos pasos de tu habitación.",
     "texto":"Bienvenido al Hotel Continental, donde la elegancia y el confort se unen. Disfruta de nuestras instalaciones de primera clase yun servicio excepcional en el corazón de la ciudad. Tu satisfacción es nuestra prioridad."
 },
 "nav":{
@@ -9,21 +15,238 @@
     "recommendations":"Recomendaciones",
     "rooms":"Habitaciones",
     "home":"Inicio",
-    "signup":"Registrarse"
+    "signup":"Registrarse",
+    "language": "Idioma",
+    "contact": "Contacto",
+    "close" : "Cerrar sesión",
+    "reservas": "Mis Reservas",
+    "perfil": "Mi Perfil",
+    "perfilnav": "Perfil"
 },
+"contact.php_form":{
+        "Nombre" : "Nombre",
+        "Correo" : "Correo electrónico",
+        "Asunto" : "Asunto",
+        "Mensaje" : "Mensaje",
+        "boton": "Enviar mensaje"
+    },
+"contact.php_body":{
+        "info":"Información de contacto",
+        "horario" : "Lunes a Viernes, 9:00 - 18:00"
+    },
+"cliente_perfil.php":{
+    "Perfil":"Perfil de Usuario",
+    "info":"Información Personal",
+    "Nombre":"Nombre",
+    "Apellido":"Apellido",
+    "Puntos":"Puntos",
+    "Documento":"Documento",
+    "Nacimiento":"Nacimiento",
+    "Sexo":"Sexo",
+    "Email":"Email",
+    "Telefono":"Teléfono",
+    "Registro":"Fecha de Registro"
+},
+"panel_registro_login.php":
+{
+    "iniciar":"Iniciar Sesión",
+    "contrasena":"Contraseña",
+    "contrasena Olvidada":"¿Olvidaste tu contraseña?",
+    "no tiene cuenta":"¿No tienes cuenta?",
+    "registrar":"Regístrate",
+    "registro":"Registro",
+    "Nombre":"Nombre",
+    "Apellido":"Apellido",
+    "Puntos":"Puntos",
+    "Documento":"Documento",
+    "Nacionalidad":"Nacionalidad",
+    "Nacimiento":"Nacimiento",
+    "Sexo":"Sexo",
+    "SeleccionaSexo":"Selecciona tu sexo",
+    "Masculino":"Masculino",
+    "Femenino":"Femenino",
+    "Otro":"Otro",
+    "Email":"Email",
+    "Telefono":"Teléfono",
+    "nacimiento":"Fecha de Nacimiento",
+    "ya tiene cuenta":"¿Ya tienes cuenta?"
+},
+"detalles_reservas_modal.php":{
+    "inicio":"Fecha de Inicio",
+    "fin":"Fecha de Fin",
+    "original":"Valor Original:",
+    "nuevo":"Nuevo Valor:",
+    "Guardar":"Guardar Cambios",
+    "Cancelar":"Cancelar Reserva",
+    "Habitacion":"Habitación",
+    "Adultos":"Adultos",
+    "Niños":"Niños",
+    "Cuna":"Cuna",
+    "Fecha":"Fecha:",
+    "MedioPago":"Medio de pago:",
+    "Reservadas":"Habitaciones Reservadas:",
+    "comenzo":"Esta reserva ya comenzó y no puede ser modificada. Puedes ver todos los detalles a continuación.",
+    "Pagos":"Pagos Realizados:",
+    "Cerrar":"Cerrar",
+    "no pago":"No se han realizado pagos para esta reserva.",
+    "cancelarReserva":"¿Estás seguro que deseas cancelar esta reserva?",
+    "Confirmar":"Confirmar Cancelación",
+    "atras":"Volver atrás",
+    "pagosrealizados":"Pagos realizados hasta el momento:",
+    "valortotal":"Valor Total",
+    "TotalPagado":"Total Pagado",
+    "RestaPagar":"Queda por Pagar"
+},
+"footer":{
+    "nosotros": "Sobre Nosotros",
+    "info": "Información sobre la empresa",
+    "Links" :"Enlaces",
+    "home" : "Inicio",
+    "rooms" : "Habitaciones",
+    "services" : "Servicios",
+    "recommendations" : "Recomendaciones",
+    "contact": "Contacto",
+    "empresa": "© 2024 Tu Empresa. Todos los derechos reservados.",
+    "tele":"Teléfono:"
+},
+"mis_reservaas.php":{
+    "misReservas" : "Mis Reservas",
+    "activas":"Reservas activas",
+    "RealizarReserva":"Realizar reserva",
+    "Cliente":"Cliente",
+    "Estado":"Estado",
+    "Inicio":"Inicio",
+    "Fin":"Fin",
+    "Total":"Valor total",
+    "Opciones":"Opciones",
+    "ReservasFinalizadas":"Reservas finalizadas",
+    "Calificacion":"Calificación",
+    "Finalizada":"Finalizada",
+    "Calificar":"Calificar",
+    "Canceladas":"Historial de reservas canceladas"
+},
+"calificar_modal.php": {
+    "Calificar":"Calificar Estadía",
+    "Calificacion":"Calificacion",
+    "Seleccione":"Seleccione una calificación",
+    "1":"1 - Muy malo",
+    "2":"2 - Malo",
+    "3":"3 - Regular",
+    "4":"4 - Bueno",
+    "5":"5 - Excelente",
+    "Comentario":"Comentario (opcional)",
+    "Cancelar":"Cancelar",
+    "Guardar":"Guardar Calificación"
+
+},
+"reservaUno.php":{
+    "Nueva":"Nueva Reserva",
+    "adultos":"Cantidad de adultos:",
+    "niños":"Cantidad de niños:",
+    "Paso1-4":"Paso 1 de 4",
+    "Siguiente":"Siguiente"
+},
+"reservaDos.php":{
+    "Fechas":"Fechas de la Reserva",
+    "inicio":"Fecha de inicio:",
+    "fin":"Fecha de fin:",
+    "Paso2-4":"Paso 2 de 4",
+    "Siguiente":"Siguiente"
+},
+"reservaTres.php":{
+    "seleccion":"Selección de Habitaciones",
+    "Adultos":"Adultos:",
+    "Niños":"Niños:",
+    "inicio":"Fecha de inicio:",
+    "fin":"Fecha de fin:",
+    "Habitacion":"Habitación",
+    "Capacidad":"Capacidad:",
+    "Cuna":"Cuna",
+    "Nohay":"No hay habitaciones disponibles para las fechas seleccionadas.",
+    "AdultosRestantes":"Adultos restantes:",
+    "NiñosRestantes":"Niños restantes:",
+    "CunasSeleccionadas":"Cunas seleccionadas:",
+    "Paso3-4":"Paso 3 de 4",
+    "Siguiente":"Siguiente"
+},
+"reservaCuatro.php":{
+    "Reservar":"Reservar cocheras disponibles (opcional)",
+    "Adultos":"Adultos:",
+    "Niños":"Niños:",
+    "inicio":"Fecha de inicio:",
+    "fin":"Fecha de fin:",
+    "Cochera":"Cochera",
+    "nohay":"No hay cocheras disponibles para las fechas seleccionadas.",
+    "Paso4-4":"Paso 4 de 4",
+    "Siguiente":"Siguiente"
+},
+"reservaCinco.php":{
+    "resumen":"Resumen de la reserva",
+    "puntos":"puntos",
+    "descuento":"Descuento del",
+    "aplicado":"% aplicado",
+    "adultos":"adultos,",
+    "niños":"niños",
+    "Del":"empieza el",
+    "Al":"finaliza el",
+    "noches": "noche(s)",
+    "Seleccionadas":"Habitaciones Seleccionadas",
+    "Habitacion":"Habitación",
+    "Cochera":"Cochera N°",
+    "subtotal":"Subtotal por",
+    "Descuento":"Descuento por puntos",
+    "Total Final":"Total Final"
+
+
+},
+"status": {
+    "Finalizada": "Finalizada",
+    "Confirmada": "Confirmada",
+    "Cancelada": "Cancelada"
+},
+"actions": {
+    "Modificar": "Modificar",
+    "Ver detalles": "Ver detalles"
+},
+
 "Home":{
-    "first":"Descubre el lujo en el corazón de Buenos Aires. El Hotel Continental ofrece elegancia, comodidad y una ubicación inmejorable cerca de los principales atractivos turísticos. ¡Reserva tu estancia hoy mismo!",
-    "second":"Ubicado en el vibrante centro de Buenos Aires, el Hotel Continental te invita a disfrutar de una estancia inolvidable. Su restaurante destaca por su alta calidad, combinando sabores locales e internacionales en un ambiente sofisticado.",
-    "third":"Además, nuestro proceso de check-in es rápido y eficiente, asegurando que comiences tu experiencia sin demoras"
+    "first":"En el Hotel Continental vas a descubrir el lujo en el corazón palpitante de Buenos Aires. Nuestra ubicación privilegiada te coloca a pasos de los principales atractivos turisticos, tiendas de moda y restaurantes gourmet de la ciudad. Te ofrecemos habitaciones elegantemente decoradas, servicios de primera clase y una atención personalizada que hará de tu estancia una experiencia inolvidable. ¡Reserva tu estancia hoy mismo!",
+    "second":"Sumérgete en una experiencia gastronómica excepcional en nuestro aclamado restaurante. Nuestro equipo de cocina fusionan magistralmente los sabores tradicionales argentinos con técnicas culinarias internacionales de vanguardia. Desde los jugosos cortes de carne argentina hasta delicados platos de inspiración mediterránea, cada bocado es una celebración de sabores. Acompaña tu comida con una selección de los mejores vinos de nuestras bodegas, cuidadosamente elegidos para complementar cada plato. El ambiente sofisticado y acogedor, con vistas panorámicas de la ciudad, crea el escenario perfecto para cenas románticas, reuniones de negocios o celebraciones especiales.",
+    "third":"En el Hotel Continental, entendemos que tu tiempo es valioso. Por eso, nuestro proceso de check-in es rápido, eficiente y sin complicaciones. Utilizamos la última tecnología para agilizar el proceso, permitiendote acceder a tu habitación en cuestión de minutos, asegurando que comiences tu experiencia sin demoras"
 
 },
 "services":{
-    "title-1":"Nuestros servicios..."
+    "title-1":"Nuestros servicios...",
+    "garage":"Servicio de estacionamiento seguro 24/7",
+    "cuna":"Servicio de cuna para bebés",
+    "mas":"Saber más...",
+    "lavanderia":"Servicio de lavandería",
+    "spa":"Servicio de spa",
+    "resbar":"Restaurante y bar",
+    "texto1":"El Continental Hotel se enorgullece de albergar un restaurante y bar de renombre, conocido por ser el escenario de eventos importantes y celebraciones exclusivas. <br> Su gastronomía excepcional ha sido reconocida con estrellas Michelin, destacándose por su creatividad y calidad. Los huéspedes y visitantes pueden disfrutar de una experiencia culinaria inigualable, donde cada plato es una obra de arte que refleja la pasión y el talento de nuestros chefs.",
+    "texto2":"El Continental Hotel ofrece un servicio de garaje y guardería de coches de primera clase, garantizando la máxima seguridad y trasnquilidad para sus huéspedes, gracias a nuestra seguridad privada las 24 horas, nuestros clientes pueden estar tranquilos sabiendo que sus vehículos están protegidos en todo momento. Además, nuestro equipo de valet parking se encarga de estacionar y cuidar cada coche con la mayor atención y profesionalismo, asegurando una experiencia sin preocupaciones desde el momento de la llegada hasta la salida.",
+    "texto3":"Sumérgete en un oasis de tranquilidad en el spa del Continental Hotel. Disfruta de tratamientos rejuvenecedores, masajes terapéuticos y una variedad de servicios diseñados para revitalizar tu cuerpo y mente. Nuestro SPA ofrece un ambiente sereno y lujoso, perfecto para relajarte y escapar del estrés diario. Buscamos que pases un momento de relax y relajación, para que puedas disfrutar de una estancia cómoda y sin preocupaciones. <br>Tu salud y bienestar son nuestra prioridad.",
+    "texto4":"En el Continental Hotel, nos preocupamos por el bienestar de toda tu familia. <br>Por eso, ofrecemos un servicio gratuito de cuna para nuestros huéspedes con bebés. Disfruta de una estancia en donde no tendrás que dormir con tu bebé en la misma cama, sino que tu pequeño descansará plácidamente en una cuna segura y confortable, proporcionada sin costo adicional",
+    "texto5":" Mantén tu ropa impecable con nuestro servicio de lavandería del Continental Hotel. <br> Ofrecemos un servicio eficiente y de alta calidad para todos nuestros huéspedes. Aunque este servicio tiene un costo adicional, es completamente gratuito para nuestros clientes top, asegurando que disfruten de la máxima comodidad y atención durante su estancia. <br> Ya no tendrás que preocuparte por lavar tu ropa y sacar las manchas difíciles, ya que nosotros nos encargamos de ello."
 },
 "rooms":{
     "video-txt":"El Hotel Continental te ofrece diferentes tipos de habitaciones adecuadas a tus necesidades. Desde suites de lujo con vistas panorámicas hasta habitaciones estándar cómodas y funcionales, encontrarás la opción perfecta para tu estancia. Cada habitación está equipada con todas las comodidades modernas para garantizar una experiencia confortable y placentera. ¡Esperamos que disfrutes de tu estancia!",
     "more":"Saber más...",
     "complete":"Completa",
-    "luxurious":"Lujosa"
+    "Suite":"Suite Top",
+    "simple":"simple",
+    "desde":"desde",
+    "noche":"noche",
+    "habitacionSimple":"HABITACIÓN SIMPLE",
+    "habitacionSimpleTexto":"Nuestra habitación estándar es la opción más simple y económica, ideal para aquellos que buscan comodidad y funcionalidad. Esta habitación cuenta con una cama matrimonial, una caja fuerte con capacidad para notebook, wifi gratuito y desayuno incluido. Perfecta para una estancia práctica y confortable.",
+    "habitacionCompleta":"HABITACIÓN COMPLETA",
+    "habitacionCompletaTexto":" Nuestra habitación completa ofrece el máximo confort y espacio para tu estancia. Esta habitación cuenta con TV LED, wifi gratuito, y un frigobar. Además, dispone de dos ambientes: uno con una cama matrimonial y otro con dos camas simples, ideal para familias o grupos que buscan comodidad y privacidad",
+    "habitacionSuite":"SUITE TOP",
+    "habitacionSuiteTexto":"Nuestra habitación lujosa ofrece una experiencia de máxima comodidad y elegancia. Además de contar con TV LED, wifi gratuito, y un frigobar, esta habitación dispone de dos ambientes: uno con una cama matrimonial y otro con tres camas simples. También incluye un jacuzzi para relajarte, lavandería sin cargo, y una impresionante vista a la costanera. Perfecta para quienes buscan un toque extra de lujo y confort durante su estancia"
+},
+"recommendations":{
+    "comentarios":"Comentarios de Nuestros Clientes",
+    "descubre":"Descubre las experiencias de quienes ya nos visitaron"
+
 }
 }

@@ -1,6 +1,12 @@
 {
-    "presentacion":{
-        "texto":"Welcome to Hotel Continental, where elegance and comfort meet. Enjoy our first-class facilities and exceptional service in the heart of the city. Your satisfaction is our priority."
+    "presentacion": {
+        "relax":"Relax...",
+        "relax_texto": "Enjoy our spectacular pool at the Continental Hotel, ideal for relaxing and soaking up the sun right in the center of Buenos Aires.",
+        "comodidad": "Comfort",
+        "comodidad_texto": "Experience maximum comfort at the Continental Hotel, where every detail is designed to provide a relaxing and enjoyable stay in the heart of Buenos Aires.",
+        "noche": "Night",
+        "noche_texto": "Immerse yourself in the vibrant Buenos Aires nightlife at the Continental Hotel, where the city's energy comes alive with entertainment, gastronomy, and culture just steps from your room.",
+        "texto": "Welcome to the Continental Hotel, where elegance and comfort come together. Enjoy our first-class facilities and exceptional service in the heart of the city. Your satisfaction is our priority."
     },
     "nav":{
     "login":"Sign In",
@@ -9,21 +15,232 @@
     "recommendations":"Recommendations",
     "rooms":"Rooms",
     "home":"Home",
-    "signup":"Sign Up"
+    "signup":"Sign Up",
+    "language": "Language",
+    "contact": "Contact",
+    "close" : "Sign out",
+    "reservas": "My reservations",
+    "perfil": "My profile",
+    "perfilnav": "Profile"
+},
+"panel_registro_login.php": {
+    "iniciar": "Log In",
+    "contrasena": "Password",
+    "contrasena Olvidada": "Forgot your password?",
+    "no tiene cuenta": "Don't have an account?",
+    "registrar": "Sign Up",
+    "registro": "Register",
+    "Nombre": "First Name",
+    "Apellido": "Last Name",
+    "Puntos": "Points",
+    "Documento": "Document",
+    "Nacionalidad":"Nationality",
+    "Nacimiento": "Birthdate",
+    "Sexo": "Gender",
+    "SeleccionaSexo": "Select your gender",
+    "Masculino": "Male",
+    "Femenino": "Female",
+    "Otro": "Other",
+    "Email": "Email",
+    "Telefono": "Phone",
+    "nacimiento": "Date of Birth",
+    "ya tiene cuenta": "Already have an account?"
+},
+"contact.php_form": {
+    "Nombre" : "Name",
+    "Correo" : "Email",
+    "Asunto" : "Subject",
+    "Mensaje" : "Message",
+    "boton": "Send message"
+},
+"contact.php_body": {
+    "info": "Contact information",
+    "horario": "Monday to Friday, 9:00 - 18:00"
+},
+"cliente_perfil.php": {
+    "Perfil": "User Profile",
+    "info": "Personal Information",
+    "Nombre": "First Name",
+    "Apellido": "Last Name",
+    "Puntos": "Points",
+    "Documento": "Document",
+    "Nacimiento": "Birthdate",
+    "Sexo": "Gender",
+    "Email": "Email",
+    "Telefono": "Phone",
+    "Registro": "Registration Date"
+},
+"mis_reservaas.php": {
+    "misReservas": "My Reservations",
+    "activas": "Active reservations",
+    "RealizarReserva": "Make a reservation",
+    "Cliente": "Client",
+    "Estado": "Status",
+    "Inicio": "Start",
+    "Fin": "End",
+    "Total": "Total value",
+    "Opciones": "Options",
+    "ReservasFinalizadas": "Completed reservations",
+    "Calificacion": "Rating",
+    "Finalizada": "Completed",
+    "Calificar": "Rate",
+    "Canceladas": "Cancelled reservations history"
+},
+"status": {
+    "Finalizada": "Completed",
+    "Confirmada": "Confirmed",
+    "Cancelada": "Canceled"
+},
+"actions": {
+    "Modificar": "Edit",
+    "Ver detalles": "View details"
+},
+"calificar_modal.php": {
+    "Calificar": "Rate Stay",
+    "Calificacion": "Rating",
+    "Seleccione": "Select a rating",
+    "1": "1 - Very bad",
+    "2": "2 - Bad",
+    "3": "3 - Fair",
+    "4": "4 - Good",
+    "5": "5 - Excellent",
+    "Comentario": "Comment (optional)",
+    "Cancelar": "Cancel",
+    "Guardar": "Save Rating"
+},
+"reservaUno.php": {
+    "Nueva": "New Reservation",
+    "adultos": "Number of adults:",
+    "niños": "Number of children:",
+    "Paso1-4": "Step 1 of 4",
+    "Siguiente": "Next"
+},
+"reservaDos.php": {
+    "Fechas": "Reservation Dates",
+    "inicio": "Start date:",
+    "fin": "End date:",
+    "Paso2-4": "Step 2 of 4",
+    "Siguiente": "Next"
+},
+"reservaTres.php": {
+    "seleccion": "Room Selection",
+    "Adultos": "Adults:",
+    "Niños": "Children:",
+    "inicio": "Start date:",
+    "fin": "End date:",
+    "Habitacion": "Room",
+    "Capacidad": "Capacity:",
+    "Cuna": "Crib",
+    "Nohay": "No rooms available for the selected dates.",
+    "AdultosRestantes": "Remaining adults:",
+    "NiñosRestantes": "Remaining children:",
+    "CunasSeleccionadas": "Selected cribs:",
+    "Paso3-4": "Step 3 of 4",
+    "Siguiente": "Next"
+},
+"reservaCuatro.php": {
+    "Reservar": "Reserve available parking spaces (optional)",
+    "Adultos": "Adults:",
+    "Niños": "Children:",
+    "inicio": "Start date:",
+    "fin": "End date:",
+    "Cochera": "Parking Space",
+    "nohay": "No parking spaces available for the selected dates.",
+    "Paso4-4": "Step 4 of 4",
+    "Siguiente": "Next"
+},
+"reservaCinco.php": {
+    "resumen": "Reservation Summary",
+    "puntos": "points",
+    "descuento": "Discount of",
+    "aplicado": "% applied",
+    "adultos": "adults,",
+    "niños": "children",
+    "Del": "starts on",
+    "Al": "ends on",
+    "noches": "night(s)",
+    "Seleccionadas": "Selected Rooms",
+    "Habitacion": "Room",
+    "Cochera": "Parking Space No.",
+    "subtotal": "Subtotal for",
+    "Descuento": "Points Discount",
+    "Total Final": "Final Total"
+},
+"footer": {
+    "nosotros": "About Us",
+    "info": "Company Information",
+    "Links": "Links",
+    "home": "Home",
+    "rooms": "Rooms",
+    "services": "Services",
+    "recommendations": "Recommendations",
+    "contact": "Contact",
+    "empresa": "© 2024 Your Company. All rights reserved.",
+    "tele":"Phone:"
+},
+"detalles_reservas_modal.php": {
+    "inicio": "Start Date",
+    "fin": "End Date",
+    "original": "Original Value:",
+    "nuevo": "New Value:",
+    "Guardar": "Save Changes",
+    "Cancelar": "Cancel Reservation",
+    "Habitacion": "Room",
+    "Adultos": "Adults",
+    "Niños": "Children",
+    "Cuna": "Crib",
+    "Fecha": "Date:",
+    "MedioPago": "Payment Method:",
+    "Reservadas": "Reserved Rooms:",
+    "comenzo": "This reservation has already started and cannot be modified. You can view all details below.",
+    "Pagos": "Payments Made:",
+    "Cerrar": "Close",
+    "no pago": "No payments have been made for this reservation.",
+    "cancelarReserva": "Are you sure you want to cancel this reservation?",
+    "Confirmar": "Confirm Cancellation",
+    "atras": "Go Back",
+    "pagosrealizados":"Payments made so far:",
+    "valortotal":"Total Value",
+    "TotalPagado":"Total Paid",
+    "RestaPagar":"Remains to be paid"
 },
 "Home":{
     "first":"Discover luxury in the heart of Buenos Aires. Hotel Continental offers elegance, comfort, and an unbeatable location near the main tourist attractions. Book your stay today!",
     "second":"Located in the vibrant center of Buenos Aires, Hotel Continental invites you to enjoy an unforgettable stay. Its restaurant stands out for its high quality, combining local and international flavors in a sophisticated atmosphere.",
     "third":"Additionally, our check-in process is quick and efficient, ensuring you start your experience without delays"
 },
-"services":{
-    "title-1":"Our services..."
+"services": {
+    "title-1": "Our services...",
+    "garage": "24/7 secure parking service",
+    "cuna": "Baby crib service",
+    "mas": "Learn more...",
+    "lavanderia": "Laundry service",
+    "spa": "Spa service",
+    "resbar": "Restaurant and bar",
+    "texto1": "The Continental Hotel proudly hosts a renowned restaurant and bar, known as the venue for major events and exclusive celebrations. <br> Its exceptional cuisine has been awarded Michelin stars, standing out for its creativity and quality. Guests and visitors can enjoy an unparalleled dining experience, where every dish is a work of art that reflects the passion and talent of our chefs.",
+    "texto2": "The Continental Hotel offers top-notch garage and car care service, ensuring maximum security and peace of mind for its guests. With 24-hour private security, our clients can rest easy knowing that their vehicles are protected at all times. Additionally, our valet parking team handles every car with utmost care and professionalism, ensuring a worry-free experience from arrival to departure.",
+    "texto3": "Immerse yourself in a haven of tranquility at the Continental Hotel spa. Enjoy rejuvenating treatments, therapeutic massages, and a variety of services designed to revitalize your body and mind. Our spa provides a serene and luxurious environment, perfect for relaxation and escaping daily stress. We aim to offer you a relaxing experience so that you can enjoy a comfortable and worry-free stay. <br> Your health and well-being are our priority.",
+    "texto4": "At the Continental Hotel, we care about the well-being of your whole family. <br> For this reason, we offer a free crib service for guests with babies. Enjoy a stay where you won’t need to share a bed with your baby; instead, your little one can rest peacefully in a safe and comfortable crib provided at no additional cost.",
+    "texto5": "Keep your clothes spotless with the Continental Hotel's laundry service. <br> We offer an efficient and high-quality service for all our guests. While this service has an additional cost, it is completely free for our top clients, ensuring they enjoy maximum convenience and care during their stay. <br> You no longer have to worry about washing your clothes or removing stubborn stains, as we handle it for you."
 },
-"rooms":{
-    "video-txt":"The Continental Hotel offers you different types of rooms tailored to your needs. From luxury suites with panoramic views to comfortable and functional standard rooms, you will find the perfect option for your stay. Each room is equipped with all modern amenities to ensure a comfortable and pleasant experience. We hope you enjoy your stay! ",
-    "more":"More...",
-    "complete":"Complete",
-    "luxurious":"Luxurious"
+"rooms": {
+    "video-txt": "The Continental Hotel offers a variety of room types to suit your needs. From luxury suites with panoramic views to comfortable and functional standard rooms, you’ll find the perfect option for your stay. Each room is equipped with all modern amenities to ensure a comfortable and pleasant experience. We hope you enjoy your stay!",
+    "more": "Learn more...",
+    "complete": "Complete",
+    "Suite": "Top Suite",
+    "simple": "simple",
+    "desde": "from",
+    "noche": "night",
+    "habitacionSimple": "SIMPLE ROOM",
+    "habitacionSimpleTexto": "Our standard room is the simplest and most economical option, ideal for those seeking comfort and functionality. This room features a double bed, a safe that fits a notebook, free WiFi, and breakfast included. Perfect for a practical and comfortable stay.",
+    "habitacionCompleta": "COMPLETE ROOM",
+    "habitacionCompletaTexto": "Our complete room offers maximum comfort and space for your stay. This room includes an LED TV, free WiFi, and a minibar. It also has two spaces: one with a double bed and another with two single beds, ideal for families or groups looking for comfort and privacy.",
+    "habitacionSuite": "TOP SUITE",
+    "habitacionSuiteTexto": "Our luxurious room offers the ultimate in comfort and elegance. In addition to LED TV, free WiFi, and a minibar, this room has two areas: one with a double bed and another with three single beds. It also includes a jacuzzi for relaxation, free laundry service, and an impressive view of the waterfront. Perfect for those looking for an extra touch of luxury and comfort during their stay."
+},
+"recommendations": {
+    "comentarios": "Customer Reviews",
+    "descubre": "Discover the experiences of those who have already visited us"
 }
 
 }

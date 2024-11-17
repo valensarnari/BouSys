@@ -25,17 +25,6 @@
                         <input class="form-control" type="number" name="precio" id="precio">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Estado:</label>
-                        <select class="form-select" name="estado">
-                            <option value="0">Ocupado</option>
-                            <option value="1" selected>Disponible</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Puntos:</label>
-                        <input class="form-control" type="number" name="puntos" id="puntos">
-                    </div>
-                    <div class="mb-3">
                         <label class="form-label">Adultos:</label>
                         <input class="form-control" type="number" name="adultos" id="adultos">
                     </div>

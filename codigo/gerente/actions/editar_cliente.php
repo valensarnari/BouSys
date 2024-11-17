@@ -1,6 +1,7 @@
 <?php
 
 include ('../../conexion.php');
+include("../registro_login/validacion_sesion.php");
 
 $id = $_POST['id'];
 $nombre = $_POST['nombre'];

@@ -1,16 +1,29 @@
 <?php
 
 include ('../../conexion.php');
+include("../registro_login/validacion_sesion.php");
+
 
 $numero = $_POST['numero'];
-$tipo = $_POST['tipo'];
+if($_POST['tipo'] == 0) {
+    $tipo = "Simple";
+} else if($_POST['tipo'] == 1) {
+    $tipo = "Doble";
+} else {
+    $tipo = "Suite";
+}
 $precio = $_POST['precio'];
-$estado = $_POST['estado'];
-$puntos = $_POST['puntos'];
+if($tipo == "Simple") {
+    $puntos = 50;
+} else if($tipo == "Doble") {
+    $puntos = 200;
+} else {
+    $puntos = 500;
+}
 $adultos = $_POST['adultos'];
 $ninos = $_POST['ninos'];
 
-$insert = "INSERT INTO `habitacion` (`Numero_Habitacion`, `Tipo`, `Precio_Por_Noche`, `Estado`, `Puntos`, `Cantidad_Adultos_Maximo`, `Cantidad_Ninos_Maximo`) VALUES ('$numero', '$tipo', '$precio', '$estado', '$puntos', '$adultos', '$ninos');";
+$insert = "INSERT INTO `habitacion` (`Numero_Habitacion`, `Tipo`, `Precio_Por_Noche`, `Estado`, `Puntos`, `Cantidad_Adultos_Maximo`, `Cantidad_Ninos_Maximo`) VALUES ('$numero', '$tipo', '$precio', 'Disponible', '$puntos', '$adultos', '$ninos');";
 $query = mysqli_query($conexion, $insert);
 
 if(!$query) {
