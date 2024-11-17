@@ -141,15 +141,17 @@ $user = $result->fetch_assoc();
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?php
                     if (isset($_SESSION['usuario_jerarquia']) && $_SESSION['usuario_jerarquia'] == 2) {
-                    ?>
+                        ?>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="panel_cliente.php" data-section="nav" data-value="home">Inicio</a>
+                        <a class="nav-link text-dark" href="panel_cliente.php" data-section="nav"
+                            data-value="home">Inicio</a>
                     </li>
                     <?php
                     } else {
-                    ?>
+                        ?>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="../../index.php" data-section="nav" data-value="home">Inicio</a>
+                        <a class="nav-link text-dark" href="../../index.php" data-section="nav"
+                            data-value="home">Inicio</a>
                     </li>
                     <?php
                     }
@@ -182,8 +184,8 @@ $user = $result->fetch_assoc();
                     </li> -->
                     <li class="nav-item dropdown">
                         <a style="color: #212529 !important;" class="nav-link dropdown-toggle" href="#"
-                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                            <i class="fas fa-user" ></i> <span data-section="nav" data-value="perfilnav">Perfil</span>
+                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i> <span data-section="nav" data-value="perfilnav">Perfil</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="perfil.php" data-section="nav" data-value="perfil">Mi
@@ -197,7 +199,7 @@ $user = $result->fetch_assoc();
                     <li class="nav-item dropdown">
                         <a class="nav-link text-dark dropdown-toggle" href="#" id="languageDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-globe"></i><span data-section="nav" data-value="language">Idioma</span> 
+                            <i class="fas fa-globe"></i><span data-section="nav" data-value="language">Idioma</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
                             <li>
@@ -229,7 +231,7 @@ $user = $result->fetch_assoc();
         <h2 data-section="cliente_perfil.php" data-value="Perfil">Perfil de Usuario</h2>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title "data-section="cliente_perfil.php" data-value="info">Información Personal</h5>
+                <h5 class="card-title " data-section="cliente_perfil.php" data-value="info">Información Personal</h5>
                 <p><strong data-section="cliente_perfil.php" data-value="Nombre">Nombre:</strong>
                     <?php echo $user['Nombre']; ?>
                 </p>
@@ -242,11 +244,14 @@ $user = $result->fetch_assoc();
                 <p><strong data-section="cliente_perfil.php" data-value="Documento">Documento:</strong>
                     <?php echo $user['Documento']; ?>
                 </p>
+                <p><strong data-section="cliente_perfil.php" data-value="Tipo de Documento">Tipo de Documento:</strong>
+                    <?php echo $user['Tipo_Documento']; ?>
+                </p>
                 <p><strong data-section="cliente_perfil.php" data-value="Nacimiento">Nacimiento:</strong>
                     <?php echo $user['Fecha_Nacimiento']; ?>
                 </p>
                 <p><strong data-section="cliente_perfil.php" data-value="Sexo">Sexo:</strong>
-                    <?php echo substr($user['Sexo'],0,1); ?>
+                    <?php echo substr($user['Sexo'], 0, 1); ?>
                 </p>
                 <p><strong data-section="cliente_perfil.php" data-value="Email">Email:</strong>
                     <?php echo $user['Email']; ?>
@@ -265,24 +270,29 @@ $user = $result->fetch_assoc();
     <footer class="bg-dark text-white pt-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-4" >
+                <div class="col-md-4">
                     <h5 data-section="footer" data-value="nosotros">Sobre Nosotros</h5>
                     <p data-section="footer" data-value="info">Información sobre la empresa.</p>
                 </div>
-                
+
                 <div class="col-md-4">
                     <h5 data-section="footer" data-value="Links">Enlaces</h5>
                     <ul class="list-unstyled">
-                        <li><a href="../../index.php" class="text-white" data-section="footer" data-value="home">Inicio</a></li>
-                        <li><a href="../../pages/rooms.php" class="text-white" data-section="footer" data-value="rooms">Habitaciones</a></li>
-                        <li><a href="../../pages/services.php" class="text-white" data-section="footer" data-value="services">Servicios</a></li>
-                        <li><a href="../../pages/recommendations.php" class="text-white" data-section="footer" data-value="recommendations">Recomendaciones</a></li>
-                        <li><a href="../../pages/contacto.php" class="text-white" data-section="footer" data-value="contact">Contacto</a></li>
+                        <li><a href="../../index.php" class="text-white" data-section="footer"
+                                data-value="home">Inicio</a></li>
+                        <li><a href="../../pages/rooms.php" class="text-white" data-section="footer"
+                                data-value="rooms">Habitaciones</a></li>
+                        <li><a href="../../pages/services.php" class="text-white" data-section="footer"
+                                data-value="services">Servicios</a></li>
+                        <li><a href="../../pages/recommendations.php" class="text-white" data-section="footer"
+                                data-value="recommendations">Recomendaciones</a></li>
+                        <li><a href="../../pages/contacto.php" class="text-white" data-section="footer"
+                                data-value="contact">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 whapp">
-                    <img src="../../icons/whapp.png" alt="Quiero sumarme a la comunidad del hotel!!!" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
+                    <img src="../../icons/whapp.png" alt="Quiero sumarme a la comunidad del hotel!!!"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
                 </div>
             </div>
             <div class="text-center py-3" data-section="footer" data-value="empresa">
