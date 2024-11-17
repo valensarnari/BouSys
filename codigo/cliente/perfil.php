@@ -241,11 +241,11 @@ $user = $result->fetch_assoc();
                 <p><strong data-section="cliente_perfil.php" data-value="Puntos">Puntos:</strong>
                     <?php echo $user['Puntos']; ?>
                 </p>
+                <p><strong data-section="cliente_perfil.php" data-value="Tipo de Documento">Tipo de Documento:</strong>
+                    <?php echo $user['tipo_de_documento']; ?>
+                </p>
                 <p><strong data-section="cliente_perfil.php" data-value="Documento">Documento:</strong>
                     <?php echo $user['Documento']; ?>
-                </p>
-                <p><strong data-section="cliente_perfil.php" data-value="Tipo de Documento">Tipo de Documento:</strong>
-                    <?php echo $user['Tipo_Documento']; ?>
                 </p>
                 <p><strong data-section="cliente_perfil.php" data-value="Nacimiento">Nacimiento:</strong>
                     <?php echo $user['Fecha_Nacimiento']; ?>
