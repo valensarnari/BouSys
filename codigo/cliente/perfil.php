@@ -242,7 +242,8 @@ $user = $result->fetch_assoc();
                     <?php echo $user['Puntos']; ?>
                 </p>
                 <p><strong data-section="cliente_perfil.php" data-value="Tipo de Documento">Tipo de Documento:</strong>
-                    <?php echo $user['tipo_de_documento']; ?>
+                    <?php echo 'DNI' //$user['tipo_de_documento']; ?>
+
                 </p>
                 <p><strong data-section="cliente_perfil.php" data-value="Documento">Documento:</strong>
                     <?php echo $user['Documento']; ?>
