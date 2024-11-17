@@ -245,7 +245,7 @@ $user = $result->fetch_assoc();
                     <?php echo 'DNI' //$user['tipo_de_documento']; ?>
 
                 </p>
-                <p><strong data-section="cliente_perfil.php" data-value="Documento">Documento:</strong>
+                <p><strong data-section="cliente_perfil.php" data-value="Documento">Número:</strong>
                     <?php echo $user['Documento']; ?>
                 </p>
                 <p><strong data-section="cliente_perfil.php" data-value="Nacimiento">Nacimiento:</strong>
